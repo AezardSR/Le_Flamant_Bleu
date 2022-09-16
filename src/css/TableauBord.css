@@ -1,0 +1,57 @@
+/* Tableau de bord global */
+    .tableau-bord {
+        display: flex;
+        margin-left: 45px;
+    }
+
+    .tableau-bord .img-tableau-bord {
+        width: 500px;
+        height: 280px;
+        object-fit: cover;
+    }
+
+    .tableau-bord .text-tb {
+        position: absolute; 
+        bottom: 0;
+        color: #000;
+        text-align: justify;
+        background-color: rgba(255, 255, 255, 0.7);
+        margin: 0 auto;
+        padding: 5px 10px 10px 10px;
+    }
+
+    .tableau-bord .news-tb:hover .text-tb,
+    .tableau-bord .right-tb:hover .text-tb {
+        background-color: rgba(100, 193, 255, 0.8);
+        transition: ease 0.4s all;
+    }
+
+    .tableau-bord .news-tb:hover .img-tableau-bord,
+    .tableau-bord .right-tb:hover .img-tableau-bord {
+        transition: ease 0.5s all;
+        transform: scale(1.1);    
+    }
+
+    .tableau-bord .article-table-bord {
+        position: relative;
+        overflow: hidden;
+    }
+
+/* Tableau de bord cube de gauche */
+
+    .tableau-bord .left-tb {
+        height: 600px;
+        margin-right: 50px;
+    }
+
+    .tableau-bord .left-tb .img-calendar {
+        margin-bottom: 20px;
+    }
+    
+
+/* Tableau de bord cube de droite */
+
+    .tableau-bord .right-tb .img-right-tb {
+        height: 600px;
+    }
+    

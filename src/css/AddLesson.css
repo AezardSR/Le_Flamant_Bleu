@@ -1,0 +1,23 @@
+/* Global */
+
+/* Form */
+    .form-add-lesson {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .form-add-lesson .form-add-lesson-title {
+        width: 500px;
+    }
+
+/* Btn */
+    .btn{
+        background-color: #1178D4;
+        border: none;
+    }
+
+    .btn a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 50px;
+    }
