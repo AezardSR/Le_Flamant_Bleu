@@ -1,0 +1,53 @@
+#individual-head{
+    display: grid;
+    grid: repeat(2,1fr) / repeat(2, 1fr);
+}
+
+#individual-head > div{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#individual-mid{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#individual-bottom{
+    display: grid;
+    grid: repeat(2,1fr) / repeat(2, 1fr);
+}
+
+#individual-bottom > div{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.individual-grid{
+    display: grid;
+    grid: repeat(2,1fr) / repeat(2, 1fr);
+}
+.individual-grid > div{
+    display: flex;
+    flex-direction: column;
+}
+
+/*Bande de catégorie*/
+.title-cat{
+    border: 2px solid black;
+    padding: 1%;
+    margin: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.title-cat > h2{
+    width: auto;
+}
+
+
+

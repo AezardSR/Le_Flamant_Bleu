@@ -10,6 +10,7 @@ import MenuPrincipal from './MenuPrincipal.js';
 import Lesson from './Lesson.js';
 import AddLesson from './AddLesson.js';
 import '../css/App.css';
+import FormAddUser from './FormAddUser.js';
 
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/ajouter_cours" element={<AddLesson />} />
 
             {/*  */}
+            <Route path="/FormAddUser" element={<FormAddUser />} />
           </Routes>
           
         </div>
