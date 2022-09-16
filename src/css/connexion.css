@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+.container{
     height: 100vh;
     display: flex;
     align-items: center;
@@ -11,22 +11,22 @@ body{
     
 }
 
-form{
+.form-connexion{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-label{
+/* label{
     margin: 10px;
-}
-input{
+} */
+.input-connexion{
     margin-top : 20px;
     padding: 10px;
     width: 300px;
     border : solid #194766;
 }
-a{
+a.password-forget, a.btn-connexion{
     color : #28abe2;
     text-decoration: none;
     margin-top: 5px;

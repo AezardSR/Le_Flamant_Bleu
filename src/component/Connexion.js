@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import LogoManu from './assets/img/logo_la_manu.png'
-import "./css/connexion.css"
+import LogoManu from '../assets/img/logo_la_manu.png'
+import "../css/connexion.css"
 
 export default class Connexion extends Component {
   render() {
@@ -8,15 +8,15 @@ export default class Connexion extends Component {
     <div className='container'>
         <div>
           <img src={LogoManu} alt="logo la manu"/>
-            <form>
+            <form className="form-connexion">
               {/* <label>Identifiant</label> */}
-              <input placeholder="Nom d'utilisateur ou mail" />
+              <input className="input-connexion" placeholder="Nom d'utilisateur ou mail" />
 
               {/* <label>Mot de passe</label> */}
               <input placeholder="Mot de passe" />
-              <a href="#">Mot de passe oublié ?</a>
+              <a className="password-forget" href="#">Mot de passe oublié ?</a>
 
-              <button>Connexion</button>
+              <button className="btn-connexion">Connexion</button>
             </form>
         </div>
     </div>
