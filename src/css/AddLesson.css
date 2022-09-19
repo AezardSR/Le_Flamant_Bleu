@@ -50,11 +50,11 @@
         border: none;
         padding: 10px 50px;
         margin-top: 10px;
-        margin-left: auto;
+        float: right;
         width: 70%;
     }
 
-    .btn-form-add-lesson a {
+    a .btn-form-add-lesson {
         color: white;
         text-decoration: none;
        

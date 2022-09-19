@@ -16,7 +16,7 @@ h2 {
     margin-right: 30px;
 }
 
-.link-lesson-add a {
+a .link-lesson-add {
     color: white;
     text-decoration: none;
 }

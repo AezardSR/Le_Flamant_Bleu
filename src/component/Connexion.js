@@ -17,7 +17,7 @@ export default class Connexion extends Component {
               <input placeholder="Mot de passe" />
               <a className="password-forget" href="#">Mot de passe oublié ?</a>
 
-              <button className="btn-connexion"><Link to="/">Connexion</Link></button>
+              <Link to="/"><button className="btn-connexion">Connexion</button></Link>
             </form>
         </div>
     </div>

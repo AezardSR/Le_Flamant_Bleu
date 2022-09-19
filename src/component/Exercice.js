@@ -17,7 +17,7 @@ export default class Exercice extends Component {
             </ul>
           </div>
 
-          <button className="link-lesson-add"><Link to="/ajouter_exercice">Ajouter un exercice</Link></button>
+         <Link to="/ajouter_exercice"><button className="link-lesson-add">Ajouter un exercice</button></Link>
       </div>
     )
   }

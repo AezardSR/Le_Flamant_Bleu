@@ -36,7 +36,7 @@ export default class AddExercice extends Component {
 
                 <div className='form-add-lesson-add-description'>
                     <textarea className="form-add-lesson-description" placeholder="Description de l'exercice"></textarea>
-                    <button type="submit" className="btn btn-form-add-lesson"><Link to="/cours">Valider l'exercice</Link></button>
+                    <Link to="/cours"><button type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button></Link>
                 </div>
             </div>
         </form>
