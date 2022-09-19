@@ -20,13 +20,18 @@ class App extends Component {
     <div className="App">
       
       <Router>
+
+          <Routes>
+            <Route path="/login" element={<Connexion />} />
+          </Routes>
+          
         <div className='page-tableau-bord'>
       
           <MenuPrincipal />
 
           <Routes>
             {/* Dashboard => index */}
-            <Route path="/login" element={<Connexion />} />
+            
             <Route path="/" element={<TableauBord />} />
 
             {/* Cours */}
