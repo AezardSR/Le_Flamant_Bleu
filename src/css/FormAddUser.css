@@ -37,7 +37,7 @@ h3,h4{
 
 .individual-grid{
     display: grid;
-    grid: repeat(2,1fr) / repeat(2, 1fr);
+    grid: auto / repeat(2, 1fr);
 }
 .individual-grid > div{
     display: flex;
@@ -76,18 +76,15 @@ form > div > div > div > input, form > div > div > input, #emergency-section > d
     grid-column-start: 2;
     width: 100%;
 }
-
-#emergency-section{
-
-}
-
 .section-close{
-    
     transform: translate(0,-110%);
+    transition: transform 0.5s;
     display: none;
-    }
+    overflow: hidden
+}
 .section-open{
-    transform: unset;
+    transition: translate(0, 0) 1s;
+    transition: transform 0.5s;
     display: block;
 }
 

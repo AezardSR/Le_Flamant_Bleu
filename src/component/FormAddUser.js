@@ -95,7 +95,7 @@ export default class FormAddUser extends Component {
                         <canvas></canvas>        
                     </div> */}
                 </div>
-            </div>
+            </div>            
             {/* Entreprise */}
             <div className="title-cat" onClick={() => this.OpenCategory('company-section')}>
                 <h2>Entreprise</h2>
