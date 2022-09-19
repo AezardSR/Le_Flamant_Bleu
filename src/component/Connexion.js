@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import LogoManu from '../assets/img/logo_la_manu.png'
 import "../css/connexion.css"
 
@@ -16,7 +17,7 @@ export default class Connexion extends Component {
               <input placeholder="Mot de passe" />
               <a className="password-forget" href="#">Mot de passe oublié ?</a>
 
-              <button className="btn-connexion">Connexion</button>
+              <button className="btn-connexion"><Link to="/">Connexion</Link></button>
             </form>
         </div>
     </div>

@@ -3,25 +3,24 @@ import Select from 'react-select'
 import { Link } from 'react-router-dom'
 import '../css/AddLesson.css';
 
-export default class AddLesson extends Component {
+export default class AddExercice extends Component {
   render() {
-
     const categories = [
-        { value: 'test1', label: 'test1' },
-        { value: 'test2', label: 'test2' },
-        { value: 'test3', label: 'test3' },
-        { value: 'test4', label: 'test3' },
-        { value: 'test5', label: 'test3' },
-        { value: 'test6', label: 'test3' },
-        { value: 'test7', label: 'test3' },
-        { value: 'test8', label: 'test3' },
-        { value: 'test9', label: 'test3' },
-        { value: 'test10', label: 'test3' },
-      ]
+      { value: 'test1', label: 'test1' },
+      { value: 'test2', label: 'test2' },
+      { value: 'test3', label: 'test3' },
+      { value: 'test4', label: 'test3' },
+      { value: 'test5', label: 'test3' },
+      { value: 'test6', label: 'test3' },
+      { value: 'test7', label: 'test3' },
+      { value: 'test8', label: 'test3' },
+      { value: 'test9', label: 'test3' },
+      { value: 'test10', label: 'test3' },
+    ]
 
-    return (
-      <div>
-        <form className="form-add-lesson">
+  return (
+    <div>
+      <form className="form-add-lesson">
             <div className='form-add-lesson-add-pdf'>
                 <input type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
             </div>
@@ -36,12 +35,12 @@ export default class AddLesson extends Component {
                 </div>
 
                 <div className='form-add-lesson-add-description'>
-                    <textarea className="form-add-lesson-description" placeholder="Description du cours"></textarea>
-                    <button type="submit" className="btn btn-form-add-lesson"><Link to="/cours">Valider le cours</Link></button>
+                    <textarea className="form-add-lesson-description" placeholder="Description de l'exercice"></textarea>
+                    <button type="submit" className="btn btn-form-add-lesson"><Link to="/cours">Valider l'exercice</Link></button>
                 </div>
             </div>
         </form>
-      </div>
+    </div>
     )
   }
 }

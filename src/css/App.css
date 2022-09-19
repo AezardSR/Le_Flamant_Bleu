@@ -1,5 +1,7 @@
 .page-tableau-bord {
     display: flex;
-    align-items: center;
-    height: auto;
+}
+
+.page-tableau-bord > div:not(.menu-principal) {   
+    width: 100%;
 }

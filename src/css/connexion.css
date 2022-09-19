@@ -35,14 +35,18 @@ a.password-forget, a.btn-connexion{
 a:hover{
     color: #194766 ;
 }
-button{
-    color : #FFF;
+.btn-connexion{
     background-color: #28abe2 ;
     margin : 20px;
     padding: 10px;
     width: 150px;
     border: none;
     font-size: 20px;
+}
+
+.btn-connexion a {
+    color : #FFF;
+    text-decoration: none;
 }
 
 button:hover{
