@@ -5,18 +5,18 @@ import "./css/connexion.css"
 export default class Connexion extends Component {
   render() {
     return (
-    <div className='container'>
+    <div className='container-connexion'>
         <div>
-          <img src={LogoManu} alt="logo la manu"/>
-            <form>
+          <img className='logo-connexion' src={LogoManu} alt="logo la manu"/>
+            <form className='form-connexion'>
               {/* <label>Identifiant</label> */}
-              <input placeholder="Nom d'utilisateur ou mail" />
+              <input className='input-connexion' placeholder="Nom d'utilisateur ou mail" />
 
               {/* <label>Mot de passe</label> */}
-              <input placeholder="Mot de passe" />
-              <a href="#">Mot de passe oublié ?</a>
+              <input className='input-connexion' placeholder="Mot de passe" type={'password'} />
+              <a className='forgot-mdp-connexion' href="#">Mot de passe oublié ?</a>
 
-              <button>Connexion</button>
+              <button className='btn-connexion'>Connexion</button>
             </form>
         </div>
     </div>
