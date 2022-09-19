@@ -25,7 +25,7 @@ class MenuPrincipal extends Component {
                         <Link to="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></Link>
                         <Link to="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></Link>
                         <Link to="/"><li><FontAwesomeIcon icon={faGlobe} />Actualité</li></Link>
-                        <Link to="/"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
+                        <Link to="/annonces_emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
                         <Link to="/"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></Link>
                         <Link to="/login"><li style={{borderBottom: "1px solid white"}}><FontAwesomeIcon icon={faDoorClosed} />Déconnexion</li></Link>
                     </ul>

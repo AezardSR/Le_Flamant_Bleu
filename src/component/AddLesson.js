@@ -37,7 +37,7 @@ export default class AddLesson extends Component {
 
                 <div className='form-add-lesson-add-description'>
                     <textarea className="form-add-lesson-description" placeholder="Description du cours"></textarea>
-                    <button type="submit" className="btn btn-form-add-lesson"><Link to="/cours">Valider le cours</Link></button>
+                    <Link to="/cours"><button type="submit" className="btn btn-form-add-lesson">Valider le cours</button></Link>
                 </div>
             </div>
         </form>

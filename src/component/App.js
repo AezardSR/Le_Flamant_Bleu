@@ -11,6 +11,9 @@ import Lesson from './Lesson.js';
 import Exercice from './Exercice.js';
 import AddLesson from './AddLesson.js';
 import AddExercice from './AddExercice.js';
+import JobsAnnouncements from './JobsAnnouncements.js';
+import AddJobsAnnouncements from './AddJobsAnnouncements.js';
+import IndexJobsAnnouncements from './IndexJobsAnnouncements.js';
 import '../css/App.css';
 import FormAddUser from './FormAddUser.js';
 import ListUtilisateur from './ListUtilisateur.js';
@@ -20,13 +23,13 @@ class App extends Component {
   render() {
     return (
     <div className="App">
-      
       <Router>
 
-          <Routes>
+        <Routes>
             <Route path="/login" element={<Connexion />} />
-          </Routes>
+        </Routes>
           
+
         <div className='page-tableau-bord'>
       
           <MenuPrincipal />
@@ -47,6 +50,11 @@ class App extends Component {
             {/* Exercice */}
             <Route path="/exercice" element={<Exercice />} />
             <Route path="/ajouter_exercice" element={<AddExercice />} />
+
+            {/* Annonces boulots */}
+            <Route path="/annonces_emplois" element={<JobsAnnouncements />} />
+            <Route path="/ajouter_annonce_emploi" element={<AddJobsAnnouncements />} />
+            <Route path="/index_annonce_emploi" element={<IndexJobsAnnouncements />} />
 
           </Routes>
           

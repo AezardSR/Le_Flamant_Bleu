@@ -16,7 +16,7 @@ export default class Lesson extends Component {
                 {listcategorie}
               </ul>
           </div>
-          <button className="link-lesson-add"><Link to="/ajouter_cours">Ajouter un cours</Link></button>
+          <Link to="/ajouter_cours"><button className="link-lesson-add">Ajouter un cours</button></Link>
       </div>
     )
   }

@@ -8,7 +8,7 @@
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
 }
 .form-connexion{
     display: flex;
@@ -39,7 +39,12 @@
     font-size: 20px;
 }
 
-.btn-connexion:hover{
+a .btn-connexion  {
+    color : #FFF;
+    text-decoration: none;
+}
+
+button:hover{
     background-color: #194766 ;
 }
 
