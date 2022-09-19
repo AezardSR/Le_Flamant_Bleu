@@ -2,6 +2,7 @@
     .tableau-bord {
         display: flex;
         margin-left: 45px;
+        padding-top: 30px;
     }
 
     .tableau-bord .img-tableau-bord {
