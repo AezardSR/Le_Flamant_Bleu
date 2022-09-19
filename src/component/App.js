@@ -11,6 +11,7 @@ import Lesson from './Lesson.js';
 import AddLesson from './AddLesson.js';
 import '../css/App.css';
 import FormAddUser from './FormAddUser.js';
+import ListUtilisateur from './ListUtilisateur.js';
 
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
 
             {/*  */}
             <Route path="/FormAddUser" element={<FormAddUser />} />
+            <Route path="/listUser" element={<ListUtilisateur />} />
           </Routes>
           
         </div>
