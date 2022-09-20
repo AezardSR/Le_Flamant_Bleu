@@ -1,0 +1,23 @@
+#table-container{
+    height: 50%;
+    width: 90%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th{
+    height: 50px;
+}
+
+
