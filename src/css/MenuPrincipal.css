@@ -25,9 +25,12 @@
         margin: auto;
     }
 
-    .menu-principal .avatar-menu:hover p {
-        color: #279DD6;
-        
+    .avatar-menu-parametre {
+        margin-top: 10px;
+    }
+
+    .avatar-menu-parametre a {
+        margin: 0 10px;
     }
 
 /* Partie listing url menu */

@@ -7,7 +7,7 @@ export default class Connexion extends Component {
   render() {
     return (
     <div className='container'>
-        <div>
+        <div className="container-connexion">
           <img src={LogoManu} alt="logo la manu"/>
             <form className="form-connexion">
               {/* <label>Identifiant</label> */}

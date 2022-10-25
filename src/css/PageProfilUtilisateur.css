@@ -16,6 +16,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.section-profil-user {
+    width: 100%;
+}
+
 .img-profil{
     width: 150px;
     margin : 50px;

@@ -3,7 +3,7 @@ import './App.css';
 import './css/global.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Connexion from './Connexion.js';
-import PageProfilUtilisateur from './PageProfilUtilisateur';
+import PageProfilUtilisateur from './PageProfilUtilisateur.js';
 
 
 

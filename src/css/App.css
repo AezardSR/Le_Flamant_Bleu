@@ -5,3 +5,7 @@
 .page-tableau-bord > div:not(.menu-principal) {   
     width: 100%;
 }
+
+.container .page-tableau-bord .menu-principal {
+    visibility: hidden;
+}
