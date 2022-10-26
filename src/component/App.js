@@ -15,6 +15,7 @@ import Lesson from './Lesson.js';
 import Exercice from './Exercice.js';
 import AddLesson from './AddLesson.js';
 import AddExercice from './AddExercice.js';
+import AddCategorie from './AddCategorie.js';
 import JobsAnnouncements from './JobsAnnouncements.js';
 import AddJobsAnnouncements from './AddJobsAnnouncements.js';
 import IndexJobsAnnouncements from './IndexJobsAnnouncements.js';
@@ -46,17 +47,19 @@ class App extends Component {
             <Route path="/calendrier" element={<><MenuPrincipal /><Calendrier /></>} />
             <Route path="/add-event-planning" element={<><MenuPrincipal /><AddEventPlanning /></>} />
 
-            {/* Cours */}
-            <Route path="/cours" element={<><MenuPrincipal /><Lesson /></>} />
-            <Route path="/ajouter_cours" element={<><MenuPrincipal /><AddLesson /></>} />
+            <Route path="/ajouter_categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
+                {/* Cours */}
+                <Route path="/cours" element={<><MenuPrincipal /><Lesson /></>} />
+                <Route path="/ajouter_cours" element={<><MenuPrincipal /><AddLesson /></>} />
+
+                {/* Exercice */}
+                <Route path="/exercice" element={<><MenuPrincipal /><Exercice /></>} />
+                <Route path="/ajouter_exercice" element={<><MenuPrincipal /><AddExercice /></>} />
 
             {/* Fiches d'informations */}
             <Route path="/FormAddUser" element={<><MenuPrincipal /><FormAddUser /></>} />
             <Route path="/listUser" element={<><MenuPrincipal /><ListUtilisateur /></>} />
            
-            {/* Exercice */}
-            <Route path="/exercice" element={<><MenuPrincipal /><Exercice /></>} />
-            <Route path="/ajouter_exercice" element={<><MenuPrincipal /><AddExercice /></>} />
 
             {/* Annonces boulots */}
             <Route path="/annonces_emplois" element={<><MenuPrincipal /><JobsAnnouncements /></>} />

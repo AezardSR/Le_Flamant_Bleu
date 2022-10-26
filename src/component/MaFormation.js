@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faLaptopCode, faCalendar, faGraduationCap} from "@fortawesome/free-solid-svg-icons";
+import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
 import '../css/BlocNavigation.css';
 
 export class MaFormation extends Component {
@@ -14,6 +14,7 @@ export class MaFormation extends Component {
           
             <Link to="/cours" className='bloc-navigation navigation-lesson'><FontAwesomeIcon icon={faGraduationCap} />Mes cours</Link>
             <Link to="/exercice" className='bloc-navigation navigation-exercice'><FontAwesomeIcon icon={faLaptopCode} />Mes exercices</Link>
+            <Link to="/ajouter_categorie" className='bloc-navigation navigation-categorie'><FontAwesomeIcon icon={faAtom} />Créer une catégorie</Link>
             <Link to="/calendrier" className='bloc-navigation navigation-planning'><FontAwesomeIcon icon={faCalendar} />Mon planning</Link>
 
           </div>
