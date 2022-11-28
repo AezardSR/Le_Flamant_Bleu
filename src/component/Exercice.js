@@ -32,18 +32,22 @@ export default class Exercice extends React.Component {
                   {
                     this.state.categorie
                       .map(categorie =>
-                        <li className="listing-name-categorie">{categorie.categorie}<span style={{fontWeight: 100}}>V</span></li>
+                        <li className="listing-name-categorie">
+                          {categorie.categorie}
+                          <span style={{fontWeight: 100}}>V</span>
+                              <ul>
+                                {
+                                  this.state.exercice
+                                    .map(exercice =>
+                                      <li>{exercice.name}</li>
+                                    )
+                                }
+                              </ul>
+                        </li>
                       )
                   }
               </ul>
-              <ul>
-                  {
-                    this.state.exercice
-                      .map(exercice =>
-                        <li>{exercice.name}</li>
-                      )
-                  }
-              </ul>
+              
           </div>
 
          <Link to="/ajouter_exercice"><button className="link-lesson-add">Ajouter un exercice</button></Link>

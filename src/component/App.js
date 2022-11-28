@@ -8,6 +8,7 @@ import Connexion from './Connexion.js';
 import TableauBord from './TableauBord.js';
 import MenuPrincipal from './MenuPrincipal.js';
 import MaFormation from './MaFormation.js';
+import Categorie from './Categorie.js';
 import Emplois from './Emploi.js';
 import Calendrier from './Planning.js';
 import AddEventPlanning from './AddEventPlanning.js';
@@ -16,6 +17,8 @@ import Exercice from './Exercice.js';
 import AddLesson from './AddLesson.js';
 import AddExercice from './AddExercice.js';
 import AddCategorie from './AddCategorie.js';
+import DeleteCategorie from './DeleteCategorie.js';
+import UpdateCategorie from './UpdateCategorie.js';
 import JobsAnnouncements from './JobsAnnouncements.js';
 import AddJobsAnnouncements from './AddJobsAnnouncements.js';
 import IndexJobsAnnouncements from './IndexJobsAnnouncements.js';
@@ -47,7 +50,10 @@ class App extends Component {
             <Route path="/calendrier" element={<><MenuPrincipal /><Calendrier /></>} />
             <Route path="/add-event-planning" element={<><MenuPrincipal /><AddEventPlanning /></>} />
 
+            <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
             <Route path="/ajouter_categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
+            <Route path="/supprimer_categorie" element={<><MenuPrincipal /><DeleteCategorie /></>} />
+            <Route path="/modifier_categorie" element={<><MenuPrincipal /><UpdateCategorie /></>} />
                 {/* Cours */}
                 <Route path="/cours" element={<><MenuPrincipal /><Lesson /></>} />
                 <Route path="/ajouter_cours" element={<><MenuPrincipal /><AddLesson /></>} />
