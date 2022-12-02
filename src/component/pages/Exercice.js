@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import '../css/Lesson.css';
+import '../../css/Lesson.css';
 
 export default class Exercice extends React.Component {
   state = {

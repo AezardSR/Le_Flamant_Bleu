@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
-import '../css/AddLesson.css';
+import '../../css/AddLesson.css';
 
 export default class AddLesson extends Component {
   render() {

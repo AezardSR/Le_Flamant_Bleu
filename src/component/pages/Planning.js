@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Calendar from 'react-calendar';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import '../css/Calendar.css';
+import '../../css/Calendar.css';
 import { Link } from 'react-router-dom';
 
 export default function Planning() {
