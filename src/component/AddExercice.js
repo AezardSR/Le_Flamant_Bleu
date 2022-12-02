@@ -27,7 +27,7 @@ export default class AddExercice extends React.Component {
     const contentExo    = {content: this.state.content}
     const id_partsExo   = {id_parts: this.state.id_parts}
 
-    axios.post(`http://localhost:8000/api/exercice/{name}/{content}/{id_parts}`, { nameExo }, { contentExo }, { id_partsExo })
+    axios.post(`http://localhost:8000/api/exercice/`, { nameExo }, { contentExo }, { id_partsExo })
       .then(res => {
         console.log(res);
         console.log(res.data);
