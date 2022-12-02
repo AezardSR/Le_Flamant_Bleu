@@ -1,14 +1,15 @@
-#table-container{
-    height: 50%;
-    width: 90%;
-    height: 80vh;
-    overflow-y: scroll;
+#list-utilisateur{
+    padding: 0 10%;
 }
 
-table{
+#table-container{
     width: 100%;
+    height: 80vh;
+}
+#table-container > table{
+    width: 100%;
+    height: 100%;
     text-align: center;
-    overflow: hidden;
 }
 
 table,th,td{
@@ -16,8 +17,37 @@ table,th,td{
     border-collapse: collapse;
 }
 
-th{
-    height: 50px;
+#search-bar{
+    width: 100%;
+    height: 5%;
+    margin: 2% 0;
+}
+
+#search-bar > input{
+    font-size: 20px;
+    width: 93%;
+    height: 100%;
+}
+#search-bar > button{
+    width: 7%;
+    font-size: 20px;    
+    height: 100%;
+}
+
+#add-button{
+    padding: 1% 0;
+    display: flex;
+    justify-content: flex-end;
+    height: 6%;
+}
+#add-button > button, button{
+    background-color: #28ABE2;
+    color: white;
+    border: unset;
+    padding: 1%;
+}
+#add-button > button:hover, button:hover{
+    background-color: #194766;
 }
 
 
