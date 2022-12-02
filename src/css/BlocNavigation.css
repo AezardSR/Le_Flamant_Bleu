@@ -1,0 +1,33 @@
+.title-ma-formation,
+.title-section-emploi {
+    padding: 30px;
+    text-align: center;
+}
+
+.all-bloc-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 45%;
+    margin: 0 auto;
+}
+
+.all-bloc-navigation .bloc-navigation {
+    display: flex;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #194766;
+    border: 1px solid #194766;
+    padding: 20px 30px;
+    width: 45%;
+    margin: 20px;   
+}
+
+.all-bloc-navigation .bloc-navigation svg {
+    margin-right: 10px;
+}
+
+.all-bloc-navigation .bloc-navigation:hover {
+    transform: scale(1.2);
+    transition: ease 0.3s all;
+}

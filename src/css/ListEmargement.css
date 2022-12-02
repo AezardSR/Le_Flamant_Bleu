@@ -1,0 +1,18 @@
+.emargement-formation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.emargement-formation .emargement-etudiant {
+    border: 1px solid black;
+    width: 30%;
+    margin: 20px auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.emargement-formation .emargement-etudiant img {
+    width: 80%;
+    padding-top: 10px;
+}

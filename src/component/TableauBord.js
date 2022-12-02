@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import '../css/TableauBord.css';
 import Calendrier from '../assets/img/calendrier.png'
 import Emploi from '../assets/img/emploi.jpg'
@@ -12,12 +13,12 @@ class TableauBord extends Component {
                 <div className="tableau-bord">
                     <div className="left-tb">
                         <div className="calendar-tb">
-                            <a href="#">
+                            <Link to="/calendrier">
                                 <img src={Calendrier} alt="Planning" className="img-tableau-bord img-calendar"/>
-                            </a>
+                            </Link>
                         </div>
                         <div className="news-tb">
-                            <a href="#">
+                            <Link to="/annonces_emplois">
                                 <div className="article-table-bord">
                                     <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                     <p className="text-tb">
@@ -26,7 +27,7 @@ class TableauBord extends Component {
                                         Pellentesque vestibulum nec risus vitae consequat.
                                     </p>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="right-tb">

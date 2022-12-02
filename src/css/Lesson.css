@@ -25,12 +25,12 @@ a .link-lesson-add {
     list-style: none;
 }
 
-.listing-categorie-nav li {
+.listing-categorie-nav>li {
     margin: 0 auto;
     width: 95%;
     height: 50px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     border: 1px solid black;
     margin-bottom: 10px;
