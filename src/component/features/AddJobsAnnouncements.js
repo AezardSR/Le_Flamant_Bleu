@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import '../css/AddJobsAnnouncements.css';
+import '../../css/AddJobsAnnouncements.css';
 
 export default class AddJobsAnnouncements extends Component {
   render() {

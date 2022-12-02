@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-date-picker';
 import { Link } from 'react-router-dom';
-import '../css/AddEventPlanning.css';
+import '../../css/AddEventPlanning.css';
 
 export function AddEventPlanning() {
     const [dateEvent, onChange] = useState(new Date());

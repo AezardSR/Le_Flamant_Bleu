@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import LogoManu from '../assets/img/logo_la_manu.png'
-import "../css/PageProfilUtilisateur.css"
+import LogoManu from '../../assets/img/logo_la_manu.png'
+import "../../css/PageProfilUtilisateur.css"
 
 export default class PageProfilUtilisateur extends Component {
   render() {

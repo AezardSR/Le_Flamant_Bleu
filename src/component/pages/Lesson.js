@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/Lesson.css';
+import '../../css/Lesson.css';
 
 export default class Lesson extends Component {
   /* OpenCategory(category){

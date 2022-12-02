@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
-import '../css/AddLesson.css';
+import '../../css/AddLesson.css';
 
 export default class AddExercice extends React.Component {
 

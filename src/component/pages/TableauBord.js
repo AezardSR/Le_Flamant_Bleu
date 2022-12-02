@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import '../css/TableauBord.css';
-import Calendrier from '../assets/img/calendrier.png'
-import Emploi from '../assets/img/emploi.jpg'
-import News from '../assets/img/news.jpg'
+import '../../css/TableauBord.css';
+import Calendrier from '../../assets/img/calendrier.png'
+import Emploi from '../../assets/img/emploi.jpg'
+import News from '../../assets/img/news.jpg'
 
 class TableauBord extends Component {
     render() {

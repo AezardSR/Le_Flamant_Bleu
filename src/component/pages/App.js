@@ -11,23 +11,23 @@ import MaFormation from './MaFormation.js';
 import Categorie from './Categorie.js';
 import Emplois from './Emploi.js';
 import Calendrier from './Planning.js';
-import AddEventPlanning from './AddEventPlanning.js';
+import AddEventPlanning from '../features/AddEventPlanning.js';
 import Lesson from './Lesson.js';
 import Exercice from './Exercice.js';
-import AddLesson from './AddLesson.js';
-import AddExercice from './AddExercice.js';
-import AddCategorie from './AddCategorie.js';
-import DeleteCategorie from './DeleteCategorie.js';
-import UpdateCategorie from './UpdateCategorie.js';
+import AddLesson from '../features/AddLesson.js';
+import AddExercice from '../features/AddExercice.js';
+import AddCategorie from '../features/AddCategorie.js';
+import DeleteCategorie from '../features/DeleteCategorie.js';
+import UpdateCategorie from '../features/UpdateCategorie.js';
 import JobsAnnouncements from './JobsAnnouncements.js';
-import AddJobsAnnouncements from './AddJobsAnnouncements.js';
+import AddJobsAnnouncements from '../features/AddJobsAnnouncements.js';
 import IndexJobsAnnouncements from './IndexJobsAnnouncements.js';
 import PageProfilUtilisateur from './PageProfilUtilisateur.js';
-import FormAddUser from './FormAddUser.js';
+import FormAddUser from '../features/FormAddUser.js';
 import ListUtilisateur from './ListUtilisateur.js';
 import Emargement from './Emargement.js';
 import ListEmargement from './ListEmargement.js';
-import '../css/App.css';
+import '../../css/App.css';
 
 
 class App extends Component {

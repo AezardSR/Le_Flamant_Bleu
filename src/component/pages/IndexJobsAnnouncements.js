@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import ImgAnnouncement from '../assets/img/logo_la_manu.png'
-import '../css/IndexJobsAnnouncements.css';
+import ImgAnnouncement from '../../assets/img/logo_la_manu.png'
+import '../../css/IndexJobsAnnouncements.css';
 
 export default class IndexJobsAnnouncements extends Component {
   render() {

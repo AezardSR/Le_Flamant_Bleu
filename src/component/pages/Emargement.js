@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ImgEmargement from '../assets/img/emargement.png'
+import ImgEmargement from '../../assets/img/emargement.png'
 import { Link } from 'react-router-dom'
 
-import '../css/Emargement.css';
+import '../../css/Emargement.css';
 
 export default class Emargement extends Component {
   render() {

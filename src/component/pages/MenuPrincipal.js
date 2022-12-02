@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Avatar from '../assets/img/leroy.jpg'
-import LaManu from '../assets/img/logo_la_manu.png'
+import Avatar from '../../assets/img/leroy.jpg'
+import LaManu from '../../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faGear, faHome, faCalendar, faGraduationCap, faLaptopCode, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
-import '../css/MenuPrincipal.css';
+import '../../css/MenuPrincipal.css';
 
 class MenuPrincipal extends Component {
     render() {
