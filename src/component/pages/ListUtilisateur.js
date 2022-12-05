@@ -1,15 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react';
+import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import "../../css/ListUtilisateur.css"
 
-export default function ListUtilisateur() {
+function ListUtilisateur() {
           const identite = [
             { name: "Anom", firstname: "test", type: "partenaire", entreprise: "test", mail: "test@mail.fr", tel:"0000000" },
             { name: "Megha", firstname: "truc", mail: "truc@mail.fr" },
             { name: "Subham", firstname: "machin", mail: "maichin@mail.fr"},
           ]
 
-          const searchBar = () => {}
+          const searchBar = () => {};
           const [searchInput, setSearchInput] = useState("");
 
           const handleChange = (e) => {
@@ -21,39 +22,38 @@ export default function ListUtilisateur() {
                 identite.filter((identite) => {
               return identite.name.match(searchInput);
           });
-          }
+          };
 
           return (
             <div>
-                <Link to="/FormAddUser"><button className="link-lesson-add">Ajouter contact</button></Link>
+                <Link to="/FormAddUser"><button className="link-lesson-add btn-user">Ajouter contact</button></Link>
 
-                <div>
-                  {/* Barre de recherche de tableau */}
-                  <input type="text" placeholder="Search here" onChange={handleChange} value={searchInput} />
-                </div>
-
-                <table style={{width:'100%'}}>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Type</th>
-                        <th>Entreprise</th>
-                        <th>Mail</th>
-                        <th>Téléphone</th>
-                    </tr>
-                    {this.data.map((identite, key) => {
-                      return (
-                        <tr key={key}>
-                          <td>{identite.name}</td>
-                          <td>{identite.firstname}</td>
-                          <td>{identite.type}</td>
-                          <td>{identite.entreprise}</td>
-                          <td>{identite.mail}</td>
-                          <td>{identite.tel}</td>
+                <div className="listing-user">
+                    <input className="search-bar" type="text" placeholder="Search here" onChange={handleChange} value={searchInput} />
+                    <table className="table-user">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Type</th>
+                            <th>Entreprise</th>
+                            <th>Mail</th>
+                            <th>Téléphone</th>
                         </tr>
-                      )
-                    })}
-                </table>
+                        {identite.map((identite, key) => (
+                            <tr key={key}>
+                              <td>{identite.name}</td>
+                              <td>{identite.firstname}</td>
+                              <td>{identite.type}</td>
+                              <td>{identite.entreprise}</td>
+                              <td>{identite.mail}</td>
+                              <td>{identite.tel}</td>
+                            </tr>
+                          )
+                        )}
+                    </table>
+                 </div>  
             </div>
         )
 }
+
+export default ListUtilisateur;

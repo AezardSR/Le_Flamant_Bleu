@@ -1,0 +1,24 @@
+.listing-user {
+    padding: 20px;
+    padding-top: 55px;
+    margin-top: 20px;
+}
+
+.btn-user {
+    margin-top: 10px;
+}
+
+.search-bar {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 35px;
+    font-size: medium;
+}
+
+.table-user {
+    width: 100%;
+}
+
+.table-user tr {
+    height: 30px;
+}
