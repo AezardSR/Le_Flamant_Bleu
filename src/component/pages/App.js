@@ -28,7 +28,10 @@ import ListUtilisateur from './ListUtilisateur.js';
 import Emargement from './Emargement.js';
 import ListEmargement from './ListEmargement.js';
 import Admin from './Admin.js';
+import Actualites from './Actualites.js';
+import AddActualites from '../features/AddActualite.js';
 import '../../css/App.css';
+import AddActualite from '../features/AddActualite.js';
 
 
 class App extends Component {
@@ -77,6 +80,10 @@ class App extends Component {
               {/* Emargements */}
               <Route path="/emargements" element={<><MenuPrincipal /><Emargement /></>} />
               <Route path="/liste_emargements" element={<><MenuPrincipal /><ListEmargement /></>} />
+
+              {/* Actualités */}
+              <Route path="/actualites" element={<><MenuPrincipal /><Actualites /></>} />
+              <Route path="/ajouter_actualite" element={<><MenuPrincipal /><AddActualites /></>} />
           </Routes>
         </div>
       </Router>

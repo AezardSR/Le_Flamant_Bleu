@@ -13,12 +13,29 @@
     margin-bottom: 10px;
     height: 35px;
     font-size: medium;
+    padding: 5px;
 }
 
 .table-user {
     width: 100%;
+    border-collapse: collapse;
+}
+
+.table-user, 
+.table-user th, 
+.table-user td {
+    border: 1px solid #4F4F4F;
+    padding: 10px;
 }
 
 .table-user tr {
     height: 30px;
+}
+
+.table-user tr th {
+    text-transform: uppercase;
+}
+
+.table-user tr:nth-child(1) {
+    height: 40px;
 }
