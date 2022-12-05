@@ -27,6 +27,7 @@ import FormAddUser from '../features/FormAddUser.js';
 import ListUtilisateur from './ListUtilisateur.js';
 import Emargement from './Emargement.js';
 import ListEmargement from './ListEmargement.js';
+import Admin from './Admin.js';
 import '../../css/App.css';
 
 
@@ -72,9 +73,10 @@ class App extends Component {
             <Route path="/ajouter_annonce_emploi" element={<><MenuPrincipal /><AddJobsAnnouncements /></>} />
             <Route path="/index_annonce_emploi" element={<><MenuPrincipal /><IndexJobsAnnouncements /></>} />
 
-            {/* Emargements */}
-            <Route path="/emargements" element={<><MenuPrincipal /><Emargement /></>} />
-            <Route path="/liste_emargements" element={<><MenuPrincipal /><ListEmargement /></>} />
+            <Route path="/admin" element={<><MenuPrincipal /><Admin /></>} />
+              {/* Emargements */}
+              <Route path="/emargements" element={<><MenuPrincipal /><Emargement /></>} />
+              <Route path="/liste_emargements" element={<><MenuPrincipal /><ListEmargement /></>} />
           </Routes>
         </div>
       </Router>

@@ -10,41 +10,62 @@ export default class Exercice extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/exercice')
-      .then(res => {
-        const exercice = res.data;
-        this.setState({ exercice });
-      })
+    fetch("http://localhost:8000/api/exercice")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            exercices: result.exercices
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
 
-    axios.get('http://localhost:8000/api/categories')
-      .then(res => {
-        const categorie = res.data;
-        this.setState({ categorie });
-      })
+    fetch("http://localhost:8000/api/categories")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          isLoaded: true,
+          categories: result.categories
+        });
+      },
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
   }
 
   render() {
+    const {exercices, categories} = this.state;
     return (
       <div>
           <h2>Exercices [nom de la formation]</h2>
           <div className="listing-lesson">
               <ul className="listing-categorie-nav">
                   {
-                    this.state.categorie
-                      .map(categorie =>
-                        <li className="listing-name-categorie">
-                          {categorie.categorie}
+                    categories.map(categories => (
+                        <li key={categories.id} className="listing-name-categorie">
+                          {categories.categorie}
                           <span style={{fontWeight: 100}}>V</span>
                               <ul>
-                                {
-                                  this.state.exercice
-                                    .map(exercice =>
-                                      <li>{exercice.name}</li>
-                                    )
-                                }
+                              {exercices.map(exercices => (
+                                <li key={exercices.id}>
+                                    {exercices.name}
+                                </li>
+                              ))}
                               </ul>
                         </li>
-                      )
+                      ))
                   }
               </ul>
               

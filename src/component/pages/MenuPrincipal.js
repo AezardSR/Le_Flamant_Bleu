@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Avatar from '../../assets/img/leroy.jpg'
 import LaManu from '../../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faGear, faHome, faCalendar, faGraduationCap, faLaptopCode, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
+import { faPaperclip ,faAddressCard, faGear, faHome, faCalendar, faGraduationCap, faLaptopCode, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
 import '../../css/MenuPrincipal.css';
 
 class MenuPrincipal extends Component {
@@ -29,6 +29,7 @@ class MenuPrincipal extends Component {
                         <Link to="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></Link>
                         <Link to="/"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></Link>
                         <Link to="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></Link>
+                        <Link to="/admin"><li><FontAwesomeIcon icon={faPaperclip} />Administratifs</li></Link>
                         {/* <Link to="/annonces_emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
                         <Link to="/listUser"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></Link> */}
                         <a href="https://lamanu.fr/">
