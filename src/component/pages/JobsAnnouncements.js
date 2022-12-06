@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import PartnerPoleEmploi from '../../assets/img/pole_emploi.png'
 import PartnerHautFrance from '../../assets/img/haut_de_france.png'
@@ -7,8 +7,21 @@ import PartnerNormandie from '../../assets/img/normandie.png'
 import ImgAnnouncement from '../../assets/img/logo_la_manu.png'
 import '../../css/JobsAnnouncements.css';
 
-export default class JobsAnnouncements extends Component {
-  render() {
+export default function JobsAnnouncements() {
+    const [jobs, setJobs] = useState([]);
+
+    useEffect(() => {
+        Promise.all([
+          fetch('http://localhost:8000/api/jobsoffers/?_limit=3'),
+        ])
+          .then(([resJobs]) =>
+            Promise.all([resJobs.json()])  
+          )
+          .then(([dataJobs]) => {
+            setJobs(dataJobs);
+          })
+      })
+
     return (
         <div className='page-jobs-actualites'>
             <div className='img-jobs-partner'>
@@ -19,42 +32,15 @@ export default class JobsAnnouncements extends Component {
             </div>
 
             <div className='jobs-actualites'>
-                <a href='https://www.pole-emploi.fr/accueil/'>
-                    <div className='jobs-offers'>
-                        <img src={ImgAnnouncement} />
-                        <h3>Titre de l'annonce</h3>
-                        <p>Veniam laboris eiusmod ut commodo excepteur officia qui dolor eiusmod aute pariatur magna culpa. 
-                            Labore irure ut nulla nulla exercitation officia esse voluptate officia nostrud. 
-                            Sint sit culpa deserunt dolor aute proident in culpa. 
-                            Incididunt culpa veniam pariatur dolore eu aute ipsum irure mollit laboris incididunt ex ex nulla.
-                        </p>
-                    </div>
-                </a>
-                
-
-                <a href='https://www.hautsdefrance.fr/mot/travail-emploi/'>
-                    <div className='jobs-offers'>
-                        <img src={ImgAnnouncement} />
-                        <h3>Titre de l'annonce</h3>
-                        <p>Veniam laboris eiusmod ut commodo excepteur officia qui dolor eiusmod aute pariatur magna culpa. 
-                            Labore irure ut nulla nulla exercitation officia esse voluptate officia nostrud. 
-                            Sint sit culpa deserunt dolor aute proident in culpa. 
-                            Incididunt culpa veniam pariatur dolore eu aute ipsum irure mollit laboris incididunt ex ex nulla.
-                        </p>
-                    </div>
-                </a>
-
-                <a href='https://www.iledefrance.fr/formation-emploi'>
-                    <div className='jobs-offers'>
-                        <img src={ImgAnnouncement} />
-                        <h3>Titre de l'annonce</h3>
-                        <p>Veniam laboris eiusmod ut commodo excepteur officia qui dolor eiusmod aute pariatur magna culpa. 
-                            Labore irure ut nulla nulla exercitation officia esse voluptate officia nostrud. 
-                            Sint sit culpa deserunt dolor aute proident in culpa. 
-                            Incididunt culpa veniam pariatur dolore eu aute ipsum irure mollit laboris incididunt ex ex nulla.
-                        </p>
-                    </div>
-                </a>
+                {jobs.map((job) => (
+                    <a href={job.link}>
+                        <div className='jobs-offers'>
+                            <img src={ImgAnnouncement} />
+                            <h3>{job.name}</h3>
+                            <p>{job.description}</p>
+                        </div>
+                    </a> 
+                ))}
             </div>
             
             <div className='btn-jobs'>
@@ -64,4 +50,3 @@ export default class JobsAnnouncements extends Component {
         </div>
     )
   }
-}

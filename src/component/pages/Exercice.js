@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import '../../css/Lesson.css';
 
 function Exercice() {
-
     const [categories, setCategories] = useState([]);
     const [exercices, setExercices] = useState([]);
 
@@ -29,18 +28,19 @@ function Exercice() {
                   {categories.map((categorie) => (
                     <li key={categorie.id}>
                       {categorie.categorie}
+                      <span>V</span>
+
+                        <ul className="listing-categorie-nav">
+                          {exercices.map((exercices) => (
+                            <li key={exercices.id}>
+                              {exercices.name}
+                            </li>
+                          ))}
+                        </ul>
+
                     </li>
                   ))}
               </ul>
-
-              <ul className="listing-categorie-nav">
-                {exercices.map((exercices) => (
-                  <li key={exercices.id}>
-                    {exercices.name}
-                  </li>
-                ))}
-              </ul>
-              
           </div>
 
          <Link to="/ajouter_exercice"><button className="link-lesson-add">Ajouter un exercice</button></Link>
