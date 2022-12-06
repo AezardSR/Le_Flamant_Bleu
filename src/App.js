@@ -1,25 +1,23 @@
 import React, { Component, useState } from 'react';
 import './App.css';
 import './css/global.css'
-import Connexion from './component/pages/Connexion.js';
+import Login from './component/features/APIToken/login.js';
 import PageProfilUtilisateur from './component/pages/PageProfilUtilisateur.js';
 import Main from './component/pages/App.js';
-
+import useToken from './component/features/APIToken/useToken.js';
 
 function App() {
-  const [token, setToken] = useState();
+  const { token, setToken } = useToken();
 
   if(!token){
-    return <Connexion setToken={setToken} />
+    return <Login setToken={setToken} />
   }
 
   return (
     <div className="App">
       {/* <Connexion/> */}
       <Main/>
-
     </div>
-   
   );
 }
 

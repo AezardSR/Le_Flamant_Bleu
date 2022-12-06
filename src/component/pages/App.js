@@ -37,7 +37,6 @@ class App extends Component {
           <Routes>
             {/* Dashboard => index */}
             <Route path="/" element={<><MenuPrincipal /><TableauBord /></>} />
-            <Route path="/login" element={<Connexion />} />
             <Route path="/profile" element={<PageProfilUtilisateur />} />
 
             <Route path="/ma-formation" element={<><MenuPrincipal /><MaFormation /></>} />
