@@ -8,17 +8,17 @@ import useToken from './component/features/APIToken/useToken.js';
 
 function App() {
   const { token, setToken } = useToken();
-
+  
   if(!token){
     return <Login setToken={setToken} />
-  }
-
+  } else {
   return (
     <div className="App">
       {/* <Connexion/> */}
       <Main/>
     </div>
   );
+  }
 }
 
 export default App;
