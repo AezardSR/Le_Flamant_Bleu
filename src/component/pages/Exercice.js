@@ -1,63 +1,44 @@
-import React, { Component } from 'react'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import '../../css/Lesson.css';
 
-export default class Exercice extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      exercices: [],
-      categories: [],
-    };
-  }
+function Exercice() {
 
-  componentDidMount() {
-    fetch("http://localhost:8000/api/exercice")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            exercices: result.exercices
-          });
-        }
-      )
+    const [categories, setCategories] = useState([]);
+    const [exercices, setExercices] = useState([]);
 
-    fetch("http://localhost:8000/api/categories")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        this.setState({
-          isLoaded: true,
-          categories: result.categories
-        });
-      }
-    )
-  }
+    useEffect(() => {
+      Promise.all([
+        fetch('http://localhost:8000/api/categories'),
+        fetch('http://localhost:8000/api/exercice'),
+      ])
+        .then(([resCategories, resExercices]) =>
+          Promise.all([resCategories.json(), resExercices.json()])  
+        )
+        .then(([dataCategories, dataExercices]) => {
+          setCategories(dataCategories);
+          setExercices(dataExercices);
+        })
+    })
 
-  render() {
-    const {exercices, categories} = this.state;
     return (
       <div>
           <h2>Exercices [nom de la formation]</h2>
           <div className="listing-lesson">
               <ul className="listing-categorie-nav">
-                  {categories.map(categorie => (
-                    <li key={categorie.id} className="listing-name-categorie">
+                  {categories.map((categorie) => (
+                    <li key={categorie.id}>
                       {categorie.categorie}
-                      <span style={{fontWeight: 100}}>V</span>
-                          <ul>
-                          {exercices.map(exercice => (
-                            <li key={exercice.id}>
-                                {exercice.name}
-                            </li>
-                          ))}
-                          </ul>
                     </li>
                   ))}
+              </ul>
+
+              <ul className="listing-categorie-nav">
+                {exercices.map((exercices) => (
+                  <li key={exercices.id}>
+                    {exercices.name}
+                  </li>
+                ))}
               </ul>
               
           </div>
@@ -66,4 +47,4 @@ export default class Exercice extends React.Component {
       </div>
     )
   }
-}
+export default Exercice
