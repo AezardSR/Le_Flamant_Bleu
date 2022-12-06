@@ -1,14 +1,24 @@
-import React from 'react';
-import {useState} from 'react'
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import "../../css/ListUtilisateur.css"
 
 function ListUtilisateur() {
-          const identite = [
-            { name: "Anom", firstname: "test", type: "partenaire", entreprise: "test", mail: "test@mail.fr", tel:"0000000" },
-            { name: "Megha", firstname: "truc", mail: "truc@mail.fr" },
-            { name: "Subham", firstname: "machin", mail: "maichin@mail.fr"},
-          ]
+          const [contact, setContact] = useState([]);
+          const [user, setUser] = useState([]);
+
+          useEffect(() => {
+            Promise.all([
+              fetch('http://localhost:8000/api/partnercontacts'),
+              fetch('http://localhost:8000/api/user'),
+            ])
+              .then(([resContact, resUser]) =>
+                Promise.all([resContact.json(), resUser.json()])  
+              )
+              .then(([dataContact, dataUser]) => {
+                setContact(dataContact);
+                setUser(dataUser);
+              })
+          })
 
           const searchBar = () => {};
           const [searchInput, setSearchInput] = useState("");
@@ -19,8 +29,8 @@ function ListUtilisateur() {
           };
           
           if (searchInput.length > 0) {
-                identite.filter((identite) => {
-              return identite.name.match(searchInput);
+              contact.filter((contact) => {
+              return contact.name.match(searchInput);
           });
           };
 
@@ -39,14 +49,14 @@ function ListUtilisateur() {
                             <th>Mail</th>
                             <th>Téléphone</th>
                         </tr>
-                        {identite.map((identite, key) => (
+                        {contact.map((contact, key) => (
                             <tr key={key}>
-                              <td>{identite.name}</td>
-                              <td>{identite.firstname}</td>
-                              <td>{identite.type}</td>
-                              <td>{identite.entreprise}</td>
-                              <td>{identite.mail}</td>
-                              <td>{identite.tel}</td>
+                              <td>{contact.name}</td>
+                              <td>{contact.firstname}</td>
+                              <td>{contact.id_user}</td>
+                              <td>{contact.nameCompany}</td>
+                              <td>{contact.mail}</td>
+                              <td>{contact.tel}</td>
                             </tr>
                           )
                         )}

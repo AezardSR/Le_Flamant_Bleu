@@ -10,7 +10,7 @@ function Lesson() {
   useEffect(() => {
     Promise.all([
       fetch('http://localhost:8000/api/categories'),
-      fetch('http://localhost:8000/api/lessons'),
+      fetch('http://localhost:8000/api/leçons'),
     ])
       .then(([resCategories, resLessons]) =>
         Promise.all([resCategories.json(), resLessons.json()])  
@@ -25,20 +25,20 @@ function Lesson() {
     <div>
         <h2>Cours [nom de la formation]</h2>
         <div className="listing-lesson">
+
             <ul className="listing-categorie-nav">
                 {categories.map((categorie) => (
                   <li key={categorie.id}>
                     {categorie.categorie}
+                      <ul className="listing-categorie-nav">
+                        {lessons.map((lesson) => (
+                          <li key={lesson.id}>
+                            {lesson.name}
+                          </li>
+                        ))}
+                      </ul>
                   </li>
                 ))}
-            </ul>
-
-            <ul className="listing-categorie-nav">
-              {lessons.map((lesson) => (
-                <li key={lesson.id}>
-                  {lesson.name}
-                </li>
-              ))}
             </ul>
             
         </div>
