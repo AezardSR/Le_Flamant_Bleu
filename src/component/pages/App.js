@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import {  BrowserRouter as Router,  Routes,  Route,} from "react-router-dom";
 import Connexion from './Connexion.js';
 import TableauBord from './TableauBord.js';
 import MenuPrincipal from './MenuPrincipal.js';
@@ -31,6 +27,7 @@ import '../../css/App.css';
 
 
 class App extends Component {
+  
   render() {
     return (
     <div className="App">

@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './App.css';
 import './css/global.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Connexion from './Connexion.js';
-import PageProfilUtilisateur from './PageProfilUtilisateur.js';
-
+import Connexion from './component/pages/Connexion.js';
+import PageProfilUtilisateur from './component/pages/PageProfilUtilisateur.js';
+import Main from './component/pages/App.js';
 
 
 function App() {
+  const [token, setToken] = useState();
+
+  if(!token){
+    return <Connexion setToken={setToken} />
+  }
 
   return (
     <div className="App">
       {/* <Connexion/> */}
-      <PageProfilUtilisateur/>
+      <Main/>
 
     </div>
    
