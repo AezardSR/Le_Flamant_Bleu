@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export default class AddCategorie extends React.Component {
+export default AddCategorie = () => {
 
-  componentDidMount() {
-    // Simple POST request with a JSON body using fetch
+  const handleSubmit = () => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -11,20 +10,16 @@ export default class AddCategorie extends React.Component {
     };
     fetch('http://localhost:8000/api/categories', requestOptions)
         .then(response => response.json())
-        .then(data => this.setState(console.log(data)));
   }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Nom de la catégorie:
-            <input type="text" name="categorie" onChange={this.componentDidMount} />
-          </label>
-          <button type="submit">Add</button>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Nom de la catégorie:
+          <input type="text" name="categorie" />
+        </label>
+        <button type="submit">Ajouter la catégorie</button>
+      </form>
+    </div>
+  )
 }
