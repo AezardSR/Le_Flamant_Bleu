@@ -1,66 +1,46 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
 
-export default function UpdateCategorie() {
-    // state = {
-    //     id: '',
-    //     categorie: ''
-    // }
+const UpdateCategorie = () => {
 
-    // handleChange = event => {
-    //     this.setState({ id: event.target.value });
-    //     this.setState({ categorie: event.target.value });
-    // }
+  const [categoryID, setCategoryID] = useState('');
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState([]);
 
-    const [id, setId] = useState('');
-    const [categorie, setCategorie] = useState('');
-    const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:8000/api/categories/')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+  }, [])
 
-    // const handleChange = (event) => {
-    //   setcategorieUpdate({ ...categorieUpdate, [event.target.categorie]: event.target.value });
-    // };
+  const handleSubmit = (event) => {
+    const requestOptions = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({categorie: category})
+    };
+    fetch('http://localhost:8000/api/categories/' + categoryID, requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data))
+    event.preventDefault();
+    console.log(categoryID);
+    console.log(categories);
+    console.log(category);
+  }
 
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        const cat =  {
-            id:         id,
-            categorie:  categorie
-        };
-
-        axios.put(`http://localhost:8000/api/categories/` + cat.id + '/' + cat.categorie 
-        // {
-        //     id: cat.id,
-        //     categorie: cat.categorie,
-        // }
-        ).then(() => {console.log(cat);})
-
-        axios.get('http://localhost:8000/api/categories')
-        .then(res => {
-          const categories = res.data;
-          this.setState({ categories });
-        })
-
-        
-    }
-
-    return (
-      <div>
-        <form onSubmit={handleSubmit}>
-            <select name="id" value={id} onChange={e => {setId(e.target.value)}} >
-              {
-                categories
-                  .map(categories =>
-                    <option value={id}>{categories.categorie}</option>
-                )
-              }
-            </select>
-          <label>
-            Modifier le nom de la catégorie : 
-            <input type="text" name="categorie" value={categorie} onChange={e => {setCategorie(e.target.value)}} />
-          </label>
-          <button type="submit">Update</button>
-        </form>
-      </div>
-    )
+  return (
+    <div>
+      <form>
+          <select onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
+            {categories.map((categorie) => (
+              <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+            ))}
+          </select>
+          <label>Modifier le nom de la catégorie : </label>
+          <input type="text" name="categorie" onChange={(event) => {setCategory(event.target.value)}} />
+          <button type="submit" onClick={handleSubmit}>Update</button>
+      </form>
+    </div>
+  )
 }
+
+export default UpdateCategorie;
