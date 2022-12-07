@@ -12,14 +12,11 @@ export default class Connexion extends Component {
             <form method='POST' action="http://localhost:8000/api/login" className="form-connexion">
               {/* <label>Identifiant</label> */}
               <input name='mail' className="input-connexion" placeholder="Nom d'utilisateur ou mail" />
-
               {/* <label>Mot de passe</label> */}
               <input type='password' name='password' placeholder="Mot de passe" />
               <a className="password-forget" href="#f">Mot de passe oublié ?</a>
-
               <button type="submit" className="btn-connexion">Connexion</button>
             </form>
-              
         </div>
     </div>
     )
