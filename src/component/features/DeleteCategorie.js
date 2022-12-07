@@ -1,36 +1,45 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
 
-export default class DeleteCategorie extends React.Component {
-  state = {
-    id: '',
-  }
+const DeleteCategorie = () => {
 
-  handleChange = event => {
-    this.setState({ id: event.target.value });
-  }
+  const [categoryID, setCategoryID] = useState('');
+  const [categories, setCategories] = useState([]);
+  
+  useEffect(() => {
+    fetch('http://localhost:8000/api/categories/')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+  }, [])
 
-  handleSubmit = event => {
+  const handleSubmit = (event) => {
+    const requestOptions = {
+        method: 'DELETE'
+    };
+    fetch('http://localhost:8000/api/categories/' + categoryID, requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data))
     event.preventDefault();
-
-    axios.delete(`http://localhost:8000/api/categories/${this.state.id}`)
-        .then(res => {
-        console.log(res);
-        console.log(res.data);
-        })  
-    }
-
-  render() {
+    console.log(categoryID);
+  }
+  
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label>
             ID Catégorie :
-            <input type="text" name="id" onChange={this.handleChange} />
+            <select
+              onChange={(event) => {setCategoryID(event.target.value)}}
+              value={categoryID}
+            >
+            {categories.map((categorie) => (
+              <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+            ))}
+            </select>
           </label>
-          <button type="submit">Delete</button>
+          <button type="submit" onClick={handleSubmit}>Delete</button>
         </form>
       </div>
     )
   }
-}
+
+export default DeleteCategorie;
