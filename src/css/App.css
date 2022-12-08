@@ -13,6 +13,7 @@
 
 /* Classes communes pour éviter de mettre la même chose dans chaque classe */
 .flex-column { display: flex; flex-direction: column;}
+.flex-between {display: flex; justify-content: space-between;}
 
 .w-20 {width: 20%;}
 .w-100 {width: 100%;}
