@@ -9,3 +9,15 @@
 .container .page-tableau-bord .menu-principal {
     visibility: hidden;
 }
+
+
+/* Classes communes pour éviter de mettre la même chose dans chaque classe */
+.flex-column { display: flex; flex-direction: column;}
+
+.w-20 {width: 20%;}
+.w-100 {width: 100%;}
+
+.h-45px {height: 45px;}
+
+.margin-auto {margin: 0 auto;}
+.p-5px {padding: 5px;}
