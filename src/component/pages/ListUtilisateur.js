@@ -1,15 +1,26 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import "../../css/ListUtilisateur.css"
 
-export default function ListUtilisateur() {
-          const identite = [
-            { name: "Anom", firstname: "test", type: "partenaire", entreprise: "test", mail: "test@mail.fr", tel:"0000000" },
-            { name: "Megha", firstname: "truc", mail: "truc@mail.fr" },
-            { name: "Subham", firstname: "machin", mail: "maichin@mail.fr"},
-          ]
+function ListUtilisateur() {
+          const [contact, setContact] = useState([]);
+          const [user, setUser] = useState([]);
 
-          const searchBar = () => {}
+          useEffect(() => {
+            Promise.all([
+              fetch('http://localhost:8000/api/partnercontacts'),
+              fetch('http://localhost:8000/api/user'),
+            ])
+              .then(([resContact, resUser]) =>
+                Promise.all([resContact.json(), resUser.json()])  
+              )
+              .then(([dataContact, dataUser]) => {
+                setContact(dataContact);
+                setUser(dataUser);
+              })
+          })
+
+          const searchBar = () => {};
           const [searchInput, setSearchInput] = useState("");
 
           const handleChange = (e) => {
@@ -18,42 +29,41 @@ export default function ListUtilisateur() {
           };
           
           if (searchInput.length > 0) {
-                identite.filter((identite) => {
-              return identite.name.match(searchInput);
+              contact.filter((contact) => {
+              return contact.name.match(searchInput);
           });
-          }
+          };
 
           return (
             <div>
-                <Link to="/FormAddUser"><button className="link-lesson-add">Ajouter contact</button></Link>
+                <Link to="/FormAddUser"><button className="link-lesson-add btn-user">Ajouter contact</button></Link>
 
-                <div>
-                  {/* Barre de recherche de tableau */}
-                  <input type="text" placeholder="Search here" onChange={handleChange} value={searchInput} />
-                </div>
-
-                <table style={{width:'100%'}}>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Type</th>
-                        <th>Entreprise</th>
-                        <th>Mail</th>
-                        <th>Téléphone</th>
-                    </tr>
-                    {this.data.map((identite, key) => {
-                      return (
-                        <tr key={key}>
-                          <td>{identite.name}</td>
-                          <td>{identite.firstname}</td>
-                          <td>{identite.type}</td>
-                          <td>{identite.entreprise}</td>
-                          <td>{identite.mail}</td>
-                          <td>{identite.tel}</td>
+                <div className="listing-user">
+                    <input className="search-bar" type="text" placeholder='Recherche...' onChange={handleChange} value={searchInput} />
+                    <table className="table-user">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Type</th>
+                            <th>Entreprise</th>
+                            <th>Mail</th>
+                            <th>Téléphone</th>
                         </tr>
-                      )
-                    })}
-                </table>
+                        {contact.map((contact, key) => (
+                            <tr key={key}>
+                              <td>{contact.name}</td>
+                              <td>{contact.firstname}</td>
+                              <td>{contact.id_user}</td>
+                              <td>{contact.nameCompany}</td>
+                              <td>{contact.mail}</td>
+                              <td>{contact.tel}</td>
+                            </tr>
+                          )
+                        )}
+                    </table>
+                 </div>  
             </div>
         )
 }
+
+export default ListUtilisateur;

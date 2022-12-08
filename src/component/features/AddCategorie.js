@@ -1,40 +1,30 @@
-import React from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
 
-export default class AddCategorie extends React.Component {
-  state = {
-    categorie: '',
-  }
+const AddCategorie = () => {
 
-  handleChange = event => {
-    this.setState({ categorie: event.target.value });
-  }
+  const [category, setCategory] = useState([]);
 
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const user = {
-        categorie: this.state.categorie
+  const handleSubmit = (event) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({categorie: category})
     };
 
-    axios.post(`http://localhost:8000/api/categories/`, {
-        categorie: user.categorie
-    })
-
+    fetch('http://localhost:8000/api/categories', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        event.preventDefault();
   }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Nom de la catégorie:
-            <input type="text" name="categorie" onChange={this.handleChange} />
-          </label>
-          <button type="submit">Add</button>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <form>
+        <label>Nom de la catégorie:</label>
+        <input type="text" name="categorie" value={category} onChange={(event) => {setCategory(event.target.value)}} />
+        <button type="submit" onClick={handleSubmit}>Ajouter la catégorie</button>
+      </form>
+    </div>
+  )
 }
+
+export default AddCategorie;
