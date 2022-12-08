@@ -1,29 +1,50 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import '../../css/Lesson.css';
 
-export default class Lesson extends Component {
-  /* OpenCategory(category){
-    let button = document.getElementById(category);
-    button.classList.toggle('section-close');
-    button.classList.toggle('section-open');
-  } */
+function Lesson() {
 
-  render() {
-    const categorie = ['CSS', 'PHP', 'HTML', 'Bootstrap', 'Node JS', 'GIT', 'JS', 'Java', 'Python', 'Symfony'];
-    const listcategorie = categorie.map((categorie) =>
-      <li /* onClick={() => this.OpenCategory('listing-name-categorie')} */ className="listing-name-categorie">{categorie} <span style={{fontWeight: 100}}>V</span></li>
-    );
-    return (
-      <div>
-          <h2>Cours [nom de la formation]</h2>
-          <div className="listing-lesson">
-              <ul className="listing-categorie-nav">
-                {listcategorie}
-              </ul>
-          </div>
-          <Link to="/ajouter_cours"><button className="link-lesson-add">Ajouter un cours</button></Link>
-      </div>
-    )
-  }
+  const [categories, setCategories] = useState([]);
+  const [lessons, setLessons] = useState([]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch('http://localhost:8000/api/categories'),
+      fetch('http://localhost:8000/api/leçons'),
+    ])
+      .then(([resCategories, resLessons]) =>
+        Promise.all([resCategories.json(), resLessons.json()])  
+      )
+      .then(([dataCategories, dataLessons]) => {
+        setCategories(dataCategories);
+        setLessons(dataLessons);
+      })
+  })
+
+  return (
+    <div>
+        <h2>Cours [nom de la formation]</h2>
+        <div className="listing-lesson">
+
+            <ul className="listing-categorie-nav">
+                {categories.map((categorie) => (
+                  <li key={categorie.id}>
+                    {categorie.categorie}
+                      <ul className="listing-categorie-nav">
+                        {lessons.map((lesson) => (
+                          <li key={lesson.id}>
+                            {lesson.name}
+                          </li>
+                        ))}
+                      </ul>
+                  </li>
+                ))}
+            </ul>
+            
+        </div>
+
+       <Link to="/ajouter_cours"><button className="link-lesson-add">Ajouter un cours</button></Link>
+    </div>
+  )
 }
+export default Lesson
