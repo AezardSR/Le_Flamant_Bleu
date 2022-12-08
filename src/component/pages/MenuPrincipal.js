@@ -36,7 +36,7 @@ function Main() {
                 <div className="menu-principal">
                     <div className="avatar-menu">
                         <img src={Avatar} alt="avatar de la personne" className="img-menu-avatar"/>
-                        <p>{value => setToken}</p>
+                        <p></p>
                         <div className='avatar-menu-parametre'>
                             <Link to="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></Link>
                             <Link to="/login"><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></Link>
