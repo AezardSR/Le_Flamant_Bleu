@@ -1,47 +1,68 @@
-import React, { Component } from 'react'
-import Select from 'react-select'
+import { getByTitle } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import '../../css/AddLesson.css';
 
-export default class AddLesson extends Component {
-  render() {
+const AddLesson = () => {
 
-    const categories = [
-        { value: 'test1', label: 'test1' },
-        { value: 'test2', label: 'test2' },
-        { value: 'test3', label: 'test3' },
-        { value: 'test4', label: 'test3' },
-        { value: 'test5', label: 'test3' },
-        { value: 'test6', label: 'test3' },
-        { value: 'test7', label: 'test3' },
-        { value: 'test8', label: 'test3' },
-        { value: 'test9', label: 'test3' },
-        { value: 'test10', label: 'test3' },
-      ]
+  const [title, setTitle] = useState([]);
+  const [description, setDescription] = useState([]);
+  const [duration, setDuration] = useState([]);
+  const [categoryID, setCategoryID] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/categories/')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+  }, [])
+
+  const handleSubmit = (event) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({name: title, content: description, duration: duration, categorie_id: categoryID})
+    };
+
+    fetch('http://localhost:8000/api/leçons', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        event.preventDefault();
+  }
 
     return (
       <div>
         <form className="form-add-lesson">
-            <div className='form-add-lesson-add-pdf'>
-                <input type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
-            </div>
 
             <div className='form-add-lesson-add-title'>
-                <input className="form-add-lesson-title" placeholder="Insérer titre"></input>
+                <input value={title} onChange={(event) => {setTitle(event.target.value)}} className="form-add-lesson-title" placeholder="Insérer titre"></input>
             </div>
+
+            <div className='form-add-lesson-add-pdf'>
+                <input type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
+                <p>*L'insertion de fichier est non-obligatoire, vous pouvez taper votre cours dans la section description</p>
+            </div>
+
 
             <div className='form-add-lesson-add-details'>
                 <div className='form-add-lesson-select-categorie'>
-                    <Select options={categories} placeholder="Choisir une catégorie"/>
-                </div>
-
-                <div className='form-add-lesson-add-description'>
-                    <textarea className="form-add-lesson-description" placeholder="Description du cours"></textarea>
-                    <Link to="/cours"><button type="submit" className="btn btn-form-add-lesson">Valider le cours</button></Link>
+                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
+                    {categories.map((categorie) => (
+                      <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+                    ))}
+                  </select>
+                  <input value={duration} onChange={(event) => {setDuration(event.target.value)}} className="form-add-lesson-duration" placeholder="Temps à passer"></input><label>heure(s)</label>
                 </div>
             </div>
+
+            <div className='form-add-lesson-add-description'>
+                <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} className="form-add-lesson-description" placeholder="Description du cours"></textarea>
+                <Link to="/cours"><button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider le cours</button></Link>
+            </div>
+
         </form>
       </div>
     )
   }
-}
+  
+export default AddLesson

@@ -1,69 +1,66 @@
-import React, { Component } from 'react'
-import axios from 'axios';
-import Select from 'react-select'
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import '../../css/AddLesson.css';
 
-export default class AddExercice extends React.Component {
+const AddExercice = () => {
 
-  state = {
-    name: '',
-    content: '',
-    id_parts: '2',
+  const [title, setTitle] = useState([]);
+  const [description, setDescription] = useState([]);
+  const [image, setImage] = useState([]);
+  const [file, setFile] = useState([]);
+  const [categoryID, setCategoryID] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/categories/')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+  }, [])
+
+  const handleSubmit = (event) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({name: title, content: description, image: image, file: file, categorie_id: categoryID})
+    };
+
+    fetch('http://localhost:8000/api/exercice', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        event.preventDefault();
   }
 
-  handleChange = event => {
-    this.setState({ 
-      name: event.target.value,
-      content: event.target.value,
-      id_parts: event.target.value,
-     });
-  }
+return (
+  <div>
+    <form className="form-add-lesson">
+          <div className='form-add-lesson-add-pdf'>
+              <label>Image</label>
+              <input value={image} onChange={(event) => {setImage(event.target.value)}} type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
 
-  handleSubmit = event => {
-    event.preventDefault();
+              <label>File</label>
+              <input value={file} onChange={(event) => {setFile(event.target.value)}} type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
+          </div>
 
-    const nameExo       = {name: this.state.name};
-    const contentExo    = {content: this.state.content}
-    const id_partsExo   = {id_parts: this.state.id_parts}
+          <div className='form-add-lesson-add-title'>
+              <input value={title} onChange={(event) => {setTitle(event.target.value)}} name="name" className="form-add-lesson-title" placeholder="Insérer titre"></input>
+          </div>
 
-    axios.post(`http://localhost:8000/api/exercice/`, { nameExo }, { contentExo }, { id_partsExo })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
-  render() {
-
-    const testOption = [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
-    ]
-
-  return (
-    <div>
-      <form className="form-add-lesson" onSubmit={this.handleSubmit}>
-            <div className='form-add-lesson-add-pdf'>
-                <input type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
-            </div>
-
-            <div className='form-add-lesson-add-title'>
-                <input name="name" onChange={this.handleChange} className="form-add-lesson-title" placeholder="Insérer titre"></input>
-            </div>
-
-            <div className='form-add-lesson-add-details'>
-                <div className='form-add-lesson-select-categorie'>
-                    <Select options={testOption} onChange={this.handleChange} />
-                </div>
-                <div className='form-add-lesson-add-description'>
-                    <textarea name="content" onChange={this.handleChange} className="form-add-lesson-description" placeholder="Description de l'exercice"></textarea>
-                    <Link to="/exercice"><button type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button></Link>
-                </div>
-            </div>
-        </form>
-    </div>
-    )
-  }
+          <div className='form-add-lesson-add-details'>
+              <div className='form-add-lesson-select-categorie'>
+                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
+                    {categories.map((categorie) => (
+                      <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+                    ))}
+                  </select>
+              </div>
+              <div className='form-add-lesson-add-description'>
+                  <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} name="content" className="form-add-lesson-description" placeholder="Description de l'exercice"></textarea>
+                  <Link to="/exercice"><button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button></Link>
+              </div>
+          </div>
+      </form>
+  </div>
+  )
 }
+
+export default AddExercice;

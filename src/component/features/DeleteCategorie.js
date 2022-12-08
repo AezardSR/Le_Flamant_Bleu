@@ -25,14 +25,11 @@ const DeleteCategorie = () => {
     return (
       <div>
         <form>
-          <label>
-            ID Catégorie :
-            <select onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
-              {categories.map((categorie) => (
-                <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
-              ))}
-            </select>
-          </label>
+          <select onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
+            {categories.map((categorie) => (
+              <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+            ))}
+          </select>
           <button type="submit" onClick={handleSubmit}>Delete</button>
         </form>
       </div>

@@ -29,11 +29,16 @@ function Lesson() {
             <ul className="listing-categorie-nav">
                 {categories.map((categorie) => (
                   <li key={categorie.id}>
-                    {categorie.categorie}
+                    <div className="flex-between p-5px">
+                      {categorie.categorie}
+                      <span>V</span>
+                    </div>
                       <ul className="listing-categorie-nav">
-                        {lessons.map((lesson) => (
+                        {lessons.map((lesson)  => (
                           <li key={lesson.id}>
-                            {lesson.name}
+                            <a href="/">
+                              {lesson.name}
+                            </a>
                           </li>
                         ))}
                       </ul>

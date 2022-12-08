@@ -20,6 +20,13 @@
         font-size: x-large;
     }
 
+    .form-add-lesson .form-add-lesson-duration {
+        width: 80%;
+        text-align: center;
+        font-size: x-large;
+        margin: 0 15px;
+    }
+
     .form-add-lesson-add-details {
         display: flex;
         justify-content: center;
