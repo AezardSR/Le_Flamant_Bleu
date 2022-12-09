@@ -1,14 +1,53 @@
-import { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import useToken from "./useToken";
 
 const ApiContext = createContext();
 
-const ApiContextProvider = ({children}) => {
-    const [token, setToken] = useState(undefined);
+export { ApiContext };
+
+export const ApiProvider  = ({children}) => {
+    const [user, setUser] = useState({})
+    const {token, setToken} = useToken();
+
+    useEffect(() => {
+        fetchUser()
+    },[])
+
+    const  login = (credentials) => {
+        return fetch('http://localhost:8000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(credentials)
+        })
+        .then(response => response.json())
+        .then((data) => {
+            localStorage.setItem("token", JSON.stringify(data))
+            setToken(data.access_token)
+        })
+        .catch((error) => { console.log('error: ' + error) })
+    }
+
+    
+    const fetchUser = () => {
+        fetch('http://localhost:8000/api/user-profile', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'authenticazion' : 'bearer' + token
+            }
+        }).then((res) => (
+            res.json()
+        )).then((data) => {
+            console.log(data.firstname)
+            setUser(data)
+        })
+    }
+
     return (
-        <ApiContext.Provider value = {{token, setToken}}>
+        <ApiContext.Provider value={{login, user}}>
             {children}
         </ApiContext.Provider>
-    );
-};
-
-export {ApiContext, ApiContextProvider};
+    )
+}

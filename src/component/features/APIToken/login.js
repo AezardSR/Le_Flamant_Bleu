@@ -1,33 +1,24 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 //import Connexion from '../pages/Connexion';
 import LogoManu from '../../../assets/img/logo_la_manu.png'
 import "../../../css/connexion.css"
+import { ApiContext } from './ApiContext';
 
-async function loginUser(credentials) {
-    return fetch('http://localhost:8000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
 
 export default function Login({ setToken }) {
-    const [mail, setMail] = useState();
-    const [password, setPassword] = useState();
+  const {login, user} = useContext(ApiContext);
+  const [mail, setMail] = useState();
+  const [password, setPassword] = useState();
 
-    const handleSubmit = async e => {
-        e.preventDefault();
-        const token = await loginUser({
-          mail,
-          password
-        });
-        setToken(token);
-    }
+  const handleSubmit = async e => {
+    e.preventDefault();
+    login({
+        mail,
+        password
+});
 
+}
     return (
         <div className='container'>
             <div className="container-connexion">
@@ -47,7 +38,3 @@ export default function Login({ setToken }) {
         </div>
         )
 }
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
-};
