@@ -47,7 +47,6 @@ function Exercice() {
                           );
                         })}
                       </ul>
-
                     </li>
                   ))}
               </ul>
