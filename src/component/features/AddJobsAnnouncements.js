@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../../css/AddJobsAnnouncements.css';
 
-export default class AddJobsAnnouncements extends Component {
-  render() {
+const AddJobsAnnouncements = () => {
+
+  
     return (
       <div>
 
@@ -24,5 +25,6 @@ export default class AddJobsAnnouncements extends Component {
 
       </div>
     )
-  }
 }
+
+export default AddJobsAnnouncements;
