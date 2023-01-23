@@ -8,12 +8,15 @@ export { ApiContext };
 export const ApiProvider  = ({children}) => {
     const [user, setUser] = useState({})
     const {token, setToken} = useToken();
-
+    
     useEffect(() => {
-        fetchUser()
+        if(token !== undefined){
+            console.log('2')
+            fetchUser()
+        }
     },[])
 
-    const  login = (credentials) => {
+    const login = (credentials) => {
         return fetch('http://localhost:8000/api/login', {
           method: 'POST',
           headers: {
@@ -23,7 +26,7 @@ export const ApiProvider  = ({children}) => {
         })
         .then(response => response.json())
         .then((data) => {
-            localStorage.setItem("token", JSON.stringify(data))
+            localStorage.setItem("token", JSON.stringify(data));
             setToken(data.access_token)
         })
         .catch((error) => { console.log('error: ' + error) })
@@ -31,18 +34,18 @@ export const ApiProvider  = ({children}) => {
 
     
     const fetchUser = () => {
-        fetch('http://localhost:8000/api/user-profile', {
+            fetch('http://localhost:8000/api/user-profile', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'authenticazion' : 'bearer' + token
+                'Authorization' : 'bearer ' + token
             }
-        }).then((res) => (
-            res.json()
-        )).then((data) => {
-            console.log(data.firstname)
-            setUser(data)
-        })
+            }).then((res) => (
+                res.json()
+            )).then((data) => {
+                console.log(data.firstname)
+                setUser(data)
+            })
     }
 
     return (

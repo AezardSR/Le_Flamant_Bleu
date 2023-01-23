@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react';
+import { Navigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 //import Connexion from '../pages/Connexion';
 import LogoManu from '../../../assets/img/logo_la_manu.png'
@@ -7,7 +8,7 @@ import { ApiContext } from './ApiContext';
 
 
 export default function Login({ setToken }) {
-  const {login, user} = useContext(ApiContext);
+  const {login, user, fetchUser} = useContext(ApiContext);
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
 
@@ -16,8 +17,7 @@ export default function Login({ setToken }) {
     login({
         mail,
         password
-});
-
+    });
 }
     return (
         <div className='container'>

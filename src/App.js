@@ -1,5 +1,6 @@
 import React, { Component, useContext } from 'react';
-import {  BrowserRouter as Router,  Routes,  Route,} from "react-router-dom";
+import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Connexion from './component/pages/Connexion.js';
 import TableauBord from './component/pages/TableauBord.js';
 import MenuPrincipal from './component/pages/MenuPrincipal.js';
@@ -33,12 +34,13 @@ import Login from './component/features/APIToken/login.js';
 
 
 function App() {
-  
-    const user = useContext(ApiContext);
-
-    const logged = () => {
-      if(!user){
-        return 
+    const objContext = useContext(ApiContext);
+    console.log(objContext.user.firstname)
+    const logged = (comp) => {
+      if( !objContext.user.firstname && document.readyState === 'complete'){
+        return <Navigate to="/login" replace={true} />
+      } else {
+        return comp
       }
     }
     return (
@@ -49,8 +51,8 @@ function App() {
           <Routes>
             {/* Dashboard => index */}
             <Route path='/login' element={<Login/>}></Route>
-            <Route path="/" element={<><MenuPrincipal /><TableauBord /></>} />
-            <Route path="/profile" element={<PageProfilUtilisateur />} />
+            <Route path="/" element={logged(<><MenuPrincipal /><TableauBord /></>)} />
+            <Route path="/profile" element={logged(<PageProfilUtilisateur />)} />
 
             <Route path="/ma-formation" element={<><MenuPrincipal /><MaFormation /></>} />
             <Route path="/emplois" element={<><MenuPrincipal /><Emplois /></>} />
