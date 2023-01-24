@@ -27,23 +27,32 @@ function Exercice() {
               <ul className="listing-categorie-nav">
                   {categories.map((categorie) => (
                     <li key={categorie.id}>
-                      {categorie.categorie}
+                      <div className="flex-between p-10px align-center">
+                        {categorie.categorie}
                       <span>V</span>
-
-                        <ul className="listing-categorie-nav">
-                          {exercices.map((exercices) => (
-                            <li key={exercices.id}>
-                              {exercices.name}
+                      </div>
+                      <ul className="listing-categorie-nav">
+                        {exercices.map((exercice)  => {
+                          if(exercice.categorie_id !== categorie.id) {
+                            return;
+                          }
+                          return (
+                            <li key={exercice.id}>
+                              <div className="flex-between p-10px align-center">
+                                <a href="/" target="_blank">
+                                  <p>{exercice.name}</p>
+                                </a>
+                              </div>
                             </li>
-                          ))}
-                        </ul>
-
+                          );
+                        })}
+                      </ul>
                     </li>
                   ))}
               </ul>
           </div>
 
-         <Link to="/ajouter_exercice"><button className="link-lesson-add">Ajouter un exercice</button></Link>
+         <Link to="/ajouter_exercice"><button className="link-lesson-add mar-bottom-10px">Ajouter un exercice</button></Link>
       </div>
     )
   }

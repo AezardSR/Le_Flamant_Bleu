@@ -29,15 +29,18 @@ const UpdateCategorie = () => {
 
   return (
     <div>
-      <form>
-          <select onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
-            {categories.map((categorie) => (
-              <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
-            ))}
-          </select>
-          <label>Modifier le nom de la catégorie : </label>
-          <input type="text" name="categorie" onChange={(event) => {setCategory(event.target.value)}} />
-          <button type="submit" onClick={handleSubmit}>Update</button>
+      <form style={{margin: '10px 15px'}}>
+          <div>
+            <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
+              {categories.map((categorie) => (
+                <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+              ))}
+            </select>
+          </div>
+          <div className="flex-column">
+            <input className="w-100 h-45px p-5px" style={{marginBottom: '20px'}} placeholder="Modifier le nom de la catégorie..." type="text" name="categorie" onChange={(event) => {setCategory(event.target.value)}} />
+            <button className="link-lesson-add w-20 margin-auto" type="submit" onClick={handleSubmit}>Update</button>
+          </div>
       </form>
     </div>
   )

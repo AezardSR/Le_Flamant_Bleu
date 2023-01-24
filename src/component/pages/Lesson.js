@@ -25,25 +25,36 @@ function Lesson() {
     <div>
         <h2>Cours [nom de la formation]</h2>
         <div className="listing-lesson">
-
             <ul className="listing-categorie-nav">
                 {categories.map((categorie) => (
                   <li key={categorie.id}>
-                    {categorie.categorie}
+                    <div className="flex-between p-10px align-center">
+                      {categorie.categorie}
+                      <span>V</span>
+                    </div>
                       <ul className="listing-categorie-nav">
-                        {lessons.map((lesson) => (
-                          <li key={lesson.id}>
-                            {lesson.name}
-                          </li>
-                        ))}
+                        {lessons.map((lesson)  => {
+                          if(lesson.categorie_id !== categorie.id) {
+                            return;
+                          }
+                          return (
+                            <li key={lesson.id}>
+                              <div className="flex-between p-10px align-center">
+                                <a href="/" target="_blank">
+                                  <p>{lesson.name}</p>
+                                  <p>{lesson.content}</p>
+                                </a>
+                              </div>
+                            </li>
+                          );
+                        })}
                       </ul>
                   </li>
                 ))}
             </ul>
-            
         </div>
 
-       <Link to="/ajouter_cours"><button className="link-lesson-add">Ajouter un cours</button></Link>
+       <Link to="/ajouter_cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
     </div>
   )
 }

@@ -3,6 +3,7 @@
         background-color: #194766; 
         color: white; 
         width: 200px;
+        min-height: 100vh;
     }
 
     .menu-principal a {
