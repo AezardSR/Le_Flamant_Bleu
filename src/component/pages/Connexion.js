@@ -9,15 +9,13 @@ export default class Connexion extends Component {
     <div className='container'>
         <div className="container-connexion">
           <img src={LogoManu} alt="logo la manu"/>
-            <form className="form-connexion">
+            <form method='POST' action="http://localhost:8000/api/login" className="form-connexion">
               {/* <label>Identifiant</label> */}
-              <input className="input-connexion" placeholder="Nom d'utilisateur ou mail" />
-
+              <input name='mail' className="input-connexion" placeholder="Nom d'utilisateur ou mail" />
               {/* <label>Mot de passe</label> */}
-              <input placeholder="Mot de passe" />
-              <a className="password-forget" href="#">Mot de passe oublié ?</a>
-
-              <Link to="/"><button className="btn-connexion">Connexion</button></Link>
+              <input type='password' name='password' placeholder="Mot de passe" />
+              <a className="password-forget" href="#f">Mot de passe oublié ?</a>
+              <button type="submit" className="btn-connexion">Connexion</button>
             </form>
         </div>
     </div>
