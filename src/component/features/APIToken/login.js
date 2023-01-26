@@ -8,7 +8,7 @@ import { ApiContext } from './ApiContext';
 
 
 export default function Login({ setToken }) {
-  const {login, user, fetchUser} = useContext(ApiContext);
+  const {login, user} = useContext(ApiContext);
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
 

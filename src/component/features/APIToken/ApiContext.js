@@ -26,10 +26,15 @@ export const ApiProvider  = ({children}) => {
         })
         .then(response => response.json())
         .then((data) => {
-            localStorage.setItem("token", JSON.stringify(data));
-            setToken(data.access_token)
+            if(data.message === "connected"){
+                localStorage.setItem("token", JSON.stringify(data.access_token));
+                setToken(data.access_token)
+            } else {
+                console.log(data)
+            }
+                
         })
-        .catch((error) => { console.log('error: ' + error) })
+        .catch((error) => { console.log('error: ' + error.message) })
     }
 
     
