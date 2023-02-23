@@ -34,10 +34,10 @@ import Login from './component/features/APIToken/login.js';
 
 
 function App() {
-    const objContext = useContext(ApiContext);
-    console.log(objContext.user.firstname)
+    const {user} = useContext(ApiContext);
+    console.log(user);
     const logged = (comp) => {
-      if( !objContext.user.firstname && document.readyState === 'complete'){
+      if( user.status == "Token is Invalid" || !user.message == "succes" && document.readyState === 'complete'){
         return <Navigate to="/login" replace={true} />
       } else {
         return comp

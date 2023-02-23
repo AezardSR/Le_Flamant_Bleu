@@ -8,12 +8,9 @@ export { ApiContext };
 export const ApiProvider  = ({children}) => {
     const [user, setUser] = useState({})
     const {token, setToken} = useToken();
-    
-    useEffect(() => {
-        if(token !== undefined){
-            console.log('2')
-            fetchUser()
-        }
+
+    useEffect(()=>{
+        fetchUser()
     },[])
 
     const login = (credentials) => {
@@ -29,6 +26,8 @@ export const ApiProvider  = ({children}) => {
             if(data.message === "connected"){
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 setToken(data.access_token)
+                fetchUser()
+                return data.message;
             } else {
                 console.log(data)
             }
@@ -36,8 +35,7 @@ export const ApiProvider  = ({children}) => {
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
-
-    
+    console.log(token,'before fethuser')
     const fetchUser = () => {
             fetch('http://localhost:8000/api/user-profile', {
             method: 'GET',
@@ -49,12 +47,12 @@ export const ApiProvider  = ({children}) => {
                 res.json()
             )).then((data) => {
                 console.log(data.firstname)
-                setUser(data)
+                setUser(data, 'retrun fetchuser')
             })
     }
 
     return (
-        <ApiContext.Provider value={{login, user}}>
+        <ApiContext.Provider value={{login,fetchUser, user}}>
             {children}
         </ApiContext.Provider>
     )
