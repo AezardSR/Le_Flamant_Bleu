@@ -10,11 +10,8 @@ export const ApiProvider  = ({children}) => {
     const {token, setToken} = useToken();
     
     useEffect(() => {
-        if(token !== undefined){
-            console.log('2')
-            fetchUser()
-        }
-    },[])
+            fetchUser()  
+    },[token])
 
     const login = (credentials) => {
         return fetch('http://localhost:8000/api/login', {
@@ -36,9 +33,10 @@ export const ApiProvider  = ({children}) => {
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
-
+    console.log(token, 'token')
     
     const fetchUser = () => {
+            
             fetch('http://localhost:8000/api/user-profile', {
             method: 'GET',
             headers: {
@@ -48,7 +46,7 @@ export const ApiProvider  = ({children}) => {
             }).then((res) => (
                 res.json()
             )).then((data) => {
-                console.log(data.firstname)
+                console.log(data[0].firstname)
                 setUser(data)
             })
     }

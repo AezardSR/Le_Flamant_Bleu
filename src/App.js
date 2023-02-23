@@ -1,48 +1,48 @@
 import React, { Component, useContext } from 'react';
 import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import Connexion from './component/pages/Connexion.js';
-import TableauBord from './component/pages/TableauBord.js';
-import MenuPrincipal from './component/pages/MenuPrincipal.js';
-import MaFormation from './component/pages/MaFormation.js';
-import Categorie from './component/pages/Categorie.js';
-import Emplois from './component/pages/Emploi.js';
-import Calendrier from './component/pages/Planning.js';
-import AddEventPlanning from './component/features/AddEventPlanning.js';
-import Lesson from './component/pages/Lesson.js';
-import Exercice from './component/pages/Exercice.js';
-import AddLesson from './component/features/AddLesson.js';
-import AddExercice from './component/features/AddExercice.js';
-import AddCategorie from './component/features/AddCategorie.js';
-import DeleteCategorie from './component/features/DeleteCategorie.js';
-import UpdateCategorie from './component/features/UpdateCategorie.js';
-import JobsAnnouncements from './component/pages/JobsAnnouncements.js';
-import AddJobsAnnouncements from './component/features/AddJobsAnnouncements.js';
-import IndexJobsAnnouncements from './component/pages/IndexJobsAnnouncements.js';
-import PageProfilUtilisateur from './component/pages/PageProfilUtilisateur.js';
-import FormAddUser from './component/features/FormAddUser.js';
-import ListUtilisateur from './component/pages/ListUtilisateur.js';
-import Emargement from './component/pages/Emargement.js';
-import ListEmargement from './component/pages/ListEmargement.js';
-import Admin from './component/pages/Admin.js';
-import Actualites from './component/pages/Actualites.js';
-import AddActualites from './component/features/AddActualite.js';
+import Connexion from './pages/Connexion.js';
+import TableauBord from './pages/TableauBord.js';
+import MenuPrincipal from './pages/MenuPrincipal.js';
+import MaFormation from './pages/MaFormation.js';
+import Categorie from './pages/Categorie.js';
+import Emplois from './pages/Emploi.js';
+import Calendrier from './pages/Planning.js';
+import AddEventPlanning from './features/AddEventPlanning.js';
+import Lesson from './pages/Lesson.js';
+import Exercice from './pages/Exercice.js';
+import AddLesson from './features/AddLesson.js';
+import AddExercice from './features/AddExercice.js';
+import AddCategorie from './features/AddCategorie.js';
+import DeleteCategorie from './features/DeleteCategorie.js';
+import UpdateCategorie from './features/UpdateCategorie.js';
+import JobsAnnouncements from './pages/JobsAnnouncements.js';
+import AddJobsAnnouncements from './features/AddJobsAnnouncements.js';
+import IndexJobsAnnouncements from './pages/IndexJobsAnnouncements.js';
+import PageProfilUtilisateur from './pages/PageProfilUtilisateur.js';
+import FormAddUser from './features/FormAddUser.js';
+import ListUtilisateur from './pages/ListUtilisateur.js';
+import Emargement from './pages/Emargement.js';
+import ListEmargement from './pages/ListEmargement.js';
+import Admin from './pages/Admin.js';
+import Actualites from './pages/Actualites.js';
+import AddActualites from './features/AddActualite.js';
 import './css/App.css';
-import AddActualite from './component/features/AddActualite.js';
-import { ApiContext } from './component/features/APIToken/ApiContext.js';
-import Login from './component/features/APIToken/login.js';
+import AddActualite from './features/AddActualite.js';
+import { ApiContext } from './features/APIToken/ApiContext.js';
+import Login from './features/APIToken/login.js';
 
 
 function App() {
-    const objContext = useContext(ApiContext);
-    console.log(objContext.user.firstname)
-    const logged = (comp) => {
-      if( !objContext.user.firstname && document.readyState === 'complete'){
-        return <Navigate to="/login" replace={true} />
-      } else {
-        return comp
-      }
-    }
+    const {objContext} = useContext(ApiContext);
+    console.log(objContext, 'app.js')
+    // const logged = (comp) => {
+    //   if( !objContext&& document.readyState === 'complete'){
+    //     return <Navigate to="/login" replace={true} />
+    //   } else {
+    //     return comp
+    //   }
+    //}
     return (
     <div className="App">
       <Router>
@@ -51,9 +51,8 @@ function App() {
           <Routes>
             {/* Dashboard => index */}
             <Route path='/login' element={<Login/>}></Route>
-            <Route path="/" element={logged(<><MenuPrincipal /><TableauBord /></>)} />
-            <Route path="/profile" element={logged(<PageProfilUtilisateur />)} />
-
+            <Route path="/" element={<><MenuPrincipal /><TableauBord /></>} />
+            <Route path="/profile" element={<PageProfilUtilisateur />} />
             <Route path="/ma-formation" element={<><MenuPrincipal /><MaFormation /></>} />
             <Route path="/emplois" element={<><MenuPrincipal /><Emplois /></>} />
 
