@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-date-picker';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../../css/AddEventPlanning.css';
 
-const AddEventPlanning = () => {
+const UpdateEventPlanning = () => {
 
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [date, setDate] = useState([]);
 
     const [receiver, setReceiver] = useState([]);
-    const [receiverID, setReceiverID] = useState([]);
+    const [receiverID, setReceiverID] = useState('');
 
     const [created, setCreated] = useState([]);
-    const [createdID, setCreatedID] = useState([]);
+    const [createdID, setCreatedID] = useState('');
 
     const [typeAppoitments, setTypeAppoitments] = useState([]);
-    const [typeAppoitmentsID, setTypeAppoitmentsID] = useState([]);
+    const [typeAppoitmentsID, setTypeAppoitmentsID] = useState('');
+
+    const { appointmentID } = useParams();
 
     useEffect(() => {
         fetch('http://localhost:8000/api/user')
@@ -36,22 +38,26 @@ const AddEventPlanning = () => {
         .then(data => setTypeAppoitments(data))
     }, [])
 
-    const handleSubmit = (event) => {
-        const requestOptions = {
-            method: 'POST',
+    function updateAppointment(e) {
+        fetch('http://localhost:8000/api/appointments/' + appointmentID, { 
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
-        };
-
-        fetch('http://localhost:8000/api/appointments', requestOptions)
+            body: JSON.stringify({
+                titleDetails: title,
+                descriptionDetails: description,
+                dateDetails: date,
+                receiver_id: receiverID,
+                create_id: createdID,
+                appointments_types_id: typeAppoitmentsID
+            })
+        })
             .then(response => response.json())
             .then(data => console.log(data))
-            event.preventDefault();
+            e.preventDefault()
     }
 
     return (
       <div>
-
         <form className='form-add-event-planning'>
             <div className='add-event-date'>
                 <input value={date} onChange={(event) => {setDate(event.target.value)}} name="dateOffers" type="date"></input>
@@ -81,11 +87,12 @@ const AddEventPlanning = () => {
             </select>
 
             <div>
-                <Link to="/calendrier"><button onClick={handleSubmit} type="submit" className="btn btn-add-event-planning">Ajouter</button></Link>
+                <button className='btn btn-add-event-planning' onClick={updateAppointment}>Modifier</button>
             </div>
         </form>
+
       </div>
     )
 }
 
-export default AddEventPlanning
+export default UpdateEventPlanning

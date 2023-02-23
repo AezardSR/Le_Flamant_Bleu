@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useParams,
 } from "react-router-dom";
 import Connexion from './Connexion.js';
 import TableauBord from './TableauBord.js';
@@ -12,6 +13,7 @@ import Categorie from './Categorie.js';
 import Emplois from './Emploi.js';
 import Calendrier from './Planning.js';
 import AddEventPlanning from '../features/AddEventPlanning.js';
+import UpdateEventPlanning from '../features/UpdateEventPlanning.js';
 import Lesson from './Lesson.js';
 import Exercice from './Exercice.js';
 import AddLesson from '../features/AddLesson.js';
@@ -31,8 +33,6 @@ import Admin from './Admin.js';
 import Actualites from './Actualites.js';
 import AddActualites from '../features/AddActualite.js';
 import '../../css/App.css';
-import AddActualite from '../features/AddActualite.js';
-
 
 class App extends Component {
   render() {
@@ -53,6 +53,7 @@ class App extends Component {
             {/* Calendrier */}
             <Route path="/calendrier" element={<><MenuPrincipal /><Calendrier /></>} />
             <Route path="/add-event-planning" element={<><MenuPrincipal /><AddEventPlanning /></>} />
+            <Route path="/update/:appointmentID" element={<><MenuPrincipal /><UpdateEventPlanning /></>} />
 
             <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
             <Route path="/ajouter_categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
