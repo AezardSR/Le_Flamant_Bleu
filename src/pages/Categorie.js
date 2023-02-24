@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import '../../css/BlocNavigation.css';
+import '../css/BlocNavigation.css';
 
 export class Categorie extends Component {
   render() {

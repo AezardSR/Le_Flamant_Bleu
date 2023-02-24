@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import '../../css/AddJobsAnnouncements.css';
+import '../css/AddJobsAnnouncements.css';
 
 const AddJobsAnnouncements = () => {
 
