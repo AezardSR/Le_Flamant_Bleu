@@ -167,10 +167,14 @@
     top: 40px;
     right: 20px;
     background: darkgreen;
-    color: white;
     border: none;
     padding: 5px;
     cursor: pointer;
+  }
+
+  .date-select-calendar button.btn-update a {
+    color: white;
+    text-decoration: none;
   }
 
   .date-select-calendar button.btn-update:hover {
