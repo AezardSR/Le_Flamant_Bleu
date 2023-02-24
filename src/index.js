@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { ApiContext, ApiProvider } from './component/features/APIToken/ApiContext.js' //'./features/APIToken/ApiContext';
+import { ApiContext, ApiProvider } from './features/APIToken/ApiContext.js' //'./features/APIToken/ApiContext';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
