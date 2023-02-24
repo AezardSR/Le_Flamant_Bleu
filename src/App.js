@@ -9,6 +9,7 @@ import Categorie from './pages/Categorie.js';
 import Emplois from './pages/Emploi.js';
 import Calendrier from './pages/Planning.js';
 import AddEventPlanning from './features/AddEventPlanning.js';
+import UpdateEventPlanning from './features/UpdateEventPlanning.js';
 import Lesson from './pages/Lesson.js';
 import Exercice from './pages/Exercice.js';
 import AddLesson from './features/AddLesson.js';
@@ -59,6 +60,7 @@ function App() {
             {/* Calendrier */}
             <Route path="/calendrier" element={<><MenuPrincipal /><Calendrier /></>} />
             <Route path="/add-event-planning" element={<><MenuPrincipal /><AddEventPlanning /></>} />
+            <Route path="/update/:appointmentID" element={<><MenuPrincipal /><UpdateEventPlanning /></>} />
 
             <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
             <Route path="/ajouter_categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
