@@ -34,27 +34,15 @@ import Login from './features/APIToken/login.js';
 
 
 function App() {
-<<<<<<< HEAD
     const {user} = useContext(ApiContext);
     console.log(user);
     const logged = (comp) => {
-      if( user.status == "Token is Invalid" || !user.message == "succes" && document.readyState === 'complete'){
+      if( user.status == "Token is Invalid" || !user["message"] == "succes" && document.readyState === 'complete'){
         return <Navigate to="/login" replace={true} />
       } else {
         return comp
       }
     }
-=======
-    const {objContext} = useContext(ApiContext);
-    console.log(objContext, 'app.js')
-    // const logged = (comp) => {
-    //   if( !objContext&& document.readyState === 'complete'){
-    //     return <Navigate to="/login" replace={true} />
-    //   } else {
-    //     return comp
-    //   }
-    //}
->>>>>>> 44fe82976e03c1011e5cba5373b6e5a87c344e60
     return (
     <div className="App">
       <Router>
