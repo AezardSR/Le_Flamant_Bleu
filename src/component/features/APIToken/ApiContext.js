@@ -27,7 +27,6 @@ export const ApiProvider  = ({children}) => {
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 setToken(data.access_token)
                 fetchUser()
-                return data.message;
             } else {
                 console.log(data)
             }

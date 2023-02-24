@@ -14,7 +14,7 @@ export default function Login({ setToken }) {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  if(user.message == "succes"){
+  if(user["message"] == "succes"){
     navigate("/")
   }
 

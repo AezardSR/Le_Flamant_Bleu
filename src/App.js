@@ -37,7 +37,7 @@ function App() {
     const {user} = useContext(ApiContext);
     console.log(user);
     const logged = (comp) => {
-      if( user.status == "Token is Invalid" || !user.message == "succes" && document.readyState === 'complete'){
+      if( user.status == "Token is Invalid" || !user["message"] == "succes" && document.readyState === 'complete'){
         return <Navigate to="/login" replace={true} />
       } else {
         return comp
