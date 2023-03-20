@@ -19,7 +19,7 @@ function Lesson() {
         setCategories(dataCategories);
         setLessons(dataLessons);
       })
-  })
+  }, [])
 
   return (
     <div>

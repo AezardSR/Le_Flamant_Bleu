@@ -20,7 +20,7 @@ export default function JobsAnnouncements() {
           .then(([dataJobs]) => {
             setJobs(dataJobs);
           })
-      })
+      }, [])
 
     return (
         <div className='page-jobs-actualites'>

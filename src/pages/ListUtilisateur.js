@@ -18,7 +18,7 @@ function ListUtilisateur() {
                 setContact(dataContact);
                 setUser(dataUser);
               })
-          })
+          }, [])
 
           const searchBar = () => {};
           const [searchInput, setSearchInput] = useState("");

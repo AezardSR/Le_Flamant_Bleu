@@ -18,7 +18,7 @@ function Exercice() {
           setCategories(dataCategories);
           setExercices(dataExercices);
         })
-    })
+    }, [])
 
     return (
       <div>

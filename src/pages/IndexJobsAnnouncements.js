@@ -16,7 +16,7 @@ export default function IndexJobsAnnouncements() {
           .then(([dataJobs]) => {
             setJobs(dataJobs);
           })
-      })
+      }, [])
     return (
       <div>
             <h1>Toutes les annonces disponibles</h1>
