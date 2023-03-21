@@ -31,7 +31,7 @@ const AddEventPlanning = () => {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/appointmentstypes')
+        fetch('http://localhost:8000/api/appointment-types')
         .then(response => response.json())
         .then(data => setTypeAppoitments(data))
     }, [])

@@ -27,7 +27,7 @@ function Main() {
                     <Link to="/ma-formation"><li><FontAwesomeIcon icon={faGraduationCap} />Ma formation</li></Link>
                     {/* <Link to="/calendrier"><li><FontAwesomeIcon icon={faCalendar} />Calendrier</li></Link>
                     <Link to="/cours"><li><FontAwesomeIcon icon={faGraduationCap} />Cours</li></Link>
-                    <Link to="/exercice"><li><FontAwesomeIcon icon={faLaptopCode} />Exercices</li></Link> */}
+                    <Link to="/exercices"><li><FontAwesomeIcon icon={faLaptopCode} />Exercices</li></Link> */}
                     <Link to="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></Link>
                     <Link to="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></Link>
                     <Link to="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></Link>

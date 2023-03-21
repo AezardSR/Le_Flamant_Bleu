@@ -12,7 +12,7 @@ export default function JobsAnnouncements() {
 
     useEffect(() => {
         Promise.all([
-          fetch('http://localhost:8000/api/jobsoffers/?_limit=3'),
+          fetch('http://localhost:8000/api//job-offers/?_limit=3'),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  

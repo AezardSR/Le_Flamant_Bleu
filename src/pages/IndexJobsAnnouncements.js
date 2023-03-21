@@ -8,7 +8,7 @@ export default function IndexJobsAnnouncements() {
 
     useEffect(() => {
         Promise.all([
-          fetch('http://localhost:8000/api/jobsoffers'),
+          fetch('http://localhost:8000/api//job-offers'),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  

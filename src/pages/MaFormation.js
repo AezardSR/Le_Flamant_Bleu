@@ -13,7 +13,7 @@ export class MaFormation extends Component {
           <div className='all-bloc-navigation'>
           
             <Link to="/cours" className='bloc-navigation navigation-lesson'><FontAwesomeIcon icon={faGraduationCap} />Mes cours</Link>
-            <Link to="/exercice" className='bloc-navigation navigation-exercice'><FontAwesomeIcon icon={faLaptopCode} />Mes exercices</Link>
+            <Link to="/exercices" className='bloc-navigation navigation-exercice'><FontAwesomeIcon icon={faLaptopCode} />Mes exercices</Link>
             <Link to="/categorie" className='bloc-navigation navigation-categorie'><FontAwesomeIcon icon={faAtom} />Les catégories</Link>
             <Link to="/calendrier" className='bloc-navigation navigation-planning'><FontAwesomeIcon icon={faCalendar} />Mon planning</Link>
 

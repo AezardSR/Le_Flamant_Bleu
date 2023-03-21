@@ -10,7 +10,7 @@ function Lesson() {
   useEffect(() => {
     Promise.all([
       fetch('http://localhost:8000/api/categories'),
-      fetch('http://localhost:8000/api/leçons'),
+      fetch('http://localhost:8000/api/lessons'),
     ])
       .then(([resCategories, resLessons]) =>
         Promise.all([resCategories.json(), resLessons.json()])  
