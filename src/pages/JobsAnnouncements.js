@@ -44,8 +44,8 @@ export default function JobsAnnouncements() {
             </div>
             
             <div className='btn-jobs'>
-                <Link to='/index_annonce_emploi'><button className='btn-jobs-announcements'>Voir toutes les annonces</button></Link>
-                <Link to='/ajouter_annonce_emploi'><button className='btn-jobs-announcements'>Ajouter une annonce</button></Link>
+                <Link to='/index-annonce-emploi'><button className='btn-jobs-announcements'>Voir toutes les annonces</button></Link>
+                <Link to='/ajouter-annonce-emploi'><button className='btn-jobs-announcements'>Ajouter une annonce</button></Link>
             </div>
         </div>
     )

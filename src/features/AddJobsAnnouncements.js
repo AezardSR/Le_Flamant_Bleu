@@ -63,7 +63,7 @@ const AddJobsAnnouncements = () => {
             <input value={name} onChange={(event) => {setName(event.target.value)}} name="name" className='form-jobs-title' placeholder="Insérer titre"></input>
             <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} name="description" className='form-jobs-description' placeholder="Description de l'annonce"></textarea>
 
-            <Link to="/annonces_emplois"><button onClick={handleSubmit} type="submit" className="btn btn-form-jobs">Ajouter</button></Link>
+            <Link to="/annonces-emplois"><button onClick={handleSubmit} type="submit" className="btn btn-form-jobs">Ajouter</button></Link>
         </form>
 
       </div>
