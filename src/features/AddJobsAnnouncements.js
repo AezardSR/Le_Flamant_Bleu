@@ -22,7 +22,7 @@ const AddJobsAnnouncements = () => {
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/partnercontacts/')
+    fetch('http://localhost:8000/api/partner-contacts/')
       .then(response => response.json())
       .then(data => setPartnerContacts(data))
   }, [])
@@ -34,7 +34,7 @@ const AddJobsAnnouncements = () => {
         body: JSON.stringify({name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
     };
 
-    fetch('http://localhost:8000/api/jobsoffers/add', requestOptions)
+    fetch('http://localhost:8000/api//job-offers/add', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

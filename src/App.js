@@ -71,7 +71,7 @@ function App() {
                 <Route path="/ajouter_cours" element={<><MenuPrincipal /><AddLesson /></>} />
 
                 {/* Exercice */}
-                <Route path="/exercice" element={<><MenuPrincipal /><Exercice /></>} />
+                <Route path="/exercices" element={<><MenuPrincipal /><Exercice /></>} />
                 <Route path="/ajouter_exercice" element={<><MenuPrincipal /><AddExercice /></>} />
 
             {/* Fiches d'informations */}

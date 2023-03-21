@@ -8,7 +8,7 @@ export default function IndexJobsAnnouncements() {
 
     useEffect(() => {
         Promise.all([
-          fetch('http://localhost:8000/api/jobsoffers'),
+          fetch('http://localhost:8000/api//job-offers'),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  
@@ -16,7 +16,7 @@ export default function IndexJobsAnnouncements() {
           .then(([dataJobs]) => {
             setJobs(dataJobs);
           })
-      })
+      }, [])
     return (
       <div>
             <h1>Toutes les annonces disponibles</h1>

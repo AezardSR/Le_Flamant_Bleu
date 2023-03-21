@@ -9,7 +9,7 @@ function Exercice() {
     useEffect(() => {
       Promise.all([
         fetch('http://localhost:8000/api/categories'),
-        fetch('http://localhost:8000/api/exercice'),
+        fetch('http://localhost:8000/api/exercices'),
       ])
         .then(([resCategories, resExercices]) =>
           Promise.all([resCategories.json(), resExercices.json()])  
@@ -18,7 +18,7 @@ function Exercice() {
           setCategories(dataCategories);
           setExercices(dataExercices);
         })
-    })
+    }, [])
 
     return (
       <div>

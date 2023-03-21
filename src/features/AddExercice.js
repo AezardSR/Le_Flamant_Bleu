@@ -24,7 +24,7 @@ const AddExercice = () => {
         body: JSON.stringify({name: title, content: description, image: image, file: file, categorie_id: categoryID})
     };
 
-    fetch('http://localhost:8000/api/exercice', requestOptions)
+    fetch('http://localhost:8000/api/exercices', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();
@@ -55,7 +55,7 @@ return (
               </div>
               <div className='form-add-lesson-add-description'>
                   <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} name="content" className="form-add-lesson-description" placeholder="Description de l'exercice"></textarea>
-                  <Link to="/exercice"><button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button></Link>
+                  <Link to="/exercices"><button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button></Link>
               </div>
           </div>
       </form>
