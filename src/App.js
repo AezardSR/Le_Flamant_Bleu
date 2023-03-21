@@ -63,35 +63,35 @@ function App() {
             <Route path="/update/:appointmentID" element={<><MenuPrincipal /><UpdateEventPlanning /></>} />
 
             <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
-            <Route path="/ajouter_categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
-            <Route path="/supprimer_categorie" element={<><MenuPrincipal /><DeleteCategorie /></>} />
-            <Route path="/modifier_categorie" element={<><MenuPrincipal /><UpdateCategorie /></>} />
+            <Route path="/ajouter-categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
+            <Route path="/supprimer-categorie" element={<><MenuPrincipal /><DeleteCategorie /></>} />
+            <Route path="/modifier-categorie" element={<><MenuPrincipal /><UpdateCategorie /></>} />
                 {/* Cours */}
                 <Route path="/cours" element={<><MenuPrincipal /><Lesson /></>} />
-                <Route path="/ajouter_cours" element={<><MenuPrincipal /><AddLesson /></>} />
+                <Route path="/ajouter-cours" element={<><MenuPrincipal /><AddLesson /></>} />
 
                 {/* Exercice */}
                 <Route path="/exercices" element={<><MenuPrincipal /><Exercice /></>} />
-                <Route path="/ajouter_exercice" element={<><MenuPrincipal /><AddExercice /></>} />
+                <Route path="/ajouter-exercice" element={<><MenuPrincipal /><AddExercice /></>} />
 
             {/* Fiches d'informations */}
-            <Route path="/FormAddUser" element={<><MenuPrincipal /><FormAddUser /></>} />
-            <Route path="/listUser" element={<><MenuPrincipal /><ListUtilisateur /></>} />
+            <Route path="/form-add-user" element={<><MenuPrincipal /><FormAddUser /></>} />
+            <Route path="/list-user" element={<><MenuPrincipal /><ListUtilisateur /></>} />
            
 
             {/* Annonces boulots */}
-            <Route path="/annonces_emplois" element={<><MenuPrincipal /><JobsAnnouncements /></>} />
-            <Route path="/ajouter_annonce_emploi" element={<><MenuPrincipal /><AddJobsAnnouncements /></>} />
-            <Route path="/index_annonce_emploi" element={<><MenuPrincipal /><IndexJobsAnnouncements /></>} />
+            <Route path="/annonces-emplois" element={<><MenuPrincipal /><JobsAnnouncements /></>} />
+            <Route path="/ajouter-annonce-emploi" element={<><MenuPrincipal /><AddJobsAnnouncements /></>} />
+            <Route path="/index-annonce-emploi" element={<><MenuPrincipal /><IndexJobsAnnouncements /></>} />
 
             <Route path="/admin" element={<><MenuPrincipal /><Admin /></>} />
               {/* Emargements */}
               <Route path="/emargements" element={<><MenuPrincipal /><Emargement /></>} />
-              <Route path="/liste_emargements" element={<><MenuPrincipal /><ListEmargement /></>} />
+              <Route path="/liste-emargements" element={<><MenuPrincipal /><ListEmargement /></>} />
 
               {/* Actualités */}
               <Route path="/actualites" element={<><MenuPrincipal /><Actualites /></>} />
-              <Route path="/ajouter_actualite" element={<><MenuPrincipal /><AddActualites /></>} />
+              <Route path="/ajouter-actualite" element={<><MenuPrincipal /><AddActualites /></>} />
           </Routes>
         </div>
       </Router>

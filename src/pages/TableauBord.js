@@ -18,7 +18,7 @@ class TableauBord extends Component {
                             </Link>
                         </div>
                         <div className="news-tb">
-                            <Link to="/annonces_emplois">
+                            <Link to="/annonces-emplois">
                                 <div className="article-table-bord">
                                     <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                     <p className="text-tb">

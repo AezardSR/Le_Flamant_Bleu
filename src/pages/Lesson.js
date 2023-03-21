@@ -54,7 +54,7 @@ function Lesson() {
             </ul>
         </div>
 
-       <Link to="/ajouter_cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
+       <Link to="/ajouter-cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
     </div>
   )
 }

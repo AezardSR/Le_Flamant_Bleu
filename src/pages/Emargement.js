@@ -17,7 +17,7 @@ export default class Emargement extends Component {
                     <p>CDA 1 - Compiègne</p>
                     {/* Renvoie le formateur dans la page liste émargements et envoie simultanément un e-mail
                     avec le lien de l'émargement aux étudiants concernant par la formation sélectionné */}
-                    <Link to="/liste_emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
+                    <Link to="/liste-emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
                 </div>
 
                 <div className="signature-emargement">
@@ -25,7 +25,7 @@ export default class Emargement extends Component {
                     <p>WW3 - Versailles</p>
                     {/* Renvoie le formateur dans la page liste émargements et envoie simultanément un e-mail
                     avec le lien de l'émargement aux étudiants concernant par la formation sélectionné */}
-                    <Link to="/liste_emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
+                    <Link to="/liste-emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
                 </div>
 
                 <div className="signature-emargement">
@@ -33,7 +33,7 @@ export default class Emargement extends Component {
                     <p>Formation de deux mois</p>
                     {/* Renvoie le formateur dans la page liste émargements et envoie simultanément un e-mail
                     avec le lien de l'émargement aux étudiants concernant par la formation sélectionné */}
-                    <Link to="/liste_emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
+                    <Link to="/liste-emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
                 </div>
 
                 <div className="signature-emargement">
@@ -41,7 +41,7 @@ export default class Emargement extends Component {
                     <p>Nom de la formation</p>
                     {/* Renvoie le formateur dans la page liste émargements et envoie simultanément un e-mail
                     avec le lien de l'émargement aux étudiants concernant par la formation sélectionné */}
-                    <Link to="/liste_emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
+                    <Link to="/liste-emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
                 </div>
 
                 <div className="signature-emargement">
@@ -49,7 +49,7 @@ export default class Emargement extends Component {
                     <p>Noyon - Compiègne</p>
                     {/* Renvoie le formateur dans la page liste émargements et envoie simultanément un e-mail
                     avec le lien de l'émargement aux étudiants concernant par la formation sélectionné */}
-                    <Link to="/liste_emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
+                    <Link to="/liste-emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
                 </div>
 
                 <div className="signature-emargement">
@@ -57,7 +57,7 @@ export default class Emargement extends Component {
                     <p>Error 404</p>
                     {/* Renvoie le formateur dans la page liste émargements et envoie simultanément un e-mail
                     avec le lien de l'émargement aux étudiants concernant par la formation sélectionné */}
-                    <Link to="/liste_emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
+                    <Link to="/liste-emargements"><button className="btn-emargement">Lancer l'émargement</button></Link>
                 </div>
             </div>
             

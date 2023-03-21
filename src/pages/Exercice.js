@@ -52,7 +52,7 @@ function Exercice() {
               </ul>
           </div>
 
-         <Link to="/ajouter_exercice"><button className="link-lesson-add mar-bottom-10px">Ajouter un exercice</button></Link>
+         <Link to="/ajouter-exercice"><button className="link-lesson-add mar-bottom-10px">Ajouter un exercice</button></Link>
       </div>
     )
   }

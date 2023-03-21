@@ -33,8 +33,8 @@ function Main() {
                     <Link to="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></Link>
                     <Link to="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></Link>
                     <Link to="/admin"><li><FontAwesomeIcon icon={faPaperclip} />Administratifs</li></Link>
-                    {/* <Link to="/annonces_emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
-                    <Link to="/listUser"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></Link> */}
+                    {/* <Link to="/annonces-emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
+                    <Link to="/list-user"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></Link> */}
                     <a href="https://lamanu.fr/">
                         <img src={LaManu} alt="LOGO" className='logo-menu-principal' style={{width: '70%', height:'auto'}}/>
                     </a>

@@ -36,7 +36,7 @@ function ListUtilisateur() {
 
           return (
             <div>
-                <Link to="/FormAddUser"><button className="link-lesson-add btn-user">Ajouter contact</button></Link>
+                <Link to="/form-add-user"><button className="link-lesson-add btn-user">Ajouter contact</button></Link>
 
                 <div className="listing-user">
                     <input className="search-bar" type="text" placeholder='Recherche...' onChange={handleChange} value={searchInput} />
