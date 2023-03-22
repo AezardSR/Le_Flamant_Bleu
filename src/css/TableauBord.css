@@ -1,8 +1,20 @@
 /* Tableau de bord global */
 .tableau-bord {
     display: flex;
-    margin-left: 45px;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 45px;
     padding-top: 30px;
+}
+
+.tableau-bord .calendar-tb,
+.tableau-bord .img-tableau-bord {
+    width: 500px;
+    height: 280px;
+}
+
+.tableau-bord .calendar-tb {
+    margin-bottom: 20px;
 }
 
 .background-planning {
@@ -10,11 +22,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 10px;
     background-color: #1B3F56;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .calendar-tb .text-date {
@@ -64,10 +74,10 @@
 
 .tableau-bord .left-tb {
     margin-right: 50px;
-}
-
-.tableau-bord .left-tb .img-calendar {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
