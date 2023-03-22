@@ -16,7 +16,6 @@ export default function useToken() {
         localStorage.setItem('token', JSON.stringify(userToken));
         setToken(userToken.access_token);
     };
-
     return {
         setToken: saveToken,
         token

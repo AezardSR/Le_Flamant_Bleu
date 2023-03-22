@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import "../../css/ListUtilisateur.css"
+import "../css/ListUtilisateur.css"
 
 function ListUtilisateur() {
           const [contact, setContact] = useState([]);
@@ -8,7 +8,7 @@ function ListUtilisateur() {
 
           useEffect(() => {
             Promise.all([
-              fetch('http://localhost:8000/api/partnercontacts'),
+              fetch('http://localhost:8000/api/partner-contacts'),
               fetch('http://localhost:8000/api/user'),
             ])
               .then(([resContact, resUser]) =>
@@ -18,7 +18,7 @@ function ListUtilisateur() {
                 setContact(dataContact);
                 setUser(dataUser);
               })
-          })
+          }, [])
 
           const searchBar = () => {};
           const [searchInput, setSearchInput] = useState("");
@@ -36,7 +36,7 @@ function ListUtilisateur() {
 
           return (
             <div>
-                <Link to="/FormAddUser"><button className="link-lesson-add btn-user">Ajouter contact</button></Link>
+                <Link to="/form-add-user"><button className="link-lesson-add btn-user">Ajouter contact</button></Link>
 
                 <div className="listing-user">
                     <input className="search-bar" type="text" placeholder='Recherche...' onChange={handleChange} value={searchInput} />

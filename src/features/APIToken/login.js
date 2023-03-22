@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 //import Connexion from '../pages/Connexion';
-import LogoManu from '../../../assets/img/logo_la_manu.png'
-import "../../../css/connexion.css"
+import LogoManu from '../../assets/img/logo_la_manu.png'
+import "../../css/connexion.css"
 import { ApiContext } from './ApiContext';
 
 

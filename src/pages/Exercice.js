@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import '../../css/Lesson.css';
+import '../css/Lesson.css';
 
 function Exercice() {
     const [categories, setCategories] = useState([]);
@@ -9,7 +9,7 @@ function Exercice() {
     useEffect(() => {
       Promise.all([
         fetch('http://localhost:8000/api/categories'),
-        fetch('http://localhost:8000/api/exercice'),
+        fetch('http://localhost:8000/api/exercices'),
       ])
         .then(([resCategories, resExercices]) =>
           Promise.all([resCategories.json(), resExercices.json()])  
@@ -18,7 +18,7 @@ function Exercice() {
           setCategories(dataCategories);
           setExercices(dataExercices);
         })
-    })
+    }, [])
 
     return (
       <div>
@@ -52,7 +52,7 @@ function Exercice() {
               </ul>
           </div>
 
-         <Link to="/ajouter_exercice"><button className="link-lesson-add mar-bottom-10px">Ajouter un exercice</button></Link>
+         <Link to="/ajouter-exercice"><button className="link-lesson-add mar-bottom-10px">Ajouter un exercice</button></Link>
       </div>
     )
   }

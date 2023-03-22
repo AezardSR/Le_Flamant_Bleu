@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import '../../css/TableauBord.css';
-import Calendrier from '../../assets/img/calendrier.png'
-import Emploi from '../../assets/img/emploi.jpg'
-import News from '../../assets/img/news.jpg'
+import '../css/TableauBord.css';
+import Calendrier from '../assets/img/calendrier.png'
+import Emploi from '../assets/img/emploi.jpg'
+import News from '../assets/img/news.jpg'
 
 class TableauBord extends Component {
     render() {
@@ -18,7 +18,7 @@ class TableauBord extends Component {
                             </Link>
                         </div>
                         <div className="news-tb">
-                            <Link to="/annonces_emplois">
+                            <Link to="/annonces-emplois">
                                 <div className="article-table-bord">
                                     <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                     <p className="text-tb">

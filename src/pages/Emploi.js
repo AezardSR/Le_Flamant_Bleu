@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faAddressBook, faAddressCard} from "@fortawesome/free-solid-svg-icons";
-import '../../css/BlocNavigation.css';
+import '../css/BlocNavigation.css';
 
 export class Emploi extends Component {
   render() {
@@ -12,8 +12,8 @@ export class Emploi extends Component {
 
           <div className='all-bloc-navigation'>
           
-            <Link to="/annonces_emplois" className='bloc-navigation navigation-lesson'><FontAwesomeIcon icon={faAddressBook} />Offres d'emploi</Link>
-            <Link to="/listUser" className='bloc-navigation navigation-exercice'><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</Link>
+            <Link to="/annonces-emplois" className='bloc-navigation navigation-lesson'><FontAwesomeIcon icon={faAddressBook} />Offres d'emploi</Link>
+            <Link to="/list-user" className='bloc-navigation navigation-exercice'><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</Link>
 
           </div>
           

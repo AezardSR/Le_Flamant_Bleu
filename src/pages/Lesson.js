@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import '../../css/Lesson.css';
+import '../css/Lesson.css';
 
 function Lesson() {
 
@@ -10,7 +10,7 @@ function Lesson() {
   useEffect(() => {
     Promise.all([
       fetch('http://localhost:8000/api/categories'),
-      fetch('http://localhost:8000/api/leçons'),
+      fetch('http://localhost:8000/api/lessons'),
     ])
       .then(([resCategories, resLessons]) =>
         Promise.all([resCategories.json(), resLessons.json()])  
@@ -19,7 +19,7 @@ function Lesson() {
         setCategories(dataCategories);
         setLessons(dataLessons);
       })
-  })
+  }, [])
 
   return (
     <div>
@@ -54,7 +54,7 @@ function Lesson() {
             </ul>
         </div>
 
-       <Link to="/ajouter_cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
+       <Link to="/ajouter-cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
     </div>
   )
 }

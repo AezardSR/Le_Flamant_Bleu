@@ -1,7 +1,7 @@
 import { getByTitle } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import '../../css/AddLesson.css';
+import '../css/AddLesson.css';
 
 const AddLesson = () => {
 
@@ -24,7 +24,7 @@ const AddLesson = () => {
         body: JSON.stringify({name: title, content: description, duration: duration, categorie_id: categoryID})
     };
 
-    fetch('http://localhost:8000/api/leçons', requestOptions)
+    fetch('http://localhost:8000/api/lessons', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import PartnerPoleEmploi from '../../assets/img/pole_emploi.png'
-import PartnerHautFrance from '../../assets/img/haut_de_france.png'
-import PartnerIleFrance from '../../assets/img/ile_de_france.png'
-import PartnerNormandie from '../../assets/img/normandie.png'
-import ImgAnnouncement from '../../assets/img/logo_la_manu.png'
-import '../../css/JobsAnnouncements.css';
+import PartnerPoleEmploi from '../assets/img/pole_emploi.png'
+import PartnerHautFrance from '../assets/img/haut_de_france.png'
+import PartnerIleFrance from '../assets/img/ile_de_france.png'
+import PartnerNormandie from '../assets/img/normandie.png'
+import ImgAnnouncement from '../assets/img/logo_la_manu.png'
+import '../css/JobsAnnouncements.css';
 
 export default function JobsAnnouncements() {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
         Promise.all([
-          fetch('http://localhost:8000/api/jobsoffers/?_limit=3'),
+          fetch('http://localhost:8000/api//job-offers/?_limit=3'),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  
@@ -20,7 +20,7 @@ export default function JobsAnnouncements() {
           .then(([dataJobs]) => {
             setJobs(dataJobs);
           })
-      })
+      }, [])
 
     return (
         <div className='page-jobs-actualites'>
@@ -44,8 +44,8 @@ export default function JobsAnnouncements() {
             </div>
             
             <div className='btn-jobs'>
-                <Link to='/index_annonce_emploi'><button className='btn-jobs-announcements'>Voir toutes les annonces</button></Link>
-                <Link to='/ajouter_annonce_emploi'><button className='btn-jobs-announcements'>Ajouter une annonce</button></Link>
+                <Link to='/index-annonce-emploi'><button className='btn-jobs-announcements'>Voir toutes les annonces</button></Link>
+                <Link to='/ajouter-annonce-emploi'><button className='btn-jobs-announcements'>Ajouter une annonce</button></Link>
             </div>
         </div>
     )

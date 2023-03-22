@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "../../css/FormAddUser.css"
+import "../css/FormAddUser.css"
 
 
 export default class FormAddUser extends Component {

@@ -92,11 +92,11 @@
     background-color: #e6e6e6;
   }
   .react-calendar__tile--now {
-    background: #ffff76;
+    background: #006edc80;
   }
   .react-calendar__tile--now:enabled:hover,
   .react-calendar__tile--now:enabled:focus {
-    background: #ffffa9;
+    background: #006edc80;
   }
   .react-calendar__tile--hasActive {
     background: #76baff;
@@ -116,13 +116,69 @@
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: #e6e6e6;
   }
+
+  .calendar-container {
+    position: relative;
+    padding-top: 10px;
+  }
+
+  .calendar-appointments {
+    display: flex;
+    flex-wrap: wrap;
+  }
   
   .date-select-calendar {
-    width: 80%;
+    width: 30%;
     margin: 0 auto;
     border: 1px solid #a0a096;
     padding: 10px;
     margin-top: 10px;
+    position: relative;
+  }
+
+  .calendar-container .btn-add {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    background: #006EDC;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .date-select-calendar button.btn-delete {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: darkred;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .date-select-calendar button.btn-delete:hover {
+    background: #d10000;
+  }
+
+  .date-select-calendar button.btn-update {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background: darkgreen;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .date-select-calendar button.btn-update a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .date-select-calendar button.btn-update:hover {
+    background: green;
   }
 
   .date-select-formation {
@@ -134,7 +190,7 @@
   }
 
   .add-event-planning a {
-    color: black;
+    color: white;
     text-decoration: none;
   }
 

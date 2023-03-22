@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import ImgAnnouncement from '../../assets/img/logo_la_manu.png'
-import '../../css/IndexJobsAnnouncements.css';
+import ImgAnnouncement from '../assets/img/logo_la_manu.png'
+import '../css/IndexJobsAnnouncements.css';
 
 export default function IndexJobsAnnouncements() {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
         Promise.all([
-          fetch('http://localhost:8000/api/jobsoffers'),
+          fetch('http://localhost:8000/api//job-offers'),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  
@@ -16,7 +16,7 @@ export default function IndexJobsAnnouncements() {
           .then(([dataJobs]) => {
             setJobs(dataJobs);
           })
-      })
+      }, [])
     return (
       <div>
             <h1>Toutes les annonces disponibles</h1>

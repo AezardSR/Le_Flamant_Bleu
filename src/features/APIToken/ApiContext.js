@@ -34,8 +34,9 @@ export const ApiProvider  = ({children}) => {
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
-    console.log(token,'before fethuser')
+    
     const fetchUser = () => {
+            
             fetch('http://localhost:8000/api/user-profile', {
             method: 'GET',
             headers: {
@@ -46,7 +47,7 @@ export const ApiProvider  = ({children}) => {
                 res.json()
             )).then((data) => {
                 console.log(data.firstname)
-                setUser(data, 'retrun fetchuser')
+                setUser(data)
             })
     }
 
