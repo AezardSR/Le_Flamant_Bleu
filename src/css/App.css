@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.page-tableau-bord > div:not(.menu-principal) {   
+.page-tableau-bord>div:not(.menu-principal) {   
     width: 100%;
 }
 
