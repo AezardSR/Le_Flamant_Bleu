@@ -35,7 +35,7 @@ function TableauBord() {
                             </div>
                         </Link>
                     </div>
-                    <div className="news-tb">
+                    <div className="news-tb zoom-img">
                         <Link to="/annonces-emplois">
                             <div className="article-table-bord">
                                 <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
@@ -48,7 +48,7 @@ function TableauBord() {
                         </Link>
                     </div>
                 </div>
-                <div className="right-tb">
+                <div className="right-tb zoom-img">
                     <a href="#">
                         <div className="article-table-bord">
                             <img src={News} alt="News 2" className="img-tableau-bord img-right-tb"/>

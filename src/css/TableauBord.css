@@ -53,14 +53,12 @@
     padding: 5px 10px 10px 10px;
 }
 
-.tableau-bord .news-tb:hover .text-tb,
-.tableau-bord .right-tb:hover .text-tb {
+.tableau-bord .zoom-img:hover .text-tb {
     background-color: rgba(100, 193, 255, 0.8);
     transition: ease 0.4s all;
 }
 
-.tableau-bord .news-tb:hover .img-tableau-bord,
-.tableau-bord .right-tb:hover .img-tableau-bord {
+.tableau-bord .zoom-img:hover .img-tableau-bord {
     transition: ease 0.5s all;
     transform: scale(1.1);    
 }
