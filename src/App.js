@@ -1,7 +1,6 @@
-import React, { Component, useContext } from 'react';
-import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
+import React, { Component, useContext, useEffect } from 'react';
+import {  BrowserRouter as Router,  Routes,  Route, useNavigate} from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import Connexion from './pages/Connexion.js';
 import TableauBord from './pages/TableauBord.js';
 import MenuPrincipal from './pages/MenuPrincipal.js';
 import MaFormation from './pages/MaFormation.js';
@@ -29,20 +28,24 @@ import Admin from './pages/Admin.js';
 import Actualites from './pages/Actualites.js';
 import AddActualites from './features/AddActualite.js';
 import './css/App.css';
-import AddActualite from './features/AddActualite.js';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
 
 
 function App() {
-    const {user} = useContext(ApiContext);
-    console.log(user);
+    const {user, token, fetchUser} = useContext(ApiContext);
+    useEffect(()=>{
+      fetchUser()
+    },[token])
+    console.log(user)
     const logged = (comp) => {
-      if( user.status == "Token is Invalid" || !user["message"] == "succes" && document.readyState === 'complete'){
-        return <Navigate to="/login" replace={true} />
-      } else {
-        return comp
-      }
+       if( !localStorage.getItem("token") || user.status === "Token is Invalid" ){
+          console.log("redirection vers la page de connexion")
+         return <Navigate to="/login" replace={true} />
+       } else {
+          console.log(user.user)
+         return comp
+       }
     }
     return (
     <div className="App">
@@ -52,7 +55,7 @@ function App() {
           <Routes>
             {/* Dashboard => index */}
             <Route path='/login' element={<Login/>}></Route>
-            <Route path="/" element={<><MenuPrincipal /><TableauBord /></>} />
+            <Route path="/" element={logged(<><MenuPrincipal /><TableauBord /></>)} />
             <Route path="/profile" element={<PageProfilUtilisateur />} />
             <Route path="/ma-formation" element={<><MenuPrincipal /><MaFormation /></>} />
             <Route path="/emplois" element={<><MenuPrincipal /><Emplois /></>} />
