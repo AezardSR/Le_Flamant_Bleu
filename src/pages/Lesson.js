@@ -21,34 +21,44 @@ function Lesson() {
       })
   }, [])
 
+  function deleteLesson(id) {
+    fetch('http://localhost:8000/api/lessons/' + id, { method: 'DELETE' })
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }
+
   return (
     <div>
-        <h2>Cours [nom de la formation]</h2>
         <div className="listing-lesson">
             <ul className="listing-categorie-nav">
-                {categories.map((categorie) => (
-                  <li key={categorie.id}>
-                    <div className="flex-between p-10px align-center">
-                      {categorie.categorie}
-                      <span>V</span>
-                    </div>
-                      <ul className="listing-categorie-nav">
+                {lessons.map((cours) => (
+                  <li key={cours.id}>
+                      <div className="p-10px">
+                        <Link to={"/see-lessons/" + cours.id}>
+                          <p>{cours.id} : {cours.name}</p>
+                          <p>{cours.content}</p>
+                          <button className='btn-delete' onClick={() => deleteLesson(cours.id)}>Delete</button>
+                          <button type="submit" className='btn-update'><Link to={"/update-lessons/" + cours.id}>Update</Link></button>
+                          {/* {categorie.categorie}
+                          <span>V</span> */}
+                        </Link>
+                      </div>
+                      {/* <ul className="listing-categorie-nav">
                         {lessons.map((lesson)  => {
-                          if(lesson.categorie_id !== categorie.id) {
-                            return;
+                          if(lesson.categorie_id == categorie.id) {
+                            return (
+                              <li key={lesson.id}>
+                                <div className="flex-between p-10px align-center">
+                                  <a href="/" target="_blank">
+                                    <p>{lesson.name}</p>
+                                    <p>{lesson.content}</p>
+                                  </a>
+                                </div>
+                              </li>
+                            );
                           }
-                          return (
-                            <li key={lesson.id}>
-                              <div className="flex-between p-10px align-center">
-                                <a href="/" target="_blank">
-                                  <p>{lesson.name}</p>
-                                  <p>{lesson.content}</p>
-                                </a>
-                              </div>
-                            </li>
-                          );
                         })}
-                      </ul>
+                      </ul> */}
                   </li>
                 ))}
             </ul>

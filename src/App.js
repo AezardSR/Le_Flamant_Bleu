@@ -11,6 +11,8 @@ import Calendrier from './pages/Planning.js';
 import AddEventPlanning from './features/AddEventPlanning.js';
 import UpdateEventPlanning from './features/UpdateEventPlanning.js';
 import Lesson from './pages/Lesson.js';
+import SeeLessons from './features/SeeLessons.js';
+import SeeExercices from './features/SeeExercices.js';
 import Exercice from './pages/Exercice.js';
 import AddLesson from './features/AddLesson.js';
 import AddExercice from './features/AddExercice.js';
@@ -68,10 +70,12 @@ function App() {
             <Route path="/modifier-categorie" element={<><MenuPrincipal /><UpdateCategorie /></>} />
                 {/* Cours */}
                 <Route path="/cours" element={<><MenuPrincipal /><Lesson /></>} />
+                <Route path="/see-lessons/:lessonsID" element={<><MenuPrincipal /><SeeLessons /></>} />
                 <Route path="/ajouter-cours" element={<><MenuPrincipal /><AddLesson /></>} />
 
                 {/* Exercice */}
                 <Route path="/exercices" element={<><MenuPrincipal /><Exercice /></>} />
+                <Route path="/see-exercices/:exercicesID" element={<><MenuPrincipal /><SeeExercices /></>} />
                 <Route path="/ajouter-exercice" element={<><MenuPrincipal /><AddExercice /></>} />
 
             {/* Fiches d'informations */}
