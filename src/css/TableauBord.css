@@ -84,3 +84,12 @@
 .tableau-bord .right-tb .img-right-tb {
     height: 600px;
 }
+
+/* Media query */
+
+@media screen and (max-width: 780px) {
+    .tableau-bord {
+        flex-direction: column;
+        margin-top: 0 !important;
+    }
+}
