@@ -9,13 +9,12 @@ export default function Login({ setToken }) {
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
-  const [loginState, setLoginState] = useState();
 
   useEffect(()=>{
-    if(localStorage.getItem("token") && user.message === "success" ){
+    if(localStorage.getItem('token') && user.message === "succes" ){
       navigate('/')
     }
-  },[])
+  })
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -23,11 +22,9 @@ export default function Login({ setToken }) {
         mail,
         password
     }).then(data => {
-      setLoginState(data)
+      window.location.reload();
     })
-
 }
-
     return (
         <div className='container'>
             <div className="container-connexion">

@@ -9,10 +9,6 @@ export const ApiProvider  = ({children}) => {
     const [user, setUser] = useState({})
     const {token, setToken} = useToken();
 
-    useEffect(() => {
-        console.log("New token value:", token);
-      }, [token]);
-
     const login = (credentials) => {
         return fetch('http://localhost:8000/api/login', {
           method: 'POST',
@@ -35,7 +31,6 @@ export const ApiProvider  = ({children}) => {
     }
     useEffect(()=>{
         fetchUser()
-        console.log('useEffect apicontext')
     },[token])
     
     const fetchUser = () => {
@@ -52,8 +47,19 @@ export const ApiProvider  = ({children}) => {
             })
     }
 
+    const logout = () =>{
+        fetch('http://localhost:8000/api/logout', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization' : 'bearer ' + token
+            }}).then((res) => (res.json())).then((data)=> {
+                setUser(data)
+            })
+        }
+
     return (
-        <ApiContext.Provider value={{login,fetchUser, user}}>
+        <ApiContext.Provider value={{login,fetchUser, user, logout}}>
             {children}
         </ApiContext.Provider>
     )
