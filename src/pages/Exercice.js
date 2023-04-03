@@ -8,8 +8,8 @@ function Exercice() {
 
     useEffect(() => {
       Promise.all([
-        fetch('http://localhost:8000/api/categories'),
-        fetch('http://localhost:8000/api/exercices'),
+        fetch(`${process.env.REACT_APP_API_PATH}/categories`),
+        fetch(`${process.env.REACT_APP_API_PATH}/exercices`),
       ])
         .then(([resCategories, resExercices]) =>
           Promise.all([resCategories.json(), resExercices.json()])  

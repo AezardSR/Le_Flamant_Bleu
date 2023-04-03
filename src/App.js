@@ -36,7 +36,7 @@ import Login from './features/APIToken/login.js';
 
 function App() {
     const {user} = useContext(ApiContext);
-    console.log(user);
+    console.log(process.env.REACT_APP_API_PATH, 'env api');
     const logged = (comp) => {
       if( user.status == "Token is Invalid" || !user["message"] == "succes" && document.readyState === 'complete'){
         return <Navigate to="/login" replace={true} />

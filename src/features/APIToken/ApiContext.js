@@ -14,7 +14,7 @@ export const ApiProvider  = ({children}) => {
     },[])
 
     const login = (credentials) => {
-        return fetch('http://localhost:8000/api/login', {
+        return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ export const ApiProvider  = ({children}) => {
     
     const fetchUser = () => {
             
-            fetch('http://localhost:8000/api/user-profile', {
+            fetch(`${process.env.REACT_APP_API_PATH}/user-profile`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
