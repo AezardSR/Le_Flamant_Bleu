@@ -24,16 +24,15 @@
 .menu {
     clear: both;
     max-height: 0;
-    transition: max-height .2s ease-out;
+    transition: 0.2s all;
 }
 
 /* menu icon */
 
 .menu-icon {
     cursor: pointer;
-    display: inline-block;
     float: right;
-    padding: 28px 20px;
+    padding: 20px 20px;
     position: relative;
     user-select: none;
 }
@@ -98,6 +97,7 @@
     .menu-principal .avatar-menu {
         text-align: initial;
         position: relative;
+        height: 50px;
     }
     .menu-principal {
         min-height: auto;
@@ -124,7 +124,7 @@
         top: 50%;
         transform: translateY(-50%);
         bottom: 0;
-        height: 58px;
+        height: 40px;
         width: 100%;
     }
 
@@ -138,6 +138,10 @@
 
     .tableau-bord .calendar-tb, .tableau-bord .img-tableau-bord {
         width: 95%;
+    }
+
+    .menu-principal .avatar-menu .img-menu-avatar {
+        visibility: hidden;
     }
 }
 
