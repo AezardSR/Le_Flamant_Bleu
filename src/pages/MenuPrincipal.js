@@ -11,6 +11,7 @@ import { ApiContext } from "../features/APIToken/ApiContext";
 function Main() {
     const {user} = useContext(ApiContext);
     const navigate = useNavigate();
+    const userInfo = user.user;
 
     const logout = () =>{
         localStorage.removeItem("token");
@@ -20,7 +21,7 @@ function Main() {
             <div className="menu-principal">
                 <div className="avatar-menu">
                     <img src={Avatar} alt="avatar de la personne" className="img-menu-avatar"/>
-                    <p>{user.firstname}</p>
+                    <p>{userInfo.firstname}</p>
                     <div className='avatar-menu-parametre'>
                         <a href="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></a>
                         <a href="/login" onClick={logout}><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></a>
