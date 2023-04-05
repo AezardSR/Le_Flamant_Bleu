@@ -1,15 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ApiContext, ApiProvider } from './features/APIToken/ApiContext.js' //'./features/APIToken/ApiContext';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <ApiProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ApiProvider>
   //</React.StrictMode>
 );

@@ -9,10 +9,6 @@ export const ApiProvider  = ({children}) => {
     const [user, setUser] = useState({})
     const {token, setToken} = useToken();
 
-    useEffect(()=>{
-        fetchUser()
-    },[])
-
     const login = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
           method: 'POST',
@@ -24,17 +20,18 @@ export const ApiProvider  = ({children}) => {
         .then(response => response.json())
         .then((data) => {
             if(data.message === "connected"){
+                console.log(data)
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 setToken(data.access_token)
-                fetchUser()
-                return data.message;
-            } else {
-                console.log(data)
+                console.log(token)
             }
-                
+            return data;     
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
+    useEffect(()=>{
+        fetchUser()
+    },[token])
     
     const fetchUser = () => {
             
@@ -47,13 +44,23 @@ export const ApiProvider  = ({children}) => {
             }).then((res) => (
                 res.json()
             )).then((data) => {
-                console.log(data.firstname)
                 setUser(data)
             })
     }
 
+    const logout = () =>{
+        fetch('http://localhost:8000/api/logout', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization' : 'bearer ' + token
+            }}).then((res) => (res.json())).then((data)=> {
+                setUser(data)
+            })
+        }
+
     return (
-        <ApiContext.Provider value={{login,fetchUser, user}}>
+        <ApiContext.Provider value={{login,fetchUser, user, logout}}>
             {children}
         </ApiContext.Provider>
     )

@@ -1,12 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
-//import Connexion from '../pages/Connexion';
 import LogoManu from '../../assets/img/logo_la_manu.png'
 import "../../css/connexion.css"
 import { ApiContext } from './ApiContext';
-
 
 export default function Login({ setToken }) {
   const {login, user, fetchUser} = useContext(ApiContext);
@@ -14,18 +10,21 @@ export default function Login({ setToken }) {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  if(user.message == "succes"){
-    navigate("/")
-  }
+  useEffect(()=>{
+    if(localStorage.getItem('token') && user.message === "succes" ){
+      navigate('/')
+    }
+  })
 
   const handleSubmit = async e => {
     e.preventDefault();
     login({
         mail,
         password
+    }).then(data => {
+      window.location.reload();
     })
 }
-
     return (
         <div className='container'>
             <div className="container-connexion">
@@ -37,7 +36,7 @@ export default function Login({ setToken }) {
                   {/* <label>Mot de passe</label> */}
                   <input type='password' name='password' className="input-connexion" placeholder="Mot de passe" onChange={e => setPassword(e.target.value)} />
     
-                  <button type="submit" className="btn-connexion">Connexion</button>
+                  <input type="submit" className="btn-connexion" value="Connexion"/>
                 </form>
                   
             </div>
