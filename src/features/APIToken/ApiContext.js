@@ -10,7 +10,7 @@ export const ApiProvider  = ({children}) => {
     const {token, setToken} = useToken();
 
     const login = (credentials) => {
-        return fetch('http://localhost:8000/api/login', {
+        return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -34,7 +34,8 @@ export const ApiProvider  = ({children}) => {
     },[token])
     
     const fetchUser = () => {
-          fetch('http://localhost:8000/api/user-profile', {
+            
+            fetch(`${process.env.REACT_APP_API_PATH}/user-profile`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

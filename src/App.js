@@ -33,7 +33,8 @@ import Login from './features/APIToken/login.js';
 
 
 function App() {
-    const {user} = useContext(ApiContext);  
+    const {user} = useContext(ApiContext);
+    console.log(process.env.REACT_APP_API_PATH, 'env api');
     const logged = (comp) => {
        if( !localStorage.getItem("token") || user.status === "Token is Invalid" ){
           console.log("redirection vers la page de connexion")
