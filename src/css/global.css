@@ -24,7 +24,7 @@
 .menu {
     clear: both;
     max-height: 0;
-    transition: 0.2s all;
+    transition: 0.2s ease;
 }
 
 /* menu icon */
