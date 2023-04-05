@@ -1,0 +1,41 @@
+.cardContainer{
+    height : 250px;
+    width : 400px;
+    background-color: var(--color-light-blue);
+    border-radius: 25px;
+    position: relative;
+    margin : 10px;
+}
+
+.cardTitle{
+    /* padding : 30px; */
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.cardButton{
+    background-color: var(--color-dark-blue);
+    border : none;
+    border-radius: 8px;
+    width: 80px;
+    height: 40px;
+    color : white;
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    bottom : 0;
+    right : 0;
+    margin : 15px;
+    cursor : pointer;
+}
+
+.cardButton:hover{
+    background-color: white;
+    color : var(--color-dark-blue);
+}
+
+/* .buttonContainer{
+    align-items: end;
+    margin : 50px;
+} */
