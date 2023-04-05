@@ -1,3 +1,4 @@
+import { getByTitle } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import '../css/AddLesson.css';
@@ -8,20 +9,20 @@ const AddExercice = () => {
   const [description, setDescription] = useState([]);
   const [image, setImage] = useState([]);
   const [file, setFile] = useState([]);
-  const [categoryID, setCategoryID] = useState('');
-  const [categories, setCategories] = useState([]);
+  const [partsID, setPartsID] = useState('');
+  const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/categories/')
+    fetch('http://localhost:8000/api/parts/')
       .then(response => response.json())
-      .then(data => setCategories(data))
+      .then(data => setParts(data))
   }, [])
 
   const handleSubmit = (event) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: title, content: description, image: image, file: file, categorie_id: categoryID})
+        body: JSON.stringify({name: title, content: description, image: image, file: file, parts_id: partsID})
     };
 
     fetch('http://localhost:8000/api/exercices', requestOptions)
@@ -30,37 +31,34 @@ const AddExercice = () => {
         event.preventDefault();
   }
 
-return (
-  <div>
-    <form className="form-add-lesson">
-          <div className='form-add-lesson-add-pdf'>
-              <label>Image</label>
-              <input value={image} onChange={(event) => {setImage(event.target.value)}} type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
+    return (
+      <div>
+        <form className="form-add-lesson">
 
-              <label>File</label>
-              <input value={file} onChange={(event) => {setFile(event.target.value)}} type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
-          </div>
+            <div className='form-add-lesson-add-title'>
+                <input value={title} onChange={(event) => {setTitle(event.target.value)}} className="form-add-lesson-title" placeholder="Insérer titre"></input>
+            </div>
 
-          <div className='form-add-lesson-add-title'>
-              <input value={title} onChange={(event) => {setTitle(event.target.value)}} name="name" className="form-add-lesson-title" placeholder="Insérer titre"></input>
-          </div>
-
-          <div className='form-add-lesson-add-details'>
-              <div className='form-add-lesson-select-categorie'>
-                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
-                    {categories.map((categorie) => (
-                      <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+            <div className='form-add-lesson-add-details'>
+                <div className='form-add-lesson-select-categorie'>
+                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartsID(event.target.value)}} value={partsID}>
+                    {parts.map((part) => (
+                      <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
                     ))}
                   </select>
-              </div>
-              <div className='form-add-lesson-add-description'>
-                  <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} name="content" className="form-add-lesson-description" placeholder="Description de l'exercice"></textarea>
-                  <Link to="/exercices"><button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button></Link>
-              </div>
-          </div>
-      </form>
-  </div>
-  )
-}
+                  <input value={image} onChange={(event) => {setImage(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour image"></input>
+                  <input value={file} onChange={(event) => {setFile(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour file"></input>
+                </div>
+            </div>
 
-export default AddExercice;
+            <div className='form-add-lesson-add-description'>
+                <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} className="form-add-lesson-description" placeholder="Description du cours"></textarea>
+                <button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button>
+            </div>
+
+        </form>
+      </div>
+    )
+  }
+  
+export default AddExercice
