@@ -6,7 +6,7 @@ const DeleteCategorie = () => {
   const [categories, setCategories] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:8000/api/categories/')
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
       .then(response => response.json())
       .then(data => setCategories(data))
   }, [])
@@ -15,7 +15,7 @@ const DeleteCategorie = () => {
     const requestOptions = {
         method: 'DELETE'
     };
-    fetch('http://localhost:8000/api/categories/' + categoryID, requestOptions)
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
       .then(response => response.json())
       .then(data => console.log(data))
     event.preventDefault();

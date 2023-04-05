@@ -9,8 +9,8 @@ function Lesson() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:8000/api/categories'),
-      fetch('http://localhost:8000/api/lessons'),
+      fetch(`${process.env.REACT_APP_API_PATH}/categories`),
+      fetch(`${process.env.REACT_APP_API_PATH}/lessons`),
     ])
       .then(([resCategories, resLessons]) =>
         Promise.all([resCategories.json(), resLessons.json()])  
