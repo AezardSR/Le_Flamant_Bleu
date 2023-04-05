@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-date-picker';
 import { Link } from 'react-router-dom';
 import '../css/AddEventPlanning.css';
 

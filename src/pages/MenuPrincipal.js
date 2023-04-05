@@ -1,5 +1,5 @@
-import React, { useContext, useEffect} from "react";
-import { a, useNavigate } from "react-router-dom";
+import React, { useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import Avatar from '../assets/img/leroy.jpg'
 import LaManu from '../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,8 +13,8 @@ function Main() {
     const navigate = useNavigate();
 
     const logout = () =>{
-        localStorage.removeItem("hrefken");
-
+        localStorage.removeItem("token");
+        navigate('/login');
     }
         return(
             <div className="menu-principal">
