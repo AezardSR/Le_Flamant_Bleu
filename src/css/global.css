@@ -134,6 +134,7 @@
 
     .tableau-bord .left-tb {
         margin-right: 0;
+        align-items: flex-start;
     }
 
     .tableau-bord .calendar-tb, .tableau-bord .img-tableau-bord {
