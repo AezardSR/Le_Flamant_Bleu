@@ -8,6 +8,9 @@ export { ApiContext };
 export const ApiProvider  = ({children}) => {
     const [user, setUser] = useState({})
     const {token, setToken} = useToken();
+    const [passError, setPassError] = useState(false) // mise en place du state passError pour l'utilisation sur la page de connexion
+    const [mailError, setMailError] = useState(false) // mise en place du state mailError pour l'utilisation sur la page de connexion
+    const [loginError, setLoginError] = useState(false) // mise en place du state loginError pour l'utilisation sur la page de connexion
 
     const login = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
@@ -24,6 +27,10 @@ export const ApiProvider  = ({children}) => {
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 setToken(data.access_token)
                 console.log(token)
+            } else {
+                setMailError(data.mail)
+                setPassError(data.password)
+                setLoginError(data.message)
             }
             return data;     
         })
@@ -60,7 +67,7 @@ export const ApiProvider  = ({children}) => {
         }
 
     return (
-        <ApiContext.Provider value={{login,fetchUser, user, logout}}>
+        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError}}>
             {children}
         </ApiContext.Provider>
     )
