@@ -94,6 +94,11 @@
 }
 
 @media (max-width: 780px) {
+
+    .container-profil {
+        height: auto !important;
+    }
+
     .menu-principal .avatar-menu {
         text-align: initial;
         position: relative;
