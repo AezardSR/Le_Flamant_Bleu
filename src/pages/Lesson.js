@@ -1,60 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import '../css/Lesson.css';
+import "../css/card.css";
+import Module from '../component/Module';
+import Categorie from "../component/Categories";
 
 function Lesson() {
 
-  const [categories, setCategories] = useState([]);
-  const [lessons, setLessons] = useState([]);
+  const [showModule, setShowModule] = useState(true);
+  const [selectedModuleId, setSelectedModuleId] = useState(null);
 
-  useEffect(() => {
-    Promise.all([
-      fetch(`${process.env.REACT_APP_API_PATH}/categories`),
-      fetch(`${process.env.REACT_APP_API_PATH}/lessons`),
-    ])
-      .then(([resCategories, resLessons]) =>
-        Promise.all([resCategories.json(), resLessons.json()])  
-      )
-      .then(([dataCategories, dataLessons]) => {
-        setCategories(dataCategories);
-        setLessons(dataLessons);
-      })
-  }, [])
-
+  const handleToggle = (moduleId) => {
+    setShowModule((prev) => !prev);
+    setSelectedModuleId(moduleId);
+    // console.log("module id: " + moduleId)
+  };
   return (
     <div>
-        <h2>Cours [nom de la formation]</h2>
-        <div className="listing-lesson">
-            <ul className="listing-categorie-nav">
-                {categories.map((categorie) => (
-                  <li key={categorie.id}>
-                    <div className="flex-between p-10px align-center">
-                      {categorie.categorie}
-                      <span>V</span>
-                    </div>
-                      <ul className="listing-categorie-nav">
-                        {lessons.map((lesson)  => {
-                          if(lesson.categorie_id !== categorie.id) {
-                            return;
-                          }
-                          return (
-                            <li key={lesson.id}>
-                              <div className="flex-between p-10px align-center">
-                                <a href="/" target="_blank">
-                                  <p>{lesson.name}</p>
-                                  <p>{lesson.content}</p>
-                                </a>
-                              </div>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                  </li>
-                ))}
-            </ul>
-        </div>
+      {showModule ? (
+        <Module onToggle={handleToggle}/>
+      ):( 
+        <Categorie moduleId={selectedModuleId} />
+      )}
+    <div datatype="toto">
+    </div>
+      <Link to="/ajouter-cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
 
-       <Link to="/ajouter-cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
     </div>
   )
 }

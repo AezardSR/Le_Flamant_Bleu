@@ -40,3 +40,16 @@ a .link-lesson-add {
     border: 1px solid black;
     margin-bottom: 5px;
 }
+
+.lessonContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    justify-content: center;
+    align-items: center;
+    grid-gap : 30px;
+    max-width: 1300px;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
+    border: #28abe2 5px solid;
+}

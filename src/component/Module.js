@@ -9,7 +9,7 @@ function Module(props) {
     const [modules, setModules] = useState([]);
   
     const getModules = () => {
-      fetch('http://localhost:8000/api/modules')
+      fetch(`${process.env.REACT_APP_API_PATH}/modules`)
       .then(response => response.json())
       .then(json =>setModules(json))
       .catch(error => {console.error("Erreur Categories " + error) })

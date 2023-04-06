@@ -12,7 +12,7 @@ function Categorie(props) {
     const idModule = props.moduleId;
   
     const getCategories = () => {
-      fetch('http://localhost:8000/api/categories')
+      fetch(`${process.env.REACT_APP_API_PATH}/categories`)
         .then(response => response.json())
         .then(json => setCategories(json))
         .catch(error => {console.error("Erreur Categories " + error)})
@@ -26,7 +26,7 @@ function Categorie(props) {
     // }
   
     const getIdCatModul = () => {
-      fetch('http://localhost:8000/api/module-categories')
+      fetch(`${process.env.REACT_APP_API_PATH}/module-categories`)
         .then(response => response.json())
         .then(json => setIdCatModul(json))
         .catch(error => {console.error("Erreur idcat " + error)})
