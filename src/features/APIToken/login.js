@@ -34,12 +34,12 @@ export default function Login({ setToken }) {
                 <form onSubmit={handleSubmit} className="form-connexion">
                   {/* <label>Identifiant</label> */}
                   <input name='mail' className="input-connexion" placeholder="mail" onChange={e => setMail(e.target.value)}/>
-                  <p class="errorMessage">{mailError}</p>
+                  <p className="errorMessage">{mailError}</p>
                   {/* <label>Mot de passe</label> */}
                   <input type='password' name='password' className="input-connexion" placeholder="Mot de passe" onChange={e => setPassword(e.target.value)} />
-                  <p class="errorMessage">{passError}</p>
+                  <p className="errorMessage">{passError}</p>
                   <input type="submit" className="btn-connexion" value="Connexion"/>
-                  <p class="errorMessage">{loginError}</p>
+                  <p className="errorMessage">{loginError}</p>
                 </form>
                   
             </div>

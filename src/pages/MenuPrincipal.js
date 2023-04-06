@@ -11,17 +11,25 @@ import { ApiContext } from "../features/APIToken/ApiContext";
 function Main() {
     const {user} = useContext(ApiContext);
     const navigate = useNavigate();
-    const userInfo = user.user;
+    let userInfo = user.user;
 
     const logout = () =>{
         localStorage.removeItem("token");
         navigate('/login');
     }
+    const userName = () =>{
+        if(userInfo && userInfo.firstname){
+            return userInfo.firstname
+        } else {
+            return null
+        }
+    }
+
         return(
             <div className="menu-principal">
                 <div className="avatar-menu">
                     <img src={Avatar} alt="avatar de la personne" className="img-menu-avatar"/>
-                    <p>{userInfo.firstname}</p>
+                    <p>{userName()}</p>
                     <div className='avatar-menu-parametre'>
                         <a href="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></a>
                         <a href="/login" onClick={logout}><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></a>
