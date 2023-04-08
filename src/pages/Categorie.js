@@ -1,25 +1,41 @@
-import React, { Component } from 'react'
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import '../css/BlocNavigation.css';
+import React from 'react'
+import Calendar from 'react-calendar';
+import { useState, useEffect } from 'react';
+import 'react-calendar/dist/Calendar.css';
+import '../css/Lesson.css';
+import { Link } from 'react-router-dom';
 
-export class Categorie extends Component {
-  render() {
+function Categorie() {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+          fetch('http://localhost:8000/api/categories/', { method: 'GET' })
+          .then(response => response.json())
+          .then(data => setCategories(data))
+    }, [])
+
+    function deleteID(id) {
+      fetch('http://localhost:8000/api/categories/' + id, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => console.log(data))
+    }
 
     return (
       <div>
-          <div className='all-bloc-navigation'>
-            <Link to="/ajouter-categorie" className='bloc-navigation pop-up-add'>Ajouter une catégorie</Link>
-            <Link to="/modifier-categorie" className='bloc-navigation pop-up-update'>Modifier une catégorie</Link>
-            <Link to="/supprimer-categorie" className='bloc-navigation pop-up-delete'>Supprimer une catégorie</Link>
-          </div>
-          
+        <div>
+            {categories.map((categorie) => (
+                <div id={categorie.id} key={categorie.id} value={categorie.id}>
+                    <p>{categorie.categorie}</p>
+                    <button className='btn-delete' onClick={() => deleteID(categorie.id)}>Delete</button>
+                    <button type="submit" className='btn-update'><Link to={"/update/" + categorie.id}>Update</Link></button>
+                </div>
+            ))}
+        </div>
+
+        <Link to="/ajouter-categorie"><button className="link-lesson-add mar-bottom-10px">Ajouter une catégorie</button></Link>
       </div>
     )
-  }
 }
 
-export default Categorie
+export default Categorie;
