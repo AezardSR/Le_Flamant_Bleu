@@ -28,7 +28,7 @@ function Categorie() {
                 <div id={categorie.id} key={categorie.id} value={categorie.id}>
                     <p>{categorie.categorie}</p>
                     <button className='btn-delete' onClick={() => deleteID(categorie.id)}>Delete</button>
-                    <button type="submit" className='btn-update'><Link to={"/update/" + categorie.id}>Update</Link></button>
+                    <button type="submit" className='btn-update'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
                 </div>
             ))}
         </div>

@@ -1,49 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const UpdateCategorie = () => {
+  const { categoriesID } = useParams();
 
-  const [categoryID, setCategoryID] = useState('');
-  const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState({ categorie: '' });
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/categories/')
+    fetch(`http://localhost:8000/api/categories/${categoriesID}`)
       .then(response => response.json())
-      .then(data => setCategories(data))
-  }, [])
+      .then(data => setCategories(data));
+
+  }, [categoriesID]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCategories(prevCategories => ({ ...prevCategories, [name]: value }));
+  };
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({categorie: category})
-    };
-    fetch('http://localhost:8000/api/categories/' + categoryID, requestOptions)
+    event.preventDefault();
+    fetch(`http://localhost:8000/api/categories/${categoriesID}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(categories)
+    })
       .then(response => response.json())
       .then(data => console.log(data))
-    event.preventDefault();
-    console.log(categoryID);
-    console.log(categories);
-    console.log(category);
-  }
+      .catch(error => console.error(error));
+  };
 
   return (
     <div>
-      <form style={{margin: '10px 15px'}}>
-          <div>
-            <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
-              {categories.map((categorie) => (
-                <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
-              ))}
-            </select>
-          </div>
-          <div className="flex-column">
-            <input className="w-100 h-45px p-5px" style={{marginBottom: '20px'}} placeholder="Modifier le nom de la catégorie..." type="text" name="categorie" onChange={(event) => {setCategory(event.target.value)}} />
-            <button className="link-lesson-add w-20 margin-auto" type="submit" onClick={handleSubmit}>Update</button>
-          </div>
+      <h2>Modifier une catégorie</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="categorie">Nom à modifier :</label>
+          <input type="text" id="name" name="categorie" value={categories.categorie} onChange={handleInputChange} />
+        </div>
+        <button type="submit">Modifier la leçon</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default UpdateCategorie;
