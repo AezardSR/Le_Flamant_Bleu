@@ -5,6 +5,7 @@ import "../css/card.css";
 import Module from '../component/Module';
 import Categorie from "../component/Categories";
 import Part from "../component/Part";
+import CardLesson from "../component/CardLesson";
 
 function Lesson() {
 
@@ -14,28 +15,41 @@ function Lesson() {
   const [showCategorie, setShowCategorie] = useState(true)
   const [selectedCategorieId, setSelectedCategorieId] = useState(null)
 
+  const [showPart, setShowPart] = useState(true);
+  const [selectedPartId, setSelectedPartId] = useState(null)
+
   const handleToggleModule = (moduleId) => {
     setShowModule((prev) => !prev);
     setSelectedModuleId(moduleId);
     // console.log("module id: " + moduleId)
   };
 
-  const HandleToggleCategorie = (categorieId) =>{
+  const handleToggleCategorie = (categorieId) =>{
     setShowCategorie((prev) => !prev);
     setSelectedCategorieId(categorieId)
   }
 
+  const handleTogglePart = (partId) => {
+    setShowPart((prev) => !prev);
+    setSelectedPartId(partId)
+  }
   return (
     <div>
-      {showModule ? (
-        <Module onToggle={handleToggleModule}/>
-      ):( 
-        showCategorie ?(
-          <Categorie moduleId={selectedModuleId} onToggle={HandleToggleCategorie} />
-        ) : (
-          <Part  categorieId={selectedCategorieId}/>
+      {
+        showModule ? (
+          <Module onToggle={handleToggleModule}/>
+        ) : ( 
+          showCategorie ? (
+            <Categorie moduleId={selectedModuleId} onToggle={handleToggleCategorie} />
+          ) : (
+            showPart ? (
+              <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} />
+            ) : (
+              <CardLesson partId={selectedPartId} />
+            )
+          )
         )
-      )}
+      }
     <div datatype="toto">
     </div>
       <Link to="/ajouter-cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>

@@ -21,10 +21,10 @@ function Part(props) {
       getParts();
     }, [])
 
-    // const goToParts = (id) =>{
-    //   props.onToggle(id)
-    //   console.log({id})
-    // }
+    const goToLessons = (id) =>{
+      props.onToggle(id)
+      console.log({id})
+    }
   useEffect(() =>{
     const filteredParts = parts.filter((item) => item.categories_id === idCategorie);
       setFilteredParts(filteredParts);
@@ -33,7 +33,7 @@ function Part(props) {
     return (
       <div className="lessonContainer">
         {filteredParts.map(item => (
-          <Card key={item.id} title={item.name} />
+          <Card key={item.id} title={item.name} button={() => goToLessons(item.id)} />
         ))}
       </div>
     )
