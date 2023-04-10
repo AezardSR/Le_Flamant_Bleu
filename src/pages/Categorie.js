@@ -10,7 +10,7 @@ function Categorie() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-          fetch('http://localhost:8000/api/categories/', { method: 'GET' })
+          fetch('http://localhost:8000/api/categories')
           .then(response => response.json())
           .then(data => setCategories(data))
     }, [])
