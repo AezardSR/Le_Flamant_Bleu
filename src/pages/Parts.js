@@ -1,25 +1,39 @@
-import React, { Component } from 'react'
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import '../css/BlocNavigation.css';
+import React from 'react'
+import { useState, useEffect } from 'react';
+import '../css/Lesson.css';
+import { Link } from 'react-router-dom';
 
-export class Parts extends Component {
-  render() {
+function Parts() {
+
+    const [parts, setParts] = useState([]);
+
+    useEffect(() => {
+          fetch(`${process.env.REACT_APP_API_PATH}/parts`)
+          .then(response => response.json())
+          .then(data => setParts(data))
+    }, [])
+
+    function deleteID(id) {
+      fetch(`${process.env.REACT_APP_API_PATH}/parts/` + id, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => console.log(data))
+    }
 
     return (
       <div>
-          <div className='all-bloc-navigation'>
-            <Link to="/ajouter-parties" className='bloc-navigation pop-up-add'>Ajouter une partie</Link>
-            <Link to="/modifier-parties" className='bloc-navigation pop-up-update'>Modifier une partie</Link>
-            <Link to="/supprimer-parties" className='bloc-navigation pop-up-delete'>Supprimer une partie</Link>
-          </div>
-          
+        <div>
+            {parts.map((part) => (
+                <div id={part.id} key={part.id} value={part.id}>
+                    <p>{part.name}</p>
+                    <button className='btn-delete' onClick={() => deleteID(part.id)}>Delete</button>
+                    <button type="submit" className='btn-update'><Link to={"/modifier-part/" + part.id}>Update</Link></button>
+                </div>
+            ))}
+        </div>
+
+        <Link to="/ajouter-part"><button className="link-lesson-add mar-bottom-10px">Ajouter une partie</button></Link>
       </div>
     )
-  }
 }
 
-export default Parts
+export default Parts;

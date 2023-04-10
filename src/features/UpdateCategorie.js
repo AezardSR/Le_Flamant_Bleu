@@ -22,9 +22,9 @@ const UpdateCategorie = () => {
     const requestOptions = {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({categorie: category})
+        body: JSON.stringify({categorie: categories})
     };
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoriesID, requestOptions)
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
