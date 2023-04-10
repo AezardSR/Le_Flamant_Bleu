@@ -64,13 +64,11 @@ function App() {
 
             <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
             <Route path="/ajouter-categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
-            <Route path="/supprimer-categorie" element={<><MenuPrincipal /><DeleteCategorie /></>} />
             <Route path="/modifier-categorie/:categoriesID" element={<><MenuPrincipal /><UpdateCategorie /></>} />
 
             <Route path="/parties" element={<><MenuPrincipal /><Parts /></>} />
             <Route path="/ajouter-parties" element={<><MenuPrincipal /><AddParts /></>} />
-            <Route path="/supprimer-parties" element={<><MenuPrincipal /><DeleteParts /></>} />
-            <Route path="/modifier-parties" element={<><MenuPrincipal /><UpdateParts /></>} />
+            <Route path="/modifier-parties/:partsID" element={<><MenuPrincipal /><UpdateParts /></>} />
 
                 {/* Cours */}
                 <Route path="/cours" element={logged(<><MenuPrincipal /><Lesson /></>)} />

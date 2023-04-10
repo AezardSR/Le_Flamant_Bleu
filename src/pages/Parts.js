@@ -26,7 +26,7 @@ function Parts() {
                 <div id={part.id} key={part.id} value={part.id}>
                     <p>{part.name}</p>
                     <button className='btn-delete' onClick={() => deleteID(part.id)}>Delete</button>
-                    <button type="submit" className='btn-update'><Link to={"/modifier-part/" + part.id}>Update</Link></button>
+                    <button type="submit" className='btn-update'><Link to={"/modifier-parties/" + part.id}>Update</Link></button>
                 </div>
             ))}
         </div>
