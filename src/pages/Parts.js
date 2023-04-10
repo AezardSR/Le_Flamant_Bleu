@@ -31,7 +31,7 @@ function Parts() {
             ))}
         </div>
 
-        <Link to="/ajouter-part"><button className="link-lesson-add mar-bottom-10px">Ajouter une partie</button></Link>
+        <Link to="/ajouter-parties"><button className="link-lesson-add mar-bottom-10px">Ajouter une partie</button></Link>
       </div>
     )
 }
