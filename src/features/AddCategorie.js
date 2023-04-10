@@ -11,7 +11,7 @@ const AddCategorie = () => {
         body: JSON.stringify({categorie: category})
     };
 
-    fetch('http://localhost:8000/api/categories', requestOptions)
+    fetch(`${process.env.REACT_APP_API_PATH}/categories`, requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

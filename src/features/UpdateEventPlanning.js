@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import '../css/AddEventPlanning.css';
 
 const UpdateEventPlanning = () => {
@@ -20,25 +20,25 @@ const UpdateEventPlanning = () => {
     const { appointmentID } = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/user')
+        fetch(`${process.env.REACT_APP_API_PATH}/user`)
         .then(response => response.json())
         .then(data => setReceiver(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/user')
+        fetch(`${process.env.REACT_APP_API_PATH}/user`)
         .then(response => response.json())
         .then(data => setCreated(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/appointment-types')
+        fetch(`${process.env.REACT_APP_API_PATH}/appointment-types`)
         .then(response => response.json())
         .then(data => setTypeAppoitments(data))
     }, [])
 
     function updateAppointment(e) {
-        fetch('http://localhost:8000/api/appointments/' + appointmentID, { 
+        fetch(`${process.env.REACT_APP_API_PATH}/appointments/` + appointmentID, { 
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -7,7 +7,7 @@ const UpdateCategorie = () => {
   const [categories, setCategories] = useState({ categorie: '' });
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/categories/${categoriesID}`)
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
       .then(response => response.json())
       .then(data => setCategories(data));
 
@@ -19,12 +19,12 @@ const UpdateCategorie = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(`http://localhost:8000/api/categories/${categoriesID}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(categories)
-    })
+    const requestOptions = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({categorie: category})
+    };
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

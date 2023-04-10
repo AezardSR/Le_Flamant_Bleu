@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-date-picker';
 import { Link } from 'react-router-dom';
 import '../css/AddEventPlanning.css';
 
@@ -19,19 +18,19 @@ const AddEventPlanning = () => {
     const [typeAppoitmentsID, setTypeAppoitmentsID] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/user')
+        fetch(`${process.env.REACT_APP_API_PATH}/user`)
         .then(response => response.json())
         .then(data => setReceiver(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/user')
+        fetch(`${process.env.REACT_APP_API_PATH}/user`)
         .then(response => response.json())
         .then(data => setCreated(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/appointment-types')
+        fetch(`${process.env.REACT_APP_API_PATH}/appointment-types`)
         .then(response => response.json())
         .then(data => setTypeAppoitments(data))
     }, [])
@@ -43,7 +42,7 @@ const AddEventPlanning = () => {
             body: JSON.stringify({titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
         };
 
-        fetch('http://localhost:8000/api/appointments', requestOptions)
+        fetch(`${process.env.REACT_APP_API_PATH}/appointments`, requestOptions)
             .then(response => response.json())
             .then(data => console.log(data))
             event.preventDefault();
