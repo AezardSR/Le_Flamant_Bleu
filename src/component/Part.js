@@ -6,14 +6,20 @@ import '../css/Lesson.css';
 import "../css/card.css";
 
 function Part(props) {
+
+    const [loading, setLoading] = useState(false);
     const [parts, setParts] = useState([]);
     const [filteredParts, setFilteredParts] = useState([]);
     const idCategorie = parseInt(props.categorieId);
 
     const getParts = () => {
+      setLoading(true)
       fetch(`${process.env.REACT_APP_API_PATH}/parts`)
         .then(response => response.json())
-        .then(json => setParts(json))
+        .then(json => {
+          setParts(json);
+          setLoading(false);
+          })
         .catch(error => {console.error("Erreur Parts " + error)})
     }
 
@@ -30,6 +36,14 @@ function Part(props) {
       setFilteredParts(filteredParts);
   }, [idCategorie, parts])
 
+  if(loading){
+    return(
+      <div className="containerLoading">
+        <div className="loading">Loading</div>
+        <div className="spinner"></div>
+      </div>
+    )
+  }
     return (
       <div className="lessonContainer">
         {filteredParts.map(item => (

@@ -7,11 +7,16 @@ import "../css/card.css";
 function Module(props) {
 
     const [modules, setModules] = useState([]);
+    const [loading, setLoading] = useState(false);
   
     const getModules = () => {
+      setLoading(true)
       fetch(`${process.env.REACT_APP_API_PATH}/modules`)
       .then(response => response.json())
-      .then(json =>setModules(json))
+      .then(json => {
+         setModules(json);
+         setLoading(false);
+        })
       .catch(error => {console.error("Erreur Categories " + error) })
     }
     useEffect(() => {
@@ -23,7 +28,14 @@ function Module(props) {
     console.log({id})
 
   }
-  
+  if(loading){
+    return(
+      <div className="containerLoading">
+        <div className="loading">Loading</div>
+        <div className="spinner"></div>
+      </div>
+    )
+  }
     return (
            <div className="lessonContainer">
             {modules.map(item=>(

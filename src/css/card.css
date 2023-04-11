@@ -39,3 +39,36 @@
     align-items: end;
     margin : 50px;
 } */
+
+.spinner {
+    border: 16px solid var(--color-dark-blue);
+    border-top: 16px solid var(--color-light-blue);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .loading{
+    font-size: 50px;
+    color : var(--color-light-blue);
+    margin-bottom: 10px;
+  }
+
+  .containerLoading{
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  

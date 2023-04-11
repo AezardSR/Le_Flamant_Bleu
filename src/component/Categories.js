@@ -6,15 +6,21 @@ import '../css/Lesson.css';
 import "../css/card.css";
 
 function Categorie(props) {
+
+    const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState([]);
     const [idCatModul, setIdCatModul] = useState([]);
     const [filteredCategories, setFilteredCategories] = useState([]);
     const idModule = parseInt(props.moduleId);
 
     const getCategories = () => {
+      setLoading(true)
       fetch(`${process.env.REACT_APP_API_PATH}/categories`)
         .then(response => response.json())
-        .then(json => setCategories(json))
+        .then(json => {
+          setCategories(json);
+          setLoading(false);
+          })
         .catch(error => {console.error("Erreur Categories " + error)})
     }
 
@@ -41,6 +47,15 @@ function Categorie(props) {
       setFilteredCategories(filteredCategories);
   }, [idCatModul, idModule, categories])
 
+
+  if(loading){
+    return(
+      <div className="containerLoading">
+        <div className="loading">Loading</div>
+        <div className="spinner"></div>
+      </div>
+    )
+  }
     return (
       <div className="lessonContainer">
         {filteredCategories.map(item => (
