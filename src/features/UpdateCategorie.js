@@ -38,7 +38,7 @@ const UpdateCategorie = () => {
           <label htmlFor="categorie">Nom à modifier :</label>
           <input type="text" id="name" name="categorie" value={categories.categorie} onChange={handleInputChange} />
         </div>
-        <button type="submit">Modifier la leçon</button>
+        <button type="submit">Modifier la catégorie</button>
       </form>
     </div>
   );

@@ -5,16 +5,16 @@ const UpdateParts = () => {
   const { partsID } = useParams();
 
   const [parts, setParts] = useState({ name: '', categories_id: '' });
-  const [categories, setCategories] = useState([]);
+  const [categoriesID, setCategoriesID] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/parts/${partsID}`)
+    fetch(`${process.env.REACT_APP_API_PATH}/parts/${partsID}`)
       .then(response => response.json())
       .then(data => setParts(data));
 
-    fetch('http://localhost:8000/api/categories/')
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
       .then(response => response.json())
-      .then(data => setCategories(data));
+      .then(data => setCategoriesID(data));
   }, [partsID]);
 
   const handleInputChange = (event) => {
@@ -24,11 +24,12 @@ const UpdateParts = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:8000/api/parts/${partsID}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(parts)
-    })
+    const requestOptions = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({name: parts.name, categories_id: parts.categories_id})
+    };
+    fetch(`${process.env.REACT_APP_API_PATH}/parts/` + partsID, requestOptions)
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
@@ -36,21 +37,21 @@ const UpdateParts = () => {
 
   return (
     <div>
-      <h2>Modifier une leçon</h2>
+      <h2>Modifier une partie</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Nom :</label>
+          <label htmlFor="name">Nom à modifier :</label>
           <input type="text" id="name" name="name" value={parts.name} onChange={handleInputChange} />
         </div>
         <div>
-          <label htmlFor="categories_id">Catégories :</label>
+          <label htmlFor="categories_id">Catégorie :</label>
           <select id="categories_id" name="categories_id" value={parts.categories_id} onChange={handleInputChange}>
-            {parts.map(part => (
-              <option key={part.id} value={part.id}>{part.name}</option>
+            {categoriesID.map(cat => (
+              <option key={cat.id} value={cat.id}>{cat.categorie}</option>
             ))}
           </select>
         </div>
-        <button type="submit">Modifier la leçon</button>
+        <button type='submit'>Modifier la partie</button>
       </form>
     </div>
   );
