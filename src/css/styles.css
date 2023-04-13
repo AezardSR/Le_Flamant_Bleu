@@ -63,7 +63,7 @@ a .btn-connexion  {
     text-decoration: none;
 }
 
-button:hover{
+.btn-connexion:hover{
     background-color: #194766 ;
 }
 
