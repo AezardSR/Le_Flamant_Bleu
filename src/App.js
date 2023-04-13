@@ -30,6 +30,7 @@ import AddActualites from './features/AddActualite.js';
 import './css/App.css';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
+import Register from './pages/register.js';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/profile" element={logged(<PageProfilUtilisateur />)} />
             <Route path="/ma-formation" element={logged(<><MenuPrincipal /><MaFormation /></>)} />
             <Route path="/emplois" element={logged(<><MenuPrincipal /><Emplois /></>)} />
+            <Route path="/register" element={logged(<><MenuPrincipal /><Register /></>)} />
 
             {/* Calendrier */}
             <Route path="/calendrier" element={logged(<><MenuPrincipal /><Calendrier /></>)} />

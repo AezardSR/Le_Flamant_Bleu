@@ -11,7 +11,7 @@ export default function Login({ setToken }) {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    if(localStorage.getItem('token') && user.message === "succes" ){
+    if(localStorage.getItem('token') && user.message === "success" ){
       navigate('/')
     }
   })
