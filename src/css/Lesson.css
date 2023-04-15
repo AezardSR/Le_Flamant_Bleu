@@ -2,54 +2,7 @@ h2 {
     font-weight: 400;
     padding: 10px;
 }
-
-.listing-name-categorie {
-    font-weight: 600;
-}
-
-.link-lesson-add {
-    background-color: #28abe2 ;
-    border: none;
-    font-size: 20px;
-    padding: 10px 30px;
-    float: right;
-    margin-right: 30px;
-}
-
-a .link-lesson-add {
-    color: white;
-    text-decoration: none;
-}
-
-.listing-categorie-nav {
-    list-style: none;
-}
-
-.listing-categorie-nav>li {
-    margin: 0 auto;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 0 10px;
-}
-
-.listing-categorie-nav>li>div {
-    height: 50px;
-    border: 1px solid black;
-    margin-bottom: 5px;
-}
-
 .lessonContainer{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
-    justify-content: center;
-    align-items: center;
-    grid-gap : 30px;
-    max-width: 1300px;
-    width: 80%;
-    height: auto;
-    margin: 30px auto;
-    border: #28abe2 5px solid;
+    max-width: 90%;
+    margin: 0 auto; /* Center the container horizontally */
 }

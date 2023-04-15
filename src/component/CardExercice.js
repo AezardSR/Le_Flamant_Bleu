@@ -4,31 +4,30 @@ import '../css/Lesson.css';
 import "../css/card.css";
 import Modal from "./Modal";
 
-function CardLesson(props) {
+
+function CardExercice(props) {
 
     const [loading, setLoading] = useState(false);
-    const [lessons, setLessons] = useState([]);
-    const [filteredLessons, setFilteredLessons] = useState([]);
+    const [exercices, setExercices] = useState([]);
+    const [filteredExercices, setFilteredExercices] = useState([]);
     const idPart = parseInt(props.partId);
     const [showModal, setShowModal] = useState(false); // new state for modal
     const [selectedItem, setSelectedItem] = useState(null); // permet de recuperer les données pour la modal
-    const { partId, onReturnToPart } = props;
-    const handleReturnToPart = () => {
-      onReturnToPart();
-    };
-    const getLessons = () => {
+
+
+    const getExercices = () => {
       setLoading(true)
-      fetch(`${process.env.REACT_APP_API_PATH}/lessons`)
+      fetch(`${process.env.REACT_APP_API_PATH}/exercices`)
         .then(response => response.json())
         .then(json => {
-          setLessons(json);
+          setExercices(json);
           setLoading(false);
           })
-        .catch(error => {console.error("Erreur Lessons " + error)})
+        .catch(error => {console.error("Erreur Exercices " + error)})
     }
 
     useEffect(() => {
-      getLessons();
+      getExercices();
     }, [])
 
     // const goToLessons = (id) =>{
@@ -36,9 +35,9 @@ function CardLesson(props) {
     //   console.log({id})
     // }
   useEffect(() =>{
-    const filteredLessons = lessons.filter((item) => item.parts_id === idPart);
-      setFilteredLessons(filteredLessons);
-  }, [idPart, lessons])
+    const filteredExercices = exercices.filter((item) => item.parts_id === idPart);
+      setFilteredExercices(filteredExercices);
+  }, [idPart, exercices])
 
   const openModal = (item) => {
     setSelectedItem(item);
@@ -63,20 +62,18 @@ function CardLesson(props) {
   }
     return (
       <div className="lessonContainer">
-        <button onClick={handleReturnToPart}>return to parts</button>
         {
-          filteredLessons.length > 0 ? (
-            filteredLessons.map(item => (
+          filteredExercices.length > 0 ? (
+            filteredExercices.map(item => (
               <Card key={item.id} title={item.name} button={() => openModal(item)} />
             ))
           ) : (
             <div className="containerLoading">
-                <div className="loading"> pas de cour(s) disponible</div>
+                <div className="loading"> pas d'exercice(s) disponible</div>
             </div>
           )
         }
-        {/* Render Modal component if showModal state is true */}
-      {showModal && <Modal
+        {showModal && <Modal
                     key={selectedItem.id}
                     item={selectedItem} 
                     title={selectedItem.name}
@@ -88,4 +85,4 @@ function CardLesson(props) {
     )
   }
   
-  export default CardLesson;
+  export default CardExercice;

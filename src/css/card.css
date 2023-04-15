@@ -1,17 +1,17 @@
 .cardContainer{
-    height : 250px;
-    width : 400px;
-    background-color: var(--color-light-blue);
-    border-radius: 25px;
-    position: relative;
-    margin : 10px;
-}
+  margin: 0 auto; /* Center the card horizontally */
+  background-color: var(--color-light-blue);
+  padding: 16px;
+  margin : 20px;
+  box-sizing: border-box;
+  border-radius: 25px;
+  position: relative;
 
+}
 .cardTitle{
-    /* padding : 30px; */
-    text-align: center;
     font-size: 30px;
     font-weight: 600;
+    color : white;
 }
 
 .cardButton{
@@ -26,7 +26,7 @@
     position: absolute;
     bottom : 0;
     right : 0;
-    margin : 15px;
+    margin : 20px;
     cursor : pointer;
 }
 
@@ -34,11 +34,6 @@
     background-color: white;
     color : var(--color-dark-blue);
 }
-
-/* .buttonContainer{
-    align-items: end;
-    margin : 50px;
-} */
 
 .spinner {
     border: 16px solid var(--color-dark-blue);
@@ -71,4 +66,65 @@
   flex-direction: column;
   align-items: center;
   }
+
+  body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    font-size: 25px;
+    color : var(--color-light-blue);
+    border : none;
+    margin : 20px;
+    cursor : pointer;
+    background-color: transparent;
+}
+.btn-modal:hover{
+    color : var(--color-dark-blue)
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-title{
+    font-weight: 600;
+    color: var(--color-light-blue);
+    font-size: 25px;
+    padding: 15px 0;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.6;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    border : 5px solid var(--color-light-blue);
+    border-radius: 25px;
+    text-align: justify;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.close-modal {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
   

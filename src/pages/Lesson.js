@@ -33,6 +33,10 @@ function Lesson() {
     setShowPart((prev) => !prev);
     setSelectedPartId(partId)
   }
+
+  const handleReturnToPart = () => {
+    setShowPart(true);
+  };
   return (
     <div>
       {
@@ -45,14 +49,14 @@ function Lesson() {
             showPart ? (
               <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} />
             ) : (
-              <CardLesson partId={selectedPartId} />
+              <CardLesson partId={selectedPartId} onReturnToPart={handleReturnToPart}/>
             )
           )
         )
       }
     <div datatype="toto">
     </div>
-      <Link to="/ajouter-cours"><button className="link-lesson-add mar-bottom-10px">Ajouter un cours</button></Link>
+      <Link to="/ajouter-cours"><button className="cardButton">Ajouter un cours</button></Link>
 
     </div>
   )
