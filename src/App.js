@@ -27,6 +27,10 @@ import ListEmargement from './pages/ListEmargement.js';
 import Admin from './pages/Admin.js';
 import Actualites from './pages/Actualites.js';
 import AddActualites from './features/AddActualite.js';
+import Promos from './pages/Promo.js';
+import UpdatePromos from './features/UpdatePromos.js';
+import PromosByID from './features/PromosByID.js';
+import AddPromos from './features/AddPromos.js';
 import './css/App.css';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
@@ -88,6 +92,12 @@ function App() {
               {/* Actualités */}
               <Route path="/actualites" element={logged(<><MenuPrincipal /><Actualites /></>)} />
               <Route path="/ajouter-actualite" element={logged(<><MenuPrincipal /><AddActualites /></>)} />
+
+              {/* Promos */}
+              <Route path="/gestion-promotion" element={<><MenuPrincipal /><Promos /></>} />
+              <Route path="/update-promotion/:promotionID" element={<><MenuPrincipal /><UpdatePromos /></>} />
+              <Route path="/voir-promotion/:promotionID" element={<><MenuPrincipal /><PromosByID /></>} />
+              <Route path="/ajouter-promotion" element={<><MenuPrincipal /><AddPromos /></>} />
           </Routes>
         </div>
 
