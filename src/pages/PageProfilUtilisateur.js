@@ -5,7 +5,6 @@ import "../css/PageProfilUtilisateur.css"
 export default class PageProfilUtilisateur extends Component {
   render() {
     return(
-      
         <section className="section-profil-user">
              <div className='container-profil'>
                 <div className='container-img'>
