@@ -12,9 +12,11 @@ function CardLesson(props) {
     const idPart = parseInt(props.partId);
     const [showModal, setShowModal] = useState(false); // new state for modal
     const [selectedItem, setSelectedItem] = useState(null); // permet de recuperer les données pour la modal
-    const { partId, onReturnToPart } = props;
+    const { returnToPart } = props;
+
+
     const handleReturnToPart = () => {
-      onReturnToPart();
+      returnToPart();
     };
     const getLessons = () => {
       setLoading(true)
@@ -31,10 +33,6 @@ function CardLesson(props) {
       getLessons();
     }, [])
 
-    // const goToLessons = (id) =>{
-    //   props.onToggle(id)
-    //   console.log({id})
-    // }
   useEffect(() =>{
     const filteredLessons = lessons.filter((item) => item.parts_id === idPart);
       setFilteredLessons(filteredLessons);
@@ -63,7 +61,7 @@ function CardLesson(props) {
   }
     return (
       <div className="lessonContainer">
-        <button onClick={handleReturnToPart}>return to parts</button>
+        <button className="button" onClick={handleReturnToPart}>Retour</button>
         {
           filteredLessons.length > 0 ? (
             filteredLessons.map(item => (

@@ -2,14 +2,19 @@ import React from "react";
 import "../css/card.css";
 import "../css/global.css";
 
-
+// Composant Card qui design les cards
+//  utilisations de props pour s'en reservir ailleurs.
 const Card =  ({title, content, button}) =>{
     return(
-        <div className="cardContainer">
-            <h2 className="cardTitle">{title}</h2>
-            <p>{content}</p>
-            <div className="buttonContainer">
-                <button className="cardButton" onClick={button}>Voir</button>
+        <div class="card">
+            <div class="card-body">
+                <div class="text-container">
+                    <h2>{title}</h2>
+                    <p>{content}</p>
+                </div>
+                <div class="button-container">
+                    <button class="button" onClick={button}>Voir</button>
+                </div>
             </div>
         </div>
     );

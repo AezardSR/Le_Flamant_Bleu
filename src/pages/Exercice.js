@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import '../css/Lesson.css';
 import "../css/card.css";
 import Module from '../component/Module';
@@ -50,9 +49,6 @@ function Exercice() {
           )
         )
       }
-    <div datatype="toto">
-    </div>
-      <Link to="/ajouter-cours"><button className="cardButton">Ajouter un cours</button></Link>
 
     </div>
   )

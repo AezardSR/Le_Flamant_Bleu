@@ -11,7 +11,12 @@ function Part(props) {
     const [parts, setParts] = useState([]);
     const [filteredParts, setFilteredParts] = useState([]);
     const idCategorie = parseInt(props.categorieId);
+    const { returnToCategorie } = props;
 
+
+    const handleReturnToCategorie = () => {
+      returnToCategorie();
+    };
     const getParts = () => {
       setLoading(true)
       fetch(`${process.env.REACT_APP_API_PATH}/parts`)
@@ -38,14 +43,20 @@ function Part(props) {
 
   if(loading){
     return(
-      <div className="containerLoading">
-        <div className="loading">Loading</div>
-        <div className="spinner"></div>
+      <div>
+        <h2 className="title-lessons">Choix de la partie du cours</h2>
+        <div className="containerLoading">
+          <div className="loading">Loading</div>
+          <div className="spinner"></div>
+        </div>
       </div>
     )
   }
     return (
       <div className="lessonContainer">
+        <h2 className="title-lessons">Choix de la partie du cours</h2>
+        <button className="button" onClick={handleReturnToCategorie}>Retour</button>
+
         {filteredParts.map(item => (
           <Card key={item.id} title={item.name} button={() => goToLessons(item.id)} />
         ))}

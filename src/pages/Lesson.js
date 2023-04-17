@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 import '../css/Lesson.css';
 import "../css/card.css";
 import Module from '../component/Module';
@@ -16,7 +15,8 @@ function Lesson() {
   const [selectedCategorieId, setSelectedCategorieId] = useState(null)
 
   const [showPart, setShowPart] = useState(true);
-  const [selectedPartId, setSelectedPartId] = useState(null)
+  const [selectedPartId, setSelectedPartId] = useState(null);
+
 
   const handleToggleModule = (moduleId) => {
     setShowModule((prev) => !prev);
@@ -37,6 +37,14 @@ function Lesson() {
   const handleReturnToPart = () => {
     setShowPart(true);
   };
+
+  const handleReturnToCategorie = () =>{
+    setShowCategorie(true)
+  }
+  
+  const handleReturnToModule = () => {
+    setShowModule(true)
+  }
   return (
     <div>
       {
@@ -44,20 +52,16 @@ function Lesson() {
           <Module onToggle={handleToggleModule}/>
         ) : ( 
           showCategorie ? (
-            <Categorie moduleId={selectedModuleId} onToggle={handleToggleCategorie} />
+            <Categorie moduleId={selectedModuleId} onToggle={handleToggleCategorie} returnToModule={handleReturnToModule} />
           ) : (
             showPart ? (
-              <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} />
+              <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} returnToCategorie={handleReturnToCategorie}  />
             ) : (
-              <CardLesson partId={selectedPartId} onReturnToPart={handleReturnToPart}/>
+              <CardLesson partId={selectedPartId} returnToPart={handleReturnToPart}/>
             )
           )
         )
       }
-    <div datatype="toto">
-    </div>
-      <Link to="/ajouter-cours"><button className="cardButton">Ajouter un cours</button></Link>
-
     </div>
   )
 }

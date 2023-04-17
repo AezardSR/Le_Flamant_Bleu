@@ -13,8 +13,11 @@ function CardExercice(props) {
     const idPart = parseInt(props.partId);
     const [showModal, setShowModal] = useState(false); // new state for modal
     const [selectedItem, setSelectedItem] = useState(null); // permet de recuperer les données pour la modal
+    const { returnToPart } = props;
 
-
+    const handleReturnToPart = () => {
+      returnToPart();
+    };
     const getExercices = () => {
       setLoading(true)
       fetch(`${process.env.REACT_APP_API_PATH}/exercices`)
@@ -30,10 +33,6 @@ function CardExercice(props) {
       getExercices();
     }, [])
 
-    // const goToLessons = (id) =>{
-    //   props.onToggle(id)
-    //   console.log({id})
-    // }
   useEffect(() =>{
     const filteredExercices = exercices.filter((item) => item.parts_id === idPart);
       setFilteredExercices(filteredExercices);
@@ -62,6 +61,7 @@ function CardExercice(props) {
   }
     return (
       <div className="lessonContainer">
+        <button className="button" onClick={handleReturnToPart}>Retour</button>
         {
           filteredExercices.length > 0 ? (
             filteredExercices.map(item => (
