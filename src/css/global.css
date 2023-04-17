@@ -97,7 +97,7 @@
     top: 0;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1200px) {
 
     .container-profil {
         height: auto !important;
@@ -160,7 +160,7 @@
     }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 1200px) {
     .menu {
         clear: none;
         float: right;
@@ -170,4 +170,3 @@
         display: none;
     }
 }
-  
