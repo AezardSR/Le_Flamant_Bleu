@@ -200,3 +200,21 @@
   }
 
   .planning-details {font-size: 14px;}
+
+@media (max-width: 780px) {
+  .responsive-calendar {
+    margin-top: 100px;
+  } 
+
+  .calendar-appointments {
+    flex-direction: column;
+  }
+
+  .date-select-calendar {
+    width: 90%;
+  }
+
+  .calendar-container .btn-add {
+    right: 0;
+  }
+}

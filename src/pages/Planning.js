@@ -22,7 +22,7 @@ function Planning() {
     }
 
     return (
-      <div>
+      <div className='responsive-calendar'>
             <div className='calendar-container'>
                 <Calendar onChange={setDate} value={date}  />
 
