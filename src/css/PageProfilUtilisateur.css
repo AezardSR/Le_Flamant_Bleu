@@ -56,3 +56,9 @@
 .container-btn{
     text-align: center;
 }
+
+@media (max-width: 780px) {
+    .input-profil {
+        width: 100%;
+    }
+}

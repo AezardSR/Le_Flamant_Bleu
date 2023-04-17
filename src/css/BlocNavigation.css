@@ -31,3 +31,13 @@
     transform: scale(1.2);
     transition: ease 0.3s all;
 }
+
+@media (max-width: 780px) {
+    .all-bloc-navigation {
+        width: 80%;
+    }
+
+    .all-bloc-navigation .bloc-navigation {
+        width: 100%;
+    }
+}
