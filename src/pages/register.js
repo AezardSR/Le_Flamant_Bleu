@@ -1,8 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import "../css/styles.css"
 import { ApiContext } from '../features/APIToken/ApiContext.js';
-import BannerAlert from '../component/BannerAlert.js';
 
 export default function Register() {
   const { user, loginError, passError, mailError, registerUser} = useContext(ApiContext);
@@ -30,19 +29,24 @@ export default function Register() {
     })
 }
     return (
-        <div className='container'>
-            <div className="container-connexion">
-                <form onSubmit={handleSubmit} className="form-register">
-                  {/* <label>Identifiant</label> */}
-                  <input name='name' className="input-connexion" placeholder="Nom" onChange={e => setName(e.target.value)}/>
-                  <p className="errorMessage">{mailError}</p>
-                  {/* <label>Mot de passe</label> */}
-                  <input name='firstname' className="input-connexion" placeholder="Prénom" onChange={e => setFirstname(e.target.value)} />
-                  <p className="errorMessage">{passError}</p>
-                  <input name='mail' className="input-connexion" placeholder="mail" onChange={e => setMail(e.target.value)}/>
-                  <input type='password' name='password' className="input-connexion" placeholder="mot de passe" onChange={e => setPassword(e.target.value)}/>
-                  <input type='password' name='password_confirmation' className="input-connexion" placeholder="confirmation du mot de pass" onChange={e => setPasswordConfirm(e.target.value)}/>
-                  <input type="submit" className="btn-connexion" value="Inscription"/>
+        <div>
+          <h1 className="title">Inscription d'utilisateur</h1>
+            <div className="container-r">
+                <form onSubmit={handleSubmit} id="form-register">
+                  <div>
+                    <div>
+                      <input name='name' className="input-r" placeholder="Nom" onChange={e => setName(e.target.value)}/>
+                      <p className="errorMessage">{mailError}</p> 
+                    </div>
+                    <div>
+                      <input name='firstname' className="input-r" placeholder="Prénom" onChange={e => setFirstname(e.target.value)} />
+                      <p className="errorMessage">{passError}</p>
+                    </div>
+                  </div>
+                  <input name='mail' className="input-r" placeholder="mail" onChange={e => setMail(e.target.value)}/>
+                  <input type='password' name='password' className="input-r" placeholder="mot de passe" onChange={e => setPassword(e.target.value)}/>
+                  <input type='password' name='password_confirmation' className="input-r" placeholder="confirmation du mot de pass" onChange={e => setPasswordConfirm(e.target.value)}/>
+                  <input type="submit" className="btn-r" value="Valider"/>
                   <p className="errorMessage">{loginError}</p>
                 </form>
             </div>
