@@ -1,4 +1,3 @@
-import { getByTitle } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import '../css/AddLesson.css';
@@ -12,7 +11,7 @@ const AddLesson = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/parts/')
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
       .then(response => response.json())
       .then(data => setParts(data))
   }, [])
@@ -24,7 +23,7 @@ const AddLesson = () => {
         body: JSON.stringify({name: title, content: description, duration: duration, parts_id: partsID})
     };
 
-    fetch('http://localhost:8000/api/lessons', requestOptions)
+    fetch(`${process.env.REACT_APP_API_PATH}/lessons`, requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

@@ -13,7 +13,7 @@ const AddExercice = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/parts/')
+    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
       .then(response => response.json())
       .then(data => setParts(data))
   }, [])
@@ -25,7 +25,7 @@ const AddExercice = () => {
         body: JSON.stringify({name: title, content: description, image: image, file: file, parts_id: partsID})
     };
 
-    fetch('http://localhost:8000/api/exercices', requestOptions)
+    fetch(`${process.env.REACT_APP_API_PATH}/exercices`, requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

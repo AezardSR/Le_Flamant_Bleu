@@ -1,26 +1,39 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import Avatar from '../assets/img/leroy.jpg'
 import LaManu from '../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperclip ,faAddressCard, faGear, faHome, faCalendar, faGraduationCap, faLaptopCode, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
+import { faPaperclip , faGear, faHome, faGraduationCap, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
 import '../css/MenuPrincipal.css';
 import '../css/global.css';
-import { ApiContext, ApiProvider } from "../features/APIToken/ApiContext";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 
 function Main() {
     const {user} = useContext(ApiContext);
-    console.log(user);
+    const navigate = useNavigate();
+    let userInfo = user.user;
+
+    const logout = () =>{
+        localStorage.removeItem("token");
+        navigate('/login');
+    }
+    const userName = () =>{
+        if(userInfo && userInfo.firstname){
+            return userInfo.firstname
+        } else {
+            return null
+        }
+    }
     return(
         <div className="menu-principal">
             <div className="p-relative">
                 <div className="avatar-menu">
                     <img src={Avatar} alt="avatar de la personne" className="img-menu-avatar"/>
-                    <p>{user.firstname}</p>
+                    <p>{userName()}</p>
                     <div className='avatar-menu-parametre'>
-                        <Link to="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></Link>
-                        <Link to="/login"><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></Link>
+                        <a href="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></a>
+                        <a href="/login" onClick={logout}><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></a>
                     </div>
                 </div>
                 <div className="listing-menu">
@@ -46,7 +59,8 @@ function Main() {
                 </div>
             </div>
         </div>
-)}
+    )
+}
 
 
 export default Main;
