@@ -8,8 +8,8 @@ function ListUtilisateur() {
 
           useEffect(() => {
             Promise.all([
-              fetch('http://localhost:8000/api/partner-contacts'),
-              fetch('http://localhost:8000/api/user'),
+              fetch(`${process.env.REACT_APP_API_PATH}/partner-contacts`),
+              fetch(`${process.env.REACT_APP_API_PATH}/user`),
             ])
               .then(([resContact, resUser]) =>
                 Promise.all([resContact.json(), resUser.json()])  

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
 import ImgAnnouncement from '../assets/img/logo_la_manu.png'
 import '../css/IndexJobsAnnouncements.css';
 
@@ -8,7 +7,7 @@ export default function IndexJobsAnnouncements() {
 
     useEffect(() => {
         Promise.all([
-          fetch('http://localhost:8000/api//job-offers'),
+          fetch(`${process.env.REACT_APP_API_PATH}/job-offers'`),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  
@@ -24,7 +23,7 @@ export default function IndexJobsAnnouncements() {
                 {jobs.map((job) => (
                     <a href={job.link}>
                         <div className='index-jobs-offers'>
-                            <img src={ImgAnnouncement} />
+                            <img alt="" src={ImgAnnouncement} />
                             <div>
                                 <h3>{job.name}</h3>
                                 <p>{job.description}</p>
