@@ -2,7 +2,7 @@
 .tableau-bord {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
     margin: 0 45px;
     padding-top: 30px;
 }
@@ -83,4 +83,13 @@
 
 .tableau-bord .right-tb .img-right-tb {
     height: 600px;
+}
+
+/* Media query */
+
+@media screen and (max-width: 780px) {
+    .tableau-bord {
+        flex-direction: column;
+        margin-top: 0 !important;
+    }
 }
