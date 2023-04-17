@@ -5,7 +5,7 @@ import TableauBord from './pages/TableauBord.js';
 import MenuPrincipal from './pages/MenuPrincipal.js';
 import MaFormation from './pages/MaFormation.js';
 import Categorie from './pages/Categorie.js';
-// import Parts from './pages/Parts.js';
+import Parts from './pages/Parts.js';
 import Emplois from './pages/Emploi.js';
 import Calendrier from './pages/Planning.js';
 import AddEventPlanning from './features/AddEventPlanning.js';
@@ -15,7 +15,7 @@ import Exercice from './pages/Exercice.js';
 import AddLesson from './features/AddLesson.js';
 import AddExercice from './features/AddExercice.js';
 import AddCategorie from './features/AddCategorie.js';
-// import AddParts from './features/AddParts.js';
+import AddParts from './features/AddParts.js';
 import DeleteCategorie from './features/DeleteCategorie.js';
 // import DeleteParts from './features/DeleteParts.js';
 import UpdateCategorie from './features/UpdateCategorie.js';
@@ -66,6 +66,8 @@ function App() {
             <Route path="/ajouter-categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
             <Route path="/modifier-categorie/:categoriesID" element={<><MenuPrincipal /><UpdateCategorie /></>} />
 
+            <Route path="/parties" element={<><MenuPrincipal /><Parts /></>} />
+            <Route path="/ajouter-parties" element={<><MenuPrincipal /><AddParts /></>} />
             <Route path="/modifier-parties/:partsID" element={<><MenuPrincipal /><UpdateParts /></>} />
 
                 {/* Cours */}
