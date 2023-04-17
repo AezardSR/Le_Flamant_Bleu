@@ -19,7 +19,7 @@ import AddCategorie from './features/AddCategorie.js';
 import DeleteCategorie from './features/DeleteCategorie.js';
 // import DeleteParts from './features/DeleteParts.js';
 import UpdateCategorie from './features/UpdateCategorie.js';
-// import UpdateParts from './features/UpdateParts.js';
+import UpdateParts from './features/UpdateParts.js';
 import JobsAnnouncements from './pages/JobsAnnouncements.js';
 import AddJobsAnnouncements from './features/AddJobsAnnouncements.js';
 import IndexJobsAnnouncements from './pages/IndexJobsAnnouncements.js';
@@ -64,13 +64,9 @@ function App() {
 
             <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
             <Route path="/ajouter-categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
-            <Route path="/supprimer-categorie" element={<><MenuPrincipal /><DeleteCategorie /></>} />
             <Route path="/modifier-categorie/:categoriesID" element={<><MenuPrincipal /><UpdateCategorie /></>} />
 
-            {/* <Route path="/parties" element={<><MenuPrincipal /><Parts /></>} />
-            <Route path="/ajouter-parties" element={<><MenuPrincipal /><AddParts /></>} />
-            <Route path="/supprimer-parties" element={<><MenuPrincipal /><DeleteParts /></>} />
-            <Route path="/modifier-parties" element={<><MenuPrincipal /><UpdateParts /></>} /> */}
+            <Route path="/modifier-parties/:partsID" element={<><MenuPrincipal /><UpdateParts /></>} />
 
                 {/* Cours */}
                 <Route path="/cours" element={logged(<><MenuPrincipal /><Lesson /></>)} />
