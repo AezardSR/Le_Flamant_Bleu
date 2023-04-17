@@ -41,7 +41,6 @@ export const ApiProvider  = ({children}) => {
     },[token])
     
     const fetchUser = () => {
-            
             fetch(`${process.env.REACT_APP_API_PATH}/user-profile`, {
             method: 'GET',
             headers: {
@@ -53,6 +52,21 @@ export const ApiProvider  = ({children}) => {
             )).then((data) => {
                 setUser(data)
             })
+    }
+
+    const registerUser = (credentials) => {
+        return fetch(`${process.env.REACT_APP_API_PATH}/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(credentials)
+        })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data)  
+        })
+        .catch((error) => { console.log('error: ' + error.message) })
     }
 
     const logout = () =>{
@@ -67,7 +81,7 @@ export const ApiProvider  = ({children}) => {
         }
 
     return (
-        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError}}>
+        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError, registerUser}}>
             {children}
         </ApiContext.Provider>
     )
