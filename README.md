@@ -10,7 +10,7 @@ Projet étudiant de groupe dans le cadre du diplôme Concepteur développeur d'a
 
 [Le_flamant_bleu_mobile](https://github.com/AezardSR/Le_flamant_bleu_mobile)
 
-[Maquette Figma](https://www.figma.com/file/kva3zi6Y3C5MYt3lMt98pi/Maquette-graphique?node-id=0%3A1&t=K96Wh9wPDICLt34U-1)
+[Maquette Figma](https://www.figma.com/file/kva3zi6Y3C5MYt3lMt98pi/Maquette-graphique)
 
 [Drive du projet](https://drive.google.com/drive/folders/1hYF2iZViqM8UmmsodYR9z_5P_a-iQIlf)
 
