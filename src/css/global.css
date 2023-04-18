@@ -5,8 +5,10 @@
     --color-white : #ffffff;
 }
 
-.p-relative {
-    position: relative;
+.error-delete {
+    color: red;
+    margin: auto;
+    font-weight: bold;
 }
   
   .menu-principal ul {
