@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import '../css/Lesson.css';
+import '../css/styles.css';
 
 function Exercice() {
     const [categories, setCategories] = useState([]);

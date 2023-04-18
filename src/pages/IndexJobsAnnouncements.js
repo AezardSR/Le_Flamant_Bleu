@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImgAnnouncement from '../assets/img/logo_la_manu.png'
-import '../css/IndexJobsAnnouncements.css';
+import '../css/styles.css';
 
 export default function IndexJobsAnnouncements() {
     const [jobs, setJobs] = useState([]);
