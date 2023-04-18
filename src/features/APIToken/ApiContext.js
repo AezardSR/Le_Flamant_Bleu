@@ -30,15 +30,24 @@ export const ApiProvider  = ({children}) => {
     })}
 
     const requestAPI = (url, method, body) => {
-                return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
-                    method: method,
-                    headers: {
-                        'content-type': 'application/json',
-                        'Authorization' : 'bearer ' + token
-                    },
-                    body: JSON.stringify(body)
-                })
-}
+        if(body === null){
+            return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                method: method,
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization' : 'bearer ' + token
+                },
+            })
+        }else {
+            return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                method: method,
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization' : 'bearer ' + token
+                },
+                body: JSON.stringify(body)
+            })
+}}
     
     const login = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
@@ -66,13 +75,7 @@ export const ApiProvider  = ({children}) => {
 
     
     const fetchUser = () => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user-profile`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                    'Authorization' : 'bearer ' + token
-                },
-            }).then((res) => (
+        requestAPI('/user-profile', 'GET', null).then((res) => (
                 res.json()
             )).then((data) => {
                 setUser(data)
@@ -83,14 +86,7 @@ export const ApiProvider  = ({children}) => {
     },[token])
 
     const registerUser = (credentials) => {
-        return fetch(`${process.env.REACT_APP_API_PATH}/register`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(credentials)
-        })
-        .then(response => response.json())
+        requestAPI('/register', 'POST', credentials).then(response => response.json())
         .then((data) => {
             console.log(data)
             console.log(data)
@@ -108,24 +104,14 @@ export const ApiProvider  = ({children}) => {
     }
 
     const logout = () =>{
-        fetch(`${process.env.REACT_APP_API_PATH}/logout`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization' : 'bearer ' + token
-            }}).then((res) => (res.json())).then((data)=> {
+        requestAPI('/logout', 'GET', null).then((res) => (res.json()))
+        .then((data)=> {
                 setUser(data)
             })
         }
 
         const getRoles = () => {
-            fetch(`${process.env.REACT_APP_API_PATH}/roles`, {
-              method: 'GET',
-              headers: {
-                  'content-type': 'application/json',
-                  'Authorization' : 'bearer ' + token
-              }
-              }).then((res) => (
+            requestAPI('/roles', 'GET', null).then((res) => (
                   res.json()
               )).then((data) => {
                   setRolesList(data)
@@ -133,24 +119,10 @@ export const ApiProvider  = ({children}) => {
           }
 
         const getTypes = () => {
-            fetch(`${process.env.REACT_APP_API_PATH}/types`, {
-              method: 'GET',
-              headers: {
-                  'content-type': 'application/json',
-                  'Authorization' : 'bearer ' + token
-              }
-              }).then((res) => (
+            requestAPI('/types', 'GET', null).then((res) => (
                   res.json()
               )).then((data) => {
-                if(data.message === "user registered"){
                     setTypesList(data)
-                } else {
-                    setNameError(data.name)
-                    setFirstnameError(data.firstname)
-                    setMailError(data.mail)
-                    setPassError(data.password)
-                    setLoginError(data.message)
-                }
               }).catch((error) => { console.log('error: ' + error.message) })
           }
 

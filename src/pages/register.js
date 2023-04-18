@@ -29,13 +29,14 @@ export default function Register() {
     }).then(data => {
       if(data.message === "user registered"){
         setUserRegistered("utilisateur bien enregistré")
-        window.location.reload();
+        //window.location.reload();
       }
     })
 }
-
+useEffect(() =>{
   getRoles()
   getTypes()
+},[])
 
 
 return (
