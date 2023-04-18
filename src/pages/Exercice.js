@@ -32,6 +32,18 @@ function Exercice() {
     setShowPart((prev) => !prev);
     setSelectedPartId(partId)
   }
+
+  const handleReturnToPart = () => {
+    setShowPart(true);
+  };
+
+  const handleReturnToCategorie = () =>{
+    setShowCategorie(true)
+  }
+  
+  const handleReturnToModule = () => {
+    setShowModule(true)
+  }
   return (
     <div>
       {
@@ -39,12 +51,12 @@ function Exercice() {
           <Module onToggle={handleToggleModule}/>
         ) : ( 
           showCategorie ? (
-            <Categorie moduleId={selectedModuleId} onToggle={handleToggleCategorie} />
+            <Categorie moduleId={selectedModuleId} onToggle={handleToggleCategorie} returnToModule={handleReturnToModule} />
           ) : (
             showPart ? (
-              <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} />
+              <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} returnToCategorie={handleReturnToCategorie} />
             ) : (
-              <CardExercice partId={selectedPartId} />
+              <CardExercice partId={selectedPartId} returnToPart={handleReturnToPart} />
             )
           )
         )
