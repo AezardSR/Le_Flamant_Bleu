@@ -15,7 +15,9 @@ function Parts() {
     }, [])
 
     function deleteID(id) {
+      //Prend en compte la méthode Delete
       fetch(`${process.env.REACT_APP_API_PATH}/parts/` + id, { method: 'DELETE' })
+        //Si la réponse est différente de 200 alors remplace MessageError de false en true
         .then(response => {
           if (response.status != 200) {
             setMessageError(true);
@@ -23,6 +25,7 @@ function Parts() {
         })
         .then(data => console.log(data))
 
+      //Remet le messageError en false au clique sur un autre bouton delete
       setMessageError(false);
     }
 
@@ -38,6 +41,7 @@ function Parts() {
                     </div>
                 </div>
             ))}
+            {/* Affiche le messageError si setMesssageError = true */}
             {messageError && (
               <div className='error-delete'> Une erreur est survenu, veuillez effacer les exercices et cours en lien avec la partie </div>
             )}
