@@ -18,7 +18,6 @@ function Parts() {
       fetch(`${process.env.REACT_APP_API_PATH}/parts/` + id, { method: 'DELETE' })
         .then(response => {
           if (response.status != 200) {
-            console.log('test');
             setMessageError(true);
           }
         })
@@ -40,7 +39,7 @@ function Parts() {
                 </div>
             ))}
             {messageError && (
-              <div className='error-delete'> Une erreur est survenu, veuillez effacer les exercices et cours en liant avec cette partie </div>
+              <div className='error-delete'> Une erreur est survenu, veuillez effacer les exercices et cours en lien avec la partie </div>
             )}
         </div>
 
