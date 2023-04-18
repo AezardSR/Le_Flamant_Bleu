@@ -8,9 +8,9 @@ import '../css/MenuPrincipal.css';
 import '../css/global.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
+
 function Main() {
     const {user} = useContext(ApiContext);
-
     const navigate = useNavigate();
     let userInfo = user.user;
 

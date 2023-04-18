@@ -22,7 +22,7 @@ const UpdateCategorie = () => {
     const requestOptions = {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({categorie: category})
+        body: JSON.stringify({categorie: categoryID})
     };
     fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
       .then(response => response.json())
@@ -38,7 +38,7 @@ const UpdateCategorie = () => {
           <label htmlFor="category">Nom à modifier :</label>
           <input type="text" id="name" name="category" value={category.categorie} onChange={handleInputChange} />
         </div>
-        <button type="submit">Modifier la leçon</button>
+        <button type="submit">Modifier la catégorie</button>
       </form>
     </div>
   );
