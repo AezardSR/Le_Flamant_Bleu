@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import LogoManu from '../../assets/img/logo_la_manu.png'
 import "../../css/styles.css"
 import { ApiContext } from './ApiContext';
@@ -10,11 +10,13 @@ export default function Login({ setToken }) {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
+
   useEffect(()=>{
+    console.log(user);
     if(localStorage.getItem('token') && user.message === "success" ){
-      navigate('/')
+      navigate('/');
     }
-  })
+  },[user])
 
   const handleSubmit = async e => {
     e.preventDefault();

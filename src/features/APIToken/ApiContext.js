@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import useToken from "./useToken";
+import { Navigate } from "react-router-dom";
 
 const ApiContext = createContext();
 
@@ -11,7 +12,34 @@ export const ApiProvider  = ({children}) => {
     const [passError, setPassError] = useState(false) // mise en place du state passError pour l'utilisation sur la page de connexion
     const [mailError, setMailError] = useState(false) // mise en place du state mailError pour l'utilisation sur la page de connexion
     const [loginError, setLoginError] = useState(false) // mise en place du state loginError pour l'utilisation sur la page de connexion
+    const [rolesList, setRolesList] = useState(false); // mise en place du state rolesList pour l'utilisation sur la page d'inscription
+    const [typesList, setTypesList] = useState(false); // mise en place du state typesList pour l'utilisation sur la page d'inscription
+    const [nameError, setNameError] = useState(false); // mise en place du state nameError pour l'utilisation sur la page d'inscription
+    const [firstnameError, setFirstnameError] = useState(false); // mise en place du state firstnameError pour l'utilisation sur la page d'inscription
 
+    const refreshToken = () => {
+        fetch(`${process.env.REACT_APP_API_PATH}/refresh`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization' : 'bearer ' + token
+        }}).then(res => res.json()).then(data => {
+            if(data.message === "connected"){
+                setToken(data.access_token);                
+            }
+    })}
+
+    const requestAPI = (url, method, body) => {
+                return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                    method: method,
+                    headers: {
+                        'content-type': 'application/json',
+                        'Authorization' : 'bearer ' + token
+                    },
+                    body: JSON.stringify(body)
+                })
+}
+    
     const login = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
           method: 'POST',
@@ -23,7 +51,6 @@ export const ApiProvider  = ({children}) => {
         .then(response => response.json())
         .then((data) => {
             if(data.message === "connected"){
-                console.log(data)
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 setToken(data.access_token)
                 console.log(token)
@@ -36,23 +63,24 @@ export const ApiProvider  = ({children}) => {
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
-    useEffect(()=>{
-        fetchUser()
-    },[token])
+
     
     const fetchUser = () => {
-            fetch(`${process.env.REACT_APP_API_PATH}/user-profile`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization' : 'bearer ' + token
-            }
+        fetch(`${process.env.REACT_APP_API_PATH}/user-profile`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization' : 'bearer ' + token
+                },
             }).then((res) => (
                 res.json()
             )).then((data) => {
                 setUser(data)
             })
     }
+    useEffect(()=>{
+        fetchUser()
+    },[token])
 
     const registerUser = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/register`, {
@@ -64,13 +92,23 @@ export const ApiProvider  = ({children}) => {
         })
         .then(response => response.json())
         .then((data) => {
-            console.log(data)  
+            console.log(data)
+            console.log(data)
+            if(data.message === "user registered"){
+                setTypesList(data)
+            } else {
+                setNameError(data.name)
+                setFirstnameError(data.firstname)
+                setMailError(data.mail)
+                setPassError(data.password)
+                setLoginError(data.message)
+            }
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
 
     const logout = () =>{
-        fetch('http://localhost:8000/api/logout', {
+        fetch(`${process.env.REACT_APP_API_PATH}/logout`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -80,8 +118,44 @@ export const ApiProvider  = ({children}) => {
             })
         }
 
+        const getRoles = () => {
+            fetch(`${process.env.REACT_APP_API_PATH}/roles`, {
+              method: 'GET',
+              headers: {
+                  'content-type': 'application/json',
+                  'Authorization' : 'bearer ' + token
+              }
+              }).then((res) => (
+                  res.json()
+              )).then((data) => {
+                  setRolesList(data)
+              }).catch((error) => { console.log('error: ' + error.message) })
+          }
+
+        const getTypes = () => {
+            fetch(`${process.env.REACT_APP_API_PATH}/types`, {
+              method: 'GET',
+              headers: {
+                  'content-type': 'application/json',
+                  'Authorization' : 'bearer ' + token
+              }
+              }).then((res) => (
+                  res.json()
+              )).then((data) => {
+                if(data.message === "user registered"){
+                    setTypesList(data)
+                } else {
+                    setNameError(data.name)
+                    setFirstnameError(data.firstname)
+                    setMailError(data.mail)
+                    setPassError(data.password)
+                    setLoginError(data.message)
+                }
+              }).catch((error) => { console.log('error: ' + error.message) })
+          }
+
     return (
-        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError, registerUser}}>
+        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError, firstnameError, nameError, registerUser, getRoles, rolesList,typesList, getTypes, requestAPI, refreshToken  }}>
             {children}
         </ApiContext.Provider>
     )

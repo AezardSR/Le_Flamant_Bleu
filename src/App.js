@@ -32,16 +32,15 @@ import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
 import Register from './pages/register.js';
 
-
 function App() {
     const {user} = useContext(ApiContext);
     const logged = (comp) => {
-       if( !localStorage.getItem("token") || user.status === "Token is Invalid" ){
-          console.log("redirection vers la page de connexion")
-         return <Navigate to="/login" replace={true} />
-       } else {
-         return comp
-       }
+      if( !localStorage.getItem("token") || user.status === "Token is Invalid" ){
+        console.log("redirection vers la page de connexion")
+       return <Navigate to="/login" replace={true} />
+     } else {
+       return comp
+     }
     }
     return (
     <div className="App">

@@ -14,8 +14,8 @@
     margin-bottom: 30px;
 }
 .container{
-    height: 100vh;
     width: 100%;
+    padding: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
+    align-items: center;
 }
 .form-connexion{
     display: flex;
@@ -57,7 +58,6 @@
     border: none;
     font-size: 20px;
 }
-
 a .btn-connexion  {
     color : #FFF;
     text-decoration: none;
@@ -98,6 +98,10 @@ a .btn-connexion  {
     align-items: center;
     padding: 2%;
 }
+#form-register{
+    display: flex;
+    flex-direction: column;
+}
 #form-register > div:nth-child(1){
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -114,6 +118,9 @@ a .btn-connexion  {
     outline: none;
     border: 2px solid black;
 }
+#form-register > input:nth-child(2){
+    margin-top : 0;
+}
 .btn-r{
     color : #FFF;
     background-color: #28abe2 ;
@@ -122,4 +129,10 @@ a .btn-connexion  {
     width: 150px;
     border: none;
     font-size: 20px;
+    align-self: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
