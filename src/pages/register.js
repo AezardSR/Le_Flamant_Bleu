@@ -1,23 +1,25 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { useNavigate } from "react-router-dom";
 import "../css/styles.css"
 import { ApiContext } from '../features/APIToken/ApiContext.js';
 
 export default function Register() {
+  //importation des éléments du contexte
   const { loginError, passError, mailError,nameError, firstnameError, registerUser, rolesList, getRoles, getTypes, typesList} = useContext(ApiContext);
-  const [mail, setMail] = useState();
-  const [name, setName] = useState();
-  const [firstname, setFirstname] = useState();
-  const [password, setPassword] = useState();
-  const [password_confirmation, setPasswordConfirm] = useState();
-  const [roles_id, setRole] = useState();
-  const [types_id, setType] = useState();
-  const [userRegisterd, setUserRegistered] = useState(false);
+  //définition des états
+  const [mail, setMail] = useState();// définition de l'état mail
+  const [name, setName] = useState();// définition de l'état du nom
+  const [firstname, setFirstname] = useState(); // définition de l'état prénom
+  const [password, setPassword] = useState();// définition de l'état du mot de passe    
+  const [password_confirmation, setPasswordConfirm] = useState(); // définition de l'état de la confirmation du mot de passe
+  const [roles_id, setRole] = useState(); // définition de l'état du rôle
+  const [types_id, setType] = useState(); // définition de l'état du type
+  const [userRegisterd, setUserRegistered] = useState(false); // définition de l'état de l'inscription de l'utilisateur
 
 
-
+//Fonction permettant de gérer l'envoie du formulaire d'inscription d'utilisateur
   const handleSubmit = async e => {
     e.preventDefault();
+    //on appelle la fonction registerUser avec les informations "credentials" qui seront envoyées à l'API
     registerUser({
         name,
         firstname,
@@ -28,17 +30,18 @@ export default function Register() {
         types_id
     }).then(data => {
       if(data.message === "user registered"){
-        setUserRegistered("utilisateur bien enregistré")
+        setUserRegistered("utilisateur bien enregistré")//définition de l'état de l'inscription de l'utilisateur
         //window.location.reload();
       }
     })
 }
+//on récupère les rôles et les types d'utilisateur au chargement de la page
 useEffect(() =>{
-  getRoles()
-  getTypes()
+  getRoles()//recupération des rôles
+  getTypes()//recupération des types
 },[])
 
-
+// on retourne le composant
 return (
         <div className='container flex-column'>
           <h1 className="title">Inscription d'utilisateur</h1>

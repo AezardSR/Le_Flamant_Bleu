@@ -9,15 +9,17 @@ import '../css/global.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Main() {
-    const {user} = useContext(ApiContext);
-
+    const {user} = useContext(ApiContext);//importation de l'objet user depuis le context
     const navigate = useNavigate();
-    let userInfo = user.user;
 
+    let userInfo = user.user; //mise en place de la variable userInfo pour une utilisation simplifé dde l'objet user
+
+    //fonction de déconnexion
     const logout = () =>{
-        localStorage.removeItem("token");
-        navigate('/login');
+        localStorage.removeItem("token");//retire le token de la mémoire locale(localStorage)
+        navigate('/login');//redirige vers la page de connexion
     }
+    //fonction qui retourne le nom de l'utilisateur pour l'afficher dans le menu
     const userName = () =>{
         if(userInfo && userInfo.firstname){
             return userInfo.firstname
