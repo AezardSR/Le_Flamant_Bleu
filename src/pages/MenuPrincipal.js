@@ -1,5 +1,5 @@
 import React, { useContext} from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from '../assets/img/leroy.jpg'
 import LaManu from '../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,11 +7,10 @@ import { faPaperclip , faGear, faHome, faGraduationCap, faMessage, faCircleQuest
 import '../css/MenuPrincipal.css';
 import '../css/global.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
-import { Link } from 'react-router-dom';
-
 
 function Main() {
     const {user} = useContext(ApiContext);
+
     const navigate = useNavigate();
     let userInfo = user.user;
 
@@ -32,15 +31,15 @@ function Main() {
                 <div className="avatar-menu">
                     <img src={Avatar} alt="avatar de la personne" className="img-menu-avatar"/>
                     <p>{userName()}</p>
-                    <div className='avatar-menu-parametre'>
-                        <a href="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></a>
-                        <a href="/login" onClick={logout}><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></a>
-                    </div>
                 </div>
                 <div className="listing-menu">
                     <input class="menu-btn" type="checkbox" id="menu-btn" />
                     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
                     <ul className="ul-listing-menu menu">
+                        <div className='avatar-menu-parametre'>
+                            <Link to="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></Link>
+                            <Link to="/login"><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></Link>
+                        </div>
                         <Link to="/"><li><FontAwesomeIcon icon={faHome} />Tableau de bord</li></Link>
                         <Link to="/ma-formation"><li><FontAwesomeIcon icon={faGraduationCap} />Ma formation</li></Link>
                         {/* <Link to="/calendrier"><li><FontAwesomeIcon icon={faCalendar} />Calendrier</li></Link>
