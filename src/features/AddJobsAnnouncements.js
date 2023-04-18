@@ -49,12 +49,14 @@ const AddJobsAnnouncements = () => {
             </div>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setUserID(event.target.value)}} value={userID}>
+              <option value="">--Choisir une option--</option>
               {user.map((createdBy) => (
                 <option key={createdBy.id} value={createdBy.id}>{createdBy.id} : {createdBy.name}</option>
               ))}
             </select>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartnerContactsID(event.target.value)}} value={partnerContactsID}>
+              <option value="">--Choisir une option--</option>
               {partnerContacts.map((entreprise) => (
                 <option key={entreprise.id} value={entreprise.id}>{entreprise.id} : {entreprise.name} {entreprise.firstname}</option>
               ))}

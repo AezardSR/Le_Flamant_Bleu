@@ -62,18 +62,21 @@ const AddEventPlanning = () => {
             </div>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setReceiverID(event.target.value)}} value={receiverID}>
+                <option value="">--Choisir une option--</option>
                 {receiver.map((invit) => (
                     <option key={invit.id} value={invit.id}>{invit.id} : {invit.name} {invit.firstname}</option>
                 ))}
             </select>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCreatedID(event.target.value)}} value={createdID}>
+                <option value="">--Choisir une option--</option>
                 {created.map((createdBy) => (
                     <option key={createdBy.id} value={createdBy.id}>{createdBy.id} : {createdBy.name} {createdBy.firstname}</option>
                 ))}
             </select>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setTypeAppoitmentsID(event.target.value)}} value={typeAppoitmentsID}>
+                <option value="">--Choisir une option--</option>
                 {typeAppoitments.map((typeRDV) => (
                     <option key={typeRDV.id} value={typeRDV.id}>{typeRDV.id} : {typeRDV.name}</option>
                 ))}

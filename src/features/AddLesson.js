@@ -40,6 +40,7 @@ const AddLesson = () => {
             <div className='form-add-lesson-add-details'>
                 <div className='form-add-lesson-select-categorie'>
                   <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartsID(event.target.value)}} value={partsID}>
+                    <option value="">--Choisir une option--</option>
                     {parts.map((part) => (
                       <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
                     ))}
