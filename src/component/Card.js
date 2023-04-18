@@ -8,12 +8,12 @@ const Card =  ({title, content, button}) =>{
     return(
         <div class="card">
             <div class="card-body">
-                <div class="text-container">
+                <div class="card-text-container">
                     <h2>{title}</h2>
                     <p>{content}</p>
                 </div>
-                <div class="button-container">
-                    <button class="button" onClick={button}>Voir</button>
+                <div class="button-card-container">
+                    <button class="card-button" onClick={button}>Voir</button>
                 </div>
             </div>
         </div>

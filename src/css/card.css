@@ -2,7 +2,7 @@
     font-weight: 600;
     color: var(--color-light-blue);
     font-size: 25px;
-    padding: 15px 0;
+    padding: 25px 0;
     text-align: center;
     text-transform: uppercase;
 }
@@ -23,7 +23,7 @@
     align-items: flex-end;
   }
   
-  .text-container {
+  .card-text-container {
     flex: 1;
     padding : 10px;
   }
@@ -31,8 +31,12 @@
   .button-container {
     margin-left: 10px;
   }
+
+  .button-card-container {
+    margin-left: 10px;
+  }
   
-  .button {
+  .card-button {
     background-color: var(--color-dark-blue);
     color: #fff;
     border: none;
@@ -43,37 +47,19 @@
     margin-right: 5px;
     cursor: pointer;
   }
-  .button:hover{
+
+  .card-button:hover{
     background-color: white;
     color : var(--color-dark-blue)
   }
-  
-  @media (max-width: 768px) {
-    .card-body {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .text-container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    .button-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      margin-left: 0;
-      margin-top: 10px;
-    }
-    .button{
-        margin-right: 0px;
-    }
-  }
-
-.toto{
+  .button-container {
+    width: 100%;
     display: flex;
-    justify-content:space-around;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 10px;
 }
+
 /* SECTION LOADING */
 .spinner {
     border: 16px solid var(--color-dark-blue);
@@ -89,10 +75,12 @@
     100% { transform: rotate(360deg); }
   }
 
-  .loading{
-    font-size: 50px;
+  .title-nodata{
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
     color : var(--color-light-blue);
-    margin-bottom: 10px;
+    margin: 20px 0px;
   }
 
   .containerLoading{
@@ -139,6 +127,7 @@
     background: rgba(49,49,49,0.8);
 }
 .modal-title{
+    width: 80%;
     font-weight: 600;
     color: var(--color-light-blue);
     font-size: 25px;
@@ -147,7 +136,7 @@
 .modal-content {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 55%;
     transform: translate(-50%, -50%);
     line-height: 1.6;
     background: #f1f1f1;
@@ -166,5 +155,57 @@
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+/* autre */
+.btn-return{
+  background-color: var(--color-light-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 12px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.btn-return:hover{
+  color: var(--color-dark-blue);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 768px) {
+  .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-text-container{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+  .button-card-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0;
+      margin-top: 10px;
+  }
+  .card-button{
+      margin-right: 0px;
+  }
+  .title-lessons{
+    padding : 45px 0
+  }
+  .containerLoading{
+    left : 50%;
+  }
+}
+@media (max-width : 1199px){
+  .title-lessons{
+    padding : 45px 0px;
+  }
 }
 

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Card from "../component/Card";
-import { Link } from 'react-router-dom';
-import Module from "./Module";
 import '../css/Lesson.css';
 import "../css/card.css";
 
@@ -44,9 +42,8 @@ function Part(props) {
   if(loading){
     return(
       <div>
-        <h2 className="title-lessons">Choix de la partie du cours</h2>
+        <h2 className="title-lessons">Choix de la partie</h2>
         <div className="containerLoading">
-          <div className="loading">Loading</div>
           <div className="spinner"></div>
         </div>
       </div>
@@ -54,12 +51,19 @@ function Part(props) {
   }
     return (
       <div className="lessonContainer">
-        <h2 className="title-lessons">Choix de la partie du cours</h2>
-        <button className="button" onClick={handleReturnToCategorie}>Retour</button>
-
-        {filteredParts.map(item => (
-          <Card key={item.id} title={item.name} button={() => goToLessons(item.id)} />
-        ))}
+        <h2 className="title-lessons">Choix de la partie</h2>
+        {
+        filteredParts.length > 0 ? (
+          filteredParts.map(item => (
+            <Card key={item.id} title={item.name} button={() => goToLessons(item.id)} />
+        ))
+        ) : (
+          <div className="title-nodata">Pas de partie disponible</div>
+        )
+      }
+        <div className="button-container">
+          <button className="btn-return" onClick={handleReturnToCategorie}>Retour</button>
+        </div>
       </div>
     )
   }

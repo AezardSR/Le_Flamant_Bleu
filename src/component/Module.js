@@ -37,7 +37,6 @@ function Module(props) {
       <div>
         <h2 className="title-lessons">Choix du module</h2>
         <div className="containerLoading">
-          <div className="loading">Loading</div>
           <div className="spinner"></div>
         </div>
       </div>

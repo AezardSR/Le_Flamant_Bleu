@@ -61,7 +61,6 @@ function Categorie(props) {
       <div>
         <h2 className="title-lessons">Choix de la categorie</h2>
         <div className="containerLoading">
-          <div className="loading">Loading</div>
           <div className="spinner"></div>
         </div>
       </div>
@@ -74,7 +73,7 @@ function Categorie(props) {
           <Card key={item.id} title={item.categorie} button={() => goToParts(item.id)} />
         ))}
         <div className="button-container">
-        <button className="button" onClick={handleReturnToModule}>Retour</button>
+          <button className="btn-return" onClick={handleReturnToModule}>Retour</button>
         </div>
         
       </div>

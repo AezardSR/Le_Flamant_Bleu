@@ -53,24 +53,24 @@ function CardLesson(props) {
   }
   if(loading){
     return(
+      <>
+      <h2 className="title-lessons">Choix du cours</h2>
       <div className="containerLoading">
-        <div className="loading">Loading</div>
         <div className="spinner"></div>
       </div>
+      </>
     )
   }
     return (
       <div className="lessonContainer">
-        <button className="button" onClick={handleReturnToPart}>Retour</button>
+      <h2 className="title-lessons">Choix du cours</h2>
         {
           filteredLessons.length > 0 ? (
             filteredLessons.map(item => (
               <Card key={item.id} title={item.name} button={() => openModal(item)} />
             ))
           ) : (
-            <div className="containerLoading">
-                <div className="loading"> pas de cour(s) disponible</div>
-            </div>
+                <div className="title-nodata">Pas de cours disponible</div>
           )
         }
         {/* Render Modal component if showModal state is true */}
@@ -82,6 +82,9 @@ function CardLesson(props) {
                     content={selectedItem.content}
                     
       />}
+      <div className="button-container">
+        <button className="btn-return" onClick={handleReturnToPart}>Retour</button>
+      </div>
       </div>
     )
   }

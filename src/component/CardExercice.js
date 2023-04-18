@@ -53,24 +53,24 @@ function CardExercice(props) {
   }
   if(loading){
     return(
+      <>
+      <h2 className="title-lessons">Choix de l'exercice</h2>
       <div className="containerLoading">
-        <div className="loading">Loading</div>
         <div className="spinner"></div>
       </div>
+      </>
     )
   }
     return (
       <div className="lessonContainer">
-        <button className="button" onClick={handleReturnToPart}>Retour</button>
+        <h2 className="title-lessons">Choix de l'exercice</h2>
         {
           filteredExercices.length > 0 ? (
             filteredExercices.map(item => (
               <Card key={item.id} title={item.name} button={() => openModal(item)} />
             ))
           ) : (
-            <div className="containerLoading">
-                <div className="loading"> pas d'exercice(s) disponible</div>
-            </div>
+              <div className="title-nodata"> pas d'exercice(s) disponible</div>
           )
         }
         {showModal && <Modal
@@ -78,9 +78,11 @@ function CardExercice(props) {
                     item={selectedItem} 
                     title={selectedItem.name}
                     button={closeModal}
-                    content={selectedItem.content}
-                    
+                    content={selectedItem.content}       
       />}
+        <div className="button-container">
+          <button className="btn-return" onClick={handleReturnToPart}>Retour</button>
+        </div>
       </div>
     )
   }
