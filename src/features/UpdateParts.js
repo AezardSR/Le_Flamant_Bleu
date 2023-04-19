@@ -37,21 +37,24 @@ const UpdateParts = () => {
 
   return (
     <div>
-      <h2>Modifier une partie</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nom à modifier :</label>
-          <input type="text" id="name" name="name" value={parts.name} onChange={handleInputChange} />
+      <h1 className="mar-vertical-10px mar-left-10px">Modifier une partie</h1>
+
+      <form className="flex-column form-add" onSubmit={handleSubmit}>
+        <div className="flex align-center justify-center form-add-element">
+          <div className="flex-column w-500px mar-left-10px mar-vertical-10px">
+            <label className="label-form" htmlFor="name">Nom à modifier</label>
+            <input type="text" id="name" name="name" value={parts.name} onChange={handleInputChange} />
+          </div>
+          <div className="flex-column w-500px mar-left-10px">
+            <label className="label-form" htmlFor="categories_id">Catégorie à modifier</label>
+            <select className="form-select" id="categories_id" name="categories_id" value={parts.categories_id} onChange={handleInputChange}>
+              {categoriesID.map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.categorie}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div>
-          <label htmlFor="categories_id">Catégorie :</label>
-          <select id="categories_id" name="categories_id" value={parts.categories_id} onChange={handleInputChange}>
-            {categoriesID.map(cat => (
-              <option key={cat.id} value={cat.id}>{cat.categorie}</option>
-            ))}
-          </select>
-        </div>
-        <button type='submit'>Modifier la partie</button>
+        <button className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer" type='submit'>Modifier la partie</button>
       </form>
     </div>
   );

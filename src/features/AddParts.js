@@ -28,24 +28,27 @@ const AddParts = () => {
 
   return (
     <div>
-      <form>
-        <div className="flex-column">
-          <label>Nom de la partie :</label>
-          <input type="text" name="categorie" value={part} onChange={(event) => {setPart(event.target.value)}} />
+
+      <h1 className="mar-vertical-10px mar-left-10px">Ajouter une partie</h1>
+      
+      <form className="flex-column form-add">
+        <div className="flex align-center justify-center form-add-element">
+          <div className="flex-column w-500px mar-left-10px mar-vertical-10px">
+            <label className="label-form">Nom de la partie</label>
+            <input type="text" name="categorie" value={part} onChange={(event) => {setPart(event.target.value)}} />
+          </div>
+
+          <div className="flex-column w-500px mar-left-10px">
+            <label className="label-form">Choix de la catégorie</label>
+            <select className="form-select" value={categoriesID} onChange={e => setCategoriesID(e.target.value)}>
+              <option value="">--Choisir une option--</option>
+              {categories.map((categorie) => (
+                <option key={categorie.id} value={categorie.id}>{categorie.categorie}</option>
+              ))}
+            </select>
+          </div>
         </div>
-
-        <div className="flex-column">
-          <label>Choix de la catégorie</label>
-          <select value={categoriesID} onChange={e => setCategoriesID(e.target.value)}>
-            <option value="">--Choisir une option--</option>
-            {categories.map((categorie) => (
-              <option key={categorie.id} value={categorie.id}>{categorie.categorie}</option>
-            ))}
-          </select>
-        </div>
-
-
-        <button className="link-lesson-add mar-vertical-10px pointer" type="submit" onClick={handleSubmit}>Ajouter la catégorie</button>
+        <button className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer" type="submit" onClick={handleSubmit}>Ajouter la partie</button>
       </form>
     </div>
   )

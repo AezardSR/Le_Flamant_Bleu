@@ -32,13 +32,15 @@ const UpdateCategorie = () => {
 
   return (
     <div>
-      <h2>Modifier une catégorie</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="category">Nom à modifier :</label>
-          <input type="text" id="name" name="category" value={category.categorie} onChange={handleInputChange} />
+      <h1 className="mar-vertical-10px mar-left-10px">Modifier une catégorie</h1>
+      <form className="flex-column form-add" onSubmit={handleSubmit}>
+        <div className="flex align-center justify-center form-add-element">
+          <div className="flex-column w-500px mar-left-10px mar-vertical-10px">
+            <label className="label-form" htmlFor="category">Nom à modifier :</label>
+            <input type="text" id="name" name="category" value={category.categorie} onChange={handleInputChange} />
+          </div>
         </div>
-        <button type="submit">Modifier la catégorie</button>
+        <button className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer" type="submit">Modifier la catégorie</button>
       </form>
     </div>
   );
