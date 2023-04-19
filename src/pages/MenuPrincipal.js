@@ -7,9 +7,9 @@ import { faPaperclip , faGear, faHome, faGraduationCap, faMessage, faCircleQuest
 import '../css/styles.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
+
 function Main() {
     const {user} = useContext(ApiContext);
-
     const navigate = useNavigate();
     let userInfo = user.user;
 
@@ -24,7 +24,6 @@ function Main() {
             return null
         }
     }
-
     return(
         <div className="menu-principal">
             <div className="p-relative">

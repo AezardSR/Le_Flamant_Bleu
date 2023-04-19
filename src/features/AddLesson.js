@@ -7,20 +7,20 @@ const AddLesson = () => {
   const [title, setTitle] = useState([]);
   const [description, setDescription] = useState([]);
   const [duration, setDuration] = useState([]);
-  const [categoryID, setCategoryID] = useState('');
-  const [categories, setCategories] = useState([]);
+  const [partsID, setPartsID] = useState('');
+  const [parts, setParts] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
       .then(response => response.json())
-      .then(data => setCategories(data))
+      .then(data => setParts(data))
   }, [])
 
   const handleSubmit = (event) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: title, content: description, duration: duration, categorie_id: categoryID})
+        body: JSON.stringify({name: title, content: description, duration: duration, parts_id: partsID})
     };
 
     fetch(`${process.env.REACT_APP_API_PATH}/lessons`, requestOptions)
@@ -37,17 +37,12 @@ const AddLesson = () => {
                 <input value={title} onChange={(event) => {setTitle(event.target.value)}} className="form-add-lesson-title" placeholder="Insérer titre"></input>
             </div>
 
-            <div className='form-add-lesson-add-pdf'>
-                <input type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
-                <p>*L'insertion de fichier est non-obligatoire, vous pouvez taper votre cours dans la section description</p>
-            </div>
-
-
             <div className='form-add-lesson-add-details'>
                 <div className='form-add-lesson-select-categorie'>
-                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
-                    {categories.map((categorie) => (
-                      <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
+                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartsID(event.target.value)}} value={partsID}>
+                    <option value="">--Choisir une option--</option>
+                    {parts.map((part) => (
+                      <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
                     ))}
                   </select>
                   <input value={duration} onChange={(event) => {setDuration(event.target.value)}} className="form-add-lesson-duration" placeholder="Temps à passer"></input><label>heure(s)</label>
