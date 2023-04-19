@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 import useToken from "./useToken";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+
 
 
 // Création d'un contexte nommé ApiContext
@@ -15,6 +17,7 @@ export const ApiProvider  = ({children}) => {
     // Utilisation de useToken, un hook personnalisé qui retourne le token stocké dans localStorage ou qui en crée un nouveau s'il n'existe pas
     const {token, setToken} = useToken();
     const navigate = useNavigate();
+    const dayjs = require('dayjs');
 
     // Déclaration de différents états pour stocker des informations nécessaires à l'application
     const [user, setUser] = useState({}); // Stocke les informations de l'utilisateur courant
@@ -38,54 +41,45 @@ export const ApiProvider  = ({children}) => {
         }}).then(res => res.json()).then(data => {
             if(data.message === "connected"){
                 setToken(data.access_token);
-                
             }
     })}
 
     // Fonction qui check si le token est valide
-    const checkToken = () => {
-       return fetch(`${process.env.REACT_APP_API_PATH}/check-token`, {
-            method: "GET",
-            headers: {
-                'content-type': 'application/json',
-                'Authorization' : 'bearer ' + token
-            },
-        }).then(res => res.json()).then(data => {
-            if(data.status === "connected"){
-                setUserStatus("connected")
-                console.log(userStatus)
-            } 
-        })
-    }
+    const checkToken = new Promise((resolve, reject) => {
+        const authTokens = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null;
+        const accessToken = jwt_decode(authTokens? authTokens : null);
+        const isExpired = dayjs.unix(accessToken.exp).diff(dayjs()) < 1;
+        isExpired ? reject("token expiré") : resolve(isExpired);
+    })
     // Fonction permettant les requêtes à l'API, avec une facilité d'utilisation au niveau des paramètres headers et body
     const requestAPI = (url, method, body) => {
-        return checkToken().then(() => {
-            console.log(userStatus)
-        if( userStatus  === "connected"){
+        return new Promise((resolve, reject) => {
+         checkToken.then(() => {
             console.log("token valide")
             if(body === null){
-                return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                resolve( fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
                     method: method,
                     headers: {
                         'content-type': 'application/json',
                         'Authorization' : 'bearer ' + token
                     },
-                })
+                }))
             } else {
-                return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                resolve( fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
                     method: method,
                     headers: {
                         'content-type': 'application/json',
                         'Authorization' : 'bearer ' + token
                     },
                     body: JSON.stringify(body)
-                })
+                }))
             }
-        }else{
-            console.log("token invalide")
-            navigate("/login")
-            return null
-        }})}
+        }).catch((error) => {
+            navigate('/login')
+            reject(error)
+        })
+    })}
+
     // Fonction permettant de se connecter à l'application, elle permet re récuperer un token et de le stocker dans localStorage
     const login = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
@@ -111,8 +105,7 @@ export const ApiProvider  = ({children}) => {
         })
         .catch((error) => { console.log('error: ' + error.message) })
     }
-
-    
+   
     const fetchUser = () => {
         requestAPI('/user-profile', 'GET', null).then((res) => (
                 res.json()
