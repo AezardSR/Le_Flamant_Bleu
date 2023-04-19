@@ -45,10 +45,10 @@ function Main() {
                         {/* <Link to="/calendrier"><li><FontAwesomeIcon icon={faCalendar} />Calendrier</li></Link>
                         <Link to="/cours"><li><FontAwesomeIcon icon={faGraduationCap} />Cours</li></Link>
                         <Link to="/exercices"><li><FontAwesomeIcon icon={faLaptopCode} />Exercices</li></Link> */}
-                        <Link to="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></Link>
-                        <Link to="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></Link>
-                        <Link to="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></Link>
-                        <Link to="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></Link>
+                        {/* <Link to="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></Link> */}
+                        {/* <Link to="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></Link> */}
+                        {/* <Link to="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></Link> */}
+                        {/* <Link to="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></Link> */}
                         <Link to="/admin"><li><FontAwesomeIcon icon={faPaperclip} />Administratifs</li></Link>
                         {/* <Link to="/annonces-emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
                         <Link to="/list-user"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></Link> */}
