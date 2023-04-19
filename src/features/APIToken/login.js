@@ -17,9 +17,9 @@ export default function Login({ setToken }) {
 
   // Effectue des actions à chaque changement de la propriété user
   useEffect(()=>{
-    console.log(user);
     // Si l'utilisateur est connecté et qu'il possède un token, renvoie vers la page d'accueil
     if(localStorage.getItem('token') && (user.message === "success" || userStatus === "connected" )){
+      console.log("redirection vers /")
       navigate('/');
     }
   },[user, userStatus])
