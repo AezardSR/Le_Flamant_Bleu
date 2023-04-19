@@ -49,7 +49,7 @@ function TableauBord() {
                     </div>
                 </div>
                 <div className="right-tb zoom-img">
-                    <a href="#">
+                    <a href="/nos-actualites">
                         <div className="article-table-bord">
                             <img src={News} alt="News 2" className="img-tableau-bord img-right-tb"/>
                             <p className="text-tb">

@@ -31,6 +31,9 @@ import ListEmargement from './pages/ListEmargement.js';
 import Admin from './pages/Admin.js';
 import Actualites from './pages/Actualites.js';
 import AddActualites from './features/AddActualite.js';
+import ActualitesListing from './pages/ActualitesListing.js';
+import ActualitesID from './pages/ActualitesID.js';
+import UpdateActualites from './features/UpdateActualite.js';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
 
@@ -94,7 +97,10 @@ function App() {
 
               {/* Actualités */}
               <Route path="/actualites" element={logged(<><MenuPrincipal /><Actualites /></>)} />
+              <Route path="/nos-actualites" element={logged(<><MenuPrincipal /><ActualitesListing /></>)} />
+              <Route path="/nos-actualites/actualite/:actualitesID" element={logged(<><MenuPrincipal /><ActualitesID /></>)} />
               <Route path="/ajouter-actualite" element={logged(<><MenuPrincipal /><AddActualites /></>)} />
+              <Route path="/modifier-actualite/:actualitesID" element={logged(<><MenuPrincipal /><UpdateActualites /></>)} />
           </Routes>
         </div>
 
