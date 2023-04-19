@@ -22,6 +22,8 @@ export const ApiProvider  = ({children}) => {
     const [typesList, setTypesList] = useState(false); // Stocke la liste des types d'utilisateurs pour la page d'inscription
     const [nameError, setNameError] = useState(false); // Stocke l'état de l'erreur de nom pour la page d'inscription
     const [firstnameError, setFirstnameError] = useState(false); // Stocke l'état de l'erreur de prénom pour la page d'inscription
+    const [userStatus, setUserStatus] = useState("disconnected"); // Stocke l'état de l'inscription de l'utilisateur pour la page d'inscription
+
 
     // Fonction pour rafraîchir le token
     const refreshToken = () => {
@@ -32,29 +34,53 @@ export const ApiProvider  = ({children}) => {
                 'Authorization' : 'bearer ' + token
         }}).then(res => res.json()).then(data => {
             if(data.message === "connected"){
-                setToken(data.access_token);                
+                setToken(data.access_token);
+                
             }
     })}
+
+    // Fonction qui check si le token est valide
+    const checkToken = () => {
+       return fetch(`${process.env.REACT_APP_API_PATH}/check-token`, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json',
+                'Authorization' : 'bearer ' + token
+            },
+        }).then(res => res.json()).then(data => {
+            console.log(data.status)
+            if(data.status === "connected"){
+                setUserStatus("connected")
+            } 
+        })
+    }
     // Fonction permettant les requêtes à l'API, avec une facilité d'utilisation au niveau des paramètres headers et body
     const requestAPI = (url, method, body) => {
-        if(body === null){
-            return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
-                method: method,
-                headers: {
-                    'content-type': 'application/json',
-                    'Authorization' : 'bearer ' + token
-                },
-            })
-        }else {
-            return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
-                method: method,
-                headers: {
-                    'content-type': 'application/json',
-                    'Authorization' : 'bearer ' + token
-                },
-                body: JSON.stringify(body)
-            })
-}}
+        return checkToken().then(() => {
+        if(( userStatus ) === "connected"){
+            console.log("token valide")
+            if(body === null){
+                return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                    method: method,
+                    headers: {
+                        'content-type': 'application/json',
+                        'Authorization' : 'bearer ' + token
+                    },
+                })
+            } else {
+                return fetch(`${process.env.REACT_APP_API_PATH}${url}`, {
+                    method: method,
+                    headers: {
+                        'content-type': 'application/json',
+                        'Authorization' : 'bearer ' + token
+                    },
+                    body: JSON.stringify(body)
+                })
+            }
+        }else{
+            Navigate("/login")
+            return null
+        }})}
     // Fonction permettant de se connecter à l'application, elle permet re récuperer un token et de le stocker dans localStorage
     const login = (credentials) => {
         return fetch(`${process.env.REACT_APP_API_PATH}/login`, {
@@ -86,7 +112,7 @@ export const ApiProvider  = ({children}) => {
                 res.json()
             )).then((data) => {
                 setUser(data)//met à jour l'état de l'utilisateur, permettant d'utiliser les informations de l'utilisateur dans d'autres composants
-            })
+            }).catch((error) => { /*console.log('error: ' + error.message)*/ })
     }
     //Le useEffect, s'exécute à chaque fois que le token change, permettant de rafraîchir l'utilisateur après une connexion
     useEffect(()=>{
@@ -123,7 +149,7 @@ export const ApiProvider  = ({children}) => {
                   res.json()
               )).then((data) => {
                   setRolesList(data)//met à jour l'état de la liste des rôles avec les données récupérées
-              }).catch((error) => { console.log('error: ' + error.message) })
+              }).catch((error) => {/* console.log('error: ' + error.message)*/ })
           }
         //Fonction permettant de récupérer la liste des types pour son utilisation dans le formulaire d'inscription
         const getTypes = () => {
@@ -131,12 +157,12 @@ export const ApiProvider  = ({children}) => {
                   res.json()
               )).then((data) => {
                     setTypesList(data)//met à jour l'état de la liste des types avec les données récupérées
-              }).catch((error) => { console.log('error: ' + error.message) })
+              }).catch((error) => { /*console.log('error: ' + error.message)*/ })
           }
 
     //On retourne l'APIContext, pour mettre au tour de l'application et permettre l'utilisation des fonctions
     return (
-        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError, firstnameError, nameError, registerUser, getRoles, rolesList,typesList, getTypes, requestAPI, refreshToken  }}>
+        <ApiContext.Provider value={{login,fetchUser, user, logout, passError, mailError, loginError, firstnameError, nameError, registerUser, getRoles, rolesList,typesList, getTypes, requestAPI, refreshToken, checkToken , userStatus }}>
             {children}
         </ApiContext.Provider>
     )

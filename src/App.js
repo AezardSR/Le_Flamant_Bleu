@@ -33,10 +33,10 @@ import Login from './features/APIToken/login.js';
 import Register from './pages/register.js';
 
 function App() {
-    const {user} = useContext(ApiContext); // on importe le contexte de l'API, précisément la variable user
+    const {user, userStatus} = useContext(ApiContext); // on importe le contexte de l'API, précisément la variable user
     // on teste si l'utilisateur est connecté, si oui on affiche la page, sinon on le redirige vers la page de connexion
     const logged = (comp) => {
-      if( !localStorage.getItem("token") || user.status === "Token is Invalid" || user.status === "Token is Expired"){
+      if( !localStorage.getItem("token") || user.status === "Token is Invalid" || user.status === "Token is Expired" || !userStatus === "connected"){
        return <Navigate to="/login" replace={true} />
      } else {
        return comp

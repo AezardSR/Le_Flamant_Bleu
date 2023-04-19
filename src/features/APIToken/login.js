@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LogoManu from '../../assets/img/logo_la_manu.png'
 import "../../css/styles.css"
 import { ApiContext } from './ApiContext';
 
 export default function Login({ setToken }) {
   // Récupère les propriétés de l'objet ApiContext avec useContext
-  const {login, user, loginError, passError, mailError} = useContext(ApiContext);
+  const {login, user, loginError, passError, mailError, userStatus} = useContext(ApiContext);
   
   // Définit deux états, mail et password, avec useState
   const [mail, setMail] = useState();
@@ -19,10 +19,10 @@ export default function Login({ setToken }) {
   useEffect(()=>{
     console.log(user);
     // Si l'utilisateur est connecté et qu'il possède un token, renvoie vers la page d'accueil
-    if(localStorage.getItem('token') && user.message === "success" ){
+    if(localStorage.getItem('token') && (user.message === "success" || userStatus === "connected" )){
       navigate('/');
     }
-  },[user])
+  },[user, userStatus])
 
   // Soumission du formulaire
   const handleSubmit = async e => {
