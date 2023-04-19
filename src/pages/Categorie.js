@@ -28,7 +28,7 @@ function Categorie() {
             {categories.map((categorie) => (
                 <div className='block-categories-parts flex-between' id={categorie.id} key={categorie.id} value={categorie.id}>
                     <p>{categorie.categorie}</p>
-                    <div>
+                    <div className='flex'>
                       <button className='button-delete pointer' onClick={() => deleteID(categorie.id)}>Delete</button>
                       <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
                     </div>

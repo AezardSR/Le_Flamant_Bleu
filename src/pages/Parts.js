@@ -35,7 +35,7 @@ function Parts() {
             {parts.map((part) => (
                 <div className='block-categories-parts flex-between' id={part.id} key={part.id} value={part.id}>
                     <p>{part.name}</p>
-                    <div>
+                    <div className='flex'>
                       <button className='button-delete pointer' onClick={() => deleteID(part.id)}>Delete</button>
                       <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-parties/" + part.id}>Update</Link></button>
                     </div>

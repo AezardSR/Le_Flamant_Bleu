@@ -33,6 +33,7 @@ h2 {font-weight: 400; padding: 10px;}
 .p-relative {position: relative;}
 .pointer {cursor: pointer;}
 
+.flex {display: flex;}
 .flex-column { display: flex; flex-direction: column;}
 .flex-between {display: flex; justify-content: space-between;}
 .flex-wrap {display: flex; flex-wrap: wrap;}
@@ -100,7 +101,7 @@ h2 {font-weight: 400; padding: 10px;}
 
 @media (max-width: 1200px) {
     .page-tableau-bord>div:not(.menu-principal) {
-        margin-top: 50px;
+        margin-top: 70px;
         justify-content: center;
     }
 }
@@ -1083,6 +1084,9 @@ a .link-lesson-add {
   .title-lessons{
     padding : 45px 0px;
   }
+  .block-categories-parts {
+    margin: 5px 12px !important;
+  }
 }
 
 /*---------------------------------------------------------------------
@@ -1097,6 +1101,7 @@ a .link-lesson-add {
     padding: 10px;
     margin-top: 10px;
     position: relative;
+    align-items: center;
 }
 
 .block-categories-parts .button-delete {
