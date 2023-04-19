@@ -21,7 +21,7 @@ const AddCategorie = () => {
       <form>
         <label>Nom de la catégorie:</label>
         <input type="text" name="categorie" value={category} onChange={(event) => {setCategory(event.target.value)}} />
-        <button type="submit" onClick={handleSubmit}>Ajouter la catégorie</button>
+        <button className="link-lesson-add mar-vertical-10px pointer" type="submit" onClick={handleSubmit}>Ajouter la catégorie</button>
       </form>
     </div>
   )

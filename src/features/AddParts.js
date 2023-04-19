@@ -29,18 +29,23 @@ const AddParts = () => {
   return (
     <div>
       <form>
-        <label>Nom de la partie :</label>
-        <input type="text" name="categorie" value={part} onChange={(event) => {setPart(event.target.value)}} />
+        <div className="flex-column">
+          <label>Nom de la partie :</label>
+          <input type="text" name="categorie" value={part} onChange={(event) => {setPart(event.target.value)}} />
+        </div>
 
-        <select value={categoriesID} onChange={e => setCategoriesID(e.target.value)}>
-          <option value="">--Choisir une option--</option>
-          {categories.map((categorie) => (
-            <option key={categorie.id} value={categorie.id}>{categorie.categorie}</option>
-          ))}
-        </select>
+        <div className="flex-column">
+          <label>Choix de la catégorie</label>
+          <select value={categoriesID} onChange={e => setCategoriesID(e.target.value)}>
+            <option value="">--Choisir une option--</option>
+            {categories.map((categorie) => (
+              <option key={categorie.id} value={categorie.id}>{categorie.categorie}</option>
+            ))}
+          </select>
+        </div>
 
 
-        <button type="submit" onClick={handleSubmit}>Ajouter la catégorie</button>
+        <button className="link-lesson-add mar-vertical-10px pointer" type="submit" onClick={handleSubmit}>Ajouter la catégorie</button>
       </form>
     </div>
   )
