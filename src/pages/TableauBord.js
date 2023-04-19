@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import '../css/TableauBord.css';
+import '../css/styles.css';
 import moment from "moment";
 import 'moment/locale/fr';
 import Calendrier from '../assets/img/calendrier.png'

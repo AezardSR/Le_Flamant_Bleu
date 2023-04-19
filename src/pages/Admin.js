@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faNewspaper, faChalkboardTeacher, faSignature} from "@fortawesome/free-solid-svg-icons";
-import '../css/BlocNavigation.css';
+import '../css/styles.css';
 
 export class Admin extends Component {
   render() {

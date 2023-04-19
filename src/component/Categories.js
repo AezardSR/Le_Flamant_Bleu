@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../component/Card";
-import '../css/Lesson.css';
-import "../css/card.css";
+import "../css/styles.css";
 
 function Categorie(props) {
 
