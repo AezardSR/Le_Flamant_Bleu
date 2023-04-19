@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/card.css";
+import "../css/styles.css";
 
 function Modal({button, title, content}) {
 

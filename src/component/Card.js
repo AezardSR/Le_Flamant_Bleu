@@ -1,6 +1,5 @@
 import React from "react"; 
-import "../css/card.css";
-import "../css/global.css";
+import "../css/styles.css";
 
 // Composant Card qui design les cards
 //  utilisations de props pour s'en reservir ailleurs.

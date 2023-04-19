@@ -4,8 +4,7 @@ import Avatar from '../assets/img/leroy.jpg'
 import LaManu from '../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperclip , faGear, faHome, faGraduationCap, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
-import '../css/MenuPrincipal.css';
-import '../css/global.css';
+import '../css/styles.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Main() {
