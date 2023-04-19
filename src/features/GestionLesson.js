@@ -30,7 +30,7 @@ function GestionLesson() {
                     <p>{lesson.name}</p>
                     <div className='flex'>
                       <button className='button-delete pointer' onClick={() => deleteID(lesson.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + lesson.id}>Update</Link></button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-cours/" + lesson.id}>Update</Link></button>
                     </div>
                 </div>
             ))}
