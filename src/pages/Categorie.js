@@ -1,9 +1,10 @@
-import React from 'react'
-import Calendar from 'react-calendar';
-import { useState, useEffect } from 'react';
-import 'react-calendar/dist/Calendar.css';
-import '../css/Lesson.css';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import '../css/styles.css';
 
 function Categorie() {
 

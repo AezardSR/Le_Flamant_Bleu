@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import '../css/Lesson.css';
+import '../css/styles.css';
 import { Link } from 'react-router-dom';
 
 function Parts() {

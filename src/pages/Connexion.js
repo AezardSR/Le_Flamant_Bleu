@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import LogoManu from '../assets/img/logo_la_manu.png'
-import "../css/connexion.css"
+import '../css/styles.css';
 
 export default class Connexion extends Component {
   render() {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import '../css/Lesson.css';
-import "../css/card.css";
+import '../css/styles.css';
 import Module from '../component/Module';
 import Categorie from "../component/Categories";
 import Part from "../component/Part";

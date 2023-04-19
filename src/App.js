@@ -31,7 +31,6 @@ import ListEmargement from './pages/ListEmargement.js';
 import Admin from './pages/Admin.js';
 import Actualites from './pages/Actualites.js';
 import AddActualites from './features/AddActualite.js';
-import './css/App.css';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
 
