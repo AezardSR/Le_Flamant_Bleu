@@ -33,11 +33,11 @@ function Parts() {
       <div>
         <div className='flex-wrap'>
             {parts.map((part) => (
-                <div className='date-select-calendar flex-between' id={part.id} key={part.id} value={part.id}>
+                <div className='block-categories-parts flex-between' id={part.id} key={part.id} value={part.id}>
                     <p>{part.name}</p>
                     <div>
-                      <button className='' onClick={() => deleteID(part.id)}>Delete</button>
-                      <button type="submit" className='mar-left-10px'><Link to={"/modifier-parties/" + part.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(part.id)}>Delete</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-parties/" + part.id}>Update</Link></button>
                     </div>
                 </div>
             ))}
@@ -47,7 +47,7 @@ function Parts() {
             )}
         </div>
 
-        <Link to="/ajouter-parties"><button className="link-lesson-add mar-bottom-10px">Ajouter une partie</button></Link>
+        <Link to="/ajouter-parties"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une partie</button></Link>
       </div>
     )
 }

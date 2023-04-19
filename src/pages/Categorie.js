@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
@@ -24,17 +24,19 @@ function Categorie() {
 
     return (
       <div>
-        <div>
+        <div className='flex-wrap'>
             {categories.map((categorie) => (
-                <div id={categorie.id} key={categorie.id} value={categorie.id}>
+                <div className='block-categories-parts flex-between' id={categorie.id} key={categorie.id} value={categorie.id}>
                     <p>{categorie.categorie}</p>
-                    <button className='btn-delete' onClick={() => deleteID(categorie.id)}>Delete</button>
-                    <button type="submit" className='btn-update'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
+                    <div>
+                      <button className='button-delete pointer' onClick={() => deleteID(categorie.id)}>Delete</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
+                    </div>
                 </div>
             ))}
         </div>
 
-        <Link to="/ajouter-categorie"><button className="link-lesson-add mar-bottom-10px">Ajouter une catégorie</button></Link>
+        <Link to="/ajouter-categorie"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une catégorie</button></Link>
       </div>
     )
 }
