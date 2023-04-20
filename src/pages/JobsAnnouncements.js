@@ -12,7 +12,7 @@ export default function JobsAnnouncements() {
 
     useEffect(() => {
         Promise.all([
-          fetch(`${process.env.REACT_APP_API_PATH}/job-offers/?_limit=3`),
+          fetch(`${process.env.REACT_APP_API_PATH}/job-offers`),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  
@@ -45,7 +45,6 @@ export default function JobsAnnouncements() {
             
             <div className='btn-jobs'>
                 <Link to='/index-annonce-emploi'><button className='btn-jobs-announcements'>Voir toutes les annonces</button></Link>
-                <Link to='/ajouter-annonce-emploi'><button className='btn-jobs-announcements'>Ajouter une annonce</button></Link>
             </div>
         </div>
     )

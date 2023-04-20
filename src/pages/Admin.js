@@ -20,6 +20,7 @@ export class Admin extends Component {
             <Link to="/exercices" className='bloc-navigation navigation-exercice'>Gestion des exercices</Link>
             <Link to="/categorie" className='bloc-navigation navigation-categorie'>Gestion des catégories</Link>
             <Link to="/parties" className='bloc-navigation navigation-partie'>Gestion des parties</Link>
+            <Link to="/offres-emplois" className='bloc-navigation navigation-partie'>Gestion des offres d'emplois</Link>
 
           </div>
           

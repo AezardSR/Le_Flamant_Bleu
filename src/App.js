@@ -34,6 +34,8 @@ import AddActualites from './features/AddActualite.js';
 import ActualitesListing from './pages/ActualitesListing.js';
 import ActualitesID from './pages/ActualitesID.js';
 import UpdateActualites from './features/UpdateActualite.js';
+import GestionJobsAnnoucements from './pages/OffresEmplois.js';
+import UpdateJobsOffers from './features/UpdateJobsOffers.js';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
 
@@ -87,8 +89,10 @@ function App() {
 
             {/* Annonces boulots */}
             <Route path="/annonces-emplois" element={logged(<><MenuPrincipal /><JobsAnnouncements /></>)} />
-            <Route path="/ajouter-annonce-emploi" element={logged(<><MenuPrincipal /><AddJobsAnnouncements /></>)} />
             <Route path="/index-annonce-emploi" element={logged(<><MenuPrincipal /><IndexJobsAnnouncements /></>)} />
+            <Route path="/offres-emplois" element={logged(<><MenuPrincipal /><GestionJobsAnnoucements /></>)} />
+            <Route path="/ajouter-annonce-emploi" element={logged(<><MenuPrincipal /><AddJobsAnnouncements /></>)} />
+            <Route path="/modifier-offres-emplois/:jobOffersID" element={logged(<><MenuPrincipal /><UpdateJobsOffers /></>)} />
 
             <Route path="/admin" element={logged(<><MenuPrincipal /><Admin /></>)} />
               {/* Emargements */}

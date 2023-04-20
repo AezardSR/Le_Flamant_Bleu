@@ -34,7 +34,7 @@ const AddJobsAnnouncements = () => {
         body: JSON.stringify({name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
     };
 
-    fetch(`${process.env.REACT_APP_API_PATH}//job-offers/add`, requestOptions)
+    fetch(`${process.env.REACT_APP_API_PATH}/job-offers`, requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

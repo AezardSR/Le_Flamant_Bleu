@@ -7,7 +7,7 @@ export default function IndexJobsAnnouncements() {
 
     useEffect(() => {
         Promise.all([
-          fetch(`${process.env.REACT_APP_API_PATH}/job-offers'`),
+          fetch(`${process.env.REACT_APP_API_PATH}/job-offers`),
         ])
           .then(([resJobs]) =>
             Promise.all([resJobs.json()])  
