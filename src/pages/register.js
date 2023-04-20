@@ -32,7 +32,7 @@ export default function Register() {
         window.location.reload();
       })
     }
-    
+
 //on récupère les rôles et les types d'utilisateur au chargement de la page
 useEffect(() =>{
   getRoles()//recupération des rôles
@@ -59,7 +59,7 @@ return (
                   <p className="errorMessage">{mailError}</p>
                   <input type='password' name='password' className="input-r" placeholder="mot de passe" onChange={e => setPassword(e.target.value)}/>
                   <p className="errorMessage">{passError}</p>
-                  <input type='password' name='password_confirmation' className="input-r" placeholder="confirmation du mot de pass" onChange={e => setPasswordConfirm(e.target.value)}/>
+                  <input type='password' name='password_confirmation' className="input-r" placeholder="confirmation du mot de passe" onChange={e => setPasswordConfirm(e.target.value)}/>
                   <p className="errorMessage">{}</p>
                   <label className="">Rôle</label>
                   <select name="role" className="input-r" onChange={e => setRole(e.target.value)}>
