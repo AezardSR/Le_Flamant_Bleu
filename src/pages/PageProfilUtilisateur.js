@@ -1,15 +1,12 @@
 import React, { Component, useContext } from 'react'
 import LogoManu from '../assets/img/logo_la_manu.png'
-<<<<<<< Updated upstream
-import "../css/PageProfilUtilisateur.css"
-=======
 import '../css/styles.css';
+
 import { ApiContext } from '../features/APIToken/ApiContext';
->>>>>>> Stashed changes
 
 export default function PageProfilUtilisateur(){
 
-  const [] = useContext(ApiContext)
+  const {} = useContext(ApiContext)
 
   
     return(
