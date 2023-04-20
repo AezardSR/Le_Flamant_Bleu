@@ -1,8 +1,107 @@
+:root{
+    --color-light-blue : #28abe2;
+    --color-dark-blue : #194766;
+    --color-light-grey : #f7f7f7;
+    --color-white : #ffffff;
+}
+
 *{
     margin : 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+  
+
+/*---------------------------------------------------------------------
+    DIVERS
+-----------------------------------------------------------------------*/
+h2 {font-weight: 400; padding: 10px;}
+.p-relative {position: relative;}
+
+.flex-column { display: flex; flex-direction: column;}
+.flex-between {display: flex; justify-content: space-between;}
+.align-center {align-items: center;}
+
+.w-20 {width: 20%;}
+.w-100 {width: 100%;}
+
+.h-45px {height: 45px;}
+
+.margin-auto {margin: 0 auto;}
+.mar-bottom-10px {margin-bottom: 10px;}
+
+.p-5px {padding: 5px;}
+.p-10px {padding: 10px;}
+
+.page-tableau-bord {display: flex;}
+.page-tableau-bord>div:not(.menu-principal) {   width: 100%;}
+.container .page-tableau-bord .menu-principal {visibility: hidden;}
+
+/* BLOC NAVIGATION */
+.title-ma-formation,
+.title-section-emploi {
+    padding: 30px;
+    text-align: center;
+}
+
+.all-bloc-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 45%;
+    margin: 0 auto;
+}
+
+.all-bloc-navigation .bloc-navigation {
+    display: flex;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #194766;
+    border: 1px solid #194766;
+    padding: 20px 30px;
+    width: 55%;
+    margin: 20px;   
+}
+
+.all-bloc-navigation .bloc-navigation svg {
+    margin-right: 10px;
+}
+
+.all-bloc-navigation .bloc-navigation:hover {
+    transform: scale(1.2);
+    transition: ease 0.3s all;
+}
+
+/* MEDIA */
+
+@media (max-width: 1200px) {
+    .page-tableau-bord>div:not(.menu-principal) {
+        margin-top: 50px;
+        justify-content: center;
+    }
+}
+@media (max-width: 780px) {
+    .all-bloc-navigation {
+        width: 80%;
+    }
+
+    .all-bloc-navigation .bloc-navigation {
+        width: 100%;
+    }
 }
 
 /*---------------------------------------------------------------------
@@ -14,8 +113,8 @@
     margin-bottom: 30px;
 }
 .container{
-    height: 100vh;
     width: 100%;
+    padding: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +123,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
+    align-items: center;
 }
 .form-connexion{
     display: flex;
@@ -57,16 +157,13 @@
     border: none;
     font-size: 20px;
 }
-
 a .btn-connexion  {
     color : #FFF;
     text-decoration: none;
 }
-
 .btn-connexion:hover{
     background-color: #194766 ;
 }
-
 .errorMessage {
     color: #FF0000;
     font-size: 12px;
@@ -86,4 +183,1429 @@ a .btn-connexion  {
     .logo-connexion{
         width: 300px;
     }
+}
+
+/*---------------------------------------------------------------------
+    PROFIL UTILISATEUR
+-----------------------------------------------------------------------*/
+.container-profil{
+    max-width: 1300px;
+    margin : 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container-img{
+    text-align: center;
+}
+.container-form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-profil-user {
+    width: 100%;
+}
+
+.img-profil{
+    width: 150px;
+    margin : 50px;
+    border-radius: 50%;
+    border : 1px solid #194766;
+}
+
+.btn-profil{
+    background-color : var(--color-light-blue);
+    color : var(--color-white);
+    margin : 5px;
+    padding: 10px;
+    width: 150px;
+    border: none;
+    font-size: 20px;
+}
+.btn-profil:hover{
+    background-color: var(--color-dark-blue);
+}
+
+.input-profil{
+    margin-right : 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 450px;
+    border : solid #194766;
+}
+
+.container-input{
+    display: flex;
+    flex-direction: column;
+}
+.container-btn{
+    text-align: center;
+}
+
+/* MEDIA */
+@media (max-width: 780px) {
+    .input-profil {
+        width: 100%;
+    }
+}
+
+/*---------------------------------------------------------------------
+    MENU PRINCIPAL + MENU BURGER
+-----------------------------------------------------------------------*/
+
+/* Menu Principal global */
+.menu-principal {
+    background-color: #194766; 
+    color: white; 
+    width: 200px;
+    min-height: 100vh;
+}
+
+.menu-principal a {
+    text-decoration: none;
+}
+
+/* Partie nom + avatar du menu */
+.menu-principal .avatar-menu {
+    text-align: center;
+}
+
+.menu-principal .avatar-menu .img-menu-avatar {
+    border-radius: 50%; 
+    margin: 10px 0;
+}
+
+.menu-principal .avatar-menu p {
+    color: white;
+    margin: auto;
+}
+
+.avatar-menu-parametre {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.avatar-menu-parametre a {
+    margin: 0 10px;
+}
+
+/* Partie listing url menu */
+.menu-principal .listing-menu .ul-listing-menu {
+    list-style: none; 
+    text-align: start; 
+    padding: 0;
+    margin: 0;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-principal .listing-menu .ul-listing-menu a {
+    color: white; 
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu-principal .listing-menu .ul-listing-menu a li:hover {
+    background-color: #279DD6;
+}
+
+.menu-principal .listing-menu .ul-listing-menu li {
+    border-top: 1px solid white; 
+    height: 50px; 
+    display: flex; 
+    align-items: center;
+}
+
+.menu-principal .listing-menu .ul-listing-menu li svg {
+    margin-left: 5px; 
+    min-width: 35px;
+}
+
+.menu-principal .listing-menu .logo-menu-principal {
+    margin: 10px 0;
+}
+
+.menu-principal ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+  
+  .menu-principal li a {
+    display: block;
+    padding: 20px 20px;
+  }
+
+.menu {
+    clear: both;
+    max-height: 0;
+    transition: 0.2s ease;
+}
+
+.menu-icon {
+    cursor: pointer;
+    float: right;
+    padding: 20px 20px;
+    position: relative;
+    user-select: none;
+}
+
+.menu-icon .navicon {
+    background: white;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 25px;
+}
+
+.menu-icon .navicon:before,
+.menu-icon .navicon:after {
+    background: white;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.menu-icon .navicon:before {
+    top: 5px;
+}
+
+.menu-icon .navicon:after {
+    top: -5px;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.menu-btn:checked ~ .menu {
+    max-height: 100vh;
+    background: #194766;
+}
+
+.menu-btn:checked ~ .menu .avatar-menu-parametre {
+    visibility: visible;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+/* MEDIA */
+@media (max-width: 1200px) {
+
+    .container-profil {
+        height: auto !important;
+    }
+
+    .menu-principal .avatar-menu {
+        text-align: initial;
+        position: relative;
+        height: 70px;
+    }
+    .menu-principal {
+        min-height: auto;
+    }
+
+    .avatar-menu-parametre a {
+        font-size: 25px;
+    }
+
+    .menu-principal {
+        box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+        position: fixed;
+        width: 100%;
+        z-index: 3;
+    }
+
+    .avatar-menu-parametre {
+        visibility: hidden;
+        margin-top: 0px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 55px;
+        z-index: 1;
+    }
+
+    .listing-menu {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: 0;
+        height: 40px;
+        width: 100%;
+    }
+
+    .menu-principal .listing-menu .logo-menu-principal {
+        width: 40% !important;
+    }
+
+    .tableau-bord .left-tb {
+        margin-right: 0;
+        align-items: flex-start;
+    }
+
+    .tableau-bord .calendar-tb, .tableau-bord .img-tableau-bord {
+        width: 95%;
+    }
+
+    .menu-principal .avatar-menu .img-menu-avatar {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 1200px) {
+    .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    .menu-icon {
+        display: none;
+    }
+}
+
+/*---------------------------------------------------------------------
+    TABLEAU DE BORD
+-----------------------------------------------------------------------*/
+
+/* Tableau de bord global */
+.tableau-bord {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 45px;
+    padding-top: 30px;
+}
+
+.tableau-bord .calendar-tb,
+.tableau-bord .img-tableau-bord {
+    width: 500px;
+    height: 280px;
+}
+
+.tableau-bord .calendar-tb {
+    margin-bottom: 20px;
+}
+
+.background-planning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1B3F56;
+    width: 100%;
+    height: 100%;
+}
+
+.calendar-tb .text-date {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.calendar-tb .text-month {
+    font-size: 25px;
+    color: #21A4DC;
+}
+
+.calendar-tb a {
+    text-decoration: none;
+    color: white;
+}
+
+.tableau-bord .text-tb {
+    position: absolute; 
+    bottom: 0;
+    color: #000;
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 0 auto;
+    padding: 5px 10px 10px 10px;
+}
+
+.tableau-bord .zoom-img:hover .text-tb {
+    background-color: rgba(100, 193, 255, 0.8);
+    transition: ease 0.4s all;
+}
+
+.tableau-bord .zoom-img:hover .img-tableau-bord {
+    transition: ease 0.5s all;
+    transform: scale(1.1);    
+}
+
+.tableau-bord .article-table-bord {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tableau de bord cube de gauche */
+
+.tableau-bord .left-tb {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/* Tableau de bord cube de droite */
+
+.tableau-bord .right-tb .img-right-tb {
+    height: 600px;
+}
+
+/* MEDIA */
+@media screen and (max-width: 780px) {
+    .tableau-bord {
+        flex-direction: column;
+        margin-top: 0 !important;
+    }
+}
+
+/*---------------------------------------------------------------------
+    CALENDAR
+-----------------------------------------------------------------------*/
+
+.react-calendar {
+    width: 80%;
+    max-width: 100%;
+    background: white;
+    border: 1px solid #a0a096;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+    margin: 0 auto;
+  }
+  .react-calendar--doubleView {
+    width: 700px;
+  }
+  .react-calendar--doubleView .react-calendar__viewContainer {
+    display: flex;
+    margin: -0.5em;
+  }
+  .react-calendar--doubleView .react-calendar__viewContainer > * {
+    width: 50%;
+    margin: 0.5em;
+  }
+  .react-calendar,
+  .react-calendar *,
+  .react-calendar *:before,
+  .react-calendar *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none;
+  }
+  .react-calendar button:enabled:hover {
+    cursor: pointer;
+  }
+  .react-calendar__navigation {
+    display: flex;
+    height: 44px;
+    margin-bottom: 1em;
+  }
+  .react-calendar__navigation button {
+    min-width: 44px;
+    background: none;
+  }
+  .react-calendar__navigation button:disabled {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    background-color: #e6e6e6;
+  }
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.75em;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 0.5em;
+  }
+  .react-calendar__month-view__weekNumbers .react-calendar__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: bold;
+  }
+  .react-calendar__month-view__days__day--weekend {
+    color: #d10000;
+  }
+  .react-calendar__month-view__days__day--neighboringMonth {
+    color: #757575;
+  }
+  .react-calendar__year-view .react-calendar__tile,
+  .react-calendar__decade-view .react-calendar__tile,
+  .react-calendar__century-view .react-calendar__tile {
+    padding: 2em 0.5em;
+  }
+  .react-calendar__tile {
+    max-width: 100%;
+    padding: 10px 6.6667px;
+    background: none;
+    text-align: center;
+    line-height: 16px;
+  }
+  .react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    background-color: #e6e6e6;
+  }
+  .react-calendar__tile--now {
+    background: #006edc80;
+  }
+  .react-calendar__tile--now:enabled:hover,
+  .react-calendar__tile--now:enabled:focus {
+    background: #006edc80;
+  }
+  .react-calendar__tile--hasActive {
+    background: #76baff;
+  }
+  .react-calendar__tile--hasActive:enabled:hover,
+  .react-calendar__tile--hasActive:enabled:focus {
+    background: #a9d4ff;
+  }
+  .react-calendar__tile--active {
+    background: #006edc;
+    color: white;
+  }
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: #1087ff;
+  }
+  .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #e6e6e6;
+  }
+
+  .calendar-container {
+    position: relative;
+    padding-top: 10px;
+  }
+
+  .calendar-appointments {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .date-select-calendar {
+    width: 30%;
+    margin: 0 auto;
+    border: 1px solid #a0a096;
+    padding: 10px;
+    margin-top: 10px;
+    position: relative;
+  }
+
+  .calendar-container .btn-add {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    background: #006EDC;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .date-select-calendar button.btn-delete {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: darkred;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .date-select-calendar button.btn-delete:hover {
+    background: #d10000;
+  }
+
+  .date-select-calendar button.btn-update {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background: darkgreen;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .date-select-calendar button.btn-update a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .date-select-calendar button.btn-update:hover {
+    background: green;
+  }
+
+  .date-select-formation {
+    margin-top: 10px;
+  }
+
+  .add-event-planning {
+    text-align: center;
+  }
+
+  .add-event-planning a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .planning-date {
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .planning-details {font-size: 14px;}
+
+/* MEDIA */
+@media (max-width: 780px) {
+  .responsive-calendar {
+    margin-top: 100px;
+  } 
+
+  .calendar-appointments {
+    flex-direction: column;
+  }
+
+  .date-select-calendar {
+    width: 90%;
+  }
+
+  .calendar-container .btn-add {
+    right: 0;
+  }
+}
+
+/*---------------------------------------------------------------------
+    EXERCICES / LECONS / CATEGORIES / PARTS
+-----------------------------------------------------------------------*/
+.lessonContainer{
+    max-width: 90%;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.listing-name-categorie {
+    font-weight: 600;
+}
+
+.link-lesson-add {
+    background-color: #28abe2 ;
+    border: none;
+    font-size: 20px;
+    padding: 10px 30px;
+    float: right;
+    margin-right: 30px;
+}
+
+a .link-lesson-add {
+    color: white;
+    text-decoration: none;
+}
+
+.listing-categorie-nav {
+    list-style: none;
+}
+
+.listing-categorie-nav>li {
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.listing-categorie-nav>li>div {
+    height: 50px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+/* CARD */
+.title-lessons{
+    font-weight: 600;
+    color: var(--color-light-blue);
+    font-size: 25px;
+    padding: 25px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+/* SECTION CARD */
+.card {
+    background-color: var(--color-light-blue);
+    border-radius: 8px;
+    padding: 10px;
+    color : white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .card-text-container {
+    flex: 1;
+    padding : 10px;
+  }
+  
+  .button-container {
+    margin-left: 10px;
+  }
+
+  .button-card-container {
+    margin-left: 10px;
+  }
+  
+  .card-button {
+    background-color: var(--color-dark-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 12px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .card-button:hover{
+    background-color: white;
+    color : var(--color-dark-blue)
+  }
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+/* SECTION LOADING */
+.spinner {
+    border: 16px solid var(--color-dark-blue);
+    border-top: 16px solid var(--color-light-blue);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .title-nodata{
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    color : var(--color-light-blue);
+    margin: 20px 0px;
+  }
+
+  .containerLoading{
+
+  position: fixed;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+  /* SECTION MODAL */
+  body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    font-size: 25px;
+    color : var(--color-light-blue);
+    border : none;
+    margin : 20px;
+    cursor : pointer;
+    background-color: transparent;
+}
+.btn-modal:hover{
+    color : var(--color-dark-blue)
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-title{
+    width: 80%;
+    font-weight: 600;
+    color: var(--color-light-blue);
+    font-size: 25px;
+    padding: 15px 0;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    line-height: 1.6;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    border : 5px solid var(--color-light-blue);
+    border-radius: 25px;
+    text-align: justify;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.close-modal {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* autre */
+.btn-return{
+  background-color: var(--color-light-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 12px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.btn-return:hover{
+  color: var(--color-dark-blue);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 768px) {
+  .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-text-container{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+  .button-card-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0;
+      margin-top: 10px;
+  }
+  .card-button{
+      margin-right: 0px;
+  }
+  .title-lessons{
+    padding : 45px 0
+  }
+  .containerLoading{
+    left : 50%;
+  }
+}
+@media (max-width : 1199px){
+  .title-lessons{
+    padding : 45px 0px;
+  }
+}
+
+/*---------------------------------------------------------------------
+    EMARGEMENT
+-----------------------------------------------------------------------*/
+.all-emargement {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.signature-emargement {
+    width: 30%;
+    padding: 10px 20px;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.signature-emargement .img-emargement {
+    height: auto;
+    width: 100%;
+}
+
+.signature-emargement p {
+    padding-top: 5px;
+}
+
+a .btn-emargement {
+    color: white;
+}
+
+.btn-emargement {
+    background-color: #1178D4;
+    border: none;
+    padding: 10px 50px;
+    margin-top: 10px;
+    width: 70%;
+}
+
+/*---------------------------------------------------------------------
+    LISTE EMARGEMENTS
+-----------------------------------------------------------------------*/
+.emargement-formation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.emargement-formation .emargement-etudiant {
+    border: 1px solid black;
+    width: 30%;
+    margin: 20px auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.emargement-formation .emargement-etudiant img {
+    width: 80%;
+    padding-top: 10px;
+}
+
+/*---------------------------------------------------------------------
+    LISTE UTILISATEUR
+-----------------------------------------------------------------------*/
+.listing-user {
+    padding: 20px;
+    padding-top: 55px;
+    margin-top: 20px;
+}
+
+.btn-user {
+    margin-top: 10px;
+}
+
+.search-bar {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 35px;
+    font-size: medium;
+    padding: 5px;
+}
+
+.table-user {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-user, 
+.table-user th, 
+.table-user td {
+    border: 1px solid #4F4F4F;
+    padding: 10px;
+}
+
+.table-user tr {
+    height: 30px;
+}
+
+.table-user tr th {
+    text-transform: uppercase;
+}
+
+.table-user tr:nth-child(1) {
+    height: 40px;
+}
+
+/*---------------------------------------------------------------------
+    JOBS ANNOUNCEMENTS
+-----------------------------------------------------------------------*/
+/* Global */
+.index-jobs-actualites {
+    width: 80%;
+    margin: auto;
+}
+
+.index-jobs-offers {
+    border: 1px solid black;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.index-jobs-offers img {
+    width: 15%;
+    height: auto;
+    padding: 20px 20px;
+}
+
+.index-jobs-offers h3 {
+    margin-bottom: 30px;
+}
+
+.index-jobs-offers p {
+    padding: 0 50px;
+}
+
+.index-jobs-actualites a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 10px;
+}
+
+a .index-jobs-offers:hover {
+    box-shadow: 1px 1px 8px 1px rgb(60, 60, 60);
+    transition: ease 0.4s all;
+}
+
+.page-jobs-actualites {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+/* Images */
+.img-jobs-partner {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.url-jobs-partner:hover {
+    transition: ease 0.5s all;
+    transform: scale(1.1);  
+}
+
+.url-jobs-partner img {
+    height: auto;
+    width: 90%;
+}
+
+/* Annonces */
+
+.jobs-actualites {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.jobs-actualites h3 {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.jobs-actualites p {
+    text-align: justify;
+    padding: 10px 20px;
+}
+
+.jobs-offers {
+    border: 1px solid black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jobs-offers img {
+    height: auto;
+    width: 40%;
+}
+
+.jobs-actualites a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 10px;
+}
+
+a .jobs-offers:hover {
+    box-shadow: 1px 1px 8px 1px rgb(60, 60, 60);
+    transition: ease 0.4s all;
+}
+
+/* Boutons */
+
+.btn-jobs {
+    display: flex;
+    justify-content: space-between;
+    width: 93%;
+    margin: auto;
+}
+
+.btn-jobs-announcements {
+    background-color: #1178D4;
+    border: none;
+    padding: 10px 50px;
+    margin-top: 10px;
+}
+
+a .btn-jobs-announcements {
+    color: white;
+    text-decoration: none;
+}
+
+/*---------------------------------------------------------------------
+    FORM ADD USER
+-----------------------------------------------------------------------*/
+#from-add-user{
+    height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+input{
+    font-size: 20px;
+}
+canvas{
+    border: 1px solid black
+}
+
+h3,h4{
+    margin: 1% 5% 1% 5%;
+}
+#individual-mid{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#individual-mid > label,#individual-mid > input {
+    width: 90%;
+}
+
+#individual-bottom{
+    display: grid;
+    grid: repeat(2,1fr) / repeat(2, 1fr);
+}
+
+#individual-bottom > div{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.individual-grid{
+    display: grid;
+    grid: auto / repeat(2, 1fr);
+}
+.individual-grid > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.individual-grid > div > label{
+    width: 80%;
+}
+
+/*Bande de catégorie*/
+.title-cat{
+    border: 2px solid black;
+    padding: 1%;
+    margin: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title-cat > h2{
+    width: auto;
+}
+/*   Input   */
+form > div > div > div > input, form > div > div > input, #emergency-section > div > div > div >input{
+    height: 45px;
+    width: 80%;
+}
+/*  boutton de validation du formulaire  */
+#validate-button{
+    display: grid;
+    grid:  1fr/repeat(3,1fr);
+}
+
+#validate-button > button{
+    grid-column-start: 2;
+    width: 100%;
+}
+.section-close{
+    transform: translate(0,-110%);
+    transition: transform 0.5s;
+    display: none;
+    overflow: hidden
+}
+.section-open{
+    transition: translate(0, 0) 1s;
+    transition: transform 0.5s;
+    display: block;
+}
+
+/*---------------------------------------------------------------------
+    FORM ADD APPOINTMENTS
+-----------------------------------------------------------------------*/
+.form-add-event-planning {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.form-add-event-planning .add-event-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-add-event-planning .add-event-description .add-event-description-title {
+    margin: 30px 0;
+    padding: 15px 20px;
+}
+
+.form-add-event-planning .add-event-description textarea {
+    padding: 15px 20px;
+    resize: vertical;
+}
+
+.form-add-event-planning .btn-add-event-planning {
+    background-color: #1178D4;
+    border: none;
+    padding: 10px 50px;
+    margin-top: 10px;
+    float: right;
+}
+
+.form-add-event-planning a .btn-add-event-planning {
+    color: white;
+    text-decoration: none;
+}
+
+/*---------------------------------------------------------------------
+    FORM ADD JOBS
+-----------------------------------------------------------------------*/
+.form-jobs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.form-jobs .form-jobs-first-column {
+    display: flex;
+}
+
+.form-jobs label {
+    display: flex;
+}
+
+.form-jobs .form-jobs-url {
+    width: 80%;
+    height: 40px;
+}
+
+.form-jobs .form-jobs-title {
+    height: 40px;
+    font-size: large;
+    margin: 30px 0;
+}
+
+.form-jobs .form-jobs-description {
+    resize: vertical;
+    height: 50%;
+    font-size: large;
+}
+
+.btn-form-jobs {
+    background-color: #1178D4;
+    border: none;
+    padding: 10px 50px;
+    margin-top: 10px;
+}
+
+.form-jobs a {
+    width: fit-content;
+}
+
+a .btn-form-jobs {
+    color: white;
+    text-decoration: none;
+}
+
+/*---------------------------------------------------------------------
+    FORM ADD LESSONS / EXERCICES 
+-----------------------------------------------------------------------*/
+/* Global */
+.form-add-lesson {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form */
+.form-add-lesson-add-title {
+    width: 80%;
+    margin: 5% auto;
+}
+
+.form-add-lesson .form-add-lesson-title {
+    height: 80px;
+    width: 100%;
+    text-align: center;
+    font-size: x-large;
+}
+
+.form-add-lesson .form-add-lesson-duration {
+    width: 80%;
+    text-align: center;
+    font-size: x-large;
+    margin: 0 15px;
+}
+
+.form-add-lesson-add-details {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.form-add-lesson-select-categorie {
+    width: 50%;
+}
+
+.form-add-lesson-add-description {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 40px;
+}
+
+.form-add-lesson .form-add-lesson-add-details .form-add-lesson-add-description .form-add-lesson-description {
+    text-align: center;
+    resize: vertical;
+    font-size: larger;
+    height: 100px;
+}
+
+/* Btn */
+.btn-form-add-lesson {
+    background-color: #1178D4;
+    border: none;
+    padding: 10px 50px;
+    margin-top: 10px;
+    float: right;
+    width: 70%;
+}
+
+a .btn-form-add-lesson {
+    color: white;
+    text-decoration: none;  
+}
+
+/*-----------------------------------------------------------------------------------
+    Page d'inscription
+-------------------------------------------------------------------------------------*/
+.container-r{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+#form-register{
+    display: flex;
+    flex-direction: column;
+}
+#form-register > div:nth-child(1){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+}
+#form-register > div:nth-child(1) .input-r{
+    width: 100%;
+}
+.input-r{
+    margin-top : 10px;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: 2px solid black;
+}
+
+#form-register > input:nth-child(2){
+    margin-top : 0;
+}
+
+.btn-r{
+    color : #FFF;
+    background-color: #28abe2 ;
+    margin : 30px 0;
+    padding: 10px;
+    width: 150px;
+    border: none;
+    font-size: 20px;
+    align-self: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }

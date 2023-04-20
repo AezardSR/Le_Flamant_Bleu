@@ -1,23 +1,24 @@
 import React, { useContext} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Avatar from '../assets/img/leroy.jpg'
 import LaManu from '../assets/img/logo_la_manu.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperclip , faGear, faHome, faGraduationCap, faMessage, faCircleQuestion, faGlobe, faAddressBook, faDoorClosed} from "@fortawesome/free-solid-svg-icons";
-import '../css/MenuPrincipal.css';
-import '../css/global.css';
+import '../css/styles.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Main() {
-    const {user} = useContext(ApiContext);
-
+    const {user} = useContext(ApiContext);//importation de l'objet user depuis le context
     const navigate = useNavigate();
-    let userInfo = user.user;
 
+    let userInfo = user.user; //mise en place de la variable userInfo pour une utilisation simplifé dde l'objet user
+
+    //fonction de déconnexion
     const logout = () =>{
-        localStorage.removeItem("token");
-        navigate('/login');
+        localStorage.removeItem("token");//retire le token de la mémoire locale(localStorage)
+        navigate('/login');//redirige vers la page de connexion
     }
+    //fonction qui retourne le nom de l'utilisateur pour l'afficher dans le menu
     const userName = () =>{
         if(userInfo && userInfo.firstname){
             return userInfo.firstname
@@ -34,25 +35,25 @@ function Main() {
                     <p>{userName()}</p>
                 </div>
                 <div className="listing-menu">
-                    <input class="menu-btn" type="checkbox" id="menu-btn" />
-                    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                    <input className="menu-btn" type="checkbox" id="menu-btn" />
+                    <label className="menu-icon" for="menu-btn"><span className="navicon"></span></label>
                     <ul className="ul-listing-menu menu">
                         <div className='avatar-menu-parametre'>
-                            <Link to="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></Link>
-                            <Link to="/login"><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></Link>
+                            <a href="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></a>
+                            <a href="" onClick={logout} ><FontAwesomeIcon icon={faDoorClosed} style={{color: 'white'}} /></a>
                         </div>
-                        <Link to="/"><li><FontAwesomeIcon icon={faHome} />Tableau de bord</li></Link>
-                        <Link to="/ma-formation"><li><FontAwesomeIcon icon={faGraduationCap} />Ma formation</li></Link>
-                        {/* <Link to="/calendrier"><li><FontAwesomeIcon icon={faCalendar} />Calendrier</li></Link>
-                        <Link to="/cours"><li><FontAwesomeIcon icon={faGraduationCap} />Cours</li></Link>
-                        <Link to="/exercices"><li><FontAwesomeIcon icon={faLaptopCode} />Exercices</li></Link> */}
-                        <Link to="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></Link>
-                        <Link to="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></Link>
-                        <Link to="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></Link>
-                        <Link to="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></Link>
-                        <Link to="/admin"><li><FontAwesomeIcon icon={faPaperclip} />Administratifs</li></Link>
-                        {/* <Link to="/annonces-emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></Link>
-                        <Link to="/list-user"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></Link> */}
+                        <a href="/"><li><FontAwesomeIcon icon={faHome} />Tableau de bord</li></a>
+                        <a href="/ma-formation"><li><FontAwesomeIcon icon={faGraduationCap} />Ma formation</li></a>
+                        {/* <a href="/calendrier"><li><FontAwesomeIcon icon={faCalendar} />Calendrier</li></a>
+                        <a href="/cours"><li><FontAwesomeIcon icon={faGraduationCap} />Cours</li></a>
+                        <a href="/exercices"><li><FontAwesomeIcon icon={faLaptopCode} />Exercices</li></a> */}
+                        <a href="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></a>
+                        <a href="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></a>
+                        <a href="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></a>
+                        <a href="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></a>
+                        <a href="/admin"><li><FontAwesomeIcon icon={faPaperclip} />Administratifs</li></a>
+                        {/* <a href="/annonces-emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></a>
+                        <a href="/list-user"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></a> */}
                         <a href="https://lamanu.fr/">
                             <img src={LaManu} alt="LOGO" className='logo-menu-principal' style={{width: '70%', height:'auto'}}/>
                         </a>

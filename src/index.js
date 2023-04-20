@@ -3,21 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ApiProvider } from './features/APIToken/ApiContext.js' //'./features/APIToken/ApiContext';
-import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+//noyau de l'application, c'est ici que l'on met le contexte de l'API. Ainsi l'app peut accéder à l'API.
 root.render(
-  // <React.StrictMode>
-    <ApiProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ApiProvider>
+  //<React.StrictMode>
+    <BrowserRouter>
+      <ApiProvider>
+          <App />
+      </ApiProvider>
+    </BrowserRouter>
   //</React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

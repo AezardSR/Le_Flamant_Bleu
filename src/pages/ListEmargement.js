@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ImgEmargement from '../assets/img/emargement.png'
-import '../css/ListEmargement.css';
+import '../css/styles.css';
 
 export default class ListEmargement extends Component {
   render() {

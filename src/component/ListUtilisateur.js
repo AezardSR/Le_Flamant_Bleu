@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "../css/ListUtilisateur.css"
+import "../css/styles.css";
 
 
 export default class ListUtilisateur extends Component {

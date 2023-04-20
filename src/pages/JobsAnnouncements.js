@@ -5,7 +5,7 @@ import PartnerHautFrance from '../assets/img/haut_de_france.png'
 import PartnerIleFrance from '../assets/img/ile_de_france.png'
 import PartnerNormandie from '../assets/img/normandie.png'
 import ImgAnnouncement from '../assets/img/logo_la_manu.png'
-import '../css/JobsAnnouncements.css';
+import '../css/styles.css';
 
 export default function JobsAnnouncements() {
     const [jobs, setJobs] = useState([]);

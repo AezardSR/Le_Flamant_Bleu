@@ -1,59 +1,67 @@
-import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
-import '../css/Lesson.css';
+import React, { useState } from "react";
+import '../css/styles.css';
+import Module from '../component/Module';
+import Categorie from "../component/Categories";
+import Part from "../component/Part";
+import CardExercice from "../component/CardExercice";
 
 function Exercice() {
-    const [categories, setCategories] = useState([]);
-    const [exercices, setExercices] = useState([]);
 
-    useEffect(() => {
-      Promise.all([
-        fetch(`${process.env.REACT_APP_API_PATH}/categories`),
-        fetch(`${process.env.REACT_APP_API_PATH}/exercices`),
-      ])
-        .then(([resCategories, resExercices]) =>
-          Promise.all([resCategories.json(), resExercices.json()])  
-        )
-        .then(([dataCategories, dataExercices]) => {
-          setCategories(dataCategories);
-          setExercices(dataExercices);
-        })
-    }, [])
+  const [showModule, setShowModule] = useState(true);
+  const [selectedModuleId, setSelectedModuleId] = useState(null);
 
-    return (
-      <div>
-          <h2>Exercices [nom de la formation]</h2>
-          <div className="listing-lesson">
-              <ul className="listing-categorie-nav">
-                  {categories.map((categorie) => (
-                    <li key={categorie.id}>
-                      <div className="flex-between p-10px align-center">
-                        {categorie.categorie}
-                      <span>V</span>
-                      </div>
-                      <ul className="listing-categorie-nav">
-                        {exercices.map((exercice)  => {
-                          if(exercice.categorie_id !== categorie.id) {
-                            return;
-                          }
-                          return (
-                            <li key={exercice.id}>
-                              <div className="flex-between p-10px align-center">
-                                <a href="/" target="_blank">
-                                  <p>{exercice.name}</p>
-                                </a>
-                              </div>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </li>
-                  ))}
-              </ul>
-          </div>
+  const [showCategorie, setShowCategorie] = useState(true)
+  const [selectedCategorieId, setSelectedCategorieId] = useState(null)
 
-         <Link to="/ajouter-exercice"><button className="link-lesson-add mar-bottom-10px">Ajouter un exercice</button></Link>
-      </div>
-    )
+  const [showPart, setShowPart] = useState(true);
+  const [selectedPartId, setSelectedPartId] = useState(null)
+
+  const handleToggleModule = (moduleId) => {
+    setShowModule((prev) => !prev);
+    setSelectedModuleId(moduleId);
+    // console.log("module id: " + moduleId)
+  };
+
+  const handleToggleCategorie = (categorieId) =>{
+    setShowCategorie((prev) => !prev);
+    setSelectedCategorieId(categorieId)
   }
+
+  const handleTogglePart = (partId) => {
+    setShowPart((prev) => !prev);
+    setSelectedPartId(partId)
+  }
+
+  const handleReturnToPart = () => {
+    setShowPart(true);
+  };
+
+  const handleReturnToCategorie = () =>{
+    setShowCategorie(true)
+  }
+  
+  const handleReturnToModule = () => {
+    setShowModule(true)
+  }
+  return (
+    <div>
+      {
+        showModule ? (
+          <Module onToggle={handleToggleModule}/>
+        ) : ( 
+          showCategorie ? (
+            <Categorie moduleId={selectedModuleId} onToggle={handleToggleCategorie} returnToModule={handleReturnToModule} />
+          ) : (
+            showPart ? (
+              <Part  categorieId={selectedCategorieId} onToggle={handleTogglePart} returnToCategorie={handleReturnToCategorie} />
+            ) : (
+              <CardExercice partId={selectedPartId} returnToPart={handleReturnToPart} />
+            )
+          )
+        )
+      }
+
+    </div>
+  )
+}
 export default Exercice
