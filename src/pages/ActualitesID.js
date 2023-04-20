@@ -16,12 +16,13 @@ const ActualitesID = () => {
 
   return (
     <div>
-      <h1 className="mar-vertical-10px mar-left-10px">{actualites.title}</h1>
+      <div className='actualite-full'>
+        <h1 className="mar-top-10px mar-left-10px actualite-title">{actualites.title}</h1>
+        <p className='actualite-detail'>{actualites.publication_date}- {actualites.author}</p>
 
-      <div>
-        <p>{actualites.content}</p>
-
-        <p><span>{actualites.publication_date}</span><span>- {actualites.author}</span></p>
+        <div>
+          <p className='actualite-content'>{actualites.content}</p>
+        </div>
       </div>
 
     </div>

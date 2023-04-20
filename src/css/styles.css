@@ -49,6 +49,8 @@ h2 {font-weight: 400; padding: 10px;}
 
 .margin-auto {margin: 0 auto;}
 
+.mar-top-10px {margin-top: 10px;}
+
 .mar-bottom-10px {margin-bottom: 10px;}
 
 .mar-vertical-10px {margin: 10px 0;}
@@ -566,8 +568,11 @@ a .btn-connexion  {
 .tableau-bord .text-tb {
     position: absolute; 
     bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 20px;
     color: #000;
-    text-align: justify;
+    text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
     margin: 0 auto;
     padding: 5px 10px 10px 10px;
@@ -1628,4 +1633,69 @@ a .btn-form-jobs {
 a .btn-form-add-lesson {
     color: white;
     text-decoration: none;  
+}
+
+/*---------------------------------------------------------------------
+    ACTUALITES
+-----------------------------------------------------------------------*/
+.block-actualites-listing {
+    background: var(--color-light-grey);
+    border: 1px solid var(--color-dark-blue);
+    width: 70%;
+    margin: 10px auto;
+    padding: 5px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.block-actualites-listing:hover::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -13px;
+    width: 45px;
+    height: 20px;
+    background-color: var(--color-light-blue);
+    transform: rotate(45deg);
+}
+
+.block-actualites-listing .listing-actu-title {
+    font-size: 18px;
+    color: var(--color-dark-blue);
+}
+
+.block-actualites-listing .listing-actu-content {
+    font-size: 14px;
+    color: var(--color-light-blue)
+}
+
+.block-actualites-listing .listing-actu-detail {
+    text-align: end;
+    font-style: italic;
+    font-size: 12px;
+    color: black;
+}
+
+/*---------------------------------------------------------------------
+    ACTUALITES 
+-----------------------------------------------------------------------*/
+.actualite-full {
+
+}
+
+.actualite-full .actualite-title {
+
+}
+
+.actualite-full .actualite-detail {
+    margin-left: 10px;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-light-blue);
+}
+
+.actualite-full .actualite-content {
+    padding: 10px;
+    margin-top: 10px;
 }

@@ -40,9 +40,7 @@ function TableauBord() {
                             <div className="article-table-bord">
                                 <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                 <p className="text-tb">
-                                    Maecenas vitae magna lacus. Quisque nec est sem. 
-                                    Vivamus tincidunt volutpat enim, bibendum finibus eros faucibus ut. 
-                                    Pellentesque vestibulum nec risus vitae consequat.
+                                    Découvrez les dernières offres d'emplois
                                 </p>
                             </div>
                         </Link>
@@ -53,9 +51,7 @@ function TableauBord() {
                         <div className="article-table-bord">
                             <img src={News} alt="News 2" className="img-tableau-bord img-right-tb"/>
                             <p className="text-tb">
-                                Duis posuere ut enim quis tempus. Nam sagittis risus non libero iaculis, 
-                                vitae blandit lectus posuere. Sed consequat tincidunt ultricies. 
-                                Phasellus aliquam efficitur mauris.
+                                Découvrez les dernières actualités
                             </p>
                         </div>
                     </a>
