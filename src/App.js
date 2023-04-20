@@ -29,18 +29,22 @@ import Actualites from './pages/Actualites.js';
 import AddActualites from './features/AddActualite.js';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
-
+import Register from './pages/register.js';
 
 function App() {
-    const {user} = useContext(ApiContext);
+    const {user, userStatus} = useContext(ApiContext); // on importe le contexte de l'API, précisément la variable user
+    // on teste si l'utilisateur est connecté, si oui on affiche la page, sinon on le redirige vers la page de connexion
     const logged = (comp) => {
-       if( !localStorage.getItem("token") || user.status === "Token is Invalid" ){
-          console.log("redirection vers la page de connexion")
-         return <Navigate to="/login" replace={true} />
-       } else {
-         return comp
-       }
+      if( !localStorage.getItem("token") || user.status === "Token is Invalid" || user.status === "Token is Expired" || !userStatus === "connected"){
+       return <Navigate to="/login" replace={true} />
+     } else {
+       return comp
+     }
     }
+
+    // On renvoie le composant app qui est les coeurs de l'application
+    // Ce composant contient toutes les routes de l'application, il est appelé dans
+    // le fichier index.js qui est le point d'entrée de l'application autour du quel on a mis le context de l'API
     return (
     <div className="App">
         <div className='page-tableau-bord'>
@@ -51,6 +55,7 @@ function App() {
             <Route path="/profile" element={logged(<PageProfilUtilisateur />)} />
             <Route path="/ma-formation" element={logged(<><MenuPrincipal /><MaFormation /></>)} />
             <Route path="/emplois" element={logged(<><MenuPrincipal /><Emplois /></>)} />
+            <Route path="/register" element={logged(<><MenuPrincipal /><Register /></>)} />
 
             {/* Calendrier */}
             <Route path="/calendrier" element={logged(<><MenuPrincipal /><Calendrier /></>)} />
