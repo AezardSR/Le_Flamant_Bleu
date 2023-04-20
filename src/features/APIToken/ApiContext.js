@@ -120,7 +120,7 @@ export const ApiProvider  = ({children}) => {
 
     //Fonction permettant l'inscription d'un utilisateur
     const registerUser = (credentials) => {
-        requestAPI('/register', 'POST', credentials).then(response => response.json())
+    return requestAPI('/register', 'POST', credentials).then(response => response.json())
         .then((data) => {
             if(data.message === "user registered"){
                 setTypesList(data)
@@ -131,8 +131,7 @@ export const ApiProvider  = ({children}) => {
                 setPassError(data.password)// met à jour l'état de l'erreur de mot de passe dans le formulaire d'inscription
                 setLoginError(data.message)//met à jour l'état de l'erreur de connexion dans le formulaire d'inscription
             }
-        })
-        .catch((error) => { console.log('error: ' + error.message) })
+        }).catch((error) => { console.log('error: ' + error.message) })
     }
 
     //Fonction permettant de se déconnecter de l'application, elle permet de supprimer le token du localStorage et de déconnecter l'utilisateur du token

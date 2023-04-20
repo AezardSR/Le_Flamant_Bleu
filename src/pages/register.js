@@ -11,8 +11,8 @@ export default function Register() {
   const [firstname, setFirstname] = useState(); // définition de l'état prénom
   const [password, setPassword] = useState();// définition de l'état du mot de passe    
   const [password_confirmation, setPasswordConfirm] = useState(); // définition de l'état de la confirmation du mot de passe
-  const [roles_id, setRole] = useState(); // définition de l'état du rôle
-  const [types_id, setType] = useState(); // définition de l'état du type
+  const [roles_id, setRole] = useState([]); // définition de l'état du rôle
+  const [types_id, setType] = useState([]); // définition de l'état du type
   const [userRegisterd, setUserRegistered] = useState(false); // définition de l'état de l'inscription de l'utilisateur
 
 
@@ -29,12 +29,10 @@ export default function Register() {
         roles_id,
         types_id
     }).then(data => {
-      if(data.message === "user registered"){
-        setUserRegistered("utilisateur bien enregistré")//définition de l'état de l'inscription de l'utilisateur
-        //window.location.reload();
-      }
-    })
-}
+        window.location.reload();
+      })
+    }
+    
 //on récupère les rôles et les types d'utilisateur au chargement de la page
 useEffect(() =>{
   getRoles()//recupération des rôles
@@ -66,7 +64,7 @@ return (
                   <label className="">Rôle</label>
                   <select name="role" className="input-r" onChange={e => setRole(e.target.value)}>
                     <option value="0">Choisir un rôle</option>
-                    {rolesList && rolesList.map((name, id) => (
+                    {Array.isArray(rolesList) && rolesList.map((name, id) => (
                       <option key={id} value={name.id}>{name.name}</option>
                     ))}
                   </select>
@@ -74,7 +72,7 @@ return (
                   <label className="">Type</label>
                   <select name="role" className="input-r" onChange={e => setType(e.target.value)}>
                     <option value="0">Choisir un rôle</option>
-                    {typesList && typesList.map((name, id) => (
+                    {Array.isArray(typesList) && typesList.map((name, id) => (
                       <option key={id} value={name.id}>{name.name}</option>
                     ))}
                   </select>
