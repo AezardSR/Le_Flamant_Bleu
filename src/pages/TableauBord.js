@@ -27,23 +27,23 @@ function TableauBord() {
             <div className="tableau-bord">
                 <div className="left-tb">
                     <div className="calendar-tb">
-                        <Link to="/calendrier">
+                        <a href="/calendrier">
                             <div className='background-planning'>
                                 <p className="text-date">{currentDate}</p>
                                 <p className="text-month">{currentMonth}</p>
                                 <p>Planning</p>
                             </div>
-                        </Link>
+                        </a>
                     </div>
                     <div className="news-tb zoom-img">
-                        {/* <Link to="/annonces-emplois"> */}
+                        <a href="/annonces-emplois">
                             <div className="article-table-bord">
                                 <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                 <p className="text-tb">
                                     Découvrez les dernières offres d'emplois
                                 </p>
                             </div>
-                        {/* </Link> */}
+                        </a>
                     </div>
                 </div>
                 <div className="right-tb zoom-img">
