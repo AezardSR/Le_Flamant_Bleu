@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const ActualitesID = () => {
 
   const { actualitesID } = useParams();
+  const {requestAPI} = useContext(ApiContext);
 
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/actualites/` + actualitesID)
+    requestAPI('/actualites' + actualitesID, 'GET',null)
       .then(response => response.json())
       .then(data => setActualites(data));
 

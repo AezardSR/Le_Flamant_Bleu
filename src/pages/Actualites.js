@@ -1,23 +1,25 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { Component, useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Actualites() {
 
     const [actualites, setActualites] = useState([]);
+    const {requestAPI} = useContext(ApiContext);
 
     useEffect(() => {
-          fetch('http://localhost:8000/api/actualites')
+        requestAPI('/actualites', 'GET',null)
           .then(response => response.json())
           .then(data => setActualites(data))
     }, [])
 
     function deleteID(id) {
-      fetch('http://localhost:8000/api/actualites/' + id, { method: 'DELETE' })
+      requestAPI('/actualites/' + id, 'DELETE', null)
         .then(response => response.json())
         .then(data => console.log(data))
     }
