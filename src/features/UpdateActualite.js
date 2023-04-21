@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateActualite = () => {
   const { actualitesID } = useParams();
+  const {requestAPI} = useContext(ApiContext);
 
   const [actualites, setActualites] = useState({ title: '', content: '', publication_date: '', author: '' });
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/actualites/${actualitesID}`)
+    requestAPI('/actualites/' + actualitesID, 'GET',null)
       .then(response => response.json())
       .then(data => setActualites(data));
 
@@ -20,12 +22,7 @@ const UpdateActualite = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const requestOptions = {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({title: actualites.title, content: actualites.content, publication_date: actualites.publication_date, author: actualites.author})
-    };
-    fetch(`${process.env.REACT_APP_API_PATH}/actualites/` + actualitesID, requestOptions)
+    requestAPI('/actualites/' + actualitesID, 'PATCH', {title: actualites.title, content: actualites.content, publication_date: actualites.publication_date, author: actualites.author})
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

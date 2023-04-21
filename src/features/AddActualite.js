@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const AddActualite = () => {
 
@@ -8,15 +9,10 @@ const AddActualite = () => {
     const [content, setContent] = useState([]);
     const [publicationDate, setPublicationDate] = useState([]);
     const [author, setAuthor] = useState([]);
+    const {requestAPI} = useContext(ApiContext);
 
     const handleSubmit = (event) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({title: title, content: content, publication_date: publicationDate, author: author})
-        };
-
-        fetch(`${process.env.REACT_APP_API_PATH}/actualites`, requestOptions)
+        requestAPI('/actualites', 'POST', {title: title, content: content, publication_date: publicationDate, author: author})
             .then(response => response.json())
             .then(data => console.log(data))
             event.preventDefault();

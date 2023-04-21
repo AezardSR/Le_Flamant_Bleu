@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateJobsOffers = () => {
   const { jobOffersID } = useParams();
+  const {requestAPI} = useContext(ApiContext);
 
   const [jobOffers, setJobOffers] = useState({ name: '', dateOffers: '', description: '', link: '', user_id: '', partnerContacts_id: '' });
 
@@ -10,15 +12,15 @@ const UpdateJobsOffers = () => {
   const [partnerContactID, setPartnerContactID] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/job-offers/${jobOffersID}`)
+    requestAPI('/job-offers/' + jobOffersID, 'GET',null)
       .then(response => response.json())
       .then(data => setJobOffers(data));
 
-    fetch(`${process.env.REACT_APP_API_PATH}/user/`)
+    requestAPI('/user', 'GET',null)
       .then(response => response.json())
       .then(data => setUserID(data));
 
-    fetch(`${process.env.REACT_APP_API_PATH}/partner-contacts/`)
+    requestAPI('/partner-contacts', 'GET',null)
       .then(response => response.json())
       .then(data => setPartnerContactID(data));
   }, [jobOffersID]);
@@ -30,12 +32,7 @@ const UpdateJobsOffers = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const requestOptions = {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: jobOffers.name, dateOffers: jobOffers.dateOffers, description: jobOffers.description, link: jobOffers.link, user_id: jobOffers.user_id, partnerContacts_id: jobOffers.partnerContacts_id})
-    };
-    fetch(`${process.env.REACT_APP_API_PATH}/job-offers/` + jobOffersID, requestOptions)
+    requestAPI('/job-offers/' + jobOffersID, 'PATCH', {name: jobOffers.name, dateOffers: jobOffers.dateOffers, description: jobOffers.description, link: jobOffers.link, user_id: jobOffers.user_id, partnerContacts_id: jobOffers.partnerContacts_id})
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
