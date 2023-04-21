@@ -95,7 +95,6 @@ export const ApiProvider  = ({children}) => {
                 localStorage.setItem("token", JSON.stringify(data.access_token));//stocke le token dans le localStorage
                 setToken(data.access_token)//permet de stocker le token dans le state et de permettre son utilisations dans UseToken
                 setUserStatus("connected")
-                console.log(token)
             } else {
                 setMailError(data.mail)//met à jour l'état de l'erreur d'adresse email
                 setPassError(data.password)//met à jour l'état de l'erreur de mot de passe
