@@ -11,19 +11,13 @@ const AddLesson = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
+    requestAPI('/categories', 'GET',null)
       .then(response => response.json())
       .then(data => setCategories(data))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: title, content: description, duration: duration, categorie_id: categoryID})
-    };
-
-    fetch(`${process.env.REACT_APP_API_PATH}/lessons`, requestOptions)
+    requestAPI('/lessons', 'POST', {name: title, content: description, duration: duration, categorie_id: categoryID})
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();

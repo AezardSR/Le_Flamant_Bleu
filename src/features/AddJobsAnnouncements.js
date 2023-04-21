@@ -16,28 +16,22 @@ const AddJobsAnnouncements = () => {
   const [partnerContactsID, setPartnerContactsID] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/user/`)
+    requestAPI('/user', 'GET',null)
       .then(response => response.json())
       .then(data => setUser(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/partner-contacts/`)
+    requestAPI('/partner-contacts', 'GET',null)
       .then(response => response.json())
       .then(data => setPartnerContacts(data))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
-    };
-
-    fetch(`${process.env.REACT_APP_API_PATH}//job-offers/add`, requestOptions)
+    event.preventDefault();
+    requestAPI('/job-offers', 'POST', {name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
         .then(response => response.json())
         .then(data => console.log(data))
-        event.preventDefault();
   }
   
     return (
