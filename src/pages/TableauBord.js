@@ -36,7 +36,7 @@ function TableauBord() {
                         </Link>
                     </div>
                     <div className="news-tb zoom-img">
-                        <Link to="/annonces-emplois">
+                        {/* <Link to="/annonces-emplois"> */}
                             <div className="article-table-bord">
                                 <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                 <p className="text-tb">
@@ -45,11 +45,11 @@ function TableauBord() {
                                     Pellentesque vestibulum nec risus vitae consequat.
                                 </p>
                             </div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 </div>
                 <div className="right-tb zoom-img">
-                    <a href="#">
+                    {/* <a href="#"> */}
                         <div className="article-table-bord">
                             <img src={News} alt="News 2" className="img-tableau-bord img-right-tb"/>
                             <p className="text-tb">
@@ -58,7 +58,7 @@ function TableauBord() {
                                 Phasellus aliquam efficitur mauris.
                             </p>
                         </div>
-                    </a>
+                    {/* </a> */}
                 </div>
 
             </div>

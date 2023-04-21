@@ -47,10 +47,10 @@ function Main() {
                         {/* <a href="/calendrier"><li><FontAwesomeIcon icon={faCalendar} />Calendrier</li></a>
                         <a href="/cours"><li><FontAwesomeIcon icon={faGraduationCap} />Cours</li></a>
                         <a href="/exercices"><li><FontAwesomeIcon icon={faLaptopCode} />Exercices</li></a> */}
-                        <a href="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></a>
+                        {/*<a href="/"><li><FontAwesomeIcon icon={faMessage} />Messagerie</li></a>
                         <a href="/"><li><FontAwesomeIcon icon={faCircleQuestion} />FAQ</li></a>
                         <a href="/actualites"><li><FontAwesomeIcon icon={faGlobe} />Actualités</li></a>
-                        <a href="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></a>
+                        <a href="/emplois"><li><FontAwesomeIcon icon={faAddressBook} />Emplois</li></a>*/}
                         <a href="/admin"><li><FontAwesomeIcon icon={faPaperclip} />Administratifs</li></a>
                         {/* <a href="/annonces-emplois"><li><FontAwesomeIcon icon={faAddressBook} />Offres d'emplois</li></a>
                         <a href="/list-user"><li id="menu-fiche-information"><FontAwesomeIcon icon={faAddressCard} />Fiches d'informations</li></a> */}
