@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const AddParts = () => {
 
+  const {requestAPI} = useContext(ApiContext);
   const [part, setPart] = useState([]);
 
   const [categories, setCategories] = useState([]);
   const [categoriesID, setCategoriesID] = useState([]);
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: part, categories_id: categoriesID})
-    };
-
-    fetch('http://localhost:8000/api/parts', requestOptions)
+    requestAPI('/parts', 'POST', {name: part, categories_id: categoriesID})
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();
   }
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/categories/')
+    requestAPI('/categories', 'GET',null)
       .then(response => response.json())
       .then(data => setCategories(data))
   }, [])

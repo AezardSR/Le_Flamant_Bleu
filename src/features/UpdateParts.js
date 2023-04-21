@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateParts = () => {
   const { partsID } = useParams();
+  const {requestAPI} = useContext(ApiContext);
 
   const [parts, setParts] = useState({ name: '', categories_id: '' });
   const [categoriesID, setCategoriesID] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/parts/${partsID}`)
+    requestAPI('/parts/' + partsID, 'GET',null)
       .then(response => response.json())
       .then(data => setParts(data));
 
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
+    requestAPI('/categories', 'GET',null)
       .then(response => response.json())
       .then(data => setCategoriesID(data));
   }, [partsID]);
@@ -24,12 +26,7 @@ const UpdateParts = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const requestOptions = {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: parts.name, categories_id: parts.categories_id})
-    };
-    fetch(`${process.env.REACT_APP_API_PATH}/parts/` + partsID, requestOptions)
+    requestAPI('/parts/' + partsID, 'PATCH', {name: parts.name, categories_id: parts.categories_id})
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

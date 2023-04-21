@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useContext } from "react";
+import { ApiContext } from "../features/APIToken/ApiContext";
 import { useParams } from 'react-router-dom';
 
 const UpdateCategorie = () => {
   const { categoryID } = useParams();
 
-  const [category, setCategory] = useState({ categorie: '' });
+  const {requestAPI} = useContext(ApiContext);
+  // const [categoryID, setCategoryID] = useState('');
+  // const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
+    requestAPI('/categories', 'GET',null)
       .then(response => response.json())
       .then(data => setCategory(data));
 
@@ -19,16 +23,11 @@ const UpdateCategorie = () => {
   };
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({categorie: categoryID})
-    };
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
+    event.preventDefault();
+    requestAPI('/categories/' + categoryID, 'PATCH', {categorie: category})
       .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
-  };
+      .then(data => console.log(data)) 
+  }
 
   return (
     <div>

@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ImgAnnouncement from '../assets/img/logo_la_manu.png'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 export default function IndexJobsAnnouncements() {
     const [jobs, setJobs] = useState([]);
-
+    const {requestAPI} = useContext(ApiContext);
     useEffect(() => {
-        Promise.all([
-          fetch(`${process.env.REACT_APP_API_PATH}/job-offers`),
-        ])
-          .then(([resJobs]) =>
-            Promise.all([resJobs.json()])  
-          )
-          .then(([dataJobs]) => {
-            setJobs(dataJobs);
-          })
-      }, [])
+      requestAPI('/job-offers', 'GET',null)
+        .then(response => response.json())
+        .then(data => setJobs(data))
+    }, [])
+
     return (
       <div>
             <h1>Toutes les annonces disponibles</h1>

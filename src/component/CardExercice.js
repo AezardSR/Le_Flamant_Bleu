@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Card from "../component/Card";
 import "../css/styles.css";
 import Modal from "./Modal";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 
 function CardExercice(props) {
 
+    const {requestAPI} = useContext(ApiContext);
     const [loading, setLoading] = useState(false);
     const [exercices, setExercices] = useState([]);
     const [filteredExercices, setFilteredExercices] = useState([]);
@@ -19,7 +21,7 @@ function CardExercice(props) {
     };
     const getExercices = () => {
       setLoading(true)
-      fetch(`${process.env.REACT_APP_API_PATH}/exercices`)
+      requestAPI('/exercices', 'GET',null)
         .then(response => response.json())
         .then(json => {
           setExercices(json);

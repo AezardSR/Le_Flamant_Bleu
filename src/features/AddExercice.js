@@ -1,7 +1,8 @@
+import React, { useEffect, useState, useContext } from "react";
 import { getByTitle } from "@testing-library/react";
-import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import '../css/styles.css';
+import { ApiContext } from '../features/APIToken/ApiContext';
 
 const AddExercice = () => {
 
@@ -10,25 +11,23 @@ const AddExercice = () => {
   const [image, setImage] = useState([]);
   const [file, setFile] = useState([]);
   const [partsID, setPartsID] = useState('');
-  const [parts, setParts] = useState([]);
+  const [parts, setParts] = useState([]);  
+  const [categoryID, setCategoryID] = useState('');
+  const [categories, setCategories] = useState([]);
+  const {requestAPI} = useContext(ApiContext);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
+    requestAPI('/categories', 'GET', null)
       .then(response => response.json())
-      .then(data => setParts(data))
+      .then(data => setCategories(data))
+      .catch(error => console.log(error))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: title, content: description, image: image, file: file, parts_id: partsID})
-    };
-
-    fetch(`${process.env.REACT_APP_API_PATH}/exercices`, requestOptions)
+    event.preventDefault();
+    requestAPI('/exercices', 'POST', {name: title, content: description, image: image, file: file, categorie_id: categoryID})
         .then(response => response.json())
         .then(data => console.log(data))
-        event.preventDefault();
   }
 
     return (

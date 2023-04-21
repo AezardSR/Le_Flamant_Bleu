@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateExercices = () => {
   const { exercicesID } = useParams();
+  const {requestAPI} = useContext(ApiContext);
 
   const [exercice, setExercice] = useState({ name: '', content: '', image: '', file: '', parts_id: '' });
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/exercices/${exercicesID}`)
+    requestAPI('/exercices/' + exercicesID, 'GET',null)
       .then(response => response.json())
       .then(data => setExercice(data));
 
-    fetch('http://localhost:8000/api/parts/')
+    requestAPI('/parts', 'GET',null)
       .then(response => response.json())
       .then(data => setParts(data));
   }, [exercicesID]);
@@ -24,11 +26,7 @@ const UpdateExercices = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:8000/api/exercices/${exercicesID}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(exercice)
-    })
+    requestAPI('/exercices/' + exercicesID, 'PATCH', exercice)
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

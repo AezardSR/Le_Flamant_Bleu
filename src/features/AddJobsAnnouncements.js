@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const AddJobsAnnouncements = () => {
 
+  const {requestAPI} = useContext(ApiContext);
   const [name, setName] = useState([]);
   const [dateOffers, setDateOffers] = useState([]);
   const [description, setDescription] = useState([]);
@@ -16,28 +18,22 @@ const AddJobsAnnouncements = () => {
   const [partnerContactsID, setPartnerContactsID] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/user/`)
+    requestAPI('/user', 'GET',null)
       .then(response => response.json())
       .then(data => setUser(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/partner-contacts/`)
+    requestAPI('/partner-contacts', 'GET',null)
       .then(response => response.json())
       .then(data => setPartnerContacts(data))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
-    };
-
-    fetch(`${process.env.REACT_APP_API_PATH}/job-offers`, requestOptions)
+    event.preventDefault();
+    requestAPI('/job-offers', 'POST', {name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
         .then(response => response.json())
         .then(data => console.log(data))
-        event.preventDefault();
   }
   
     return (

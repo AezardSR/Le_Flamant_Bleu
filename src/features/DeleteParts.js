@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const DeleteParts = () => {
 
+  const {requestAPI} = useContext(ApiContext);
   const [partsID, setPartsID] = useState('');
   const [parts, setParts] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:8000/api/parts/')
+    requestAPI('/parts', 'GET',null)
       .then(response => response.json())
       .then(data => setParts(data))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'DELETE'
-    };
-    fetch('http://localhost:8000/api/parts/' + partsID, requestOptions)
+    event.preventDefault();
+    requestAPI('/parts/' + partsID, 'DELETE', null)
       .then(response => response.json())
       .then(data => console.log(data))
-    event.preventDefault();
   }
   
     return (
