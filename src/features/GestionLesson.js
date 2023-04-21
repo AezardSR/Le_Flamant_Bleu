@@ -7,19 +7,19 @@ import 'reactjs-popup/dist/index.css';
 import '../css/styles.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
-function Categorie() {
+function GestionLesson() {
 
     const {requestAPI} = useContext(ApiContext);
-    const [categories, setCategories] = useState([]);
+    const [lessons, setLessons] = useState([]);
 
     useEffect(() => {
-        requestAPI('/categories', 'GET',null)
+        requestAPI('/lessons', 'GET',null)
           .then(response => response.json())
-          .then(data => setCategories(data))
+          .then(data => setLessons(data))
     }, [])
 
     function deleteID(id) {
-      requestAPI('/categories/' + id, 'DELETE', null)
+      requestAPI('/lessons/' + id, 'DELETE', null)
         .then(response => response.json())
         .then(data => console.log(data))
     }
@@ -27,20 +27,20 @@ function Categorie() {
     return (
       <div>
         <div className='flex-wrap'>
-            {categories.map((categorie) => (
-                <div className='block-categories-parts flex-between' id={categorie.id} key={categorie.id} value={categorie.id}>
-                    <p>{categorie.categorie}</p>
+            {lessons.map((lesson) => (
+                <div className='block-categories-parts flex-between' id={lesson.id} key={lesson.id} value={lesson.id}>
+                    <p>{lesson.name}</p>
                     <div className='flex'>
-                      <button className='button-delete pointer' onClick={() => deleteID(categorie.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(lesson.id)}>Delete</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-cours/" + lesson.id}>Update</Link></button>
                     </div>
                 </div>
             ))}
         </div>
 
-        <Link to="/ajouter-categorie"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une catégorie</button></Link>
+        <Link to="/ajouter-cours"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une leçon</button></Link>
       </div>
     )
 }
 
-export default Categorie;
+export default GestionLesson;

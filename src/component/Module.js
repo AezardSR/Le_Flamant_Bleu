@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Card from "../component/Card";
 import "../css/styles.css";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Module(props) {
 
+    const {requestAPI} = useContext(ApiContext);
     const [modules, setModules] = useState([]); // modules est un tableau vide jusqu'au moment ou il reçoit les données du useEffect
     const [loading, setLoading] = useState(false); // permet l'affichage ou non du loading
   
@@ -11,7 +13,7 @@ function Module(props) {
     // on met le loading a false une fois les données recuperé
     const getModules = () => {
       setLoading(true)
-      fetch(`${process.env.REACT_APP_API_PATH}/modules`)
+      requestAPI('/modules', 'GET',null)
       .then(response => response.json())
       .then(json => {
          setModules(json);

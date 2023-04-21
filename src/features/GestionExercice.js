@@ -7,19 +7,19 @@ import 'reactjs-popup/dist/index.css';
 import '../css/styles.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
-function Categorie() {
+function GestionExercice() {
 
     const {requestAPI} = useContext(ApiContext);
-    const [categories, setCategories] = useState([]);
+    const [exercices, setExercices] = useState([]);
 
     useEffect(() => {
-        requestAPI('/categories', 'GET',null)
+        requestAPI('/exercices', 'GET',null)
           .then(response => response.json())
-          .then(data => setCategories(data))
+          .then(data => setExercices(data))
     }, [])
 
     function deleteID(id) {
-      requestAPI('/categories/' + id, 'DELETE', null)
+      requestAPI('/exercices/' + id, 'DELETE', null)
         .then(response => response.json())
         .then(data => console.log(data))
     }
@@ -27,20 +27,20 @@ function Categorie() {
     return (
       <div>
         <div className='flex-wrap'>
-            {categories.map((categorie) => (
-                <div className='block-categories-parts flex-between' id={categorie.id} key={categorie.id} value={categorie.id}>
-                    <p>{categorie.categorie}</p>
+            {exercices.map((exercice) => (
+                <div className='block-categories-parts flex-between' id={exercice.id} key={exercice.id} value={exercice.id}>
+                    <p>{exercice.name}</p>
                     <div className='flex'>
-                      <button className='button-delete pointer' onClick={() => deleteID(categorie.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(exercice.id)}>Delete</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-exercice/" + exercice.id}>Update</Link></button>
                     </div>
                 </div>
             ))}
         </div>
 
-        <Link to="/ajouter-categorie"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une catégorie</button></Link>
+        <Link to="/ajouter-exercice"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter un exercice</button></Link>
       </div>
     )
 }
 
-export default Categorie;
+export default GestionExercice;

@@ -7,6 +7,7 @@ import { faPaperclip , faGear, faHome, faGraduationCap, faMessage, faCircleQuest
 import '../css/styles.css';
 import { ApiContext } from "../features/APIToken/ApiContext";
 
+
 function Main() {
     const {user} = useContext(ApiContext);//importation de l'objet user depuis le context
     const navigate = useNavigate();
@@ -26,7 +27,6 @@ function Main() {
             return null
         }
     }
-
     return(
         <div className="menu-principal">
             <div className="p-relative">

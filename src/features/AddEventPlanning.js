@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/styles.css';
+import { ApiContext } from '../features/APIToken/ApiContext';
+
 
 const AddEventPlanning = () => {
+    const {requestAPI} = useContext(ApiContext);
 
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
@@ -18,34 +21,27 @@ const AddEventPlanning = () => {
     const [typeAppoitmentsID, setTypeAppoitmentsID] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user`)
+        requestAPI('/user', 'GET',null)
         .then(response => response.json())
-        .then(data => setReceiver(data))
+        .then(data => {
+            setReceiver(data)
+            setCreated(data)
+        }).catch(error => console.log(error))
     }, [])
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user`)
-        .then(response => response.json())
-        .then(data => setCreated(data))
-    }, [])
-
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/appointment-types`)
+        requestAPI('/appointment-types', 'GET',null)
         .then(response => response.json())
         .then(data => setTypeAppoitments(data))
+        .catch(error => console.log(error))
     }, [])
 
     const handleSubmit = (event) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
-        };
-
-        fetch(`${process.env.REACT_APP_API_PATH}/appointments`, requestOptions)
+        event.preventDefault();
+        requestAPI('/appointments', 'POST', {titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
             .then(response => response.json())
             .then(data => console.log(data))
-            event.preventDefault();
+            .catch(error => console.log(error))
     }
 
     return (
@@ -62,18 +58,21 @@ const AddEventPlanning = () => {
             </div>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setReceiverID(event.target.value)}} value={receiverID}>
+                <option value="">--Choisir une option--</option>
                 {receiver.map((invit) => (
                     <option key={invit.id} value={invit.id}>{invit.id} : {invit.name} {invit.firstname}</option>
                 ))}
             </select>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCreatedID(event.target.value)}} value={createdID}>
+                <option value="">--Choisir une option--</option>
                 {created.map((createdBy) => (
                     <option key={createdBy.id} value={createdBy.id}>{createdBy.id} : {createdBy.name} {createdBy.firstname}</option>
                 ))}
             </select>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setTypeAppoitmentsID(event.target.value)}} value={typeAppoitmentsID}>
+                <option value="">--Choisir une option--</option>
                 {typeAppoitments.map((typeRDV) => (
                     <option key={typeRDV.id} value={typeRDV.id}>{typeRDV.id} : {typeRDV.name}</option>
                 ))}
