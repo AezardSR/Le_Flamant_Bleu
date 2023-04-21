@@ -10,13 +10,13 @@ function Planning() {
     const [appointments, setAppointments] = useState([]);
 
     useEffect(() => {
-          fetch(`${process.env.REACT_APP_API_PATH}/appointments/`, { method: 'GET' })
+        requestAPI('/appointments', 'GET',null)
           .then(response => response.json())
           .then(data => setAppointments(data))
     }, [])
 
     function deleteID(id) {
-      fetch(`${process.env.REACT_APP_API_PATH}/appointments/` + id, { method: 'DELETE' })
+      requestAPI('/appointments' + id, 'DELETE',null)
         .then(response => response.json())
         .then(data => console.log(data))
     }

@@ -11,15 +11,9 @@ export default function JobsAnnouncements() {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        Promise.all([
-          fetch(`${process.env.REACT_APP_API_PATH}/job-offers/?_limit=3`),
-        ])
-          .then(([resJobs]) =>
-            Promise.all([resJobs.json()])  
-          )
-          .then(([dataJobs]) => {
-            setJobs(dataJobs);
-          })
+        requestAPI('/job-offers', 'GET',null)
+          .then(response => response.json())
+          .then(data => setJobs(data))
       }, [])
 
     return (
