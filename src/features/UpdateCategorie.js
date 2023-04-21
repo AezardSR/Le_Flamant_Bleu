@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateCategorie = () => {
 
+  const {requestAPI} = useContext(ApiContext);
   const [categoryID, setCategoryID] = useState('');
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState([]);

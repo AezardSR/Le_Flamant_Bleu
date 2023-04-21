@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function ListUtilisateur() {
+          const {requestAPI} = useContext(ApiContext);
           const [contact, setContact] = useState([]);
           const [user, setUser] = useState([]);
 

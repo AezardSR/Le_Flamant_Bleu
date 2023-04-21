@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const AddLesson = () => {
 
+  const {requestAPI} = useContext(ApiContext);
   const [title, setTitle] = useState([]);
   const [description, setDescription] = useState([]);
   const [duration, setDuration] = useState([]);

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {  useParams } from 'react-router-dom';
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateEventPlanning = () => {
 
+    const {requestAPI} = useContext(ApiContext);
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [date, setDate] = useState([]);

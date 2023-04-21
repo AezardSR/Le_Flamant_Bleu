@@ -1,11 +1,13 @@
 import React from 'react'
 import Calendar from 'react-calendar';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import '../css/styles.css';
 import { Link } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Planning() {
+    const {requestAPI} = useContext(ApiContext);
     const [date, setDate] = useState(new Date());
     const [appointments, setAppointments] = useState([]);
 
