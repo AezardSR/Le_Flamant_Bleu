@@ -5,14 +5,14 @@ import "../css/styles.css";
 //  utilisations de props pour s'en reservir ailleurs.
 const Card =  ({title, content, button}) =>{
     return(
-        <div class="card">
-            <div class="card-body">
-                <div class="card-text-container">
+        <div className="card">
+            <div className="card-body">
+                <div className="card-text-container">
                     <h2>{title}</h2>
                     <p>{content}</p>
                 </div>
-                <div class="button-card-container">
-                    <button class="card-button" onClick={button}>Voir</button>
+                <div className="button-card-container">
+                    <button className="card-button" onClick={button}>Voir</button>
                 </div>
             </div>
         </div>

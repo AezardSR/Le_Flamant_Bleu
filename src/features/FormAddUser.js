@@ -20,33 +20,33 @@ export default class FormAddUser extends Component {
             <div id="individual-section" className='section-open'>
                 <div className="individual-grid">
                     <div>
-                        <label for="name">Nom</label>
+                        <label htmlFor="name">Nom</label>
                         <input type="text" name="name"></input>
                     </div>
                     <div>
-                        <label for="firstname">Prénom</label>
+                        <label htmlFor="firstname">Prénom</label>
                         <input type="text" name="firstname"></input>
                     </div>
                     <div>
-                        <label for="city">Ville</label>
+                        <label htmlFor="city">Ville</label>
                         <input type="text" name="city"></input>
                     </div>
                     <div>
-                        <label for="zipCode">Code Postal</label>
+                        <label htmlFor="zipCode">Code Postal</label>
                         <input type="text" name="zipCode"></input>
                     </div>
                 </div>
                 <div id="individual-mid">
-                    <label for="address">Adresse</label>
+                    <label htmlFor="address">Adresse</label>
                     <input type="text" name="address"></input>
                 </div>            
                 <div className="individual-grid">
                     <div>
-                        <label for="mail">Mail</label>
+                        <label htmlFor="mail">Mail</label>
                         <input type="text" name="mail"></input>
                     </div>
                     <div>
-                        <label for="tel">Téléphone</label>
+                        <label htmlFor="tel">Téléphone</label>
                         <input type="text" name="tel"></input>
                     </div>
                 </div>
@@ -62,30 +62,30 @@ export default class FormAddUser extends Component {
                 <div>
                     <div className="individual-grid">
                         <div>
-                            <label for="name">Nom</label>
+                            <label htmlFor="name">Nom</label>
                             <input type="text" name="name"></input>
                         </div>
                         <div>
-                            <label for="firstname">Prénom</label>
+                            <label htmlFor="firstname">Prénom</label>
                             <input type="text" name="firstname"></input>
                         </div>
                         <div>
-                            <label for="tel">numéro de téléphone</label>
+                            <label htmlFor="tel">numéro de téléphone</label>
                             <input type="text" name="tel"></input>
                         </div>
                     </div>
                     <h4>2eme personne</h4>
                     <div className="individual-grid">
                         <div>
-                            <label for="name">Nom</label>
+                            <label htmlFor="name">Nom</label>
                             <input type="text" name="name"></input>
                         </div>
                         <div>
-                            <label for="firstname">Prénom</label>
+                            <label htmlFor="firstname">Prénom</label>
                             <input type="text" name="firstname"></input>
                         </div>
                         <div>
-                            <label for="tel">numéro de téléphone</label>
+                            <label htmlFor="tel">numéro de téléphone</label>
                             <input type="text" name="tel"></input>
                         </div>
                     </div> 
@@ -105,31 +105,31 @@ export default class FormAddUser extends Component {
             <div id="company-section" className='section-close'>
                 <div className="individual-grid" >
                     <div>
-                        <label for="companyName">Nom de l'entreprise</label>
+                        <label htmlFor="companyName">Nom de l'entreprise</label>
                         <input type="text" name="CompanyName"></input>
                     </div>
                     <div>
-                        <label for="city">Ville</label>
+                        <label htmlFor="city">Ville</label>
                         <input type="text" name="city"></input>
                     </div>
                     <div>
-                        <label for="zipCode">Code Postal</label>
+                        <label htmlFor="zipCode">Code Postal</label>
                         <input type="text" name="zipCode"></input>
                     </div>
                     <div>
-                        <label for="contactMail">Mail du contact</label>
+                        <label htmlFor="contactMail">Mail du contact</label>
                         <input type="text" name="zipCode"></input>
                     </div>
                     <div>
-                        <label for="contactTel">Téléphone du contact</label>
+                        <label htmlFor="contactTel">Téléphone du contact</label>
                         <input type="text" name="contactTel"></input>
                     </div>
                     <div>
-                        <label for="contactName">Nom du contact</label>
+                        <label htmlFor="contactName">Nom du contact</label>
                         <input type="text" name="contactName"></input>
                     </div>
                     <div>
-                        <label for="contactName">Nom du contact</label>
+                        <label htmlFor="contactName">Nom du contact</label>
                         <input type="text" name="contactName"></input>
                     </div>
                 </div>
