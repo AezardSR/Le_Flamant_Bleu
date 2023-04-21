@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/styles.css';
+import { ApiContext } from '../features/APIToken/ApiContext';
+
 
 const AddEventPlanning = () => {
+    const {requestAPI} = useContext(ApiContext);
 
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
@@ -18,34 +21,27 @@ const AddEventPlanning = () => {
     const [typeAppoitmentsID, setTypeAppoitmentsID] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user`)
+        requestAPI('/user', 'GET',null)
         .then(response => response.json())
-        .then(data => setReceiver(data))
+        .then(data => {
+            setReceiver(data)
+            setCreated(data)
+        }).catch(error => console.log(error))
     }, [])
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user`)
-        .then(response => response.json())
-        .then(data => setCreated(data))
-    }, [])
-
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/appointment-types`)
+        requestAPI('/appointment-types', 'GET',null)
         .then(response => response.json())
         .then(data => setTypeAppoitments(data))
+        .catch(error => console.log(error))
     }, [])
 
     const handleSubmit = (event) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
-        };
-
-        fetch(`${process.env.REACT_APP_API_PATH}/appointments`, requestOptions)
+        event.preventDefault();
+        requestAPI('/appointments', 'POST', {titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
             .then(response => response.json())
             .then(data => console.log(data))
-            event.preventDefault();
+            .catch(error => console.log(error))
     }
 
     return (

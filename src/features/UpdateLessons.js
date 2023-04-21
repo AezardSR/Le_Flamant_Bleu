@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateLesson = () => {
   const { lessonsID } = useParams();
+  const {requestAPI} = useContext(ApiContext);
 
   const [lesson, setLesson] = useState({ name: '', content: '', duration: '', parts_id: '' });
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/lessons/${lessonsID}`)
+    requestAPI('/lessons/' + lessonsID, 'GET',null)
       .then(response => response.json())
       .then(data => setLesson(data));
 
-    fetch('http://localhost:8000/api/parts/')
+    requestAPI('/parts', 'GET',null)
       .then(response => response.json())
       .then(data => setParts(data));
   }, [lessonsID]);
@@ -24,11 +26,7 @@ const UpdateLesson = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:8000/api/lessons/${lessonsID}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lesson)
-    })
+    requestAPI('/lessons/' + lessonsID, 'PATCH', lesson)
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

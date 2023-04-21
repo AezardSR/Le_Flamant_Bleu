@@ -1,22 +1,24 @@
 import React from 'react'
 import Calendar from 'react-calendar';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import '../css/styles.css';
 import { Link } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Planning() {
+    const {requestAPI} = useContext(ApiContext);
     const [date, setDate] = useState(new Date());
     const [appointments, setAppointments] = useState([]);
 
     useEffect(() => {
-          fetch(`${process.env.REACT_APP_API_PATH}/appointments/`, { method: 'GET' })
+        requestAPI('/appointments', 'GET',null)
           .then(response => response.json())
           .then(data => setAppointments(data))
     }, [])
 
     function deleteID(id) {
-      fetch(`${process.env.REACT_APP_API_PATH}/appointments/` + id, { method: 'DELETE' })
+      requestAPI('/appointments' + id, 'DELETE',null)
         .then(response => response.json())
         .then(data => console.log(data))
     }

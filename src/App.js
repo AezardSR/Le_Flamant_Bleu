@@ -14,6 +14,7 @@ import Lesson from './pages/Lesson.js';
 import Exercice from './pages/Exercice.js';
 import AddLesson from './features/AddLesson.js';
 import GestionLesson from './features/GestionLesson.js';
+import GestionExercice from './features/GestionExercice.js';
 import AddExercice from './features/AddExercice.js';
 import AddCategorie from './features/AddCategorie.js';
 import AddParts from './features/AddParts.js';
@@ -21,6 +22,8 @@ import DeleteCategorie from './features/DeleteCategorie.js';
 // import DeleteParts from './features/DeleteParts.js';
 import UpdateCategorie from './features/UpdateCategorie.js';
 import UpdateParts from './features/UpdateParts.js';
+import UpdateLessons from './features/UpdateLessons.js';
+import UpdateExercices from './features/UpdateExercices.js';
 import JobsAnnouncements from './pages/JobsAnnouncements.js';
 import AddJobsAnnouncements from './features/AddJobsAnnouncements.js';
 import IndexJobsAnnouncements from './pages/IndexJobsAnnouncements.js';
@@ -79,10 +82,13 @@ function App() {
                 <Route path="/cours" element={logged(<><MenuPrincipal /><Lesson /></>)} />
                 <Route path="/gestion-cours" element={logged(<><MenuPrincipal /><GestionLesson /></>)} />
                 <Route path="/ajouter-cours" element={logged(<><MenuPrincipal /><AddLesson /></>)} />
+                <Route path="/modifier-cours/:lessonsID" element={logged(<><MenuPrincipal /><UpdateLessons /></>)} />
 
                 {/* Exercice */}
                 <Route path="/exercices" element={logged(<><MenuPrincipal /><Exercice /></>)} />
+                <Route path="/gestion-exercices" element={logged(<><MenuPrincipal /><GestionExercice /></>)} />
                 <Route path="/ajouter-exercice" element={logged(<><MenuPrincipal /><AddExercice /></>)} />
+                <Route path="/modifier-exercice/:exercicesID" element={logged(<><MenuPrincipal /><UpdateExercices /></>)} />
 
             {/* Fiches d'informations */}
             <Route path="/form-add-user" element={logged(<><MenuPrincipal /><FormAddUser /></>)} />

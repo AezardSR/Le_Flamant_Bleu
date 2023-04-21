@@ -16,8 +16,8 @@ export class Admin extends Component {
             <Link to="#" className='bloc-navigation navigation-exercice'><FontAwesomeIcon icon={faChalkboardTeacher} />Tests d'admissions</Link>
             <Link to="/ajouter-actualite" className='bloc-navigation navigation-categorie'><FontAwesomeIcon icon={faNewspaper} />Actualités</Link> */}
             <Link to="/gestion-promotion" className='bloc-navigation navigation-categorie'>Gestion des promotions</Link>
-            <Link to="/cours" className='bloc-navigation navigation-lesson'>Gestion des cours</Link>
-            <Link to="/exercices" className='bloc-navigation navigation-exercice'>Gestion des exercices</Link>
+            <Link to="/gestion-cours" className='bloc-navigation navigation-lesson'>Gestion des cours</Link>
+            <Link to="/gestion-exercices" className='bloc-navigation navigation-exercice'>Gestion des exercices</Link>
             <Link to="/categorie" className='bloc-navigation navigation-categorie'>Gestion des catégories</Link>
             <Link to="/parties" className='bloc-navigation navigation-partie'>Gestion des parties</Link>
             <Link to="/ajouter-actualite" className='bloc-navigation navigation-categorie'><FontAwesomeIcon icon={faNewspaper} />Actualités</Link>

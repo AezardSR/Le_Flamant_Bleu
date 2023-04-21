@@ -1,23 +1,25 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { Component, useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLaptopCode, faCalendar, faGraduationCap, faAtom} from "@fortawesome/free-solid-svg-icons";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function GestionExercice() {
 
+    const {requestAPI} = useContext(ApiContext);
     const [exercices, setExercices] = useState([]);
 
     useEffect(() => {
-          fetch('http://localhost:8000/api/exercices')
+        requestAPI('/exercices', 'GET',null)
           .then(response => response.json())
           .then(data => setExercices(data))
     }, [])
 
     function deleteID(id) {
-      fetch('http://localhost:8000/api/exercices/' + id, { method: 'DELETE' })
+      requestAPI('/exercices/' + id, 'DELETE', null)
         .then(response => response.json())
         .then(data => console.log(data))
     }

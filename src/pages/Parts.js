@@ -1,22 +1,24 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import '../css/styles.css';
 import { Link } from 'react-router-dom';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Parts() {
 
+    const {requestAPI} = useContext(ApiContext);
     const [parts, setParts] = useState([]);
     const [messageError, setMessageError] = useState(false);
 
     useEffect(() => {
-          fetch(`${process.env.REACT_APP_API_PATH}/parts`)
+      requestAPI('/parts', 'GET',null)
           .then(response => response.json())
           .then(data => setParts(data))
     }, [])
 
     function deleteID(id) {
       //Prend en compte la méthode Delete
-      fetch(`${process.env.REACT_APP_API_PATH}/parts/` + id, { method: 'DELETE' })
+      requestAPI('/parts/' + id, 'DELETE', null)
         //Si la réponse est différente de 200 alors remplace MessageError de false en true
         .then(response => {
           if (response.status != 200) {

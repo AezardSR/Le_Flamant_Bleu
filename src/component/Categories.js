@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Card from "../component/Card";
 import "../css/styles.css";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Categorie(props) {
 
+    const {requestAPI} = useContext(ApiContext);
     const [loading, setLoading] = useState(false); // permet l'affichage ou non du loading
     const [categories, setCategories] = useState([]); // categories est un tableau vide jusqu'au moment ou il reçoit les données du useEffect
     const [idCatModul, setIdCatModul] = useState([]); // idCatModul est un tableau vide jusqu'au moment ou il reçoit les données du useEffect
@@ -19,7 +21,7 @@ function Categorie(props) {
     // fonction pour recuperer les données de l'API
     const getCategories = () => {
       setLoading(true)
-      fetch(`${process.env.REACT_APP_API_PATH}/categories`)
+      requestAPI('/categories', 'GET',null)
         .then(response => response.json())
         .then(json => {
           setCategories(json);
@@ -30,7 +32,7 @@ function Categorie(props) {
 
     // fonction pour recuperer les données de l'API
     const getIdCatModul = () => {
-      fetch(`${process.env.REACT_APP_API_PATH}/module-categories`)
+      requestAPI('/module-categories', 'GET',null)
         .then(response => response.json())
         .then(json => setIdCatModul(json))
         .catch(error => {console.error("Erreur idcat " + error)})

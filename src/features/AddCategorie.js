@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const AddCategorie = () => {
-
+  const {requestAPI} = useContext(ApiContext);
   const [category, setCategory] = useState([]);
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({categorie: category})
-    };
 
-    fetch(`${process.env.REACT_APP_API_PATH}/categories`, requestOptions)
+  requestAPI('/categories', 'POST', {categorie: category})
         .then(response => response.json())
         .then(data => console.log(data))
         event.preventDefault();
   }
+
   return (
     <div>
       <h1 className="mar-vertical-10px mar-left-10px">Ajouter une catégorie</h1>
