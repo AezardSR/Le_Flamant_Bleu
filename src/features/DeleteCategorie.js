@@ -6,20 +6,16 @@ const DeleteCategorie = () => {
   const [categories, setCategories] = useState([]);
   
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
+    requestAPI('/categories', 'GET',null)
       .then(response => response.json())
       .then(data => setCategories(data))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'DELETE'
-    };
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
+    event.preventDefault();
+    requestAPI('/categories/' + categoryID, 'DELETE', null)
       .then(response => response.json())
       .then(data => console.log(data))
-    event.preventDefault();
-    console.log(categoryID);
   }
   
     return (
