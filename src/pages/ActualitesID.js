@@ -10,7 +10,7 @@ const ActualitesID = () => {
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
-    requestAPI('/actualites' + actualitesID, 'GET',null)
+    requestAPI('/actualites/' + actualitesID, 'GET',null)
       .then(response => response.json())
       .then(data => setActualites(data));
 
