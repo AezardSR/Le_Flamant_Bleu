@@ -23,15 +23,13 @@ function ActualitesListing() {
         <h1>Les dernières actualités</h1>
         <div className='flex-column'>
             {actualites.map((actualite) => (
-                // <a  href={"/nos-actualites/actualite/" + actualite.id}>
-                <div className='block-actualites-listing'>
+                <a className='block-actualites-listing' href={"/nos-actualites/actualite/" + actualite.id}>
                     <div id={actualite.id} key={actualite.id} value={actualite.id}>
                         <p className='listing-actu-title'>{actualite.title}</p>
-                        <p className='listing-actu-content'>{actualite.content}</p>
+                        {/* <p className='listing-actu-content'>{actualite.content}</p> */}
                         <p className='listing-actu-detail'>{actualite.publication_date} - {actualite.author}</p>
                     </div>
-                </div>
-                // </a>
+                </a>
             ))}
         </div>
       </div>
