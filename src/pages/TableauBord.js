@@ -36,14 +36,14 @@ function TableauBord() {
                         </Link>
                     </div>
                     <div className="news-tb zoom-img">
-                        <Link to="/annonces-emplois">
+                        {/* <Link to="/annonces-emplois"> */}
                             <div className="article-table-bord">
                                 <img src={Emploi} alt="News 1" className="img-tableau-bord"/>
                                 <p className="text-tb">
                                     Découvrez les dernières offres d'emplois
                                 </p>
                             </div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 </div>
                 <div className="right-tb zoom-img">
