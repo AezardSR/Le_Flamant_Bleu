@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function ListUtilisateur() {
+          const {requestAPI} = useContext(ApiContext);
           const [contact, setContact] = useState([]);
           const [user, setUser] = useState([]);
 
           useEffect(() => {
-            Promise.all([
-              fetch(`${process.env.REACT_APP_API_PATH}/partner-contacts`),
-              fetch(`${process.env.REACT_APP_API_PATH}/user`),
-            ])
-              .then(([resContact, resUser]) =>
-                Promise.all([resContact.json(), resUser.json()])  
-              )
-              .then(([dataContact, dataUser]) => {
-                setContact(dataContact);
-                setUser(dataUser);
-              })
-          }, [])
+            requestAPI('/partner-contacts', 'GET',null)
+              .then(response => response.json())
+              .then(data => setContact(data))
+        }, [])
+
+        useEffect(() => {
+          requestAPI('/user', 'GET',null)
+            .then(response => response.json())
+            .then(data => setUser(data))
+      }, [])
 
           const searchBar = () => {};
           const [searchInput, setSearchInput] = useState("");

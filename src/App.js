@@ -5,6 +5,7 @@ import TableauBord from './pages/TableauBord.js';
 import MenuPrincipal from './pages/MenuPrincipal.js';
 import MaFormation from './pages/MaFormation.js';
 import Categorie from './pages/Categorie.js';
+import Parts from './pages/Parts.js';
 import Emplois from './pages/Emploi.js';
 import Calendrier from './pages/Planning.js';
 import AddEventPlanning from './features/AddEventPlanning.js';
@@ -12,10 +13,17 @@ import UpdateEventPlanning from './features/UpdateEventPlanning.js';
 import Lesson from './pages/Lesson.js';
 import Exercice from './pages/Exercice.js';
 import AddLesson from './features/AddLesson.js';
+import GestionLesson from './features/GestionLesson.js';
+import GestionExercice from './features/GestionExercice.js';
 import AddExercice from './features/AddExercice.js';
 import AddCategorie from './features/AddCategorie.js';
+import AddParts from './features/AddParts.js';
 import DeleteCategorie from './features/DeleteCategorie.js';
+// import DeleteParts from './features/DeleteParts.js';
 import UpdateCategorie from './features/UpdateCategorie.js';
+import UpdateParts from './features/UpdateParts.js';
+import UpdateLessons from './features/UpdateLessons.js';
+import UpdateExercices from './features/UpdateExercices.js';
 import JobsAnnouncements from './pages/JobsAnnouncements.js';
 import AddJobsAnnouncements from './features/AddJobsAnnouncements.js';
 import IndexJobsAnnouncements from './pages/IndexJobsAnnouncements.js';
@@ -29,18 +37,22 @@ import Actualites from './pages/Actualites.js';
 import AddActualites from './features/AddActualite.js';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
-
+import Register from './pages/register.js';
 
 function App() {
-    const {user} = useContext(ApiContext);
+    const {user, userStatus} = useContext(ApiContext); // on importe le contexte de l'API, précisément la variable user
+    // on teste si l'utilisateur est connecté, si oui on affiche la page, sinon on le redirige vers la page de connexion
     const logged = (comp) => {
-       if( !localStorage.getItem("token") || user.status === "Token is Invalid" ){
-          console.log("redirection vers la page de connexion")
-         return <Navigate to="/login" replace={true} />
-       } else {
-         return comp
-       }
+      if( !localStorage.getItem("token") || user.status === "Token is Invalid" || user.status === "Token is Expired" || !userStatus === "connected"){
+       return <Navigate to="/login" replace={true} />
+     } else {
+       return comp
+     }
     }
+
+    // On renvoie le composant app qui est les coeurs de l'application
+    // Ce composant contient toutes les routes de l'application, il est appelé dans
+    // le fichier index.js qui est le point d'entrée de l'application autour du quel on a mis le context de l'API
     return (
     <div className="App">
         <div className='page-tableau-bord'>
@@ -51,23 +63,32 @@ function App() {
             <Route path="/profile" element={logged(<PageProfilUtilisateur />)} />
             <Route path="/ma-formation" element={logged(<><MenuPrincipal /><MaFormation /></>)} />
             <Route path="/emplois" element={logged(<><MenuPrincipal /><Emplois /></>)} />
+            <Route path="/register" element={logged(<><MenuPrincipal /><Register /></>)} />
 
             {/* Calendrier */}
             <Route path="/calendrier" element={logged(<><MenuPrincipal /><Calendrier /></>)} />
             <Route path="/add-event-planning" element={logged(<><MenuPrincipal /><AddEventPlanning /></>)} />
             <Route path="/update/:appointmentID" element={logged(<><MenuPrincipal /><UpdateEventPlanning /></>)} />
 
-            <Route path="/categorie" element={logged(<><MenuPrincipal /><Categorie /></>)} />
-            <Route path="/ajouter-categorie" element={logged(<><MenuPrincipal /><AddCategorie /></>)} />
-            <Route path="/supprimer-categorie" element={logged(<><MenuPrincipal /><DeleteCategorie /></>)} />
-            <Route path="/modifier-categorie" element={logged(<><MenuPrincipal /><UpdateCategorie /></>)} />
+            <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
+            <Route path="/ajouter-categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
+            <Route path="/modifier-categorie/:categoriesID" element={<><MenuPrincipal /><UpdateCategorie /></>} />
+
+            <Route path="/parties" element={<><MenuPrincipal /><Parts /></>} />
+            <Route path="/ajouter-parties" element={<><MenuPrincipal /><AddParts /></>} />
+            <Route path="/modifier-parties/:partsID" element={<><MenuPrincipal /><UpdateParts /></>} />
+
                 {/* Cours */}
                 <Route path="/cours" element={logged(<><MenuPrincipal /><Lesson /></>)} />
+                <Route path="/gestion-cours" element={logged(<><MenuPrincipal /><GestionLesson /></>)} />
                 <Route path="/ajouter-cours" element={logged(<><MenuPrincipal /><AddLesson /></>)} />
+                <Route path="/modifier-cours/:lessonsID" element={logged(<><MenuPrincipal /><UpdateLessons /></>)} />
 
                 {/* Exercice */}
                 <Route path="/exercices" element={logged(<><MenuPrincipal /><Exercice /></>)} />
+                <Route path="/gestion-exercices" element={logged(<><MenuPrincipal /><GestionExercice /></>)} />
                 <Route path="/ajouter-exercice" element={logged(<><MenuPrincipal /><AddExercice /></>)} />
+                <Route path="/modifier-exercice/:exercicesID" element={logged(<><MenuPrincipal /><UpdateExercices /></>)} />
 
             {/* Fiches d'informations */}
             <Route path="/form-add-user" element={logged(<><MenuPrincipal /><FormAddUser /></>)} />

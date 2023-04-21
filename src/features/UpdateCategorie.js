@@ -1,49 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ApiContext } from "../features/APIToken/ApiContext";
+import { useParams } from 'react-router-dom';
 
 const UpdateCategorie = () => {
+  const { categoryID } = useParams();
 
-  const [categoryID, setCategoryID] = useState('');
-  const [categories, setCategories] = useState([]);
+  const {requestAPI} = useContext(ApiContext);
+  // const [categoryID, setCategoryID] = useState('');
+  // const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/`)
+    requestAPI('/categories', 'GET',null)
       .then(response => response.json())
-      .then(data => setCategories(data))
-  }, [])
+      .then(data => setCategory(data));
+
+  }, [categoryID]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCategory(prevCategory => ({ ...prevCategory, [name]: value }));
+  };
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({categorie: category})
-    };
-    fetch(`${process.env.REACT_APP_API_PATH}/categories/` + categoryID, requestOptions)
-      .then(response => response.json())
-      .then(data => console.log(data))
     event.preventDefault();
-    console.log(categoryID);
-    console.log(categories);
-    console.log(category);
+    requestAPI('/categories/' + categoryID, 'PATCH', {categorie: category})
+      .then(response => response.json())
+      .then(data => console.log(data)) 
   }
 
   return (
     <div>
-      <form style={{margin: '10px 15px'}}>
-          <div>
-            <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
-              {categories.map((categorie) => (
-                <option key={categorie.id} value={categorie.id}>{categorie.id} : {categorie.categorie}</option>
-              ))}
-            </select>
+      <h1 className="mar-vertical-10px mar-left-10px">Modifier une catégorie</h1>
+      <form className="flex-column form-add" onSubmit={handleSubmit}>
+        <div className="flex align-center justify-center form-add-element">
+          <div className="flex-column w-500px mar-left-10px mar-vertical-10px">
+            <label className="label-form" htmlFor="category">Nom à modifier :</label>
+            <input type="text" id="name" name="category" value={category.categorie} onChange={handleInputChange} />
           </div>
-          <div className="flex-column">
-            <input className="w-100 h-45px p-5px" style={{marginBottom: '20px'}} placeholder="Modifier le nom de la catégorie..." type="text" name="categorie" onChange={(event) => {setCategory(event.target.value)}} />
-            <button className="link-lesson-add w-20 margin-auto" type="submit" onClick={handleSubmit}>Update</button>
-          </div>
+        </div>
+        <button className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer" type="submit">Modifier la catégorie</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default UpdateCategorie;

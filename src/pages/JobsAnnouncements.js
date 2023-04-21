@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import PartnerPoleEmploi from '../assets/img/pole_emploi.png'
 import PartnerHautFrance from '../assets/img/haut_de_france.png'
@@ -6,20 +6,15 @@ import PartnerIleFrance from '../assets/img/ile_de_france.png'
 import PartnerNormandie from '../assets/img/normandie.png'
 import ImgAnnouncement from '../assets/img/logo_la_manu.png'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 export default function JobsAnnouncements() {
     const [jobs, setJobs] = useState([]);
-
+    const {requestAPI} = useContext(ApiContext);
     useEffect(() => {
-        Promise.all([
-          fetch(`${process.env.REACT_APP_API_PATH}/job-offers/?_limit=3`),
-        ])
-          .then(([resJobs]) =>
-            Promise.all([resJobs.json()])  
-          )
-          .then(([dataJobs]) => {
-            setJobs(dataJobs);
-          })
+        requestAPI('/job-offers', 'GET',null)
+          .then(response => response.json())
+          .then(data => setJobs(data))
       }, [])
 
     return (

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const AddJobsAnnouncements = () => {
 
+  const {requestAPI} = useContext(ApiContext);
   const [name, setName] = useState([]);
   const [dateOffers, setDateOffers] = useState([]);
   const [description, setDescription] = useState([]);
@@ -16,28 +18,22 @@ const AddJobsAnnouncements = () => {
   const [partnerContactsID, setPartnerContactsID] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/user/`)
+    requestAPI('/user', 'GET',null)
       .then(response => response.json())
       .then(data => setUser(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_PATH}/partner-contacts/`)
+    requestAPI('/partner-contacts', 'GET',null)
       .then(response => response.json())
       .then(data => setPartnerContacts(data))
   }, [])
 
   const handleSubmit = (event) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
-    };
-
-    fetch(`${process.env.REACT_APP_API_PATH}//job-offers/add`, requestOptions)
+    event.preventDefault();
+    requestAPI('/job-offers', 'POST', {name: name, dateOffers: dateOffers, description: description, link: link, user_id: userID, partnerContacts_id: partnerContactsID})
         .then(response => response.json())
         .then(data => console.log(data))
-        event.preventDefault();
   }
   
     return (
@@ -49,12 +45,14 @@ const AddJobsAnnouncements = () => {
             </div>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setUserID(event.target.value)}} value={userID}>
+              <option value="">--Choisir une option--</option>
               {user.map((createdBy) => (
                 <option key={createdBy.id} value={createdBy.id}>{createdBy.id} : {createdBy.name}</option>
               ))}
             </select>
 
             <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartnerContactsID(event.target.value)}} value={partnerContactsID}>
+              <option value="">--Choisir une option--</option>
               {partnerContacts.map((entreprise) => (
                 <option key={entreprise.id} value={entreprise.id}>{entreprise.id} : {entreprise.name} {entreprise.firstname}</option>
               ))}

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {  useParams } from 'react-router-dom';
 import '../css/styles.css';
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 const UpdateEventPlanning = () => {
 
+    const {requestAPI} = useContext(ApiContext);
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [date, setDate] = useState([]);
@@ -20,39 +22,23 @@ const UpdateEventPlanning = () => {
     const { appointmentID } = useParams();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user`)
-        .then(response => response.json())
-        .then(data => setReceiver(data))
+        requestAPI('/user', 'GET',null)
+            .then(response => response.json())
+            .then(data => setReceiver(data))
+            .then(data => setCreated(data))
     }, [])
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/user`)
-        .then(response => response.json())
-        .then(data => setCreated(data))
-    }, [])
-
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_PATH}/appointment-types`)
-        .then(response => response.json())
-        .then(data => setTypeAppoitments(data))
+        requestAPI('/appointment-types', 'GET',null)
+            .then(response => response.json())
+            .then(data => setTypeAppoitments(data))
     }, [])
 
     function updateAppointment(e) {
-        fetch(`${process.env.REACT_APP_API_PATH}/appointments/` + appointmentID, { 
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                titleDetails: title,
-                descriptionDetails: description,
-                dateDetails: date,
-                receiver_id: receiverID,
-                create_id: createdID,
-                appointments_types_id: typeAppoitmentsID
-            })
-        })
+        e.preventDefault()
+        requestAPI('/appointments' + appointmentID, 'PATCH',{titleDetails: title, descriptionDetails: description, dateDetails: date, receiver_id: receiverID, create_id: createdID, appointments_types_id: typeAppoitmentsID})
             .then(response => response.json())
             .then(data => console.log(data))
-            e.preventDefault()
     }
 
     return (

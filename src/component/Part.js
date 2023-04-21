@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Card from "../component/Card";
 import "../css/styles.css";
+import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Part(props) {
 
+    const {requestAPI} = useContext(ApiContext);
     const [loading, setLoading] = useState(false);
     const [parts, setParts] = useState([]);
     const [filteredParts, setFilteredParts] = useState([]);
@@ -16,7 +18,7 @@ function Part(props) {
     };
     const getParts = () => {
       setLoading(true)
-      fetch(`${process.env.REACT_APP_API_PATH}/parts`)
+      requestAPI('/parts', 'GET',null)
         .then(response => response.json())
         .then(json => {
           setParts(json);
