@@ -13,6 +13,7 @@ import UpdateEventPlanning from './features/UpdateEventPlanning.js';
 import Lesson from './pages/Lesson.js';
 import Exercice from './pages/Exercice.js';
 import AddLesson from './features/AddLesson.js';
+import GestionLesson from './features/GestionLesson.js';
 import AddExercice from './features/AddExercice.js';
 import AddCategorie from './features/AddCategorie.js';
 import AddParts from './features/AddParts.js';
@@ -76,6 +77,7 @@ function App() {
 
                 {/* Cours */}
                 <Route path="/cours" element={logged(<><MenuPrincipal /><Lesson /></>)} />
+                <Route path="/gestion-cours" element={logged(<><MenuPrincipal /><GestionLesson /></>)} />
                 <Route path="/ajouter-cours" element={logged(<><MenuPrincipal /><AddLesson /></>)} />
 
                 {/* Exercice */}
