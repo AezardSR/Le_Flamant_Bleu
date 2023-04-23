@@ -17,9 +17,9 @@ const AddExercice = () => {
   const {requestAPI} = useContext(ApiContext);
 
   useEffect(() => {
-    requestAPI('/categories', 'GET', null)
+    requestAPI('/parts', 'GET', null)
       .then(response => response.json())
-      .then(data => setCategories(data))
+      .then(data => setParts(data))
       .catch(error => console.log(error))
   }, [])
 
