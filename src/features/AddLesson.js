@@ -33,12 +33,6 @@ const AddLesson = () => {
                 <input value={title} onChange={(event) => {setTitle(event.target.value)}} className="form-add-lesson-title" placeholder="Insérer titre"></input>
             </div>
 
-            <div className='form-add-lesson-add-pdf'>
-                <input type="file" className="form-add-lesson-pdf" placeholder="Veuillez insérer un fichier pdf"></input>
-                <p>*L'insertion de fichier est non-obligatoire, vous pouvez taper votre cours dans la section description</p>
-            </div>
-
-
             <div className='form-add-lesson-add-details'>
                 <div className='form-add-lesson-select-categorie'>
                   <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setCategoryID(event.target.value)}} value={categoryID}>
