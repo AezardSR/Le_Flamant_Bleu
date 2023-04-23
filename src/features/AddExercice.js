@@ -25,7 +25,7 @@ const AddExercice = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    requestAPI('/exercices', 'POST', {name: title, content: description, image: image, file: file, categorie_id: categoryID})
+    requestAPI('/exercices', 'POST', {name: title, content: description, image: " ", file: " ", parts_id: partsID})
         .then(response => response.json())
         .then(data => console.log(data))
   }
@@ -46,8 +46,8 @@ const AddExercice = () => {
                       <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
                     ))}
                   </select>
-                  <input value={image} onChange={(event) => {setImage(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour image"></input>
-                  <input value={file} onChange={(event) => {setFile(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour file"></input>
+                  {/* <input value={image} onChange={(event) => {setImage(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour image"></input>
+                  <input value={file} onChange={(event) => {setFile(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour file"></input> */}
                 </div>
             </div>
 

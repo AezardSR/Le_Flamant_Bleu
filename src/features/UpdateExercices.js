@@ -44,14 +44,14 @@ const UpdateExercices = () => {
           <label htmlFor="content">Contenu :</label>
           <textarea id="content" name="content" value={exercice.content} onChange={handleInputChange} />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="image">image :</label>
           <input type="text" id="image" name="image" value={exercice.image} onChange={handleInputChange} />
         </div>
         <div>
           <label htmlFor="file">File :</label>
           <input type="text" id="file" name="file" value={exercice.file} onChange={handleInputChange} />
-        </div>
+        </div> */}
         <div>
           <label htmlFor="parts_id">Partie :</label>
           <select id="parts_id" name="parts_id" value={exercice.parts_id} onChange={handleInputChange}>
