@@ -36,7 +36,7 @@ function Main() {
                 </div>
                 <div className="listing-menu">
                     <input className="menu-btn" type="checkbox" id="menu-btn" />
-                    <label className="menu-icon" for="menu-btn"><span className="navicon"></span></label>
+                    <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
                     <ul className="ul-listing-menu menu">
                         <div className='avatar-menu-parametre'>
                             <a href="/profile"><FontAwesomeIcon icon={faGear} style={{color: 'white'}} /></a>
