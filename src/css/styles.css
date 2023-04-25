@@ -61,6 +61,8 @@ h2 {font-weight: 400; padding: 10px;}
 .p-5px {padding: 5px;}
 .p-10px {padding: 10px;}
 
+.text-center {text-align: center;}
+
 .page-tableau-bord {display: flex;}
 .page-tableau-bord>div:not(.menu-principal) {   width: 100%;}
 .container .page-tableau-bord .menu-principal {visibility: hidden;}
@@ -1306,6 +1308,10 @@ a .index-jobs-offers:hover {
     justify-content: space-evenly;
 }
 
+.url-jobs-partner {
+    text-align: center;
+}
+
 .url-jobs-partner:hover {
     transition: ease 0.5s all;
     transform: scale(1.1);  
@@ -1313,15 +1319,17 @@ a .index-jobs-offers:hover {
 
 .url-jobs-partner img {
     height: auto;
-    width: 90%;
+    width: 70%;
 }
 
 /* Annonces */
 
 .jobs-actualites {
     display: flex;
+    flex-wrap: wrap;
     width: 80%;
     margin: auto;
+    justify-content: space-evenly;
 }
 
 .jobs-actualites h3 {
@@ -1332,6 +1340,12 @@ a .index-jobs-offers:hover {
 .jobs-actualites p {
     text-align: justify;
     padding: 10px 20px;
+}
+
+.jobs-actualites .jobs-date {
+    font-size: 14px;
+    color: var(--color-light-blue);
+    font-style: italic;
 }
 
 .jobs-offers {
@@ -1350,7 +1364,7 @@ a .index-jobs-offers:hover {
 .jobs-actualites a {
     text-decoration: none;
     color: #000;
-    margin: 0 10px;
+    margin: 10px;
 }
 
 a .jobs-offers:hover {

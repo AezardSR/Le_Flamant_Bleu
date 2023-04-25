@@ -19,20 +19,23 @@ export default function JobsAnnouncements() {
 
     return (
         <div className='page-jobs-actualites'>
-            <div className='img-jobs-partner'>
+            <h1 className="text-center mar-top-10px mar-left-10px">Les dernières offres d'emplois</h1>
+            {/* <div className='img-jobs-partner'>
                 <a className='url-jobs-partner' href="https://www.hautsdefrance.fr/mot/travail-emploi/" target="_blank" rel="noreferrer"><img alt="" src={PartnerHautFrance}></img></a>
                 <a className='url-jobs-partner' href="https://www.iledefrance.fr/formation-emploi" target="_blank" rel="noreferrer"><img alt="" src={PartnerIleFrance}></img></a>
                 <a className='url-jobs-partner' href="https://region-normandie.gestmax.fr/search/1-la-region-normandie" target="_blank" rel="noreferrer"><img alt="" src={PartnerNormandie}></img></a>
                 <a className='url-jobs-partner' href="https://www.pole-emploi.fr/accueil/" target="_blank" rel="noreferrer"><img alt="" src={PartnerPoleEmploi}></img></a>
-            </div>
+            </div> */}
 
             <div className='jobs-actualites'>
-                {jobs.map((job) => (
+                {/* .slice(-3) permet d'afficher que les 3 dernières JobsOffers */}
+                {jobs.slice(-4).map((job) => (
                     <a href={job.link}>
                         <div className='jobs-offers'>
                             <img alt="" src={ImgAnnouncement} />
                             <h3>{job.name}</h3>
-                            <p>{job.description}</p>
+
+                            <p class="jobs-date">{job.dateOffers}</p>
                         </div>
                     </a> 
                 ))}
