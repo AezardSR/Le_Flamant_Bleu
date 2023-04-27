@@ -40,6 +40,7 @@ import ActualitesID from './pages/ActualitesID.js';
 import UpdateActualites from './features/UpdateActualite.js';
 import GestionJobsAnnoucements from './pages/OffresEmplois.js';
 import UpdateJobsOffers from './features/UpdateJobsOffers.js';
+import JobOffersID from './pages/JobOffersID.js';
 import { ApiContext } from './features/APIToken/ApiContext.js';
 import Login from './features/APIToken/login.js';
 import Register from './pages/register.js';
@@ -104,6 +105,7 @@ function App() {
             <Route path="/annonces-emplois" element={logged(<><MenuPrincipal /><JobsAnnouncements /></>)} />
             <Route path="/index-annonce-emploi" element={logged(<><MenuPrincipal /><IndexJobsAnnouncements /></>)} />
             <Route path="/offres-emplois" element={logged(<><MenuPrincipal /><GestionJobsAnnoucements /></>)} />
+            <Route path="/offres-emplois/:JobOffersID" element={logged(<><MenuPrincipal /><JobOffersID /></>)} />
             <Route path="/ajouter-annonce-emploi" element={logged(<><MenuPrincipal /><AddJobsAnnouncements /></>)} />
             <Route path="/modifier-offres-emplois/:jobOffersID" element={logged(<><MenuPrincipal /><UpdateJobsOffers /></>)} />
 
@@ -115,7 +117,7 @@ function App() {
               {/* Actualités */}
               <Route path="/actualites" element={logged(<><MenuPrincipal /><Actualites /></>)} />
               <Route path="/nos-actualites" element={logged(<><MenuPrincipal /><ActualitesListing /></>)} />
-              <Route path="/nos-actualites/actualite/:actualitesID" element={logged(<><MenuPrincipal /><ActualitesID /></>)} />
+              <Route path="/nos-actualites/actualite/:actualitesID" element={logged(<><MenuPrincipal /><JobOffersID /></>)} />
               <Route path="/ajouter-actualite" element={logged(<><MenuPrincipal /><AddActualites /></>)} />
               <Route path="/modifier-actualite/:actualitesID" element={logged(<><MenuPrincipal /><UpdateActualites /></>)} />
           </Routes>
