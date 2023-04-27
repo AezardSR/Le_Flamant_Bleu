@@ -1,7 +1,6 @@
 import React, { Component, useContext } from 'react'
 import LogoManu from '../assets/img/logo_la_manu.png'
 import '../css/styles.css';
-
 import { ApiContext } from '../features/APIToken/ApiContext';
 
 export default function PageProfilUtilisateur(){
