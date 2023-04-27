@@ -17,12 +17,12 @@ export default function IndexJobsAnnouncements() {
             <h1>Toutes les annonces disponibles</h1>
             <div className='index-jobs-actualites'>
                 {jobs.map((job) => (
-                    <a href={job.link}>
+                    <a href={"/offres-emplois/" + job.id}>
                         <div className='index-jobs-offers'>
                             <img alt="" src={ImgAnnouncement} />
                             <div>
                                 <h3>{job.name}</h3>
-                                <p>{job.description}</p>
+                                <p>{job.dateOffers}</p>
                             </div>
                         </div>
                     </a>
