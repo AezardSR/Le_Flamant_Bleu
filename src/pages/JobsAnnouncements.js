@@ -26,7 +26,7 @@ export default function JobsAnnouncements() {
                 <a className='url-jobs-partner' href="https://www.pole-emploi.fr/accueil/" target="_blank" rel="noreferrer"><img alt="" src={PartnerPoleEmploi}></img></a>
             </div>
 
-            <h1 className="text-center mar-top-30px">Les dernières offres d'emplois</h1>
+            <h1 className="title-jobs">Les dernières offres d'emplois</h1>
 
             <div className='jobs-actualites'>
                 {/* .slice(-3) permet d'afficher que les 3 dernières JobsOffers */}

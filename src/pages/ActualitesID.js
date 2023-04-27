@@ -14,7 +14,7 @@ const ActualitesID = () => {
       .then(response => response.json())
       .then(data => setActualites(data));
 
-  }, [actualitesID]);
+  }, []);
 
   return (
     <div>

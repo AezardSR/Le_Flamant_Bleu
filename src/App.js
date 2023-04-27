@@ -117,7 +117,7 @@ function App() {
               {/* Actualités */}
               <Route path="/actualites" element={logged(<><MenuPrincipal /><Actualites /></>)} />
               <Route path="/nos-actualites" element={logged(<><MenuPrincipal /><ActualitesListing /></>)} />
-              <Route path="/nos-actualites/actualite/:actualitesID" element={logged(<><MenuPrincipal /><JobOffersID /></>)} />
+              <Route path="/nos-actualites/actualite/:actualitesID" element={logged(<><MenuPrincipal /><ActualitesID /></>)} />
               <Route path="/ajouter-actualite" element={logged(<><MenuPrincipal /><AddActualites /></>)} />
               <Route path="/modifier-actualite/:actualitesID" element={logged(<><MenuPrincipal /><UpdateActualites /></>)} />
           </Routes>

@@ -1332,10 +1332,14 @@ a .index-jobs-offers:hover {
 
 /* Annonces */
 
+.title-jobs{
+    margin-top: 5%;
+    text-align: center;
+}
+
 .jobs-actualites {
     display: flex;
     flex-direction: column;
-    width: 80%;
     margin: auto;
     justify-content: space-evenly;
 }
@@ -1361,16 +1365,18 @@ a .index-jobs-offers:hover {
 }
 
 .jobs-actualites .voir-plus a {
+    margin-top: 50px;
     padding: 10px;
-    border: 1px solid var(--color-dark-blue);
+    background-color: #21A4DC;
+    color: white;
     display: block;
     width: 300px;
     text-align: center;
-    transition: 0.3s ease;
+    transition: 0.1s ease;
 }
 
 .jobs-actualites .voir-plus a:hover {
-    box-shadow: 0 0 2px;
+    background-color: #1178D4;
 }
 
 .jobs-offers {
@@ -1809,6 +1815,10 @@ a .btn-form-add-lesson {
     border: none;
     font-size: 20px;
     align-self: center;
+}
+.btn-r:hover{
+    cursor: pointer;
+    background-color: #1178D4 ;
 }
 
 .flex-column {
