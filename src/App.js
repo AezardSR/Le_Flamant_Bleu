@@ -72,7 +72,7 @@ function App() {
 
             <Route path="/categorie" element={<><MenuPrincipal /><Categorie /></>} />
             <Route path="/ajouter-categorie" element={<><MenuPrincipal /><AddCategorie /></>} />
-            <Route path="/modifier-categorie/:categoriesID" element={<><MenuPrincipal /><UpdateCategorie /></>} />
+            <Route path="/modifier-categorie/:categoryID" element={<><MenuPrincipal /><UpdateCategorie /></>} />
 
             <Route path="/parties" element={<><MenuPrincipal /><Parts /></>} />
             <Route path="/ajouter-parties" element={<><MenuPrincipal /><AddParts /></>} />
