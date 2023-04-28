@@ -26,22 +26,27 @@ export default function JobsAnnouncements() {
                 <a className='url-jobs-partner' href="https://www.pole-emploi.fr/accueil/" target="_blank" rel="noreferrer"><img alt="" src={PartnerPoleEmploi}></img></a>
             </div>
 
+            <h1 className="title-jobs">Les dernières offres d'emplois</h1>
+
             <div className='jobs-actualites'>
-                {jobs.map((job) => (
-                    <a href={job.link}>
-                        <div className='jobs-offers'>
-                            <img alt="" src={ImgAnnouncement} />
-                            <h3>{job.name}</h3>
-                            <p>{job.description}</p>
-                        </div>
-                    </a> 
-                ))}
+                {/* .slice(-3) permet d'afficher que les 3 dernières JobsOffers */}
+                <div class="flex">
+                    {jobs.slice(-3).map((job) => (
+                        <a href={"/offres-emplois/" + job.id}>
+                            <div className='jobs-offers'>
+                                <img alt="" src={ImgAnnouncement} />
+                                <h3>{job.name}</h3>
+
+                                <p class="jobs-date">{job.dateOffers}</p>
+                            </div>
+                        </a> 
+                    ))}
+                </div>
+                <div className='voir-plus'>
+                    <a href='/index-annonce-emploi'>Voir toutes les annonces</a>
+                </div>
             </div>
             
-            <div className='btn-jobs'>
-                <Link to='/index-annonce-emploi'><button className='btn-jobs-announcements'>Voir toutes les annonces</button></Link>
-                <Link to='/ajouter-annonce-emploi'><button className='btn-jobs-announcements'>Ajouter une annonce</button></Link>
-            </div>
         </div>
     )
   }

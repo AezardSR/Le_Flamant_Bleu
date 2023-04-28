@@ -22,7 +22,7 @@ export default function Login({ setToken }) {
       console.log("redirection vers /")
       navigate('/');
     }
-  },[user, userStatus])
+  },[user])
 
   // Soumission du formulaire
   const handleSubmit = async e => {

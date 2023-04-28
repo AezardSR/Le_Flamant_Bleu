@@ -49,6 +49,9 @@ h2 {font-weight: 400; padding: 10px;}
 
 .margin-auto {margin: 0 auto;}
 
+.mar-top-10px {margin-top: 10px;}
+.mar-top-30px {margin-top: 30px;}
+
 .mar-bottom-10px {margin-bottom: 10px;}
 
 .mar-vertical-10px {margin: 10px 0;}
@@ -58,6 +61,8 @@ h2 {font-weight: 400; padding: 10px;}
 
 .p-5px {padding: 5px;}
 .p-10px {padding: 10px;}
+
+.text-center {text-align: center;}
 
 .page-tableau-bord {display: flex;}
 .page-tableau-bord>div:not(.menu-principal) {   width: 100%;}
@@ -564,8 +569,11 @@ a .btn-connexion  {
 .tableau-bord .text-tb {
     position: absolute; 
     bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 20px;
     color: #000;
-    text-align: justify;
+    text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
     margin: 0 auto;
     padding: 5px 10px 10px 10px;
@@ -856,6 +864,12 @@ a .btn-connexion  {
     padding: 10px 30px;
     float: right;
     margin-right: 30px;
+    color: white;
+    transition: 0.2s all;
+}
+
+.link-lesson-add:hover {
+    background-color: var(--color-dark-blue);
     color: white;
 }
 
@@ -1270,6 +1284,7 @@ a .btn-emargement {
 
 .index-jobs-offers h3 {
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .index-jobs-offers p {
@@ -1301,6 +1316,10 @@ a .index-jobs-offers:hover {
     justify-content: space-evenly;
 }
 
+.url-jobs-partner {
+    text-align: center;
+}
+
 .url-jobs-partner:hover {
     transition: ease 0.5s all;
     transform: scale(1.1);  
@@ -1308,15 +1327,21 @@ a .index-jobs-offers:hover {
 
 .url-jobs-partner img {
     height: auto;
-    width: 90%;
+    width: 70%;
 }
 
 /* Annonces */
 
+.title-jobs{
+    margin-top: 5%;
+    text-align: center;
+}
+
 .jobs-actualites {
     display: flex;
-    width: 80%;
+    flex-direction: column;
     margin: auto;
+    justify-content: space-evenly;
 }
 
 .jobs-actualites h3 {
@@ -1327,6 +1352,31 @@ a .index-jobs-offers:hover {
 .jobs-actualites p {
     text-align: justify;
     padding: 10px 20px;
+}
+
+.jobs-actualites .jobs-date {
+    font-size: 14px;
+    color: var(--color-light-blue);
+    font-style: italic;
+}
+
+.jobs-actualites .voir-plus {
+    margin: auto;
+}
+
+.jobs-actualites .voir-plus a {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #21A4DC;
+    color: white;
+    display: block;
+    width: 300px;
+    text-align: center;
+    transition: 0.1s ease;
+}
+
+.jobs-actualites .voir-plus a:hover {
+    background-color: #1178D4;
 }
 
 .jobs-offers {
@@ -1345,7 +1395,7 @@ a .index-jobs-offers:hover {
 .jobs-actualites a {
     text-decoration: none;
     color: #000;
-    margin: 0 10px;
+    margin: 10px;
 }
 
 a .jobs-offers:hover {
@@ -1628,6 +1678,99 @@ a .btn-form-add-lesson {
     text-decoration: none;  
 }
 
+/*---------------------------------------------------------------------
+    ACTUALITES
+-----------------------------------------------------------------------*/
+.block-actualites-listing {
+    background: var(--color-light-grey);
+    border: 1px solid var(--color-dark-blue);
+    width: 70%;
+    margin: 10px auto;
+    padding: 5px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.block-actualites-listing:hover::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -13px;
+    width: 45px;
+    height: 20px;
+    background-color: var(--color-light-blue);
+    transform: rotate(45deg);
+}
+
+.block-actualites-listing .listing-actu-title {
+    font-size: 18px;
+    color: var(--color-light-blue);
+}
+
+.block-actualites-listing .listing-actu-content {
+    font-size: 14px;
+    color: var(--color-light-blue)
+}
+
+.block-actualites-listing .listing-actu-detail {
+    text-align: end;
+    font-style: italic;
+    font-size: 12px;
+    color: black;
+}
+
+/*---------------------------------------------------------------------
+    ACTUALITES 
+-----------------------------------------------------------------------*/
+.actualite-full {
+
+}
+
+.actualite-full .actualite-title {
+
+}
+
+.actualite-full .actualite-detail {
+    margin-left: 10px;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-light-blue);
+}
+
+.actualite-full .actualite-content {
+    padding: 10px;
+    margin-top: 10px;
+    text-align: justify;
+    padding-right: 30px;
+}
+
+.actualite-full .url-redirection {
+    color: var(--color-dark-blue);
+    text-decoration: none;
+    padding: 20px;
+    border: 1px solid var(--color-dark-blue);
+    display: block;
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    transition: 0.2s all;
+}
+
+.actualite-full .url-redirection:hover::after {
+    position: absolute;
+    content: 'Je postule !';
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    top: 0;
+    background-color: #ffffff;
+    display: flex;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+}
+
 /*-----------------------------------------------------------------------------------
     Page d'inscription
 -------------------------------------------------------------------------------------*/
@@ -1672,6 +1815,10 @@ a .btn-form-add-lesson {
     border: none;
     font-size: 20px;
     align-self: center;
+}
+.btn-r:hover{
+    cursor: pointer;
+    background-color: #1178D4 ;
 }
 
 .flex-column {
