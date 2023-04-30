@@ -478,6 +478,9 @@ a .btn-connexion  {
         right: 55px;
         z-index: 1;
     }
+    .avatar-menu p {
+        visibility: hidden;
+    }
 
     .listing-menu {
         position: absolute;
@@ -537,7 +540,7 @@ a .btn-connexion  {
 }
 
 .tableau-bord .calendar-tb {
-    margin-bottom: 20px;
+    margin: 23px;
 }
 
 .background-planning {
@@ -593,7 +596,12 @@ a .btn-connexion  {
     position: relative;
     overflow: hidden;
 }
-
+.container-card-tb{
+display: flex;
+justify-content: center;
+align-content: center;
+flex-wrap: wrap;
+}
 /* Tableau de bord cube de gauche */
 
 .tableau-bord .left-tb {
@@ -945,7 +953,7 @@ a .link-lesson-add {
     font-weight: 600;
     font-size: 20px;
     padding: 12px;
-    margin-right: 5px;
+    margin: 10px;
     cursor: pointer;
   }
 
@@ -1107,6 +1115,9 @@ a .link-lesson-add {
 @media (max-width : 1199px){
   .title-lessons{
     padding : 45px 0px;
+  }
+  .containerLoading{
+    left : 50%;
   }
   .block-categories-parts {
     margin: 5px 12px !important;
