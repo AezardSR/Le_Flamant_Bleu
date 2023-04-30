@@ -38,7 +38,7 @@ function OffresEmplois() {
             ))}
         </div>
 
-        <Link to='/ajouter-annonce-emploi'><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une offres d'emplois</button></Link>
+        <Link to='/ajouter-annonce-emploi'><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une offre d'emploi</button></Link>
       </div>
     )
 }

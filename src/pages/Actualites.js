@@ -38,7 +38,7 @@ function Actualites() {
             ))}
         </div>
 
-        <Link to="/ajouter-actualite"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une actualités</button></Link>
+        <a href="/ajouter-actualite"><button className="link-lesson-add mar-vertical-10px pointer">Ajouter une actualité</button></a>
       </div>
     )
 }

@@ -1137,6 +1137,7 @@ a .link-lesson-add {
     margin-top: 10px;
     position: relative;
     align-items: center;
+    border-radius: 5px;
 }
 
 .block-categories-parts .button-delete {
@@ -1144,12 +1145,15 @@ a .link-lesson-add {
     color: white;
     border: none;
     padding: 3px;
+    border-radius: 4px;
 }
 
 .block-categories-parts .button-update {
     background: green;
     padding: 3px;
     border: none;
+    border-radius: 4px;
+
 }
 
 .block-categories-parts .button-update a {
@@ -1692,6 +1696,30 @@ a .btn-form-add-lesson {
 /*---------------------------------------------------------------------
     ACTUALITES
 -----------------------------------------------------------------------*/
+.form-container{
+    max-width: 600px;
+    margin : 0 auto;
+}
+.container-label-input-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.container-label-input-form input, textarea, select{
+    border: 2px solid var(--color-light-blue);
+    border-radius: 5px;
+    height: 40px;
+}
+.container-label-input-form label, textarea , select{
+    margin-bottom: 5px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .block-actualites-listing {
     background: var(--color-light-grey);
     border: 1px solid var(--color-dark-blue);
