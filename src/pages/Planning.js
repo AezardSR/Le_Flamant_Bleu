@@ -38,8 +38,8 @@ function Planning() {
                         <p className='planning-date'>{appointment.dateDetails}</p>
                         <p className="date-select-formation planning-title">{appointment.titleDetails}</p>
                         <p className="date-select-formation planning-details">{appointment.descriptionDetails}</p>
-                        <button className='btn-delete' onClick={() => deleteID(appointment.id)}>Delete</button>
-                        <button type="submit" className='btn-update'><Link to={"/update/" + appointment.id}>Update</Link></button>
+                        <button className='btn-delete' onClick={() => deleteID(appointment.id)}>Effacer</button>
+                        <button type="submit" className='btn-update'><Link to={"/update/" + appointment.id}>Modifier</Link></button>
                     </div>
                 ))}
             </div>

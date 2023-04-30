@@ -31,8 +31,8 @@ function Categorie() {
                 <div className='block-categories-parts flex-between' id={categorie.id} key={categorie.id} value={categorie.id}>
                     <p>{categorie.categorie}</p>
                     <div className='flex'>
-                      <button className='button-delete pointer' onClick={() => deleteID(categorie.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + categorie.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(categorie.id)}>Effacer</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-categorie/" + categorie.id}>Modifier</Link></button>
                     </div>
                 </div>
             ))}

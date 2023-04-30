@@ -34,33 +34,27 @@ const UpdateExercices = () => {
 
   return (
     <div>
-      <h2>Modifier une exercice</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nom :</label>
-          <input type="text" id="name" name="name" value={exercice.name} onChange={handleInputChange} />
+      <h1 className="mar-vertical-10px mar-left-10px">Modifier un exercice</h1>
+      <form className="flex align-center justify-center form-add-element" onSubmit={handleSubmit}>
+        <div className="flex-column w-500px mar-left-10px">
+          <div className="mar-vertical-10px">
+            <label htmlFor="name">Nom :</label>
+            <input type="text" id="name" name="name" value={exercice.name} onChange={handleInputChange} />
+          </div>
+          <div className="mar-vertical-10px">
+            <label htmlFor="content">Contenu :</label>
+            <textarea id="content" name="content" value={exercice.content} onChange={handleInputChange} />
+          </div>
+          <div className="mar-vertical-10px">
+            <label htmlFor="parts_id">Partie :</label>
+            <select id="parts_id" name="parts_id" value={exercice.parts_id} onChange={handleInputChange}>
+              {parts.map(part => (
+                <option key={part.id} value={part.id}>{part.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div>
-          <label htmlFor="content">Contenu :</label>
-          <textarea id="content" name="content" value={exercice.content} onChange={handleInputChange} />
-        </div>
-        {/* <div>
-          <label htmlFor="image">image :</label>
-          <input type="text" id="image" name="image" value={exercice.image} onChange={handleInputChange} />
-        </div>
-        <div>
-          <label htmlFor="file">File :</label>
-          <input type="text" id="file" name="file" value={exercice.file} onChange={handleInputChange} />
-        </div> */}
-        <div>
-          <label htmlFor="parts_id">Partie :</label>
-          <select id="parts_id" name="parts_id" value={exercice.parts_id} onChange={handleInputChange}>
-            {parts.map(part => (
-              <option key={part.id} value={part.id}>{part.name}</option>
-            ))}
-          </select>
-        </div>
-        <button type="submit">Modifier la leçon</button>
+        <button type="submit" className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer">Modifier la leçon</button>
       </form>
     </div>
   );

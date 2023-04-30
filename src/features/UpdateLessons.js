@@ -34,29 +34,31 @@ const UpdateLesson = () => {
 
   return (
     <div>
-      <h2>Modifier une leçon</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nom :</label>
-          <input type="text" id="name" name="name" value={lesson.name} onChange={handleInputChange} />
+      <h1 className="mar-vertical-10px mar-left-10px">Modifier une leçon</h1>
+      <form className="flex align-center justify-center form-add-element" onSubmit={handleSubmit}>
+        <div className="flex-column w-500px mar-left-10px">
+          <div className="mar-vertical-10px">
+            <label htmlFor="name">Nom :</label>
+            <input type="text" id="name" name="name" value={lesson.name} onChange={handleInputChange} />
+          </div>
+          <div className="mar-vertical-10px">
+            <label htmlFor="content">Contenu :</label>
+            <textarea id="content" name="content" value={lesson.content} onChange={handleInputChange} />
+          </div>
+          <div className="mar-vertical-10px">
+            <label htmlFor="duration">Durée :</label>
+            <input type="text" id="duration" name="duration" value={lesson.duration} onChange={handleInputChange} />
+          </div>
+          <div className="mar-vertical-10px">
+            <label htmlFor="parts_id">Partie :</label>
+            <select id="parts_id" name="parts_id" value={lesson.parts_id} onChange={handleInputChange}>
+              {parts.map(part => (
+                <option key={part.id} value={part.id}>{part.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div>
-          <label htmlFor="content">Contenu :</label>
-          <textarea id="content" name="content" value={lesson.content} onChange={handleInputChange} />
-        </div>
-        <div>
-          <label htmlFor="duration">Durée :</label>
-          <input type="text" id="duration" name="duration" value={lesson.duration} onChange={handleInputChange} />
-        </div>
-        <div>
-          <label htmlFor="parts_id">Partie :</label>
-          <select id="parts_id" name="parts_id" value={lesson.parts_id} onChange={handleInputChange}>
-            {parts.map(part => (
-              <option key={part.id} value={part.id}>{part.name}</option>
-            ))}
-          </select>
-        </div>
-        <button type="submit">Modifier la leçon</button>
+        <button type="submit" className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer">Modifier la leçon</button>
       </form>
     </div>
   );

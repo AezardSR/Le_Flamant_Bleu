@@ -31,8 +31,8 @@ function GestionLesson() {
                 <div className='block-categories-parts flex-between' id={lesson.id} key={lesson.id} value={lesson.id}>
                     <p>{lesson.name}</p>
                     <div className='flex'>
-                      <button className='button-delete pointer' onClick={() => deleteID(lesson.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-cours/" + lesson.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(lesson.id)}>Effacer</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-cours/" + lesson.id}>Modifier</Link></button>
                     </div>
                 </div>
             ))}

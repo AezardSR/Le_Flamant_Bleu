@@ -32,29 +32,26 @@ const AddExercice = () => {
 
     return (
       <div>
-        <form className="form-add-lesson">
-
-            <div className='form-add-lesson-add-title'>
+        <h1 className="mar-vertical-10px mar-left-10px">Ajouter un exercice</h1>
+        <form className="flex align-center justify-center form-add-element">
+          <div className="flex-column w-500px mar-left-10px">
+            <div className="mar-vertical-10px">
                 <input value={title} onChange={(event) => {setTitle(event.target.value)}} className="form-add-lesson-title" placeholder="Insérer titre"></input>
             </div>
-
-            <div className='form-add-lesson-add-details'>
-                <div className='form-add-lesson-select-categorie'>
-                  <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartsID(event.target.value)}} value={partsID}>
-                    <option value="">--Choisir une option--</option>
-                    {parts.map((part) => (
-                      <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
-                    ))}
-                  </select>
-                  {/* <input value={image} onChange={(event) => {setImage(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour image"></input>
-                  <input value={file} onChange={(event) => {setFile(event.target.value)}} className="form-add-lesson-duration" placeholder="A changer le input pour file"></input> */}
-                </div>
+            <div className="mar-vertical-10px">
+              <select className="p-5px w-100 h-45px" style={{marginBottom: '20px', fontSize: 'Medium'}} onChange={(event) => {setPartsID(event.target.value)}} value={partsID}>
+                <option value="">--Choisir une option--</option>
+                {parts.map((part) => (
+                  <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
+                ))}
+              </select>
             </div>
-
-            <div className='form-add-lesson-add-description'>
+            <div className="mar-vertical-10px">
                 <textarea value={description} onChange={(event) => {setDescription(event.target.value)}} className="form-add-lesson-description" placeholder="Description du cours"></textarea>
-                <button onClick={handleSubmit} type="submit" className="btn btn-form-add-lesson">Valider l'exercice</button>
             </div>
+                <button onClick={handleSubmit} type="submit" className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer">Valider l'exercice</button>
+          </div>
+
 
         </form>
       </div>

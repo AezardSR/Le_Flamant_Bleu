@@ -31,8 +31,8 @@ function GestionExercice() {
                 <div className='block-categories-parts flex-between' id={exercice.id} key={exercice.id} value={exercice.id}>
                     <p>{exercice.name}</p>
                     <div className='flex'>
-                      <button className='button-delete pointer' onClick={() => deleteID(exercice.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-exercice/" + exercice.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(exercice.id)}>Effacer</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-exercice/" + exercice.id}>Modifier</Link></button>
                     </div>
                 </div>
             ))}

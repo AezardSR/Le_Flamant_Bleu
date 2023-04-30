@@ -31,8 +31,8 @@ function OffresEmplois() {
                 <div className='block-categories-parts flex-between' id={jobsOffer.id} key={jobsOffer.id} value={jobsOffer.id}>
                     <p>{jobsOffer.name}</p>
                     <div className='flex'>
-                      <button className='button-delete pointer' onClick={() => deleteID(jobsOffer.id)}>Delete</button>
-                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-offres-emplois/" + jobsOffer.id}>Update</Link></button>
+                      <button className='button-delete pointer' onClick={() => deleteID(jobsOffer.id)}>Effacer</button>
+                      <button type="submit" className='button-update mar-left-10px pointer'><Link to={"/modifier-offres-emplois/" + jobsOffer.id}>Modifier</Link></button>
                     </div>
                 </div>
             ))}
