@@ -36,8 +36,7 @@ const UpdateParts = () => {
   //On créer la constante pour l'évènement
   const handleSubmit = (event) => {
     event.preventDefault();
-    //On créer l'évènement avec son url par id, sa méthode et son body contenant de base les valeurs actuelles de la partie en
-    //cas d'aucun changement dans le form
+    //On créer l'évènement avec son url par id, sa méthode et son body contenant de base les valeurs actuelles
     requestAPI('/parts/' + partsID, 'PATCH', {name: parts.name, categories_id: parts.categories_id})
       .then(response => response.json())
       .then(data => console.log(data))

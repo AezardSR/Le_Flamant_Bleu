@@ -2,14 +2,19 @@ import React from 'react'
 import { useState, useEffect, useContext } from 'react';
 import '../css/styles.css';
 import { Link } from 'react-router-dom';
+//ApiContext permet de faire des appels depuis une API externe
 import { ApiContext } from "../features/APIToken/ApiContext";
 
 function Parts() {
 
+  //On définit requestAPI pour réaliser des appels d'API depuis ApiContext
     const {requestAPI} = useContext(ApiContext);
+    //On définit une constante pour les parties
     const [parts, setParts] = useState([]);
+    //On définit un message d'erreur pour le cas où on ne peut pas supprimer une partie
     const [messageError, setMessageError] = useState(false);
 
+    //On récupère les parts et on les met dans parts
     useEffect(() => {
       requestAPI('/parts', 'GET',null)
           .then(response => response.json())
@@ -34,6 +39,7 @@ function Parts() {
     return (
       <div>
         <div className='flex-wrap'>
+            {/* Le .map permet de faire une boucle sur les données */}
             {parts.map((part) => (
                 <div className='block-categories-parts flex-between' id={part.id} key={part.id} value={part.id}>
                     <p>{part.name}</p>
