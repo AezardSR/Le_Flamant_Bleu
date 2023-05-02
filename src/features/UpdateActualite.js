@@ -30,26 +30,31 @@ const UpdateActualite = () => {
 
   return (
     <div>
-      <h1 className="mar-vertical-10px mar-left-10px">Modifier un article</h1>
-
+      <h1 className="title-lessons">Modifier un article</h1>
+      <div className='form-container'>
       <form className="flex-column form-add" onSubmit={handleSubmit}>
-        <div className="flex align-center justify-center form-add-element">
-          <div className="flex-column w-500px mar-left-10px mar-vertical-10px">
-            <label className="label-form" htmlFor="title">Titre à modifier</label>
-            <input type="text" id="title" name="title" value={actualites.title} onChange={handleInputChange} />
+            <div className='container-label-input-form'>
+              <label className="label-form" htmlFor="title">Titre à modifier</label>
+              <input type="text" id="title" name="title" value={actualites.title} onChange={handleInputChange} />
+            </div>
 
-            <label className="label-form" htmlFor="publication_date">Date à modifier</label>
-            <input type="date" id="publication_date" name="publication_date" value={actualites.publication_date} onChange={handleInputChange} />
-            
-            <label className="label-form" htmlFor="content">Contenu à modifier</label>
-            <textarea value={actualites.content} name="content" onChange={handleInputChange}></textarea>
-
-            <label className="label-form" htmlFor="author">Auteur à modifier</label>
-            <input type="text" id="author" name="author" value={actualites.author} onChange={handleInputChange} />
-          </div>
-        </div>
-        <button className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer" type='submit'>Modifier l'article</button>
+            <div className='container-label-input-form'>
+              <label className="label-form" htmlFor="publication_date">Date à modifier</label>
+              <input type="date" id="publication_date" name="publication_date" value={actualites.publication_date} onChange={handleInputChange} />
+            </div>
+            <div className='container-label-input-form'>
+              <label className="label-form" htmlFor="content">Contenu à modifier</label>
+              <textarea value={actualites.content} name="content" onChange={handleInputChange}></textarea>
+            </div>
+            <div className='container-label-input-form'>
+              <label className="label-form" htmlFor="author">Auteur à modifier</label>
+              <input type="text" id="author" name="author" value={actualites.author} onChange={handleInputChange} />
+            </div>
+            <div className='btn-container'>
+            <button className="pointer btn-connexion" type='submit'>Modifier l'article</button>
+            </div>
       </form>
+      </div>
     </div>
   );
 };

@@ -40,29 +40,29 @@ const UpdateJobsOffers = () => {
 
   return (
     <div>
-      <h1 className="mar-vertical-10px mar-left-10px">Modifier une partie</h1>
-
+      <h1 className="title-lessons">Modifier une annonce</h1>
+      <div className='form-container'>
       <form className="flex-column form-add" onSubmit={handleSubmit}>
-        <div className="flex align-center justify-center form-add-element">
-          <div className="mar-left-10px mar-vertical-10px">
+            <div className='container-label-input-form'>
             <label className="label-form" htmlFor="name">Nom à modifier</label>
             <input type="text" id="name" name="name" value={jobOffers.name} onChange={handleInputChange} />
-
-            <div className="flex-column mar-left-10px mar-vertical-10px">
+            </div>
+            <div className='container-label-input-form'>
                 <label className="label-form" htmlFor="link">Lien à modifier</label>
                 <input type="text" id="link" name="link" value={jobOffers.link} onChange={handleInputChange} />
             </div>
-          </div>
-          <div className="flex-column mar-left-10px mar-vertical-10px">
-            <label className="label-form" htmlFor="dateOffers">Date à modifier</label>
-            <input type="date" id="dateOffers" name="dateOffers" value={jobOffers.dateOffers} onChange={handleInputChange} />
-          
-            <div className="flex-column mar-left-10px mar-vertical-10px">
+
+          <div className='container-label-input-form'>
+              <label className="label-form" htmlFor="dateOffers">Date à modifier</label>
+              <input type="date" id="dateOffers" name="dateOffers" value={jobOffers.dateOffers} onChange={handleInputChange} />
+            </div>
+
+            <div className="container-label-input-form">
                 <label className="label-form" htmlFor="description">Contenu à modifier</label>
                 <textarea id="description" name="description" value={jobOffers.description} onChange={handleInputChange} />
             </div>
-          </div>
-          <div className="flex-column mar-left-10px">
+
+            <div className='container-label-input-form'>
             <label className="label-form" htmlFor="user_id">User à modifier</label>
             <select className="form-select" id="user_id" name="user_id" value={jobOffers.user_id} onChange={handleInputChange}>
                 <option value="">--Choisir une option--</option>
@@ -70,6 +70,9 @@ const UpdateJobsOffers = () => {
                 <option key={user.id} value={user.id}>{user.id} : {user.name} {user.firstname}</option>
               ))}
             </select>
+            </div>
+
+            <div className='container-label-input-form'>
             <label className="label-form" htmlFor="partnerContacts_id">Contact partenaire à modifier</label>
             <select className="form-select" id="partnerContacts_id" name="partnerContacts_id" value={jobOffers.partnerContacts_id} onChange={handleInputChange}>
                 <option value="">--Choisir une option--</option>
@@ -77,10 +80,12 @@ const UpdateJobsOffers = () => {
                 <option key={contact.id} value={contact.id}>{contact.id} : {contact.name} {contact.firstname}</option>
               ))}
             </select>
-          </div>
-        </div>
-        <button className="w-max-content mar-left-auto link-lesson-add mar-vertical-10px pointer" type='submit'>Modifier la partie</button>
+            </div>
+            <div className='btn-container'>
+              <button className="btn-connexion pointer" type='submit'>Modifier l'annonce</button>
+            </div>
       </form>
+      </div>
     </div>
   );
 };

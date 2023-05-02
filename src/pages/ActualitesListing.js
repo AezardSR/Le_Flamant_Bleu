@@ -20,7 +20,7 @@ function ActualitesListing() {
 
     return (
       <div>
-        <h1>Les dernières actualités</h1>
+        <h1 className='title-lessons'>Les dernières actualités</h1>
         <div className='flex-column'>
             {actualites.map((actualite) => (
                 <a className='block-actualites-listing' href={"/nos-actualites/actualite/" + actualite.id}>
