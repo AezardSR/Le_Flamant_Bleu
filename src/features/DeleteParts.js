@@ -28,7 +28,7 @@ const DeleteParts = () => {
               <option key={part.id} value={part.id}>{part.id} : {part.name}</option>
             ))}
           </select>
-          <button type="submit" onClick={handleSubmit}>Delete</button>
+          <button type="submit" onClick={handleSubmit}>Effacer</button>
         </form>
       </div>
     )
